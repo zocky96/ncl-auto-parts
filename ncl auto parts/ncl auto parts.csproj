@@ -193,6 +193,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\ArticleC.cs" />
+    <Compile Include="controller\CartC.cs" />
+    <Compile Include="controller\ClientC.cs" />
+    <Compile Include="controller\DepenseC.cs" />
+    <Compile Include="controller\EmployerC.cs" />
+    <Compile Include="controller\FournisseurC.cs" />
+    <Compile Include="controller\ReparationC.cs" />
+    <Compile Include="controller\UserC.cs" />
+    <Compile Include="controller\VenteC.cs" />
     <Compile Include="db\dbConfig.cs" />
     <Compile Include="main.cs">
       <SubType>Form</SubType>
@@ -201,6 +209,14 @@
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
     <Compile Include="model\ArticleM.cs" />
+    <Compile Include="model\CartM.cs" />
+    <Compile Include="model\ClientM.cs" />
+    <Compile Include="model\DepenseM.cs" />
+    <Compile Include="model\EmployerM.cs" />
+    <Compile Include="model\FournisseurM.cs" />
+    <Compile Include="model\ReparationM.cs" />
+    <Compile Include="model\UserM.cs" />
+    <Compile Include="model\VenteM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="screens\Article.cs">
@@ -208,6 +224,18 @@
     </Compile>
     <Compile Include="screens\Article.Designer.cs">
       <DependentUpon>Article.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\AutoPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\AutoPart.Designer.cs">
+      <DependentUpon>AutoPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\Cart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Cart.Designer.cs">
+      <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
     <Compile Include="screens\Client.cs">
       <SubType>Form</SubType>
@@ -221,11 +249,47 @@
     <Compile Include="screens\Employer.Designer.cs">
       <DependentUpon>Employer.cs</DependentUpon>
     </Compile>
+    <Compile Include="screens\Facturation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Facturation.Designer.cs">
+      <DependentUpon>Facturation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\Fix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Fix.Designer.cs">
+      <DependentUpon>Fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\Fournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Fournisseur.Designer.cs">
+      <DependentUpon>Fournisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\Payroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Payroll.Designer.cs">
+      <DependentUpon>Payroll.cs</DependentUpon>
+    </Compile>
     <Compile Include="screens\Reparation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="screens\Reparation.Designer.cs">
       <DependentUpon>Reparation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="screens\User.cs">
       <SubType>Form</SubType>
@@ -239,6 +303,7 @@
     <Compile Include="screens\vente.Designer.cs">
       <DependentUpon>vente.cs</DependentUpon>
     </Compile>
+    <Compile Include="tools\hashMe.cs" />
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,14 +320,38 @@
     <EmbeddedResource Include="screens\Article.resx">
       <DependentUpon>Article.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="screens\AutoPart.resx">
+      <DependentUpon>AutoPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\Cart.resx">
+      <DependentUpon>Cart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="screens\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Employer.resx">
       <DependentUpon>Employer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="screens\Facturation.resx">
+      <DependentUpon>Facturation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\Fix.resx">
+      <DependentUpon>Fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\Fournisseur.resx">
+      <DependentUpon>Fournisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\Payroll.resx">
+      <DependentUpon>Payroll.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="screens\Reparation.resx">
       <DependentUpon>Reparation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screens\User.resx">
       <DependentUpon>User.cs</DependentUpon>
@@ -359,9 +448,44 @@
   <ItemGroup>
     <None Include="Resources\payroll_50px1.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\shopping_cart_30px.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\supplier_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\garage_26px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_24px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ncl.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\ncl.jpg" />
+    <None Include="Resources\settings_24px1.png" />
+    <None Include="Resources\money_bag_32px.png" />
+    <None Include="Resources\garage_26px1.png" />
+    <None Include="Resources\car_24px1.png" />
+    <None Include="Resources\users_settings_32px.png" />
+    <None Include="Resources\employee_24px.png" />
+    <None Include="Resources\employee_50px3.png" />
+    <None Include="Resources\invoice_paid_32px.png" />
+    <None Include="Resources\maintenance_30px.png" />
+    <None Include="Resources\customer_30px.png" />
+    <None Include="Resources\supplier_30px.png" />
+    <None Include="Resources\shopping_cart_30px1.png" />
+    <None Include="Resources\sell_24px.png" />
+    <None Include="Resources\new_product_30px.png" />
+    <None Include="Resources\support_50px1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

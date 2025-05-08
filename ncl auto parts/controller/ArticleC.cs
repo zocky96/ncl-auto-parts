@@ -17,13 +17,13 @@ namespace ncl_auto_parts.controller
         {
             MySqlDataReader result;
             table.Rows.Clear();
-            result = await dbConfig.getResultCommand("select *from article where quantite <= 5");
+            result = await dbConfig.getResultCommand("select *from article where quantite <= 3");
             try
             {
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["type"], result["fournisseur"], result["dateAjout"], result["dateExpiration"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
 
                 }
             }
@@ -201,9 +201,9 @@ namespace ncl_auto_parts.controller
             showArticle(table);
             return rep;
         }
-        public static async Task<int> updateQuantite(string productName, string type, int quantite)
+        public static async Task<int> updateQuantite(string productName, int quantite)
         {
-            return await dbConfig.execute_command("update article set quantite=" + quantite.ToString() + " where nom_du_produit='" + productName + "' and type='" + type + "'");
+            return await dbConfig.execute_command("update article set quantite=" + quantite.ToString() + " where nom_du_produit='" + productName + "'");
         }
         public static async Task<int> deleteArticle(String id, BunifuDataGridView table)
         {
@@ -242,13 +242,13 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from article where id='" + word + "' or nom_du_produit= '" + word + "'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from article where id='" + word + "' or nom_du_produit= '" + word + "' or numero='"+word+"'");
             try
             {
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["type"], result["fournisseur"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
 
                 }
             }
@@ -292,7 +292,7 @@ namespace ncl_auto_parts.controller
             {
                 while (result.Read())
                 {
-
+                    //MessageBox.Show(result["dateAjout"].ToString());
                     table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
 
                 }

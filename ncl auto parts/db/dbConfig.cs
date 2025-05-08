@@ -241,7 +241,7 @@ namespace ncl_auto_parts.db
 
         public static async Task<int> createTables()
         {
-            int rep = await execute_command("create table employer(id int primary key auto_increment,nom varchar(255),prenom varchar(255),nif varchar(70),adresse varchar(255),date_de_naissance date,poste enum('caissier','technicien','sysadmin','manager','secretaire'),phone varchar(30))");
+            int rep = await execute_command("create table employer(id int primary key auto_increment,nom varchar(255),prenom varchar(255),nif varchar(70),adresse varchar(255),date_de_naissance date,poste enum('caissier','PDG','gestionnaire de stock','manager','secretaire','directeur','mecanicien'),phone varchar(30),mail varchar(50))");
 
             if (rep == 0)
             {
@@ -275,7 +275,7 @@ namespace ncl_auto_parts.db
             {
                 return 52;
             }
-            rep = await execute_command("create table vente (id int primary key auto_increment,nom_du_produit varchar(100),prix float,quantite int,total float,date date,signature_autorise varchar(150),receiptNumber varchar(255),type varchar(255),clientName varchar(255))");
+            rep = await execute_command("create table vente (id int primary key auto_increment,nom_du_produit varchar(100),prix float,quantite int,total float,date date,signature_autorise varchar(150),receiptNumber varchar(255),type varchar(255),clientName varchar(255),devise enum('HTG','US'))");
             // rep = execute_command("create table vente (id int primary key auto_increment,nom_du_produit varchar(100))");
             if (rep == 9)
             {
@@ -313,7 +313,35 @@ namespace ncl_auto_parts.db
             {
                 return 52;
             }
-            rep = await execute_command("create table depenses(id int primary key auto_increment,motifDepense varchar(255),montantDepense double(12,4),explication varchar(255),signature varchar(100),date date)");
+            rep = await execute_command("create table depenses(id int primary key auto_increment,motifDepense varchar(255),montantDepense double(12,4),explication varchar(255),signature varchar(100),date date,devise enum('HTG','US'))");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            rep = await execute_command("create table client(id int primary key auto_increment,nom varchar(255),prenom varchar(255),adresse varchar(255),phone varchar(100),mail varchar(100))");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            rep = await execute_command("create table reparation(id int primary key auto_increment,clientId varchar(255),Marque varchar(255),modele varchar(255),annee varchar(100),plaque varchar(100),couleur varchar(100),service varchar(100),dateEntree varchar(100),dateSortie varchar(100))");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            rep = await execute_command("create table account_HTG(id int primary key auto_increment,amount float)");
+            if (rep == 0)
+            {
+                await execute_command("insert into account_HTG(amount) values(0)");
+            }
+            if (rep == 9)
+            {
+                return 52;
+            }
+            rep = await execute_command("create table account_US(id int primary key auto_increment,amount float)");
+            if (rep == 0)
+            {
+                await execute_command("insert into account_US(amount) values(0)");
+            }
             if (rep == 9)
             {
                 return 52;
