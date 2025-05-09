@@ -198,6 +198,7 @@
     <Compile Include="controller\DepenseC.cs" />
     <Compile Include="controller\EmployerC.cs" />
     <Compile Include="controller\FournisseurC.cs" />
+    <Compile Include="controller\ProformaC.cs" />
     <Compile Include="controller\ReparationC.cs" />
     <Compile Include="controller\UserC.cs" />
     <Compile Include="controller\VenteC.cs" />
@@ -214,6 +215,7 @@
     <Compile Include="model\DepenseM.cs" />
     <Compile Include="model\EmployerM.cs" />
     <Compile Include="model\FournisseurM.cs" />
+    <Compile Include="model\ProformaM.cs" />
     <Compile Include="model\ReparationM.cs" />
     <Compile Include="model\UserM.cs" />
     <Compile Include="model\VenteM.cs" />
@@ -242,6 +244,12 @@
     </Compile>
     <Compile Include="screens\Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="screens\Employer.cs">
       <SubType>Form</SubType>
@@ -278,6 +286,12 @@
     </Compile>
     <Compile Include="screens\Payroll.Designer.cs">
       <DependentUpon>Payroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\Proforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Proforma.Designer.cs">
+      <DependentUpon>Proforma.cs</DependentUpon>
     </Compile>
     <Compile Include="screens\Reparation.cs">
       <SubType>Form</SubType>
@@ -329,6 +343,9 @@
     <EmbeddedResource Include="screens\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="screens\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="screens\Employer.resx">
       <DependentUpon>Employer.cs</DependentUpon>
     </EmbeddedResource>
@@ -346,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Payroll.resx">
       <DependentUpon>Payroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\Proforma.resx">
+      <DependentUpon>Proforma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Reparation.resx">
       <DependentUpon>Reparation.cs</DependentUpon>

@@ -16,6 +16,7 @@ namespace ncl_auto_parts.screens
         public Login()
         {
             InitializeComponent();
+            userName.Focus();
             
         }
 
@@ -52,6 +53,11 @@ namespace ncl_auto_parts.screens
             {
                 Dispose();
             }
+        }
+
+        private void userName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

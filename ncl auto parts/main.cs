@@ -45,6 +45,8 @@ namespace ncl_auto_parts
             else
             {
                 InitializeComponent();
+                //showScreen(new Dashboard());
+                showScreen(new Proforma());
                 article_ = article;
                 vente_ = vente;
                 fournisseur_ = fournisseur;
@@ -83,6 +85,7 @@ namespace ncl_auto_parts
             settings.Enabled = false;
 
         }
+       
         private void moveSelectedItem2(BunifuButton nouveauBouton)
         {
             if (boutonActif2 != null && boutonActif2 != nouveauBouton)
@@ -97,20 +100,7 @@ namespace ncl_auto_parts
             boutonActif2.Enabled = false;
             //boutonActif2.selected = true;
         }
-        private void moveSelectedItem(BunifuFlatButton nouveauBouton)
-        {
-            if (boutonActif != null && boutonActif != nouveauBouton)
-            {
-                boutonActif.Enabled = true;
-                boutonActif.selected = false;
-                //boutonActif.BackColor = Color.FromArgb(30, 30, 30); // Couleur normale
-            }
-
-            // Désactiver le bouton actuel et le marquer actif
-            boutonActif = nouveauBouton;
-            boutonActif.Enabled = false;
-            boutonActif.selected = true;
-        }
+       
 
         private void showScreen(object Form)
         {
@@ -341,7 +331,28 @@ namespace ncl_auto_parts
             UserC.Disconnected(userName);
             logout.Visible = false;
             login.Visible = true;
+            showScreen(new Dashboard());
             disableButton();
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            try
+            {
+                UserC.Disconnected(userName);
+                logout.Visible = false;
+                login.Visible = true;
+                disableButton();
+            }
+            catch
+            {
+
+            }
+            Environment.Exit(0);
+        }
+        
+        private void main_Load(object sender, EventArgs e)
+        {
+           
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)

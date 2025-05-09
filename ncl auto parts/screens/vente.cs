@@ -468,6 +468,16 @@ namespace ncl_auto_parts.screens
             VenteC.cancelVente(idT, nomProduitT, table, int.Parse(quantiteT), noRecu, deviseT);
         }
 
+        private void proforma_Click(object sender, EventArgs e)
+        {
+            main.showLogin(new Proforma());
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

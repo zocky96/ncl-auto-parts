@@ -346,6 +346,7 @@
             this.userName.TextPlaceholder = "Enter text";
             this.userName.UseSystemPasswordChar = false;
             this.userName.WordWrap = true;
+            this.userName.TextChanged += new System.EventHandler(this.userName_TextChanged);
             // 
             // Login
             // 

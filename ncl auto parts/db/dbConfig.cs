@@ -328,6 +328,13 @@ namespace ncl_auto_parts.db
             {
                 return 52;
             }
+            //--
+            rep = await execute_command("create table proforma(id int primary key auto_increment,clientName varchar(255),carName varchar(255),plaque varchar(100),phone varchar(50),date date,description varchar(200),quantite int,price double,total double)");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            //--
             rep = await execute_command("create table account_HTG(id int primary key auto_increment,amount float)");
             if (rep == 0)
             {
