@@ -199,6 +199,7 @@
     <Compile Include="controller\DepenseC.cs" />
     <Compile Include="controller\EmployerC.cs" />
     <Compile Include="controller\FournisseurC.cs" />
+    <Compile Include="controller\GarageC.cs" />
     <Compile Include="controller\ProformaC.cs" />
     <Compile Include="controller\ReparationC.cs" />
     <Compile Include="controller\UserC.cs" />
@@ -270,6 +271,12 @@
     </Compile>
     <Compile Include="screens\FactureAuto.Designer.cs">
       <DependentUpon>FactureAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\FactureGarage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\FactureGarage.Designer.cs">
+      <DependentUpon>FactureGarage.cs</DependentUpon>
     </Compile>
     <Compile Include="screens\Fix.cs">
       <SubType>Form</SubType>
@@ -368,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="screens\FactureAuto.resx">
       <DependentUpon>FactureAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\FactureGarage.resx">
+      <DependentUpon>FactureGarage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Fix.resx">
       <DependentUpon>Fix.cs</DependentUpon>
