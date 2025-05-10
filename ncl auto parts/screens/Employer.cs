@@ -41,12 +41,14 @@ namespace ncl_auto_parts.screens
             mail.Text = "";
             nif.Text = "";
             poste.Text = "Poste";
+            salaire.Text = "";
         }
         private void save_Click(object sender, EventArgs e)
         {
             modify.Visible = false;
             delete.Visible = false;
-        
+            bool isAnumber = false;
+            float j = 0;
             if(nom.Text == "")
             {
                 MessageBox.Show("Le champ 'Nom' ne doit pas etre vide");
@@ -86,8 +88,17 @@ namespace ncl_auto_parts.screens
                                     if(poste.Text == "caissier" || poste.Text == "PDG" || poste.Text == "gestionnaire de stock" || poste.Text == "manager" || poste.Text == "secretaire" || poste.Text == "directeur")
                                     {
                                         //ok
-                                        EmployerC.saveEmployer(nom.Text, prenom.Text, nif.Text, mail.Text, adresse.Text, "", poste.Text, table, phone.Text);
-                                        clearField();
+                                        isAnumber = float.TryParse(salaire.Text, out j);
+                                        if (isAnumber)
+                                        {
+                                            EmployerC.saveEmployer(nom.Text, prenom.Text, nif.Text, mail.Text, adresse.Text, "", poste.Text, table, phone.Text,float.Parse(salaire.Text));
+                                            clearField();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Le champ salaire doit contenir que des chiffres");
+                                        }
+                                            
                                     }
                                     else
                                     {
@@ -118,7 +129,9 @@ namespace ncl_auto_parts.screens
 
         private void modify_Click(object sender, EventArgs e)
         {
-           
+            bool isAnumber = false;
+            float j = 0;
+
             if (nom.Text == "")
             {
                 MessageBox.Show("Le champ 'Nom' ne doit pas etre vide");
@@ -158,10 +171,19 @@ namespace ncl_auto_parts.screens
                                     if (poste.Text == "caissier" || poste.Text == "PDG" || poste.Text == "gestionnaire de stock" || poste.Text == "manager" || poste.Text == "secretaire" || poste.Text == "directeur")
                                     {
                                         //ok
-                                        modify.Visible = false;
-                                        delete.Visible = false;
-                                        EmployerC.modifyEmployer(nom.Text, prenom.Text, nif.Text, adresse.Text, "", poste.Text, table,id, phone.Text,mail.Text);
-                                        clearField();
+                                        isAnumber = float.TryParse(salaire.Text, out j);
+                                        if (isAnumber)
+                                        {
+                                            modify.Visible = false;
+                                            delete.Visible = false;
+                                            EmployerC.modifyEmployer(nom.Text, prenom.Text, nif.Text, adresse.Text, "", poste.Text, table, id, phone.Text, mail.Text,salaire.Text);
+                                            clearField();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Le champ salaire doit contenir que des chiffres");
+                                        }
+                                           
                                     }
                                     else
                                     {

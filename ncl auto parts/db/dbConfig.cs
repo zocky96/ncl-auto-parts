@@ -241,11 +241,11 @@ namespace ncl_auto_parts.db
 
         public static async Task<int> createTables()
         {
-            int rep = await execute_command("create table employer(id int primary key auto_increment,nom varchar(255),prenom varchar(255),nif varchar(70),adresse varchar(255),date_de_naissance date,poste enum('caissier','PDG','gestionnaire de stock','manager','secretaire','directeur','mecanicien'),phone varchar(30),mail varchar(50))");
+            int rep = await execute_command("create table employer(id int primary key auto_increment,nom varchar(255),prenom varchar(255),nif varchar(70),adresse varchar(255),date_de_naissance date,poste enum('caissier','PDG','gestionnaire de stock','manager','secretaire','directeur','mecanicien'),phone varchar(30),mail varchar(50),salaire double)");
 
             if (rep == 0)
             {
-                await execute_command("insert into employer(nom,prenom,nif,poste,adresse,date_de_naissance,phone) values('Desir','Renaldo','007-100-199484','manager','56,Fort St Michel','1996/12/25','50934951243')");
+                await execute_command("insert into employer(nom,prenom,nif,poste,adresse,date_de_naissance,phone,salaire) values('Desir','Renaldo','007-100-199484','manager','56,Fort St Michel','1996/12/25','50934951243',0)");
             }
             if (rep == 9)
             {

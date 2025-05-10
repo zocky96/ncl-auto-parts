@@ -53,12 +53,12 @@
             this.bunifuShadowPanel1 = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.moneyEmploye = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuShadowPanel2 = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
             this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.one = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.nbrEmploye = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.garage = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -121,7 +121,7 @@
             this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.Gainsboro;
             this.bunifuShadowPanel1.Controls.Add(this.bunifuCustomLabel6);
             this.bunifuShadowPanel1.Controls.Add(this.bunifuCustomLabel2);
-            this.bunifuShadowPanel1.Controls.Add(this.bunifuCustomLabel3);
+            this.bunifuShadowPanel1.Controls.Add(this.moneyEmploye);
             this.bunifuShadowPanel1.Location = new System.Drawing.Point(395, 14);
             this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
             this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
@@ -152,16 +152,16 @@
             this.bunifuCustomLabel2.TabIndex = 6;
             this.bunifuCustomLabel2.Text = "Total des salaires";
             // 
-            // bunifuCustomLabel3
+            // moneyEmploye
             // 
-            this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Gray;
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(73, 61);
-            this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(92, 22);
-            this.bunifuCustomLabel3.TabIndex = 5;
-            this.bunifuCustomLabel3.Text = "$100000 ";
+            this.moneyEmploye.AutoSize = true;
+            this.moneyEmploye.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moneyEmploye.ForeColor = System.Drawing.Color.Gray;
+            this.moneyEmploye.Location = new System.Drawing.Point(73, 61);
+            this.moneyEmploye.Name = "moneyEmploye";
+            this.moneyEmploye.Size = new System.Drawing.Size(92, 22);
+            this.moneyEmploye.TabIndex = 5;
+            this.moneyEmploye.Text = "$100000 ";
             // 
             // bunifuShadowPanel2
             // 
@@ -203,7 +203,7 @@
             // 
             this.one.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.one.BorderColor = System.Drawing.Color.Gainsboro;
-            this.one.Controls.Add(this.bunifuCustomLabel1);
+            this.one.Controls.Add(this.nbrEmploye);
             this.one.Controls.Add(this.garage);
             this.one.Location = new System.Drawing.Point(74, 14);
             this.one.Name = "one";
@@ -213,16 +213,16 @@
             this.one.Size = new System.Drawing.Size(227, 97);
             this.one.TabIndex = 8;
             // 
-            // bunifuCustomLabel1
+            // nbrEmploye
             // 
-            this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(84, 23);
-            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(36, 25);
-            this.bunifuCustomLabel1.TabIndex = 6;
-            this.bunifuCustomLabel1.Text = "15";
+            this.nbrEmploye.AutoSize = true;
+            this.nbrEmploye.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nbrEmploye.ForeColor = System.Drawing.Color.Black;
+            this.nbrEmploye.Location = new System.Drawing.Point(84, 23);
+            this.nbrEmploye.Name = "nbrEmploye";
+            this.nbrEmploye.Size = new System.Drawing.Size(36, 25);
+            this.nbrEmploye.TabIndex = 6;
+            this.nbrEmploye.Text = "15";
             // 
             // garage
             // 
@@ -761,12 +761,12 @@
         private Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel bunifuShadowPanel1;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
+        private Bunifu.Framework.UI.BunifuCustomLabel moneyEmploye;
         private Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel bunifuShadowPanel2;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
         private Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel one;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private Bunifu.Framework.UI.BunifuCustomLabel nbrEmploye;
         private Bunifu.Framework.UI.BunifuCustomLabel garage;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;

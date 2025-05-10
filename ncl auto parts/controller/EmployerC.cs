@@ -21,6 +21,26 @@ namespace ncl_auto_parts.controller
                 caissier.Items.Add(result["nom_complet"].ToString());
             }
         }
+        public static async Task<int> countEmployer()
+        {
+            int nbr = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as nbr from employer");
+            while (result.Read())
+            {
+                nbr = int.Parse(result["nbr"].ToString());
+            }
+            return nbr;
+        }
+        public static async Task<float> sumEmployer()
+        {
+            float nbr = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select sum(salaire) as somme from employer");
+            while (result.Read())
+            {
+                nbr = float.Parse(result["somme"].ToString());
+            }
+            return nbr;
+        }
         public static async Task<int> deleteEmployer(String id, BunifuDataGridView table)
         {
            int rep = await dbConfig.execute_command("delete from employer where id=" + id + "");
@@ -77,10 +97,10 @@ namespace ncl_auto_parts.controller
             showDeletedEmployer(table);
             return rep;
         }
-        public static async Task<int> saveEmployer(String nom, String prenom, String nif, String mail, String adresse, String date_de_naissance, String poste, BunifuDataGridView table, string phone)
+        public static async Task<int> saveEmployer(String nom, String prenom, String nif, String mail, String adresse, String date_de_naissance, String poste, BunifuDataGridView table, string phone,float salaire)
         {
             EmployerM emplo = new EmployerM(nom, prenom, nif, mail, adresse, date_de_naissance, poste, phone);
-            int rep = await dbConfig.execute_command("insert into employer(nom,prenom,nif,mail,poste,adresse,phone) values('" + emplo.Nom + "','" + emplo.Prenom + "','" + emplo.Nif+ "','" + emplo.Mail + "','" + emplo.Poste + "','" + emplo.Adresse + "'," + "'" + emplo.Phone + "')");
+            int rep = await dbConfig.execute_command("insert into employer(nom,prenom,nif,mail,poste,adresse,phone,salaire) values('" + emplo.Nom + "','" + emplo.Prenom + "','" + emplo.Nif+ "','" + emplo.Mail + "','" + emplo.Poste + "','" + emplo.Adresse + "'," + "'" + emplo.Phone + "',"+salaire+")");
 
             showEmployer(table);
             return rep;
@@ -103,7 +123,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom"], result["prenom"], result["mail"], result["nif"], result["adresse"], result["poste"], result["phone"]);
+                    table.Rows.Add(result["id"], result["nom"], result["prenom"], result["mail"], result["nif"], result["adresse"], result["poste"], result["phone"],result["salaire"]);
 
                 }
             }
@@ -113,10 +133,10 @@ namespace ncl_auto_parts.controller
             }
 
         }
-        public static async Task<int> modifyEmployer(String nom, String prenom, String nif, String adresse, String date_de_naissance, String poste, BunifuDataGridView table, String id, string phone,string mail)
+        public static async Task<int> modifyEmployer(String nom, String prenom, String nif, String adresse, String date_de_naissance, String poste, BunifuDataGridView table, String id, string phone,string mail,string salaire)
         {
             EmployerM emplo = new EmployerM(nom, prenom, nif, mail, adresse, date_de_naissance, poste, phone);
-            int rep = await dbConfig.execute_command("update employer set nom='" + emplo.Nom + "',prenom='" + emplo.Prenom + "',nif='" + emplo.Nif + "'," + "adresse='" + emplo.Adresse + "',poste='" + emplo.Poste + "'" + ",phone='" + emplo.Phone + "' where id =" + id);
+            int rep = await dbConfig.execute_command("update employer set nom='" + emplo.Nom + "',prenom='" + emplo.Prenom + "',nif='" + emplo.Nif + "'," + "adresse='" + emplo.Adresse + "',poste='" + emplo.Poste + "'" + ",phone='" + emplo.Phone + "',salaire="+salaire+" where id =" + id);
             showEmployer(table);
             return rep;
         }
@@ -129,7 +149,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom"], result["prenom"], result["mail"], result["nif"], result["adresse"], result["poste"], result["phone"]);
+                    table.Rows.Add(result["id"], result["nom"], result["prenom"], result["mail"], result["nif"], result["adresse"], result["poste"], result["phone"],result["salaire"]);
 
                 }
             }

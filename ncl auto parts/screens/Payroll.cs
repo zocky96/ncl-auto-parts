@@ -18,8 +18,16 @@ namespace ncl_auto_parts.screens
         {
             InitializeComponent();
             DepenseC.showDepense(tableDepense);
+            initWin();
         }
 
+        private async void initWin()
+        {
+            int nbr = await EmployerC.countEmployer();
+            float somme = await EmployerC.sumEmployer();
+            nbrEmploye.Text = nbr.ToString();
+            moneyEmploye.Text = "$"+somme.ToString();
+        }
         private void bunifuShadowPanel3_Paint(object sender, PaintEventArgs e)
         {
 
