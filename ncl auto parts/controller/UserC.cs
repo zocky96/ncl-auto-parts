@@ -192,6 +192,7 @@ namespace ncl_auto_parts.controller
                                 main.cart_.Enabled = true;
                                 //main.rapport.Enabled = true;
                                 main.log_in.Visible = false;
+                                main.userName = username;
 
 
 
@@ -203,6 +204,7 @@ namespace ncl_auto_parts.controller
 
                                 ////main.utilisateur.Enabled = true;
                                 ////DashBoard.user.Enabled = true;
+                                main.userName = username;
                             }
                             if (poste == "secretaire")
                             {
@@ -215,6 +217,7 @@ namespace ncl_auto_parts.controller
                                 //main.vente.Enabled = true;
                                 //DashBoard.sale.Enabled = true;
                                 main.log_in.Visible = false;
+                                main.userName = username;
                             }
                             if (poste == "docteur")
                             {
@@ -223,6 +226,7 @@ namespace ncl_auto_parts.controller
                                 //main.consultation_.Enabled = true;
                                 //main.analise_.Enabled = true;
                                 //main.resultat_.Enabled = true;
+                                main.userName = username;
                             }
                             if (poste == "manager")
                             {
@@ -240,6 +244,7 @@ namespace ncl_auto_parts.controller
                                 main.garage_.Enabled = true;
                                 main.settings_.Enabled = true;
                                 main.log_in.Visible = false;
+                                main.userName = username;
                             }
                             
 

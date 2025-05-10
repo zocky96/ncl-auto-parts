@@ -273,6 +273,7 @@
             this.password.TextPlaceholder = "Enter text";
             this.password.UseSystemPasswordChar = false;
             this.password.WordWrap = true;
+            this.password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.password_KeyDown);
             // 
             // userName
             // 
@@ -347,6 +348,7 @@
             this.userName.UseSystemPasswordChar = false;
             this.userName.WordWrap = true;
             this.userName.TextChanged += new System.EventHandler(this.userName_TextChanged);
+            this.userName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.userName_KeyDown);
             // 
             // Login
             // 

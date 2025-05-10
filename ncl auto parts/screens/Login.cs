@@ -59,5 +59,26 @@ namespace ncl_auto_parts.screens
         {
 
         }
+
+        private async void password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                int rep = await UserC.login(userName.Text, password.Text);
+                if (rep == 0)
+                {
+                    Dispose();
+                }
+            }
+           
+        }
+
+        private void userName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                password.Focus();
+            }
+        }
     }
 }

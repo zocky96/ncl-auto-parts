@@ -335,6 +335,24 @@ namespace ncl_auto_parts.db
                 return 52;
             }
             //--
+            rep = await execute_command("create table fauto_part(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double)");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            //--
+            rep = await execute_command("create table facture_auto(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date )");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            //--
+            rep = await execute_command("create table facture_garage(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date )");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            //--
             rep = await execute_command("create table account_HTG(id int primary key auto_increment,amount float)");
             if (rep == 0)
             {

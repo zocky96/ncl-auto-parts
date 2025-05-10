@@ -193,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\ArticleC.cs" />
+    <Compile Include="controller\AutoPartC.cs" />
     <Compile Include="controller\CartC.cs" />
     <Compile Include="controller\ClientC.cs" />
     <Compile Include="controller\DepenseC.cs" />
@@ -210,6 +211,7 @@
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
     <Compile Include="model\ArticleM.cs" />
+    <Compile Include="model\AutoPartM.cs" />
     <Compile Include="model\CartM.cs" />
     <Compile Include="model\ClientM.cs" />
     <Compile Include="model\DepenseM.cs" />
@@ -263,6 +265,12 @@
     <Compile Include="screens\Facturation.Designer.cs">
       <DependentUpon>Facturation.cs</DependentUpon>
     </Compile>
+    <Compile Include="screens\FactureAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\FactureAuto.Designer.cs">
+      <DependentUpon>FactureAuto.cs</DependentUpon>
+    </Compile>
     <Compile Include="screens\Fix.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +282,12 @@
     </Compile>
     <Compile Include="screens\Fournisseur.Designer.cs">
       <DependentUpon>Fournisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\Garage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Garage.Designer.cs">
+      <DependentUpon>Garage.cs</DependentUpon>
     </Compile>
     <Compile Include="screens\Login.cs">
       <SubType>Form</SubType>
@@ -352,11 +366,17 @@
     <EmbeddedResource Include="screens\Facturation.resx">
       <DependentUpon>Facturation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="screens\FactureAuto.resx">
+      <DependentUpon>FactureAuto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="screens\Fix.resx">
       <DependentUpon>Fix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Fournisseur.resx">
       <DependentUpon>Fournisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\Garage.resx">
+      <DependentUpon>Garage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

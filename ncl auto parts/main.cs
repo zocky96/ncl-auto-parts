@@ -19,7 +19,7 @@ namespace ncl_auto_parts
     public partial class main : Form
     {
         public static List<MySqlConnection> listConn = new List<MySqlConnection>();
-        public static string userName = "zock";
+        public static string userName = null;
         public static string poste = "";
         public static string the_name = "";
         //-----------------------
@@ -47,7 +47,8 @@ namespace ncl_auto_parts
                 InitializeComponent();
                 //showScreen(new Dashboard());
                 //showScreen(new Proforma());
-                showLogin(new Proforma());
+                //showLogin(new FactureAuto());
+
                 article_ = article;
                 vente_ = vente;
                 fournisseur_ = fournisseur;
@@ -337,23 +338,27 @@ namespace ncl_auto_parts
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            try
-            {
-                UserC.Disconnected(userName);
+               UserC.Disconnected(userName);
                 logout.Visible = false;
                 login.Visible = true;
                 disableButton();
-            }
-            catch
-            {
-
-            }
-            Environment.Exit(0);
+           
         }
         
         private void main_Load(object sender, EventArgs e)
         {
            
+        }
+
+        private void garage_Click_1(object sender, EventArgs e)
+        {
+            moveSelectedItem2(garage);
+            showScreen(new Garage());
+        }
+
+        private void bunifuCustomLabel1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
