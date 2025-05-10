@@ -118,6 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="settings.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAOUAAAAnCAYAAADw6Y+pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEUSURBVHhe7d2xTcRAGITRbcRnSqECWrMRZRCTUgoNENHA
+        mrM0oVOOCd5IL1n96RfvMLPCrdvxtO7z/bYfB/APXufH2WGSHOO2zc/LQ+Bhlm1+Jcl7lBcHwOMlSVFC
+        iyQpSmiRJEUJLZKkKKFFkhQltEiSooQWSVKU0CJJihJaJElRQoskKUpokSRFCS2SpCihRZIUJbRIkqKE
+        FklSlNAiSYoSWiRJUUKLJClKaJEkRQktkqQooUWSFCW0SJKihBZJUpTQIkmKElokSVFCiyQpSmiRJEUJ
+        LZKkKKFFkhQltEiSooQWSVKU0CJJihJaJMkxzh9krw6Ax1n2+ZMkx1i34/n+8H11CPy9M8jlbb4kSTPr
+        2Ri/FsWpooiVOeoAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="payroll.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAOUAAAAnCAYAAADw6Y+pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -150,17 +161,6 @@
         DXL+HS97jmbW2TTdAMe/WMo6/rQVAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="settings.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOUAAAAnCAYAAADw6Y+pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEUSURBVHhe7d2xTcRAGITRbcRnSqECWrMRZRCTUgoNENHA
-        mrM0oVOOCd5IL1n96RfvMLPCrdvxtO7z/bYfB/APXufH2WGSHOO2zc/LQ+Bhlm1+Jcl7lBcHwOMlSVFC
-        iyQpSmiRJEUJLZKkKKFFkhQltEiSooQWSVKU0CJJihJaJElRQoskKUpokSRFCS2SpCihRZIUJbRIkqKE
-        FklSlNAiSYoSWiRJUUKLJClKaJEkRQktkqQooUWSFCW0SJKihBZJUpTQIkmKElokSVFCiyQpSmiRJEUJ
-        LZKkKKFFkhQltEiSooQWSVKU0CJJihJaJMkxzh9krw6Ax1n2+ZMkx1i34/n+8H11CPy9M8jlbb4kSTPr
-        2Ri/FsWpooiVOeoAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="user.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAOUAAAAnCAYAAADw6Y+pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -173,17 +173,6 @@
 </value>
   </data>
   <data name="employe.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOUAAAAnCAYAAADw6Y+pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEUSURBVHhe7d2xTcRAGITRbcRnSqECWrMRZRCTUgoNENHA
-        mrM0oVOOCd5IL1n96RfvMLPCrdvxtO7z/bYfB/APXufH2WGSHOO2zc/LQ+Bhlm1+Jcl7lBcHwOMlSVFC
-        iyQpSmiRJEUJLZKkKKFFkhQltEiSooQWSVKU0CJJihJaJElRQoskKUpokSRFCS2SpCihRZIUJbRIkqKE
-        FklSlNAiSYoSWiRJUUKLJClKaJEkRQktkqQooUWSFCW0SJKihBZJUpTQIkmKElokSVFCiyQpSmiRJEUJ
-        LZKkKKFFkhQltEiSooQWSVKU0CJJihJaJMkxzh9krw6Ax1n2+ZMkx1i34/n+8H11CPy9M8jlbb4kSTPr
-        2Ri/FsWpooiVOeoAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="facturation.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAOUAAAAnCAYAAADw6Y+pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEUSURBVHhe7d2xTcRAGITRbcRnSqECWrMRZRCTUgoNENHA

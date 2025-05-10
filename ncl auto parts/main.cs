@@ -57,7 +57,7 @@ namespace ncl_auto_parts
                 user_ = user;
                 payroll_ = payroll;
                 autoPart_ = autoPart;
-                facturation_ = facturation;
+                //facturation_ = facturation;
                 client_ = client;
                 reparation_ = reparation;
                 garage_ = garage;
@@ -80,7 +80,7 @@ namespace ncl_auto_parts
             user.Enabled = false;
             payroll.Enabled = false;
             autoPart.Enabled = false;
-            facturation.Enabled = false;
+            //facturation.Enabled = false;
             client.Enabled = false;
             reparation.Enabled = false;
             garage.Enabled = false;

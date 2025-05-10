@@ -238,7 +238,7 @@ namespace ncl_auto_parts.controller
                                 main.user_.Enabled = true;
                                 main.payroll_.Enabled = true;
                                 main.autoPart_.Enabled = true;
-                                main.facturation_.Enabled = true;
+                                //main.facturation_.Enabled = true;
                                 main.client_.Enabled = true;
                                 main.reparation_.Enabled = true;
                                 main.garage_.Enabled = true;
