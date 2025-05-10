@@ -456,7 +456,13 @@ namespace ncl_auto_parts.screens
             {
                 donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), 0, float.Parse(result["total"].ToString())));
             }
-            printDocument1.Print();
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.Document = printDocument1;
+            DialogResult resulta = printDialog1.ShowDialog();
+            if (resulta == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
             clearField();
             MessageBox.Show("Vente effectué avec succes");
         }

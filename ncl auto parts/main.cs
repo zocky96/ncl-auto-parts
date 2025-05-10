@@ -46,7 +46,8 @@ namespace ncl_auto_parts
             {
                 InitializeComponent();
                 //showScreen(new Dashboard());
-                showScreen(new Proforma());
+                //showScreen(new Proforma());
+                showLogin(new Proforma());
                 article_ = article;
                 vente_ = vente;
                 fournisseur_ = fournisseur;

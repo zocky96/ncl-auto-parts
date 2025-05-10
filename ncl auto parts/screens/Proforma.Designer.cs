@@ -68,8 +68,18 @@
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties30 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties31 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties32 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties33 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties34 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties35 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties36 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             this.label6 = new System.Windows.Forms.Label();
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.k = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -87,13 +97,15 @@
             this.clientName = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.qte = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.name = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
-            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.total = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.price = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -171,6 +183,36 @@
             this.table.TabIndex = 113;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
+            // 
+            // id_
+            // 
+            this.id_.HeaderText = "ID";
+            this.id_.Name = "id_";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Nom du client";
+            this.Column5.Name = "Column5";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Description";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Quantité";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Prix unitaire";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Total";
+            this.Column4.Name = "Column4";
             // 
             // label5
             // 
@@ -347,7 +389,7 @@
             this.delete.IdleIconLeftImage = null;
             this.delete.IdleIconRightImage = null;
             this.delete.IndicateFocus = false;
-            this.delete.Location = new System.Drawing.Point(325, 256);
+            this.delete.Location = new System.Drawing.Point(469, 256);
             this.delete.Name = "delete";
             stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties3.BorderRadius = 3;
@@ -372,6 +414,7 @@
             this.delete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.delete.TextMarginLeft = 0;
             this.delete.UseDefaultRadiusAndThickness = true;
+            this.delete.Visible = false;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // print
@@ -411,7 +454,7 @@
             this.print.IdleIconLeftImage = null;
             this.print.IdleIconRightImage = null;
             this.print.IndicateFocus = false;
-            this.print.Location = new System.Drawing.Point(481, 256);
+            this.print.Location = new System.Drawing.Point(317, 256);
             this.print.Name = "print";
             stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties5.BorderRadius = 3;
@@ -436,7 +479,6 @@
             this.print.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.print.TextMarginLeft = 0;
             this.print.UseDefaultRadiusAndThickness = true;
-            this.print.Visible = false;
             this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // add
@@ -867,6 +909,7 @@
             this.qte.TextPlaceholder = "Enter text";
             this.qte.UseSystemPasswordChar = false;
             this.qte.WordWrap = true;
+            this.qte.TextChanged += new System.EventHandler(this.qte_TextChanged);
             // 
             // name
             // 
@@ -941,41 +984,141 @@
             this.name.UseSystemPasswordChar = false;
             this.name.WordWrap = true;
             // 
-            // id_
+            // printDialog1
             // 
-            this.id_.HeaderText = "ID";
-            this.id_.Name = "id_";
+            this.printDialog1.UseEXDialog = true;
             // 
-            // Column5
+            // printDocument1
             // 
-            this.Column5.HeaderText = "Nom du client";
-            this.Column5.Name = "Column5";
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // Column1
+            // logo
             // 
-            this.Column1.HeaderText = "Description";
-            this.Column1.Name = "Column1";
+            this.logo.BackColor = System.Drawing.Color.White;
+            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
+            this.logo.Location = new System.Drawing.Point(427, 76);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(210, 116);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo.TabIndex = 116;
+            this.logo.TabStop = false;
+            this.logo.Visible = false;
             // 
-            // Column2
+            // label7
             // 
-            this.Column2.HeaderText = "Quantité";
-            this.Column2.Name = "Column2";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(9, 599);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 23);
+            this.label7.TabIndex = 117;
+            this.label7.Text = "Total :";
             // 
-            // Column3
+            // total
             // 
-            this.Column3.HeaderText = "Prix unitaire";
-            this.Column3.Name = "Column3";
+            this.total.AutoSize = true;
+            this.total.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.total.Location = new System.Drawing.Point(72, 599);
+            this.total.Name = "total";
+            this.total.Size = new System.Drawing.Size(0, 23);
+            this.total.TabIndex = 118;
             // 
-            // Column4
+            // label8
             // 
-            this.Column4.HeaderText = "Total";
-            this.Column4.Name = "Column4";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label8.Location = new System.Drawing.Point(640, 180);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 15);
+            this.label8.TabIndex = 120;
+            this.label8.Text = "Prix";
+            // 
+            // price
+            // 
+            this.price.AcceptsReturn = false;
+            this.price.AcceptsTab = false;
+            this.price.AnimationSpeed = 200;
+            this.price.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.price.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.price.BackColor = System.Drawing.Color.Transparent;
+            this.price.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("price.BackgroundImage")));
+            this.price.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.price.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(161)))), ((int)(((byte)(161)))));
+            this.price.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.price.BorderColorIdle = System.Drawing.Color.Silver;
+            this.price.BorderRadius = 1;
+            this.price.BorderThickness = 1;
+            this.price.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.price.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.price.DefaultFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.price.DefaultText = "";
+            this.price.FillColor = System.Drawing.Color.White;
+            this.price.HideSelection = true;
+            this.price.IconLeft = null;
+            this.price.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.price.IconPadding = 10;
+            this.price.IconRight = null;
+            this.price.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.price.Lines = new string[0];
+            this.price.Location = new System.Drawing.Point(643, 198);
+            this.price.MaxLength = 32767;
+            this.price.MinimumSize = new System.Drawing.Size(100, 35);
+            this.price.Modified = false;
+            this.price.Multiline = false;
+            this.price.Name = "price";
+            stateProperties33.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties33.FillColor = System.Drawing.Color.Empty;
+            stateProperties33.ForeColor = System.Drawing.Color.Empty;
+            stateProperties33.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.price.OnActiveState = stateProperties33;
+            stateProperties34.BorderColor = System.Drawing.Color.Empty;
+            stateProperties34.FillColor = System.Drawing.Color.White;
+            stateProperties34.ForeColor = System.Drawing.Color.Empty;
+            stateProperties34.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.price.OnDisabledState = stateProperties34;
+            stateProperties35.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties35.FillColor = System.Drawing.Color.Empty;
+            stateProperties35.ForeColor = System.Drawing.Color.Empty;
+            stateProperties35.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.price.OnHoverState = stateProperties35;
+            stateProperties36.BorderColor = System.Drawing.Color.Silver;
+            stateProperties36.FillColor = System.Drawing.Color.White;
+            stateProperties36.ForeColor = System.Drawing.Color.Empty;
+            stateProperties36.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.price.OnIdleState = stateProperties36;
+            this.price.PasswordChar = '\0';
+            this.price.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.price.PlaceholderText = "Enter text";
+            this.price.ReadOnly = false;
+            this.price.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.price.SelectedText = "";
+            this.price.SelectionLength = 0;
+            this.price.SelectionStart = 0;
+            this.price.ShortcutsEnabled = true;
+            this.price.Size = new System.Drawing.Size(234, 35);
+            this.price.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
+            this.price.TabIndex = 119;
+            this.price.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.price.TextMarginBottom = 0;
+            this.price.TextMarginLeft = 5;
+            this.price.TextMarginTop = 0;
+            this.price.TextPlaceholder = "Enter text";
+            this.price.UseSystemPasswordChar = false;
+            this.price.WordWrap = true;
             // 
             // Proforma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 598);
+            this.ClientSize = new System.Drawing.Size(933, 630);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.price);
+            this.Controls.Add(this.total);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.logo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.clean);
             this.Controls.Add(this.table);
@@ -1000,6 +1143,7 @@
             this.Text = "Proforma";
             this.Load += new System.EventHandler(this.Proforma_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1032,5 +1176,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PictureBox logo;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label total;
+        private System.Windows.Forms.Label label8;
+        private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox price;
     }
 }
