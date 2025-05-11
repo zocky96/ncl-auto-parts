@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ncl_auto_parts.controller;
+using ncl_auto_parts.db;
 using ncl_auto_parts.model;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,12 @@ namespace ncl_auto_parts.screens
     public partial class Garage : Form
     {
         string id = "";
+        float sum = 0;
+        float realTotal = 0;
+        string somme = null;
+        AutoPartM autoPart = null;
+        string receiptNumber = null;
+        public List<(string service, float montant)> donnees;
         public Garage()
         {
             InitializeComponent();
@@ -120,8 +127,9 @@ namespace ncl_auto_parts.screens
 
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
-            string receiptNumber = null;
+            
             Random random = new Random();
+            donnees = new List<(string, float)>();
             int randomNumber = random.Next(9999);
             try
             {
@@ -155,35 +163,44 @@ namespace ncl_auto_parts.screens
 
                 if (result["devise"].ToString() == "US")
                 {
-                    AutoPartM facture = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
-                    rep = await GarageC.saveGoodFacture(facture, receiptNumber, table);
-                    if (rep == 0)
-                    {
-                        VenteC.AddUsMoney(float.Parse(result["montant"].ToString()));
-                        GarageC.cleanFacture(table);
-                        MessageBox.Show("Facture effectuée avec succès");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erreur lors de la facturation");
-                    }
+                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
+                    rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
+                    VenteC.AddUsMoney(float.Parse(result["montant"].ToString()));
+                        
                 }
                 else
                 {
-                    AutoPartM facture = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
-                    rep = await GarageC.saveGoodFacture(facture, receiptNumber, table);
-                    if (rep == 0)
-                    {
-                        VenteC.AddHtgMoney(float.Parse(result["montant"].ToString()));
-                        GarageC.cleanFacture(table);
-                        MessageBox.Show("Facture effectuée avec succès");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erreur lors de la facturation");
-                    }
+                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
+                    rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
+                    VenteC.AddHtgMoney(float.Parse(result["montant"].ToString()));
                 }
 
+            }
+            if (rep == 0)
+            {
+
+                MySqlDataReader resulta = await dbConfig.getResultCommand("select service,montant from fgarage");
+                while (resulta.Read())
+                {
+                    realTotal += float.Parse(resulta["montant"].ToString());
+                    //MessageBox.Show(resulta["service"].ToString());
+                    donnees.Add((resulta["service"].ToString(), float.Parse(resulta["montant"].ToString())));
+                }
+                
+                GarageC.cleanFacture(table);
+                MessageBox.Show("Facture effectuée avec succès");
+                PrintDialog printDialog1 = new PrintDialog();
+                printDialog1.Document = printDocument1;
+                DialogResult resultx = printDialog1.ShowDialog();
+                if (resultx == DialogResult.OK)
+                {
+                    printDocument1.Print();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Erreur lors de la facturation");
             }
         }
 
@@ -195,6 +212,80 @@ namespace ncl_auto_parts.screens
         private void Garage_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bmp = new Bitmap(logo.Width, logo.Height);
+            logo.DrawToBitmap(bmp, new Rectangle(0, 0, logo.Width, logo.Height));
+            e.Graphics.DrawImage(bmp, new Point(60, 60));
+            e.Graphics.DrawString("NC.L AUTO SERVICE", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(300, 60));
+            e.Graphics.DrawString("Quartier Morin NORD,Haiti", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(335, 90));
+            e.Graphics.DrawString("Tél:(509)36449128\\33650089", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(335, 110));
+            e.Graphics.DrawString("info.nclautoservices@gmail.com", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(325, 130));
+            //-
+            e.Graphics.DrawString("Nom du client : " + autoPart.ClientName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(85, 210));
+            e.Graphics.DrawString("No recu : " + receiptNumber, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(85, 230));
+
+            string date;
+            receiptNumber = "";
+            date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+            e.Graphics.DrawString("Date : " + date, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(85, 250));
+            //-
+            e.Graphics.DrawString("Garage ", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(85, 270));
+            e.Graphics.DrawString("Facture ", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(85, 360));
+
+            //-
+            Font font = new Font("Arial", 10);
+            Brush brush = Brushes.Black;
+            Pen pen = Pens.Black;
+
+            int startX = 85;
+            int startY = 460;
+            int rowHeight = 25;
+            int[] colWidths = { 340, 290 }; // name, quantite, quantity, price, tax, total
+
+            string[] headers = { "Service", "Montant" };
+
+            // Dessiner l'en-tête avec bordures
+            int x = startX;
+            for (int i = 0; i < headers.Length; i++)
+            {
+                Rectangle rect = new Rectangle(x, startY, colWidths[i], rowHeight);
+                e.Graphics.DrawRectangle(pen, rect);
+                e.Graphics.DrawString(headers[i], new Font("Arial", 12, FontStyle.Bold), brush, rect);
+                x += colWidths[i];
+            }
+
+            // Dessiner les données avec bordures
+            int y = startY + rowHeight;
+            foreach (var (service, montant) in donnees)
+            {
+                x = startX;
+
+                string[] valeurs = {
+            service,
+            montant.ToString(),
+
+        };
+
+                for (int i = 0; i < valeurs.Length; i++)
+                {
+                    Rectangle rect = new Rectangle(x, y, colWidths[i], rowHeight);
+                    e.Graphics.DrawRectangle(pen, rect);
+                    e.Graphics.DrawString(valeurs[i], font, brush, rect);
+                    x += colWidths[i];
+                }
+
+                y += rowHeight;
+            }
+            e.Graphics.DrawString("TOTAL", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(85, y + 50));
+
+            e.Graphics.DrawString("$" + realTotal.ToString(), new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(605, y + 50));
+
+            //-
+            //e.Graphics.DrawString("PS:\"Ce proforma est valide pour une durée de 8 jours\" :", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(85, 1020));
+            e.Graphics.DrawString("Merci d'avoir choisi NC.L Autoservices!!!", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(485, 1070));
         }
     }
 }
