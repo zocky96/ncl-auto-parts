@@ -44,12 +44,6 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.facture = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.filter = new System.Windows.Forms.ComboBox();
-            this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
-            this.logo = new System.Windows.Forms.PictureBox();
-            this.print = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sevice_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +51,12 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filter = new System.Windows.Forms.ComboBox();
+            this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.print = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -190,6 +190,41 @@
             this.table.TabIndex = 75;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
+            // 
+            // id_
+            // 
+            this.id_.HeaderText = "ID";
+            this.id_.Name = "id_";
+            // 
+            // Sevice_
+            // 
+            this.Sevice_.HeaderText = "Sevices";
+            this.Sevice_.Name = "Sevice_";
+            // 
+            // client
+            // 
+            this.client.HeaderText = "Nom du client";
+            this.client.Name = "client";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Montant";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Devise";
+            this.Column3.Name = "Column3";
+            // 
+            // no
+            // 
+            this.no.HeaderText = "No recu";
+            this.no.Name = "no";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Date";
+            this.Column5.Name = "Column5";
             // 
             // filter
             // 
@@ -362,41 +397,6 @@
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // id_
-            // 
-            this.id_.HeaderText = "ID";
-            this.id_.Name = "id_";
-            // 
-            // Sevice_
-            // 
-            this.Sevice_.HeaderText = "Sevices";
-            this.Sevice_.Name = "Sevice_";
-            // 
-            // client
-            // 
-            this.client.HeaderText = "Nom du client";
-            this.client.Name = "client";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Montant";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Devise";
-            this.Column3.Name = "Column3";
-            // 
-            // no
-            // 
-            this.no.HeaderText = "No recu";
-            this.no.Name = "no";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Date";
-            this.Column5.Name = "Column5";
             // 
             // FactureAuto
             // 
