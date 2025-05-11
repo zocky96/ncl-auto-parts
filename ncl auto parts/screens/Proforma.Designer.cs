@@ -1138,6 +1138,8 @@
             this.Controls.Add(this.qte);
             this.Controls.Add(this.name);
             this.Controls.Add(this.bunifuCustomLabel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Proforma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proforma";

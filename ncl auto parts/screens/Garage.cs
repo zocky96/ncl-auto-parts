@@ -20,6 +20,7 @@ namespace ncl_auto_parts.screens
         {
             InitializeComponent();
             GarageC.showFacture(table);
+            main.closeConn();
         }
         private void clearField()
         {
@@ -28,6 +29,7 @@ namespace ncl_auto_parts.screens
         }
         private async void facture_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             float i = 0;
             bool isAnumber = float.TryParse(montant.Text, out i);
             if (service.Text == "")
@@ -99,11 +101,13 @@ namespace ncl_auto_parts.screens
 
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             GarageC.cleanFacture(table);
         }
 
         private async void delete_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             delete.Visible = false;
             int rep = await GarageC.deleteFacture(table, id);
         }

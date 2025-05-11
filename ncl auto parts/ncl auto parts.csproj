@@ -521,6 +521,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\ncl.jpg" />
+    <None Include="Resources\lock_90px1.png" />
+    <None Include="Resources\lock_90px.png" />
     <None Include="Resources\settings_24px1.png" />
     <None Include="Resources\money_bag_32px.png" />
     <None Include="Resources\garage_26px1.png" />

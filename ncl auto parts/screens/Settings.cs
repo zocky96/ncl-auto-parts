@@ -15,6 +15,12 @@ namespace ncl_auto_parts.screens
         public Settings()
         {
             InitializeComponent();
+            main.closeConn();
+        }
+
+        private void Settings_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

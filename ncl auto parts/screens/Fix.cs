@@ -20,6 +20,7 @@ namespace ncl_auto_parts.screens
 
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             if (userName.Text == "")
             {
                 MessageBox.Show("Le champ username est vide");

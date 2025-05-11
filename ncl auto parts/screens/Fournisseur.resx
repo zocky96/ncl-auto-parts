@@ -148,17 +148,6 @@
   <metadata name="produit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="print.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAIYAAAAtCAYAAABrohO8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAERSURBVHhe7dyxTcRAGITRbeTuKIUKaM1GlEFMSik0cBEN
-        rDmjSQaZCvxGesnqD794h9m/uy3b022d79d12zix1/mxt5Asxrgu8/PwkNO5LPMrWTzCODjgvJKFMGjJ
-        Qhi0ZCEMWrIQBi1ZCIOWLIRBSxbCoCULYdCShTBoyUIYtGQhDFqyEAYtWQiDliyEQUsWwqAlC2HQkoUw
-        aMlCGLRkIQxashAGLVkIg5YshEFLFsKgJQth0JKFMGjJQhi0ZCEMWrIQBi1ZCIOWLIRBSxbCoCULYdCS
-        hTBoyUIYtGQhDFqyEAYtWQiDliyEQUsWY+x/Ox4dcD6XdX4ni9+fgZ8fD/ejQ85jj+LyNl+ShdnfjfED
-        tdI8ejmvzLwAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="modify.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIYAAAAtCAYAAABrohO8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

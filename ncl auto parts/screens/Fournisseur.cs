@@ -61,6 +61,11 @@ namespace ncl_auto_parts.screens
             }
         }
 
+        private void print_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void clearField()
         {
             nom.Text = "";
@@ -72,6 +77,7 @@ namespace ncl_auto_parts.screens
 
         private async void save_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
             main.closeConn();
@@ -154,6 +160,7 @@ namespace ncl_auto_parts.screens
 
         private async void modify_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
             main.closeConn();

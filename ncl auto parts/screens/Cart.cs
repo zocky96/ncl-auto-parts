@@ -29,6 +29,7 @@ namespace ncl_auto_parts.screens
 
         private void deleteCart_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             deleteCart.Visible = false;
             videCart.Visible = false;
             CartC.deleteToCart(id_Cart, tableCart);
@@ -36,6 +37,7 @@ namespace ncl_auto_parts.screens
 
         private void videCart_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             deleteCart.Visible = false;
             videCart.Visible = false;
             CartC.CleanCart(tableCart);
@@ -55,6 +57,7 @@ namespace ncl_auto_parts.screens
 
         private async void vendre_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             id_Cart = "";
             String name, quantite, prix, type, clientName=null;
             bool isCartEmpty = await CartC.isCartEmpty();

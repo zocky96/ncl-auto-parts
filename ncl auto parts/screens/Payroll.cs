@@ -19,6 +19,7 @@ namespace ncl_auto_parts.screens
             InitializeComponent();
             DepenseC.showDepense(tableDepense);
             initWin();
+            main.closeConn();
         }
 
         private async void initWin()
@@ -45,6 +46,7 @@ namespace ncl_auto_parts.screens
 
         private async void retirer_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             float i;
             bool isAnumber = float.TryParse(montant.Text, out i);
             if (isAnumber)
@@ -126,6 +128,7 @@ namespace ncl_auto_parts.screens
 
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             float i;
             bool isAnumber = float.TryParse(montant.Text, out i);
             if (isAnumber)

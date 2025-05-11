@@ -19,6 +19,7 @@ namespace ncl_auto_parts.screens
         {
             InitializeComponent();
             GarageC.showGoodFacture(table);
+            main.closeConn();
         }
 
         private void searchBar_KeyDown(object sender, KeyEventArgs e)
@@ -39,6 +40,7 @@ namespace ncl_auto_parts.screens
 
         private async void facture_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             float sum = 0;
             String devise = null;
             if (id == "")

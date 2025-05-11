@@ -201,20 +201,24 @@ namespace ncl_auto_parts.screens
 
             e.Graphics.DrawString("INVOICE", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(80, 90));
             e.Graphics.DrawString("NC.L AUTO PARTS", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 120));
-            e.Graphics.DrawString("Quartier Morin, route nationale no 6", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 140));
+            e.Graphics.DrawString("Quartier Morin NORD,Haiti", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 140));
             e.Graphics.DrawString("Cap-Haitien", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 170));
-            e.Graphics.DrawString("Phone                34951243", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 190));
-            e.Graphics.DrawString("Email                info.nclautoservices@gmail.com", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 210));
+            e.Graphics.DrawString("Tél:(509)36449128\\33650089", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 190));
+            e.Graphics.DrawString("Email:info.nclautoservices@gmail.com", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 210));
+            //---
+            
+            //--
+
             Bitmap bmp = new Bitmap(logo.Width,logo.Height);
             logo.DrawToBitmap(bmp, new Rectangle(0, 0, logo.Width, logo.Height));
             e.Graphics.DrawImage(bmp, new Point(480, 60));
             e.Graphics.DrawString("__________________________________________________________________________________________________", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(40, 240));
             e.Graphics.DrawString("Bill to : "+p_clientName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 270));
-            e.Graphics.DrawString("Invoice No :"+ main.spaceInBill("Invoice No :", 35) + p_receiptNumber, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 270));
-            e.Graphics.DrawString("le kiki", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 290));
-            e.Graphics.DrawString("Date :"+main.spaceInBill("Date :", 35) +p_date, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 290));
-            e.Graphics.DrawString("Due date :"+ main.spaceInBill("Due date :", 35) + p_date, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 310));
-            e.Graphics.DrawString("Payment status :"+ main.spaceInBill("Payment status :", 35) + "Paid", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 330));
+            e.Graphics.DrawString("Invoice No :"+ p_receiptNumber, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 270));
+            //e.Graphics.DrawString("le kiki", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 290));
+            e.Graphics.DrawString("Date :"+p_date, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 290));
+            e.Graphics.DrawString("Due date :"+ p_date, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 310));
+            e.Graphics.DrawString("Payment status :" + "Paid", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 330));
             Font font = new Font("Arial", 10);
             Brush brush = Brushes.Black;
             Pen pen = Pens.Black;
@@ -375,7 +379,13 @@ namespace ncl_auto_parts.screens
                                 {
                                     donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), 0, float.Parse(result["total"].ToString())));
                                 }
-                                printDocument1.Print();
+                                PrintDialog printDialog1 = new PrintDialog();
+                                printDialog1.Document = printDocument1;
+                                DialogResult resulta = printDialog1.ShowDialog();
+                                if (resulta == DialogResult.OK)
+                                {
+                                    printDocument1.Print();
+                                }
                                 VenteC.showVente(table);
                                 clearField();
                                 MessageBox.Show("Vente effectué avec succes");
@@ -398,6 +408,7 @@ namespace ncl_auto_parts.screens
 
         private void cart_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             bool isAnumber;
             int i = 0;
             if (name.Text == "")
@@ -446,6 +457,7 @@ namespace ncl_auto_parts.screens
 
         private async void print_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             cancelCart.Visible = false;
             print.Visible = false;
             MySqlDataReader result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + p_receiptNumber + "'");
@@ -469,6 +481,7 @@ namespace ncl_auto_parts.screens
 
         private void cancelCart_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             cancelCart.Visible = false;
             print.Visible = false;
             VenteC.cancelVente(idT, nomProduitT, table, int.Parse(quantiteT), noRecu, deviseT);
@@ -476,6 +489,7 @@ namespace ncl_auto_parts.screens
 
         private void proforma_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             main.showLogin(new Proforma());
         }
 

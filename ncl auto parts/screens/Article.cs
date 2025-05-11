@@ -56,6 +56,7 @@ namespace ncl_auto_parts.screens
 
         private async void save_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
             int i = 0;
@@ -159,6 +160,7 @@ namespace ncl_auto_parts.screens
 
         private async void modify_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
             int i = 0;
@@ -241,6 +243,7 @@ namespace ncl_auto_parts.screens
 
         private async void delete_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
             int rep = -9;
@@ -266,6 +269,7 @@ namespace ncl_auto_parts.screens
 
         private void print_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
         }
@@ -289,6 +293,7 @@ namespace ncl_auto_parts.screens
 
         private void searchBar_KeyDown(object sender, KeyEventArgs e)
         {
+            main.closeConn();
             if (e.KeyCode == Keys.Enter)
             {
                 if (searchBar.Text == "")

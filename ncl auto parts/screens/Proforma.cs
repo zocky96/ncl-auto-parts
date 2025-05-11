@@ -36,6 +36,7 @@ namespace ncl_auto_parts.screens
             {
 
             }
+            main.closeConn();
         }
         private async void getSum()
         {
@@ -59,6 +60,7 @@ namespace ncl_auto_parts.screens
 
         private async void add_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             bool isAnumber;
             int i;
            
@@ -122,7 +124,8 @@ namespace ncl_auto_parts.screens
 
         private async void clean_Click(object sender, EventArgs e)
         {
-            if(!await ProformaC.ifTableEmpty())
+            main.closeConn();
+            if (!await ProformaC.ifTableEmpty())
             {
                 delete.Visible = false;
                 ProformaC.clearProforma(table);
@@ -133,6 +136,7 @@ namespace ncl_auto_parts.screens
 
         private void delete_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             ProformaC.deleteProforma(table, id);
             getSum();
             delete.Visible = false;
@@ -153,6 +157,7 @@ namespace ncl_auto_parts.screens
 
         private async void print_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             delete.Visible = false;
             proforma_ = await ProformaC.getPersonalInfo();
             somme = await getSum_();

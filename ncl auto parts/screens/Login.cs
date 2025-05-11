@@ -16,7 +16,7 @@ namespace ncl_auto_parts.screens
         public Login()
         {
             InitializeComponent();
-            userName.Focus();
+            //userName.Focus();
             
         }
 
@@ -48,6 +48,7 @@ namespace ncl_auto_parts.screens
 
         private async void signin_Click_1(object sender, EventArgs e)
         {
+            main.closeConn();
             int rep = await UserC.login(userName.Text, password.Text);
             if (rep == 0)
             {
@@ -57,7 +58,7 @@ namespace ncl_auto_parts.screens
 
         private void userName_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private async void password_KeyDown(object sender, KeyEventArgs e)
@@ -70,7 +71,11 @@ namespace ncl_auto_parts.screens
                     Dispose();
                 }
             }
-           
+            if (e.KeyCode == Keys.Up)
+            {
+                userName.Focus();
+            }
+
         }
 
         private void userName_KeyDown(object sender, KeyEventArgs e)
@@ -79,6 +84,14 @@ namespace ncl_auto_parts.screens
             {
                 password.Focus();
             }
+           
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            userName.Select();
+            //this.ActiveControl = userName;
+           // userName.Focus();
         }
     }
 }

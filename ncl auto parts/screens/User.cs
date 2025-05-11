@@ -32,6 +32,7 @@ namespace ncl_auto_parts.screens
         }
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             string nom, prenom, username, passwd, passwd_conf, code_employer;
             if (idEmployer.Text == "")
             {
@@ -136,6 +137,7 @@ namespace ncl_auto_parts.screens
 
         private async void modify_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             string nom, prenom, username, passwd, passwd_conf, code_employer;
             
             passwd = hashMe.HASH_SHA1(password.Text);
@@ -214,6 +216,7 @@ namespace ncl_auto_parts.screens
 
         private async void delete_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             int rep = await UserC.deleteUser(table, id);
             //MessageBox.Show(id_.ToString());
             if (rep == 0)

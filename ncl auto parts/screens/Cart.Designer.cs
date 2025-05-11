@@ -191,7 +191,7 @@
             this.videCart.IdleIconLeftImage = null;
             this.videCart.IdleIconRightImage = null;
             this.videCart.IndicateFocus = false;
-            this.videCart.Location = new System.Drawing.Point(505, 407);
+            this.videCart.Location = new System.Drawing.Point(504, 407);
             this.videCart.Name = "videCart";
             stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties3.BorderRadius = 3;

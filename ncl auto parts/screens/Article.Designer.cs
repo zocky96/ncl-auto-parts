@@ -408,7 +408,7 @@
             this.modify.IdleIconLeftImage = null;
             this.modify.IdleIconRightImage = null;
             this.modify.IndicateFocus = false;
-            this.modify.Location = new System.Drawing.Point(180, 269);
+            this.modify.Location = new System.Drawing.Point(181, 269);
             this.modify.Name = "modify";
             stateProperties23.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties23.BorderRadius = 3;

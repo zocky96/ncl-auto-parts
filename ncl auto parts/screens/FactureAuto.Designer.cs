@@ -39,18 +39,26 @@
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.facture = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.filter = new System.Windows.Forms.ComboBox();
             this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.print = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sevice_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
             // facture
@@ -139,7 +147,7 @@
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_,
             this.Sevice_,
-            this.Column1,
+            this.client,
             this.Column2,
             this.Column3,
             this.no,
@@ -270,6 +278,91 @@
             this.searchBar.WordWrap = true;
             this.searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBar_KeyDown);
             // 
+            // logo
+            // 
+            this.logo.BackColor = System.Drawing.Color.White;
+            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
+            this.logo.Location = new System.Drawing.Point(615, -19);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(210, 116);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo.TabIndex = 118;
+            this.logo.TabStop = false;
+            this.logo.Visible = false;
+            // 
+            // print
+            // 
+            this.print.AllowToggling = false;
+            this.print.AnimationSpeed = 200;
+            this.print.AutoGenerateColors = false;
+            this.print.BackColor = System.Drawing.Color.Transparent;
+            this.print.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.print.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("print.BackgroundImage")));
+            this.print.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.print.ButtonText = "imprimer";
+            this.print.ButtonTextMarginLeft = 0;
+            this.print.ColorContrastOnClick = 45;
+            this.print.ColorContrastOnHover = 45;
+            this.print.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.print.CustomizableEdges = borderEdges2;
+            this.print.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.print.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.print.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.print.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.print.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.print.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.print.ForeColor = System.Drawing.Color.White;
+            this.print.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
+            this.print.IconMarginLeft = 11;
+            this.print.IconPadding = 10;
+            this.print.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.print.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.print.IdleBorderRadius = 3;
+            this.print.IdleBorderThickness = 1;
+            this.print.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.print.IdleIconLeftImage = null;
+            this.print.IdleIconRightImage = null;
+            this.print.IndicateFocus = false;
+            this.print.Location = new System.Drawing.Point(166, 400);
+            this.print.Name = "print";
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties7.BorderRadius = 3;
+            stateProperties7.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties7.BorderThickness = 1;
+            stateProperties7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties7.ForeColor = System.Drawing.Color.White;
+            stateProperties7.IconLeftImage = null;
+            stateProperties7.IconRightImage = null;
+            this.print.onHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties8.BorderRadius = 3;
+            stateProperties8.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties8.BorderThickness = 1;
+            stateProperties8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties8.ForeColor = System.Drawing.Color.White;
+            stateProperties8.IconLeftImage = null;
+            stateProperties8.IconRightImage = null;
+            this.print.OnPressedState = stateProperties8;
+            this.print.Size = new System.Drawing.Size(134, 45);
+            this.print.TabIndex = 119;
+            this.print.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.print.TextMarginLeft = 0;
+            this.print.UseDefaultRadiusAndThickness = true;
+            this.print.Visible = false;
+            this.print.Click += new System.EventHandler(this.print_Click);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // id_
             // 
             this.id_.HeaderText = "ID";
@@ -280,10 +373,10 @@
             this.Sevice_.HeaderText = "Sevices";
             this.Sevice_.Name = "Sevice_";
             // 
-            // Column1
+            // client
             // 
-            this.Column1.HeaderText = "Nom du client";
-            this.Column1.Name = "Column1";
+            this.client.HeaderText = "Nom du client";
+            this.client.Name = "client";
             // 
             // Column2
             // 
@@ -310,15 +403,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 457);
+            this.Controls.Add(this.print);
+            this.Controls.Add(this.logo);
             this.Controls.Add(this.filter);
             this.Controls.Add(this.searchBar);
             this.Controls.Add(this.facture);
             this.Controls.Add(this.table);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FactureAuto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facture";
             this.Load += new System.EventHandler(this.FactureAuto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,9 +427,13 @@
         private Bunifu.UI.WinForms.BunifuDataGridView table;
         private System.Windows.Forms.ComboBox filter;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox searchBar;
+        private System.Windows.Forms.PictureBox logo;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton print;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sevice_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn client;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;

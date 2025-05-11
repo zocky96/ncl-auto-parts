@@ -32,6 +32,7 @@ namespace ncl_auto_parts.screens
         }
         private async void save_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             if (nom.Text == "")
             {
                 MessageBox.Show("Le champ 'Nom' ne doit pas etre vide");
@@ -97,6 +98,7 @@ namespace ncl_auto_parts.screens
 
         private async void modify_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
             if (nom.Text == "")
@@ -152,6 +154,7 @@ namespace ncl_auto_parts.screens
 
         private async void delete_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
             int rep = await ClientC.deleteClient(table, id);

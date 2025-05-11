@@ -45,6 +45,7 @@ namespace ncl_auto_parts.screens
         }
         private void save_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
             bool isAnumber = false;
@@ -129,6 +130,7 @@ namespace ncl_auto_parts.screens
 
         private void modify_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             bool isAnumber = false;
             float j = 0;
 
@@ -200,6 +202,7 @@ namespace ncl_auto_parts.screens
 
         private void delete_Click(object sender, EventArgs e)
         {
+            main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
             EmployerC.deleteEmployer(id, table);
