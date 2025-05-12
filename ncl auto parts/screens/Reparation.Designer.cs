@@ -112,7 +112,11 @@
             this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.dateEntre = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.dateSortie = new Bunifu.UI.WinForms.BunifuDatePicker();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -857,7 +861,6 @@
             this.print.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.print.TextMarginLeft = 0;
             this.print.UseDefaultRadiusAndThickness = true;
-            this.print.Visible = false;
             this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // delete
@@ -1232,11 +1235,32 @@
             this.dateSortie.TabIndex = 56;
             this.dateSortie.Value = new System.DateTime(2025, 5, 5, 18, 11, 52, 0);
             // 
+            // logo
+            // 
+            this.logo.BackColor = System.Drawing.Color.White;
+            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
+            this.logo.Location = new System.Drawing.Point(856, 45);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(210, 116);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo.TabIndex = 119;
+            this.logo.TabStop = false;
+            this.logo.Visible = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
             // Reparation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1038, 669);
+            this.Controls.Add(this.logo);
             this.Controls.Add(this.dateSortie);
             this.Controls.Add(this.dateEntre);
             this.Controls.Add(this.searchBar);
@@ -1266,6 +1290,7 @@
             this.Text = "Reparation";
             this.Load += new System.EventHandler(this.Reparation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1308,5 +1333,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn service_;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateS;
+        private System.Windows.Forms.PictureBox logo;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }

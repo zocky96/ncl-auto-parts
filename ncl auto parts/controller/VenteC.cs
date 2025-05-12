@@ -170,8 +170,12 @@ namespace ncl_auto_parts.controller
                 int response=-1;
                 try
                 {
+                    string date;
+                   
+                    date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
                     while (result.Read())
                     {
+                        dbConfig.execute_command("insert into canceledvente(nom_du_produit,prix,quantite,total,signature_autorise,date,receiptNumber,clientName,devise) values('" + result["nom_du_produit"].ToString() +"',"+float.Parse(result["prix"].ToString()) +","+int.Parse(result["quantite"].ToString()) +","+float.Parse(result["total"].ToString()) +",'"+main.userName+"','"+ date + "','"+receipt+"','"+ result["clientName"].ToString() + "','"+ result["devise"].ToString() + "')");
                         vente = await getPriceAndQuantite(result["nom_du_produit"].ToString());
                         int newQuantite = int.Parse(vente.Quantite.ToString()) + quantite;
                         response = await updateQuantite(vente.NomDuProduit, newQuantite);
@@ -423,6 +427,99 @@ namespace ncl_auto_parts.controller
 
 
 
+        }
+        //---------------------------------------------------------------------------
+        public static async Task<int> RemoveHtgMoneyGarage(float money)
+        {
+            float amount = 0;
+            int rep = 1;
+            MySqlDataReader result = await dbConfig.getResultCommand("select amount from account_htg_garage");
+            while (result.Read())
+            {
+                try
+                {
+                    amount = float.Parse(result["amount"].ToString());
+                }
+                catch
+                {
+
+                }
+            }
+            if (amount > money)
+            {
+                amount -= money;
+                rep = await dbConfig.execute_command("update account_htg_garage set amount =" + amount + " where id=1");
+            }
+            else
+            {
+                MessageBox.Show("Nous n'avons pas assez de credit");
+            }
+            return rep;
+        }
+        public static async Task<int> RemoveUsMoneyGarage(float money)
+        {
+            float amount = 0;
+            int rep = 1;
+            MySqlDataReader result = await dbConfig.getResultCommand("select amount from account_us_garage");
+            while (result.Read())
+            {
+                try
+                {
+                    amount = float.Parse(result["amount"].ToString());
+                }
+                catch
+                {
+
+                }
+            }
+            if (amount > money)
+            {
+                amount -= money;
+                rep = await dbConfig.execute_command("update account_us_garage set amount =" + amount + " where id=1");
+            }
+            else
+            {
+                MessageBox.Show("Nous n'avons pas assez de credit");
+            }
+            return rep;
+        }
+        public static async Task<int> AddUsMoneyGarage(float money)
+        {
+            float amount = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select amount from account_us_garage");
+            while (result.Read())
+            {
+                try
+                {
+                    amount = float.Parse(result["amount"].ToString());
+                }
+                catch
+                {
+
+                }
+            }
+            amount += money;
+            int rep = await dbConfig.execute_command("update account_us_garage set amount =" + amount + " where id=1");
+            return rep;
+        }
+        public static async Task<int> AddHTGMoneyGarage(float money)
+        {
+            float amount = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select amount from account_htg_garage");
+            while (result.Read())
+            {
+                try
+                {
+                    amount = float.Parse(result["amount"].ToString());
+                }
+                catch
+                {
+
+                }
+            }
+            amount += money;
+            int rep = await dbConfig.execute_command("update account_htg_garage set amount =" + amount + " where id=1");
+            return rep;
         }
     }
 }

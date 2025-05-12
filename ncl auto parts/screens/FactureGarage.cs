@@ -53,24 +53,30 @@ namespace ncl_auto_parts.screens
             else
             {
                 MySqlDataReader result = await GarageC.getGoodFacture(id);
-                MessageBox.Show(id);
+                string date;
                 while (result.Read())
                 {
+                    date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+                    dbConfig.execute_command("insert into cancel_facture_garage(clientName,service,devise,montant,no_recu,date,user) values('" + result["clientName"].ToString() + "','" + result["service"].ToString() + "','" + result["devise"].ToString() + "'," + result["montant"].ToString() + ",'" + id + "','" + date + "','" + main.userName + "')");
                     devise = result["devise"].ToString();
                     sum += float.Parse(result["montant"].ToString());
                 }
                 if (devise == "US")
                 {
-                    id = "";
-                    VenteC.RemoveUsMoney(sum);
+                    
+                    VenteC.RemoveUsMoneyGarage(sum);
                     GarageC.deleteGoodFacture(table, id);
+                    id = "";
+                    GarageC.showGoodFacture(table);
                     MessageBox.Show("Facture annulée avec succès");
                 }
                 else
                 {
-                    id = "";
-                    VenteC.RemoveHtgMoney(sum);
+                    
+                    VenteC.RemoveHtgMoneyGarage(sum);
                     GarageC.deleteGoodFacture(table, id);
+                    id = "";
+                    GarageC.showGoodFacture(table);
                     MessageBox.Show("Facture annulée avec succès");
                 }
             }
@@ -104,6 +110,11 @@ namespace ncl_auto_parts.screens
             {
                 printDocument1.Print();
             }
+        }
+
+        private void FactureGarage_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void searchBar_TextChanged(object sender, EventArgs e)

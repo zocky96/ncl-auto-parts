@@ -46,8 +46,8 @@ namespace ncl_auto_parts
             {
                 InitializeComponent();
                 //showScreen(new Dashboard());
-                //showScreen(new Proforma());
-                //showLogin(new FactureAuto());
+                //showScreen(new Reparation());
+                //showLogin(new ReparationC());
 
                 article_ = article;
                 vente_ = vente;

@@ -59,24 +59,29 @@ namespace ncl_auto_parts.screens
             else
             {
                 MySqlDataReader result = await AutoPartC.getGoodFacture(id);
-                MessageBox.Show(id);
+                string date;
                 while (result.Read())
                 {
+                    date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+                    int rep = await dbConfig.execute_command("insert into canceled_facture_auto(clientName,service,devise,montant,no_recu,date,user) values('" + result["clientName"].ToString() + "','" + result["service"].ToString() + "','" +  result["devise"].ToString() + "'," + result["montant"].ToString() + ",'" + id + "','" + date + "','" + main.userName + "')");
                     devise = result["devise"].ToString();
                     sum += float.Parse(result["montant"].ToString());
                 }
                 if (devise == "US")
                 {
-                    id = "";
                     VenteC.RemoveUsMoney(sum);
                     AutoPartC.deleteGoodFacture(table, id);
+                    id = "";
+                    AutoPartC.showGoodFacture(table);
                     MessageBox.Show("Facture annulée avec succès");
                 }
                 else
                 {
-                    id = "";
+                   
                     VenteC.RemoveHtgMoney(sum);
                     AutoPartC.deleteGoodFacture(table, id);
+                    id = "";
+                    AutoPartC.showGoodFacture(table);
                     MessageBox.Show("Facture annulée avec succès");
                 }
             }

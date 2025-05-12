@@ -73,9 +73,9 @@
             this.save = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
             // 
@@ -487,7 +487,6 @@
             this.modify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.modify.TextMarginLeft = 0;
             this.modify.UseDefaultRadiusAndThickness = true;
-            this.modify.Visible = false;
             this.modify.Click += new System.EventHandler(this.modify_Click);
             // 
             // delete
@@ -513,6 +512,7 @@
             this.delete.DisabledBorderColor = System.Drawing.Color.Empty;
             this.delete.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.delete.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.delete.Enabled = false;
             this.delete.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
             this.delete.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.delete.ForeColor = System.Drawing.Color.White;
@@ -578,6 +578,7 @@
             this.save.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.save.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.save.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.save.Enabled = false;
             this.save.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
             this.save.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.save.ForeColor = System.Drawing.Color.White;
@@ -637,12 +638,12 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.table.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.table.ColumnHeadersHeight = 40;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_,
-            this.Column1,
-            this.Column2,
-            this.Column3});
+            this.name,
+            this.user_,
+            this.pass});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -680,26 +681,27 @@
             this.table.Size = new System.Drawing.Size(801, 300);
             this.table.TabIndex = 27;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
             // 
             // id_
             // 
             this.id_.HeaderText = "ID";
             this.id_.Name = "id_";
             // 
-            // Column1
+            // name
             // 
-            this.Column1.HeaderText = "Nom Complet";
-            this.Column1.Name = "Column1";
+            this.name.HeaderText = "Nom Complet";
+            this.name.Name = "name";
             // 
-            // Column2
+            // user_
             // 
-            this.Column2.HeaderText = "Nom d\'utilisateur";
-            this.Column2.Name = "Column2";
+            this.user_.HeaderText = "Nom d\'utilisateur";
+            this.user_.Name = "user_";
             // 
-            // Column3
+            // pass
             // 
-            this.Column3.HeaderText = "Password";
-            this.Column3.Name = "Column3";
+            this.pass.HeaderText = "Password";
+            this.pass.Name = "pass";
             // 
             // User
             // 
@@ -745,8 +747,8 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton save;
         private Bunifu.UI.WinForms.BunifuDataGridView table;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn user_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pass;
     }
 }

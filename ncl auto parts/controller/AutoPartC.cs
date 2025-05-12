@@ -46,7 +46,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["devise"], result["no_recu"], result["date"]);
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["devise"], result["no_recu"], result["date"], result["user"]);
 
                 }
             }
@@ -105,7 +105,7 @@ namespace ncl_auto_parts.controller
             string date;
            
             date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
-            int rep = await dbConfig.execute_command("insert into facture_auto(clientName,service,devise,montant,no_recu,date) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Montant + ",'"+receiptId+"','"+date+"')");
+            int rep = await dbConfig.execute_command("insert into facture_auto(clientName,service,devise,montant,no_recu,date,user) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Montant + ",'"+receiptId+"','"+date+"','"+main.userName+"')");
             showFacture(table);
             return rep;
         }

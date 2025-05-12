@@ -41,5 +41,39 @@ namespace ncl_auto_parts.screens
 
             }
         }
+
+        private void Fix_Load(object sender, EventArgs e)
+        {
+            userName.Select();
+        }
+
+        private async void userName_KeyDown(object sender, KeyEventArgs e)
+        {
+            //la
+            if (e.KeyCode == Keys.Enter)
+            {
+                main.closeConn();
+                if (userName.Text == "")
+                {
+                    MessageBox.Show("Le champ username est vide");
+                }
+                else
+                {
+                    int rep = await UserC.fixLogin(userName.Text);
+
+                    if (rep == 1)
+                    {
+                        MessageBox.Show("Login fixed");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ce nom d'utilisateur n'existe pas !");
+                    }
+
+
+                }
+            }
+            
+        }
     }
 }

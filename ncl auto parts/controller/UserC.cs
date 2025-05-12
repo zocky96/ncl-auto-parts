@@ -197,37 +197,34 @@ namespace ncl_auto_parts.controller
 
 
                             }
-                            if (poste == "technicien")
+                            if (poste == "gestionnaire de stock")
                             {
-                                //main.analise_.Enabled = true;
-                                //main.resultat_.Enabled = true;
-
-                                ////main.utilisateur.Enabled = true;
-                                ////DashBoard.user.Enabled = true;
+                                main.reparation_.Enabled = true;
+                                main.article_.Enabled = true;
+                                main.client_.Enabled= true;
                                 main.userName = username;
+                                main.log_in.Visible = false;
+                                
                             }
                             if (poste == "secretaire")
                             {
-                                //main.article.Enabled = true;
-                                //DashBoard.article.Enabled = true;
-                                //main.rapport.Enabled = true;
-                                ////main.utilisateur.Enabled = true;
-                                ////DashBoard.user.Enabled = true;
-                                //main.consultation_.Enabled = true;
-                                //main.vente.Enabled = true;
-                                //DashBoard.sale.Enabled = true;
+                                main.article_.Enabled = true;
+                                main.vente_.Enabled = true;
+                                main.fournisseur_.Enabled = true;
+                                main.cart_.Enabled = true;
+                                main.employe_.Enabled = true;
+                                main.user_.Enabled = true;
+                                main.payroll_.Enabled = true;
+                                main.autoPart_.Enabled = true;
+                                //main.facturation_.Enabled = true;
+                                main.client_.Enabled = true;
+                                main.reparation_.Enabled = true;
+                                main.garage_.Enabled = true;
+                                //main.settings_.Enabled = true;
                                 main.log_in.Visible = false;
                                 main.userName = username;
                             }
-                            if (poste == "docteur")
-                            {
-                                //// main.utilisateur.Enabled = true;
-                                ////DashBoard.user.Enabled = true;
-                                //main.consultation_.Enabled = true;
-                                //main.analise_.Enabled = true;
-                                //main.resultat_.Enabled = true;
-                                main.userName = username;
-                            }
+                            
                             if (poste == "manager")
                             {
                                 main.article_.Enabled = true;
@@ -246,7 +243,24 @@ namespace ncl_auto_parts.controller
                                 main.log_in.Visible = false;
                                 main.userName = username;
                             }
-                            
+                            if (poste == "PDG")
+                            {
+                                main.article_.Enabled = true;
+                                main.vente_.Enabled = true;
+                                main.fournisseur_.Enabled = true;
+                                main.cart_.Enabled = true;
+                                main.employe_.Enabled = true;
+                                main.user_.Enabled = true;
+                                main.payroll_.Enabled = true;
+                                main.autoPart_.Enabled = true;
+                                //main.facturation_.Enabled = true;
+                                main.client_.Enabled = true;
+                                main.reparation_.Enabled = true;
+                                main.garage_.Enabled = true;
+                                main.settings_.Enabled = true;
+                                main.log_in.Visible = false;
+                                main.userName = username;
+                            }
 
 
                             //main.the_name.Text = nom_complet.ToString();
@@ -338,7 +352,7 @@ namespace ncl_auto_parts.controller
                     while (result.Read())
                     {
 
-                        table.Rows.Add(result["id"], result["nom"], result["prenom"], result["username"], result["password"]);
+                        table.Rows.Add(result["code_employer"], result["nom"], result["prenom"], result["username"], result["password"]);
 
                     }
                 }

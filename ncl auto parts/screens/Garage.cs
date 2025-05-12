@@ -165,14 +165,14 @@ namespace ncl_auto_parts.screens
                 {
                     autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
                     rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddUsMoney(float.Parse(result["montant"].ToString()));
+                    VenteC.AddUsMoneyGarage(float.Parse(result["montant"].ToString()));
                         
                 }
                 else
                 {
                     autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
                     rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddHtgMoney(float.Parse(result["montant"].ToString()));
+                    VenteC.AddHTGMoneyGarage(float.Parse(result["montant"].ToString()));
                 }
 
             }

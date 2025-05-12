@@ -112,6 +112,7 @@
             this.userName.TextPlaceholder = "Enter text";
             this.userName.UseSystemPasswordChar = false;
             this.userName.WordWrap = true;
+            this.userName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.userName_KeyDown);
             // 
             // bunifuButton1
             // 
@@ -189,6 +190,7 @@
             this.Name = "Fix";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fix";
+            this.Load += new System.EventHandler(this.Fix_Load);
             this.ResumeLayout(false);
 
         }

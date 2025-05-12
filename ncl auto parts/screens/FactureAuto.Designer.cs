@@ -44,19 +44,20 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.facture = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sevice_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.filter = new System.Windows.Forms.ComboBox();
             this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.logo = new System.Windows.Forms.PictureBox();
             this.print = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sevice_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -146,12 +147,13 @@
             this.table.ColumnHeadersHeight = 40;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_,
-            this.Sevice_,
             this.client,
+            this.Sevice_,
             this.Column2,
             this.Column3,
             this.no,
-            this.Column5});
+            this.Column5,
+            this.Column1});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -186,45 +188,10 @@
             this.table.RowHeadersVisible = false;
             this.table.RowTemplate.Height = 40;
             this.table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.table.Size = new System.Drawing.Size(892, 291);
+            this.table.Size = new System.Drawing.Size(940, 291);
             this.table.TabIndex = 75;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
-            // 
-            // id_
-            // 
-            this.id_.HeaderText = "ID";
-            this.id_.Name = "id_";
-            // 
-            // Sevice_
-            // 
-            this.Sevice_.HeaderText = "Sevices";
-            this.Sevice_.Name = "Sevice_";
-            // 
-            // client
-            // 
-            this.client.HeaderText = "Nom du client";
-            this.client.Name = "client";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Montant";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Devise";
-            this.Column3.Name = "Column3";
-            // 
-            // no
-            // 
-            this.no.HeaderText = "No recu";
-            this.no.Name = "no";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Date";
-            this.Column5.Name = "Column5";
             // 
             // filter
             // 
@@ -398,11 +365,51 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // id_
+            // 
+            this.id_.HeaderText = "ID";
+            this.id_.Name = "id_";
+            // 
+            // client
+            // 
+            this.client.HeaderText = "Nom du client";
+            this.client.Name = "client";
+            // 
+            // Sevice_
+            // 
+            this.Sevice_.HeaderText = "Sevices";
+            this.Sevice_.Name = "Sevice_";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Montant";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Devise";
+            this.Column3.Name = "Column3";
+            // 
+            // no
+            // 
+            this.no.HeaderText = "No recu";
+            this.no.Name = "no";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Date";
+            this.Column5.Name = "Column5";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Utilisateur";
+            this.Column1.Name = "Column1";
+            // 
             // FactureAuto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 457);
+            this.ClientSize = new System.Drawing.Size(963, 457);
             this.Controls.Add(this.print);
             this.Controls.Add(this.logo);
             this.Controls.Add(this.filter);
@@ -432,11 +439,12 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sevice_;
         private System.Windows.Forms.DataGridViewTextBoxColumn client;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sevice_;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

@@ -57,6 +57,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -100,7 +101,8 @@
             this.Column2,
             this.Column3,
             this.no,
-            this.Column5});
+            this.Column5,
+            this.Column1});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -135,7 +137,7 @@
             this.table.RowHeadersVisible = false;
             this.table.RowTemplate.Height = 40;
             this.table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.table.Size = new System.Drawing.Size(892, 291);
+            this.table.Size = new System.Drawing.Size(944, 291);
             this.table.TabIndex = 79;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
@@ -399,11 +401,16 @@
             this.Column5.HeaderText = "Date";
             this.Column5.Name = "Column5";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Utilisateur";
+            this.Column1.Name = "Column1";
+            // 
             // FactureGarage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 450);
+            this.ClientSize = new System.Drawing.Size(967, 450);
             this.Controls.Add(this.logo);
             this.Controls.Add(this.print);
             this.Controls.Add(this.filter);
@@ -415,6 +422,7 @@
             this.Name = "FactureGarage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
+            this.Load += new System.EventHandler(this.FactureGarage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
@@ -438,5 +446,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

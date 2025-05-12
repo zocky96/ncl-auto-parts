@@ -22,6 +22,11 @@ namespace ncl_auto_parts.screens
             main.currentPage = "user";
             UserC.showUser(table);
             main.closeConn();
+            if(main.poste== "PDG" || main.poste== "manager")
+            {
+                save.Enabled = true;
+                delete.Enabled = true;
+            }
         }
         private void clearFields()
         {
@@ -233,6 +238,15 @@ namespace ncl_auto_parts.screens
                 MessageBox.Show("Erreur lors de la supression");
             }
             main.closeConn();
+        }
+
+        private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            delete.Visible = true;
+            id = table.CurrentRow.Cells["id_"].Value.ToString();
+            idEmployer.Text = table.CurrentRow.Cells["id_"].Value.ToString();
+            userName.Text = table.CurrentRow.Cells["user_"].Value.ToString();
+
         }
     }
 }

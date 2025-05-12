@@ -281,6 +281,14 @@ namespace ncl_auto_parts.db
             {
                 return 52;
             }
+            //----
+            rep = await execute_command("create table canceledvente (id int primary key auto_increment,nom_du_produit varchar(100),prix float,quantite int,total float,date date,signature_autorise varchar(150),receiptNumber varchar(255),type varchar(255),clientName varchar(255),devise enum('HTG','US'))");
+            // rep = execute_command("create table vente (id int primary key auto_increment,nom_du_produit varchar(100))");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            //---
             rep = await execute_command("create table panier (id int primary key auto_increment,nom_du_produit varchar(100),prix float,quantite int,date date,clientName varchar(255),username varchar(50))");
             if (rep == 9)
             {
@@ -347,18 +355,43 @@ namespace ncl_auto_parts.db
                 return 52;
             }
             //--
-            rep = await execute_command("create table facture_auto(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date )");
+            rep = await execute_command("create table facture_auto(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date ,user varchar(150))");
             if (rep == 9)
             {
                 return 52;
             }
             //--
-            rep = await execute_command("create table facture_garage(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date )");
+            rep = await execute_command("create table canceled_facture_auto(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date ,user varchar(150))");
             if (rep == 9)
             {
                 return 52;
             }
             //--
+            rep = await execute_command("create table facture_garage(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date ,user varchar(150))");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            //-----
+            rep = await execute_command("create table cancel_facture_garage(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date,user varchar(150) )");
+            if (rep == 9)
+            {
+                return 52;
+            }
+            //-----
+            //--------------------------------
+            rep = await execute_command("create table account_HTG_garage(id int primary key auto_increment,amount float)");
+            if (rep == 0)
+            {
+                await execute_command("insert into account_HTG_garage(amount) values(0)");
+            }
+            //------------------------------------
+            rep = await execute_command("create table account_us_garage(id int primary key auto_increment,amount float)");
+            if (rep == 0)
+            {
+                await execute_command("insert into account_us_garage(amount) values(0)");
+            }
+            //------------------------------------
             rep = await execute_command("create table account_HTG(id int primary key auto_increment,amount float)");
             if (rep == 0)
             {
