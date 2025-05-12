@@ -22,5 +22,25 @@ namespace ncl_auto_parts.screens
         {
 
         }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            main.showLogin(new CancelVente());
+        }
+
+        private void bunifuButton4_Click(object sender, EventArgs e)
+        {
+            main.showLogin(new CancelFactureAuto());
+        }
+
+        private void bunifuButton3_Click(object sender, EventArgs e)
+        {
+            main.showLogin(new CancelFactureGarage());
+        }
     }
 }

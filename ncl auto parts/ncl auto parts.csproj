@@ -236,6 +236,24 @@
     <Compile Include="screens\AutoPart.Designer.cs">
       <DependentUpon>AutoPart.cs</DependentUpon>
     </Compile>
+    <Compile Include="screens\CancelFactureAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\CancelFactureAuto.Designer.cs">
+      <DependentUpon>CancelFactureAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\CancelFactureGarage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\CancelFactureGarage.Designer.cs">
+      <DependentUpon>CancelFactureGarage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screens\CancelVente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\CancelVente.Designer.cs">
+      <DependentUpon>CancelVente.cs</DependentUpon>
+    </Compile>
     <Compile Include="screens\Cart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +375,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="screens\AutoPart.resx">
       <DependentUpon>AutoPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\CancelFactureAuto.resx">
+      <DependentUpon>CancelFactureAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\CancelFactureGarage.resx">
+      <DependentUpon>CancelFactureGarage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\CancelVente.resx">
+      <DependentUpon>CancelVente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>

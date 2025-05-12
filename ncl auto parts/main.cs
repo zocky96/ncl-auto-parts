@@ -46,7 +46,7 @@ namespace ncl_auto_parts
             {
                 InitializeComponent();
                 //showScreen(new Dashboard());
-                //showScreen(new Reparation());
+                showScreen(new Reparation());
                 //showLogin(new ReparationC());
 
                 article_ = article;
@@ -182,23 +182,49 @@ namespace ncl_auto_parts
             {
                 sidebar.Width = 84;
                 auto.Font = new Font("Century Gothic",10);
-                //garage.Font = new Font("Century Gothic", 10);
-                //lEnployer.Font = new Font("Century Gothic", 10);
-                //lComtabilite.Text = "Compta...";
-                //Ladmin.Text = "Admins...";
-                //Ladmin.Font = new Font("Century Gothic", 10);
-                //lComtabilite.Font = new Font("Century Gothic", 10);
+                article.Text = "";
+                vente.Text = "";
+                cart.Text = "";
+                fournisseur.Text = "";
+                labG.Font = new Font("Century Gothic", 10);
+                client.Text = "";
+                reparation.Text = "";
+                labE.Font = new Font("Century Gothic", 10);
+                employe.Text = "";
+                user.Text = "";
+
+                labC.Text = "Compta...";
+                labC.Font = new Font("Century Gothic", 10);
+                autoPart.Text = "";
+                garage.Text = "";
+                payroll.Text = "";
+                labA.Text = "Admins...";
+                labA.Font = new Font("Century Gothic", 10);
+                labA.Font = new Font("Century Gothic", 10);
+                settings.Text = "";
             }
             else
             {
                 sidebar.Width = 229;
                 auto.Font = new Font("Century Gothic", 14);
-                //garage.Font = new Font("Century Gothic", 14);
-                //lEnployer.Font = new Font("Century Gothic", 14);
-                //Ladmin.Font = new Font("Century Gothic", 14);
-                //lComtabilite.Text = "Comptabilité";
-                //Ladmin.Text = "Adminstration";
-                //lComtabilite.Font = new Font("Century Gothic", 12);
+                article.Text = "Articles";
+                vente.Text = "Vente";
+                cart.Text = "Panier";
+                fournisseur.Text = "Fournisseur";
+                labG.Font = new Font("Century Gothic", 14);
+                client.Text = "Client";
+                reparation.Text = "Réparation";
+                labE.Font = new Font("Century Gothic", 14);
+                employe.Text = "Employé";
+                user.Text = "Utilisateur";
+                labC.Font = new Font("Century Gothic", 14);
+                labC.Text = "Comptabilité";
+                autoPart.Text = "Auto Parts";
+                garage.Text = "Garage";
+                payroll.Text = "Comptes";
+                labA.Text = "Adminstration";
+                labA.Font = new Font("Century Gothic", 12);
+                settings.Text = "Parametre";
 
 
             }
