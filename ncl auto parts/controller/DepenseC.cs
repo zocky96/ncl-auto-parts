@@ -37,6 +37,24 @@ namespace ncl_auto_parts.controller
             showDepense(table);
             return rep;
         }
+        public static async Task<int> saveAjout(DepenseM depense, BunifuDataGridView table)
+        {
+            int rep = await dbConfig.execute_command("insert into ajout(montantDepense,date,explication,signature,devise) values( " + depense.MontantDepense + ",'" + depense.Date + "','" + depense.Explication + "','" + depense.Signature + "','" + depense.Devise + "')");
+            showAjout(table);
+            return rep;
+        }
+        public static async Task<int> saveAjoutGarage(DepenseM depense, BunifuDataGridView table)
+        {
+            int rep = await dbConfig.execute_command("insert into ajout_garage(montantDepense,date,explication,signature,devise) values( " + depense.MontantDepense + ",'" + depense.Date + "','" + depense.Explication + "','" + depense.Signature + "','" + depense.Devise + "')");
+            showAjoutGarage(table);
+            return rep;
+        }
+        public static async Task<int> saveDepenseGarage(DepenseM depense, BunifuDataGridView table)
+        {
+            int rep = await dbConfig.execute_command("insert into depenses_garage(motifDepense,montantDepense,date,explication,signature,devise) values('" + depense.MotifDepense + "'," + depense.MontantDepense + ",'" + depense.Date + "','" + depense.Explication + "','" + depense.Signature + "','" + depense.Devise + "')");
+            //showDepenseGarage(table);
+            return rep;
+        }
         public static async Task<int> modifyDepense(String nom, String prenom, String telephone, String adresse, String nom_du_produit, BunifuDataGridView table, String id)
         {
             FournisseurM fournisseur = new FournisseurM(nom, prenom, telephone, adresse, nom_du_produit);
@@ -68,5 +86,60 @@ namespace ncl_auto_parts.controller
 
             }
         }
+        public async static void showAjout(BunifuDataGridView table)
+        {
+            table.Rows.Clear();
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from ajout");
+            try
+            {
+                while (result.Read())
+                {
+
+                    table.Rows.Add(result["id"], result["montantDepense"], result["explication"], result["signature"], result["date"], result["devise"]);
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        public async static void showAjoutGarage(BunifuDataGridView table)
+        {
+            table.Rows.Clear();
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from ajout_garage");
+            try
+            {
+                while (result.Read())
+                {
+
+                    table.Rows.Add(result["id"], result["montantDepense"], result["explication"], result["signature"], result["date"], result["devise"]);
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        public async static void showDepenseGarage(BunifuDataGridView table)
+        {
+            table.Rows.Clear();
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from depenses_garage");
+            try
+            {
+                while (result.Read())
+                {
+
+                    table.Rows.Add(result["id"], result["motifDepense"], result["montantDepense"], result["explication"], result["signature"], result["date"], result["devise"]);
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
     }
 }

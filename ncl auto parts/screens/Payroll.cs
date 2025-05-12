@@ -188,7 +188,13 @@ namespace ncl_auto_parts.screens
             motif.Text = "";
             devise.Text = "Devise";
         }
-
+        private void clearField2()
+        {
+            motif2.Text = "";
+            explication2.Text = "";
+            motif2.Text = "";
+            devise2.Text = "Devise";
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -268,11 +274,252 @@ namespace ncl_auto_parts.screens
         {
 
         }
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Code exécuté quand l'utilisateur change d'onglet
+            int selectedIndex = tabControl1.SelectedIndex;
+            TabPage selectedTab = tabControl1.SelectedTab;
 
+            MessageBox.Show("Onglet sélectionné : " + selectedTab.Text);
+        }
         private void tabPage5_Click(object sender, EventArgs e)
         {
             
             
+        }
+
+        private void tabControl1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            initWin();
+            DepenseC.showDepense(tableDepense);
+            DepenseC.showDepenseGarage(table2);
+            DepenseC.showAjout(table3);
+            DepenseC.showAjoutGarage(table4);
+            main.closeConn();
+        }
+
+        private async void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            main.closeConn();
+            float i;
+            bool isAnumber = float.TryParse(montant2.Text, out i);
+            if (isAnumber)
+            {
+                if (explication2.Text == "")
+                {
+                    MessageBox.Show("Le champ 'Explication' ne dois pas etre vide");
+                }
+                else
+                {
+                    if (devise2.Text == "US" || devise2.Text == "HTG")
+                    {
+                        string date;
+
+                        date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+                        if (devise2.Text == "US")
+                        {
+                            int rep = await VenteC.RemoveUsMoneyGarage(float.Parse(montant2.Text));
+                            if (rep == 0)
+                            {
+                                DepenseM depense = new DepenseM(motif2.Text, explication2.Text, main.userName, date, devise2.Text, float.Parse(montant2.Text));
+                                rep = await DepenseC.saveDepenseGarage(depense, table2);
+                                if (rep == 0)
+                                {
+                                    DepenseC.showDepenseGarage(table2);
+                                    main.closeConn();
+                                    clearField2();
+                                    initWin();
+                                    MessageBox.Show("Montant retirer avec succes");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Une erreur s'est produire lors de la soustraction de l'argent");
+                            }
+                        }
+                        else
+                        {
+                            int rep = await VenteC.RemoveHtgMoneyGarage(float.Parse(montant2.Text));
+                            if (rep == 0)
+                            {
+                                DepenseM depense = new DepenseM(motif2.Text, explication2.Text, main.userName, date, devise2.Text, float.Parse(montant2.Text));
+                                rep = await DepenseC.saveDepenseGarage(depense, table2);
+                                if (rep == 0)
+                                {
+                                    DepenseC.showDepenseGarage(table2);
+                                    main.closeConn();
+                                    clearField2();
+                                    MessageBox.Show("Montant retirer avec succes");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Une erreur s'est produire lors de la soustraction de l'argent");
+                            }
+
+
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Choisir une devise");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le champ 'Montant' dois contenir que des chiffres");
+            }
+        }
+
+        private void bunifuButton1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void bunifuButton3_Click(object sender, EventArgs e)
+        {
+            main.closeConn();
+            float i;
+            bool isAnumber = float.TryParse(montant3.Text, out i);
+            if (isAnumber)
+            {
+                if (explication3.Text == "")
+                {
+                    MessageBox.Show("Le champ 'Explication' ne dois pas etre vide");
+                }
+                else
+                {
+                    if (devise3.Text == "US" || devise3.Text == "HTG")
+                    {
+                        string date;
+
+                        date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+                        if (devise3.Text == "US")
+                        {
+                            int rep = await VenteC.AddUsMoney(float.Parse(montant3.Text));
+                            if (rep == 0)
+                            {
+                                DepenseM depense = new DepenseM("", explication3.Text, main.userName, date, devise3.Text, float.Parse(montant3.Text));
+                                rep = await DepenseC.saveAjout(depense, tableDepense);
+                                if (rep == 0)
+                                {
+                                    DepenseC.showAjout(table3);
+                                    clearField();
+                                    MessageBox.Show("Montant ajouter avec succes");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Une erreur s'est produire lors de l'addition de l'argent");
+                            }
+                        }
+                        else
+                        {
+                            int rep = await VenteC.AddHtgMoney(float.Parse(montant3.Text));
+                            if (rep == 0)
+                            {
+                                DepenseM depense = new DepenseM("", explication3.Text, main.userName, date, devise3.Text, float.Parse(montant3.Text));
+                                rep = await DepenseC.saveAjout(depense, tableDepense);
+                                if (rep == 0)
+                                {
+                                    DepenseC.showAjout(table3);
+                                    clearField();
+                                    MessageBox.Show("Montant ajouter avec succes");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Une erreur s'est produire lors de l'addition de l'argent");
+                            }
+
+
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Choisir une devise");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le champ 'Montant' dois contenir que des chiffres");
+            }
+        }
+
+        private async void bunifuButton1_Click_2(object sender, EventArgs e)
+        {
+            main.closeConn();
+            float i;
+            bool isAnumber = float.TryParse(montant4.Text, out i);
+            if (isAnumber)
+            {
+                if (explication4.Text == "")
+                {
+                    MessageBox.Show("Le champ 'Explication' ne dois pas etre vide");
+                }
+                else
+                {
+                    if (devise4.Text == "US" || devise4.Text == "HTG")
+                    {
+                        string date;
+
+                        date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+                        if (devise4.Text == "US")
+                        {
+                            int rep = await VenteC.AddUsMoneyGarage(float.Parse(montant4.Text));
+                            if (rep == 0)
+                            {
+                                DepenseM depense = new DepenseM("", explication4.Text, main.userName, date, devise4.Text, float.Parse(montant4.Text));
+                                rep = await DepenseC.saveAjoutGarage(depense, tableDepense);
+                                if (rep == 0)
+                                {
+                                    DepenseC.showAjoutGarage(table4);
+                                    clearField();
+                                    MessageBox.Show("Montant ajouter avec succes");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Une erreur s'est produire lors de l'addition de l'argent");
+                            }
+                        }
+                        else
+                        {
+                            int rep = await VenteC.AddHTGMoneyGarage(float.Parse(montant4.Text));
+                            if (rep == 0)
+                            {
+                                DepenseM depense = new DepenseM("", explication4.Text, main.userName, date, devise4.Text, float.Parse(montant4.Text));
+                                rep = await DepenseC.saveAjoutGarage(depense, tableDepense);
+                                if (rep == 0)
+                                {
+                                    DepenseC.showAjoutGarage(table4);
+                                    clearField();
+                                    MessageBox.Show("Montant ajouter avec succes");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Une erreur s'est produire lors de l'addition de l'argent");
+                            }
+
+
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Choisir une devise");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le champ 'Montant' dois contenir que des chiffres");
+            }
         }
     }
 }
