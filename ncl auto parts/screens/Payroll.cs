@@ -1,4 +1,6 @@
-﻿using ncl_auto_parts.controller;
+﻿using MySql.Data.MySqlClient;
+using ncl_auto_parts.controller;
+using ncl_auto_parts.db;
 using ncl_auto_parts.model;
 using System;
 using System.Collections.Generic;
@@ -18,8 +20,67 @@ namespace ncl_auto_parts.screens
         {
             InitializeComponent();
             DepenseC.showDepense(tableDepense);
+            
             initWin();
-            main.closeConn();
+            
+        }
+        public static async Task<string> getAutoUs()
+        {
+            string quantite = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select amount from account_us");
+
+            while (result.Read())
+            {
+
+
+                quantite = result["amount"].ToString();
+
+            }
+            return quantite;
+        }
+        public static async Task<string> getAutoHtg()
+        {
+            string quantite = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select amount from account_htg");
+
+            while (result.Read())
+            {
+
+
+                quantite = result["amount"].ToString();
+
+            }
+            return quantite;
+        }
+        //-
+        public static async Task<string> getGarageHtg()
+        {
+            string quantite = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select amount from account_htg_garage");
+
+            while (result.Read())
+            {
+
+
+                quantite = result["amount"].ToString();
+
+            }
+            return quantite;
+        }
+        //-
+        public static async Task<string> getGarageUs()
+        {
+            string quantite = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select amount from account_us_garage");
+
+            while (result.Read())
+            {
+
+
+                quantite = result["amount"].ToString();
+
+            }
+            return quantite;
         }
 
         private async void initWin()
@@ -28,6 +89,11 @@ namespace ncl_auto_parts.screens
             float somme = await EmployerC.sumEmployer();
             nbrEmploye.Text = nbr.ToString();
             moneyEmploye.Text = "$"+somme.ToString();
+            autoUs.Text = "$" + await getAutoUs();
+            autoHtg.Text = "$" + await getAutoHtg();
+            garageHtg.Text = "$"+ await getGarageHtg();
+            garageUs.Text = "$" + await getGarageUs();
+            main.closeConn();
         }
         private void bunifuShadowPanel3_Paint(object sender, PaintEventArgs e)
         {
@@ -71,7 +137,9 @@ namespace ncl_auto_parts.screens
                                 rep = await DepenseC.saveDepense(depense, tableDepense);
                                 if (rep == 0)
                                 {
+                                    main.closeConn();
                                     clearField();
+                                    initWin();
                                     MessageBox.Show("Montant retirer avec succes");
                                 }
                             }
@@ -194,6 +262,17 @@ namespace ncl_auto_parts.screens
             {
                 MessageBox.Show("Le champ 'Montant' dois contenir que des chiffres");
             }
+        }
+
+        private void tableDepense_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+            
+            
         }
     }
 }
