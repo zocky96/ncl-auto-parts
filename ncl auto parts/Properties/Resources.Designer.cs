@@ -363,6 +363,16 @@ namespace ncl_auto_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap print_24px {
+            get {
+                object obj = ResourceManager.GetObject("print_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search_24px {
             get {
                 object obj = ResourceManager.GetObject("search_24px", resourceCulture);

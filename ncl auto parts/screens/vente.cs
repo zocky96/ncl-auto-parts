@@ -264,6 +264,13 @@ namespace ncl_auto_parts.screens
 
                 y += rowHeight;
             }
+            e.Graphics.DrawString("TOTAL", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(85, y + 50));
+
+            e.Graphics.DrawString("$" +0, new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(605, y + 50));
+
+            //-
+            //e.Graphics.DrawString("PS:\"Ce proforma est valide pour une durée de 8 jours\" :", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(85, 1020));
+            e.Graphics.DrawString("Merci d'avoir choisi NC.L Autoservices!!!", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(485, 1070));
         }
 
         private void bunifuTextBox1_KeyDown(object sender, KeyEventArgs e)
@@ -496,6 +503,11 @@ namespace ncl_auto_parts.screens
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void bunifuButton1_Click_2(object sender, EventArgs e)
+        {
+            main.showLogin(new Rapport());
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

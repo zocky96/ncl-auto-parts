@@ -332,6 +332,12 @@
     <Compile Include="screens\Proforma.Designer.cs">
       <DependentUpon>Proforma.cs</DependentUpon>
     </Compile>
+    <Compile Include="screens\Rapport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\Rapport.Designer.cs">
+      <DependentUpon>Rapport.cs</DependentUpon>
+    </Compile>
     <Compile Include="screens\Reparation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -423,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Proforma.resx">
       <DependentUpon>Proforma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\Rapport.resx">
+      <DependentUpon>Rapport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Reparation.resx">
       <DependentUpon>Reparation.cs</DependentUpon>
@@ -548,6 +557,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\ncl.jpg" />
+    <None Include="Resources\print_24px.png" />
     <None Include="Resources\lock_90px1.png" />
     <None Include="Resources\lock_90px.png" />
     <None Include="Resources\settings_24px1.png" />

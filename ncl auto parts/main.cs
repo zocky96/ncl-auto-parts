@@ -45,8 +45,8 @@ namespace ncl_auto_parts
             else
             {
                 InitializeComponent();
-                //showScreen(new Dashboard());
-                showScreen(new Payroll());
+                showScreen(new Dashboard());
+                //showScreen(new Payroll());
                 //showLogin(new ReparationC());
 
                 article_ = article;
