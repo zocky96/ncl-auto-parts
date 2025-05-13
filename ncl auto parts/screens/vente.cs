@@ -386,6 +386,10 @@ namespace ncl_auto_parts.screens
                                 {
                                     donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), 0, float.Parse(result["total"].ToString())));
                                 }
+                                
+                                VenteC.showVente(table);
+                                clearField();
+                                MessageBox.Show("Vente effectué avec succes");
                                 PrintDialog printDialog1 = new PrintDialog();
                                 printDialog1.Document = printDocument1;
                                 DialogResult resulta = printDialog1.ShowDialog();
@@ -393,9 +397,6 @@ namespace ncl_auto_parts.screens
                                 {
                                     printDocument1.Print();
                                 }
-                                VenteC.showVente(table);
-                                clearField();
-                                MessageBox.Show("Vente effectué avec succes");
                             }
                             else
                             {
