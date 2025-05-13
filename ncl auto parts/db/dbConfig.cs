@@ -350,7 +350,7 @@ namespace ncl_auto_parts.db
             {
                 return 52;
             }
-            rep = await execute_command("create table reparation(id int primary key auto_increment,clientId varchar(255),Marque varchar(255),modele varchar(255),annee varchar(100),plaque varchar(100),couleur varchar(100),service varchar(100),dateEntree varchar(100),dateSortie varchar(100))");
+            rep = await execute_command("create table reparation(id int primary key auto_increment,clientId varchar(255),Marque varchar(255),modele varchar(255),annee varchar(100),plaque varchar(100),couleur varchar(100),service varchar(100),dateEntree date,dateSortie date)");
             if (rep == 9)
             {
                 return 52;

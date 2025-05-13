@@ -52,6 +52,8 @@ namespace ncl_auto_parts.screens
             main.closeConn();
             bool isAnumber;
             int i ;
+            
+            
             isAnumber = int.TryParse(idClient.Text, out i);
             if (isAnumber)
             {
@@ -94,7 +96,7 @@ namespace ncl_auto_parts.screens
                                         }
                                         else
                                         {
-                                            int rep = await ReparationC.saveReparation(idClient.Text, marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Date.ToShortDateString(), dateSortie.Value.Date.ToShortDateString(), table);
+                                            int rep = await ReparationC.saveReparation(idClient.Text, marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString()+"/"+dateSortie.Value.Month+"/"+dateSortie.Value.Day, table);
                                             if (rep == 0)
                                             {
                                                 clearField();
@@ -190,7 +192,7 @@ namespace ncl_auto_parts.screens
                                         }
                                         else
                                         {
-                                            int rep = await ReparationC.modifyreparation( marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Date.ToShortDateString(), dateSortie.Value.Date.ToShortDateString(), table,id,idClient.Text);
+                                            int rep = await ReparationC.modifyreparation( marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString()+"/"+dateSortie.Value.Month+"/"+dateSortie.Value.Day, table,id,idClient.Text);
                                             if (rep == 0)
                                             {
                                                 clearField();
