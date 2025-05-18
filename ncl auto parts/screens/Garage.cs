@@ -216,6 +216,7 @@ namespace ncl_auto_parts.screens
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            realTotal = 0;
             Bitmap bmp = new Bitmap(logo.Width, logo.Height);
             logo.DrawToBitmap(bmp, new Rectangle(0, 0, logo.Width, logo.Height));
             e.Graphics.DrawImage(bmp, new Point(60, 60));

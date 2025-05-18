@@ -32,7 +32,6 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
-            this.label1 = new System.Windows.Forms.Label();
             this.sur = new System.Windows.Forms.ComboBox();
             this.article = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.a = new Bunifu.UI.WinForms.BunifuDatePicker();
@@ -40,20 +39,10 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.logo = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(368, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 21);
-            this.label1.TabIndex = 68;
-            this.label1.Text = "Á";
             // 
             // sur
             // 
@@ -200,16 +189,27 @@
             this.logo.TabStop = false;
             this.logo.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(72, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 15);
+            this.label2.TabIndex = 122;
+            this.label2.Text = "De";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(36, 51);
+            this.label3.Location = new System.Drawing.Point(392, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 21);
-            this.label3.TabIndex = 121;
-            this.label3.Text = "De";
+            this.label3.Size = new System.Drawing.Size(15, 15);
+            this.label3.TabIndex = 123;
+            this.label3.Text = "A";
             // 
             // Rapport
             // 
@@ -217,12 +217,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 243);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.logo);
             this.Controls.Add(this.article);
             this.Controls.Add(this.sur);
             this.Controls.Add(this.a);
             this.Controls.Add(this.de);
-            this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Rapport";
@@ -237,8 +237,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuDatePicker de;
         private Bunifu.UI.WinForms.BunifuDatePicker a;
         private System.Windows.Forms.ComboBox sur;
@@ -246,6 +244,7 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PictureBox logo;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
     }
 }

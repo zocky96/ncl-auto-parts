@@ -117,7 +117,7 @@ namespace ncl_auto_parts.db
 
         }
 
-        private async static Task<MySqlConnection> connectionConfig()
+        public async static Task<MySqlConnection> connectionConfig()
         {
             List<string> list = new List<string>();
             list = showConfig();

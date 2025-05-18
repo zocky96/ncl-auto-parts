@@ -45,7 +45,7 @@ namespace ncl_auto_parts
             else
             {
                 InitializeComponent();
-                showScreen(new Reparation());
+                showScreen(new Dashboard());
                 //showScreen(new Payroll());
                 //showLogin(new ReparationC());
 
@@ -357,6 +357,7 @@ namespace ncl_auto_parts
         private void logout_Click(object sender, EventArgs e)
         {
             UserC.Disconnected(userName);
+            Dashboard.label.Text = "";
             logout.Visible = false;
             login.Visible = true;
             showScreen(new Dashboard());

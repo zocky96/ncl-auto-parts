@@ -131,7 +131,7 @@ namespace ncl_auto_parts.screens
 
         private async void bunifuButton1_Click(object sender, EventArgs e)
         {
-           
+            realTotal = 0;
             Random random = new Random();
             donnees = new List<(string, float)>();
             int randomNumber = random.Next(9999);

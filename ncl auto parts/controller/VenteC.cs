@@ -154,6 +154,16 @@ namespace ncl_auto_parts.controller
             //showArticle(table);
             return vente;
         }
+        public static async Task<float> getTotalById(string id)
+        {
+            float total = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) from article where receiptNumber='"+id+"'");
+            while (result.Read())
+            {
+                total = float.Parse(result["total"].ToString());
+            }
+            return total;
+        }
         public static async void cancelVente(String id, String nomProduit, BunifuDataGridView table, int quantite, string receipt,string devise)
         {
             

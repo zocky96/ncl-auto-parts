@@ -48,6 +48,7 @@ namespace ncl_auto_parts.screens
 
         private async void facture_Click(object sender, EventArgs e)
         {
+            realTotal = 0;
             print.Visible = false;
             main.closeConn();
             float sum = 0;

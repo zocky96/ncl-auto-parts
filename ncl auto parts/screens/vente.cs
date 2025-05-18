@@ -2,6 +2,7 @@
 using ncl_auto_parts.controller;
 using ncl_auto_parts.db;
 using ncl_auto_parts.model;
+using ncl_auto_parts.rapport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,8 @@ namespace ncl_auto_parts.screens
     public partial class vente : Form
     {
         string noRecu = null,idT, nomProduitT,quantiteT,deviseT,p_clientName=null,p_receiptNumber=null,p_date=null;
-        public List<(string name, int quantite, float price, float tax, float total)> donnees;
+        public List<(string name, int quantite, float price, float total)> donnees;
+        float real_total=0;
         public vente()
         {
             InitializeComponent();
@@ -151,13 +153,13 @@ namespace ncl_auto_parts.screens
                                 {
                                     MySqlDataReader result = await dbConfig.getResultCommand("select * from vente where receiptNumber='"+receiptNumber+"'");
                                     //public List<(string name, int quantite, float price, float tax, float total)> donnees;
-                                    donnees = new List<(string, int, float, float, float)>();
+                                    donnees = new List<(string, int, float, float)>();
                                     p_clientName = clientName.Text;
                                     p_receiptNumber = receiptNumber;
                                     p_date = date;
                                     while (result.Read())
                                     {
-                                        donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), 0, float.Parse(result["total"].ToString())));
+                                        donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), float.Parse(result["total"].ToString())));
                                     }
                                     printDocument1.Print();
                                     VenteC.showVente(table);
@@ -226,9 +228,9 @@ namespace ncl_auto_parts.screens
             int startX = 100;
             int startY = 390;
             int rowHeight = 25;
-            int[] colWidths = { 220, 90, 90, 90, 90, 90 }; // name, quantite, quantity, price, tax, total
+            int[] colWidths = { 220, 90, 90, 90, 90 }; // name, quantite, quantity, price, tax, total
 
-            string[] headers = { "Name", "Quantity", "Price", "Tax", "Total" };
+            string[] headers = { "Name", "Quantity", "Price", "Total" };
 
             // Dessiner l'en-tête avec bordures
             int x = startX;
@@ -242,7 +244,7 @@ namespace ncl_auto_parts.screens
 
             // Dessiner les données avec bordures
             int y = startY + rowHeight;
-            foreach (var (name, quantity, price, tax, total) in donnees)
+            foreach (var (name, quantity, price, total) in donnees)
             {
                 x = startX;
 
@@ -250,7 +252,6 @@ namespace ncl_auto_parts.screens
             name,
             quantity.ToString(),
             price.ToString(),
-            tax.ToString(),
             total.ToString()
         };
 
@@ -266,7 +267,7 @@ namespace ncl_auto_parts.screens
             }
             e.Graphics.DrawString("TOTAL", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(85, y + 50));
 
-            e.Graphics.DrawString("$" +0, new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(605, y + 50));
+            e.Graphics.DrawString("$" +real_total, new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(605, y + 50));
 
             //-
             //e.Graphics.DrawString("PS:\"Ce proforma est valide pour une durée de 8 jours\" :", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(85, 1020));
@@ -312,6 +313,7 @@ namespace ncl_auto_parts.screens
 
         private async void vendre_Click(object sender, EventArgs e)
         {
+            real_total = 0;
             main.closeConn();
             bool isAnumber;
             Random random = new Random();
@@ -350,7 +352,7 @@ namespace ncl_auto_parts.screens
                                 while (receiptExist)
                                 {
                                     int ii = 0;
-                                    randomNumber = random.Next(9999);
+                                    randomNumber = random.Next(9999999);
                                     receiptNumber = "IOE" + randomNumber.ToString() + VenteC.getMaxId().ToString();
                                     receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
                                     ii += 1;
@@ -378,25 +380,27 @@ namespace ncl_auto_parts.screens
                             {
                                 MySqlDataReader result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + receiptNumber + "'");
                                 //public List<(string name, int quantite, float price, float tax, float total)> donnees;
-                                donnees = new List<(string, int, float, float, float)>();
+                                donnees = new List<(string, int, float, float)>();
                                 p_clientName = clientName.Text;
                                 p_receiptNumber = receiptNumber;
                                 p_date = date;
                                 while (result.Read())
                                 {
-                                    donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), 0, float.Parse(result["total"].ToString())));
+                                    real_total += float.Parse(result["quantite"].ToString()) * float.Parse(result["prix"].ToString());
+                                    donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), float.Parse(result["total"].ToString())));
                                 }
                                 
                                 VenteC.showVente(table);
                                 clearField();
                                 MessageBox.Show("Vente effectué avec succes");
-                                PrintDialog printDialog1 = new PrintDialog();
-                                printDialog1.Document = printDocument1;
-                                DialogResult resulta = printDialog1.ShowDialog();
-                                if (resulta == DialogResult.OK)
-                                {
-                                    printDocument1.Print();
-                                }
+                                //PrintDialog printDialog1 = new PrintDialog();
+                                //printDialog1.Document = printDocument1;
+                                //DialogResult resulta = printDialog1.ShowDialog();
+                                //if (resulta == DialogResult.OK)
+                                //{
+                                //    printDocument1.Print();
+                                //}
+                                main.showLogin(new oneVente(receiptNumber));
                             }
                             else
                             {
@@ -465,34 +469,46 @@ namespace ncl_auto_parts.screens
 
         private async void print_Click(object sender, EventArgs e)
         {
+            real_total = 0;
             main.closeConn();
             cancelCart.Visible = false;
             print.Visible = false;
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + p_receiptNumber + "'");
-            //public List<(string name, int quantite, float price, float tax, float total)> donnees;
-            donnees = new List<(string, int, float, float, float)>();
-
-            while (result.Read())
-            {
-                donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), 0, float.Parse(result["total"].ToString())));
-            }
-            PrintDialog printDialog1 = new PrintDialog();
-            printDialog1.Document = printDocument1;
-            DialogResult resulta = printDialog1.ShowDialog();
-            if (resulta == DialogResult.OK)
-            {
-                printDocument1.Print();
-            }
             clearField();
-            MessageBox.Show("Vente effectué avec succes");
+            main.showLogin(new oneVente(p_receiptNumber));
+            //public List<(string name, int quantite, float price, float tax, float total)> donnees;
+            
+
+            //while (result.Read())
+            //{
+            //    real_total += float.Parse(result["quantite"].ToString()) * float.Parse(result["prix"].ToString());
+            //    donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), float.Parse(result["total"].ToString())));
+            //}
+            //PrintDialog printDialog1 = new PrintDialog();
+            //printDialog1.Document = printDocument1;
+            //DialogResult resulta = printDialog1.ShowDialog();
+            //if (resulta == DialogResult.OK)
+            //{
+            //    printDocument1.Print();
+            //}
+            
         }
 
-        private void cancelCart_Click(object sender, EventArgs e)
+        private async void cancelCart_Click(object sender, EventArgs e)
         {
             main.closeConn();
             cancelCart.Visible = false;
             print.Visible = false;
+            //float total = await VenteC.getTotalById(noRecu);
+            //if((total>=3000) && main.poste != "PDG")
+            //{
+            //    MessageBox.Show("Vous n avez pas la permission pour annulée cette vente");
+            //}
+            //else
+            //{
+
+            //}
             VenteC.cancelVente(idT, nomProduitT, table, int.Parse(quantiteT), noRecu, deviseT);
+
         }
 
         private void proforma_Click(object sender, EventArgs e)
@@ -549,11 +565,11 @@ namespace ncl_auto_parts.screens
             print.Visible = false;
             MySqlDataReader result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + p_receiptNumber + "'");
             //public List<(string name, int quantite, float price, float tax, float total)> donnees;
-            donnees = new List<(string, int, float, float, float)>();
+            donnees = new List<(string, int, float,  float)>();
             
             while (result.Read())
             {
-                donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), 0, float.Parse(result["total"].ToString())));
+                donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), float.Parse(result["total"].ToString())));
             }
             printDocument1.Print();
             clearField();

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ncl_auto_parts.controller;
 using ncl_auto_parts.db;
+using ncl_auto_parts.rapport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,8 @@ namespace ncl_auto_parts.screens
     public partial class Cart : Form
     {
         String id_Cart = null, p_receiptNumber = null, p_date=null, p_clientName=null;
-        public List<(string name, int quantite, float price, float tax, float total)> donnees;
+        public List<(string name, int quantite, float price, float total)> donnees;
+        float real_total = 0;
         public Cart()
         {
             InitializeComponent();
@@ -57,6 +59,7 @@ namespace ncl_auto_parts.screens
 
         private async void vendre_Click(object sender, EventArgs e)
         {
+            real_total = 0;
             main.closeConn();
             id_Cart = "";
             String name, quantite, prix, type, clientName=null;
@@ -69,7 +72,7 @@ namespace ncl_auto_parts.screens
             {
                 int rep = 1;
                 Random random = new Random();
-                int randomNumber = random.Next(9999);
+                int randomNumber = random.Next(9999999);
                 int ID = await VenteC.getMaxId() + 1;
                 String receiptNumber = "IOE" + randomNumber.ToString() + ID.ToString();
                 //-----------------
@@ -112,19 +115,22 @@ namespace ncl_auto_parts.screens
                     date = year + "/" + month + "/" + day;
 
                     CartC.CleanCart(tableCart);
-                    result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + receiptNumber + "'");
+                    //result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + receiptNumber + "'");
                     //public List<(string name, int quantite, float price, float tax, float total)> donnees;
-                    donnees = new List<(string, int, float, float, float)>();
+                    donnees = new List<(string, int, float, float)>();
                     p_clientName = clientName;
                     p_receiptNumber = receiptNumber;
                     p_date = date;
-                    while (result.Read())
-                    {
-                        donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), 0, float.Parse(result["total"].ToString())));
-                    }
-                    printDocument1.Print();
-                    main.closeConn();
+                    //while (result.Read())
+                    //{
+                    //    real_total += float.Parse(result["quantite"].ToString()) * float.Parse(result["prix"].ToString());
+                    //    donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), float.Parse(result["total"].ToString())));
+                    //}
                     MessageBox.Show("Vente effectue avec succes");
+                    main.showLogin(new oneVente(receiptNumber));
+                    main.closeConn();
+                    
+
                 }
                 else
                 {
@@ -151,11 +157,11 @@ namespace ncl_auto_parts.screens
             e.Graphics.DrawImage(bmp, new Point(480, 60));
             e.Graphics.DrawString("__________________________________________________________________________________________________", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(40, 240));
             e.Graphics.DrawString("Bill to : " + p_clientName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 270));
-            e.Graphics.DrawString("Invoice No :" + main.spaceInBill("Invoice No :", 35) + p_receiptNumber, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 270));
-            e.Graphics.DrawString("le kiki", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 290));
-            e.Graphics.DrawString("Date :" + main.spaceInBill("Date :", 35) + p_date, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 290));
-            e.Graphics.DrawString("Due date :" + main.spaceInBill("Due date :", 35) + p_date, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 310));
-            e.Graphics.DrawString("Payment status :" + main.spaceInBill("Payment status :", 35) + "Paid", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 330));
+            e.Graphics.DrawString("Invoice No :" + p_receiptNumber, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 270));
+            
+            e.Graphics.DrawString("Date :" +  p_date, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 290));
+            e.Graphics.DrawString("Due date :" + p_date, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 310));
+            e.Graphics.DrawString("Payment status :" + "Paid", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(500, 330));
             Font font = new Font("Arial", 10);
             Brush brush = Brushes.Black;
             Pen pen = Pens.Black;
@@ -163,9 +169,9 @@ namespace ncl_auto_parts.screens
             int startX = 100;
             int startY = 390;
             int rowHeight = 25;
-            int[] colWidths = { 220, 90, 90, 90, 90, 90 }; // name, quantite, quantity, price, tax, total
+            int[] colWidths = { 220, 90, 90, 90, 90 }; // name, quantite, quantity, price, tax, total
 
-            string[] headers = { "Name", "Quantity", "Price", "Tax", "Total" };
+            string[] headers = { "Name", "Quantity", "Price", "Total" };
 
             // Dessiner l'en-tête avec bordures
             int x = startX;
@@ -179,7 +185,7 @@ namespace ncl_auto_parts.screens
 
             // Dessiner les données avec bordures
             int y = startY + rowHeight;
-            foreach (var (name, quantity, price, tax, total) in donnees)
+            foreach (var (name, quantity, price, total) in donnees)
             {
                 x = startX;
 
@@ -187,7 +193,7 @@ namespace ncl_auto_parts.screens
             name,
             quantity.ToString(),
             price.ToString(),
-            tax.ToString(),
+           
             total.ToString()
         };
 
@@ -201,6 +207,13 @@ namespace ncl_auto_parts.screens
 
                 y += rowHeight;
             }
+            e.Graphics.DrawString("TOTAL", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(85, y + 50));
+
+            e.Graphics.DrawString("$" + real_total, new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(605, y + 50));
+
+            //-
+            //e.Graphics.DrawString("PS:\"Ce proforma est valide pour une durée de 8 jours\" :", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(85, 1020));
+            e.Graphics.DrawString("Merci d'avoir choisi NC.L Autoservices!!!", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(485, 1070));
         }
     }
 }

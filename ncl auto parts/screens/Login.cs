@@ -52,6 +52,7 @@ namespace ncl_auto_parts.screens
             int rep = await UserC.login(userName.Text, password.Text);
             if (rep == 0)
             {
+                Dashboard.label.Text = userName.Text;
                 Dispose();
             }
         }

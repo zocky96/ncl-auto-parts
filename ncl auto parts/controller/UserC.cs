@@ -182,7 +182,7 @@ namespace ncl_auto_parts.controller
                             main.poste = poste;
                             Connected(username);
                             main.log_out.Visible = true;
-
+                            Dashboard.label.Text = username;
                             if (poste == "caissier")
                             {
                                 main.vente_.Enabled = true;
@@ -193,6 +193,7 @@ namespace ncl_auto_parts.controller
                                 //main.rapport.Enabled = true;
                                 main.log_in.Visible = false;
                                 main.userName = username;
+                                main.poste = "caissier";
 
 
 
@@ -204,6 +205,7 @@ namespace ncl_auto_parts.controller
                                 main.client_.Enabled= true;
                                 main.userName = username;
                                 main.log_in.Visible = false;
+                                main.poste = "gestionnaire de stock";
                                 
                             }
                             if (poste == "secretaire")
@@ -223,6 +225,7 @@ namespace ncl_auto_parts.controller
                                 //main.settings_.Enabled = true;
                                 main.log_in.Visible = false;
                                 main.userName = username;
+                                main.poste = "secretaire";
                             }
                             
                             if (poste == "manager")
@@ -242,6 +245,7 @@ namespace ncl_auto_parts.controller
                                 main.settings_.Enabled = true;
                                 main.log_in.Visible = false;
                                 main.userName = username;
+                                main.poste = "manager";
                             }
                             if (poste == "PDG")
                             {
@@ -260,6 +264,7 @@ namespace ncl_auto_parts.controller
                                 main.settings_.Enabled = true;
                                 main.log_in.Visible = false;
                                 main.userName = username;
+                                main.poste = "PDG";
                             }
 
 

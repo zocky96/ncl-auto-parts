@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ncl_auto_parts.db;
+using ncl_auto_parts.rapport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,14 +32,14 @@ namespace ncl_auto_parts.screens
             {
                 if (sur.Text == "Vente")
                 {
-
-                    donneesVente = new List<(string, float, int, string, string, string, string)>();
-                    MySqlDataReader resultax = await dbConfig.getResultCommand("select * from vente where date>='" + de.Text + "' and date<='" + a.Text + "'");
-                    while (resultax.Read())
-                    {
-                        realTotal += float.Parse(resultax["prix"].ToString()) * int.Parse(resultax["quantite"].ToString());
-                        donneesVente.Add((resultax["nom_du_produit"].ToString(), float.Parse(resultax["prix"].ToString()), int.Parse(resultax["quantite"].ToString()), resultax["date"].ToString(), resultax["signature_autorise"].ToString(), resultax["receiptNumber"].ToString(), resultax["devise"].ToString()));
-                    }
+                    main.showLogin(new VenteViewer(de.Text,a.Text));
+                    //donneesVente = new List<(string, float, int, string, string, string, string)>();
+                    //MySqlDataReader resultax = await dbConfig.getResultCommand("select * from vente where date>='" + de.Text + "' and date<='" + a.Text + "'");
+                    //while (resultax.Read())
+                    //{
+                    //    realTotal += float.Parse(resultax["prix"].ToString()) * int.Parse(resultax["quantite"].ToString());
+                    //    donneesVente.Add((resultax["nom_du_produit"].ToString(), float.Parse(resultax["prix"].ToString()), int.Parse(resultax["quantite"].ToString()), resultax["date"].ToString(), resultax["signature_autorise"].ToString(), resultax["receiptNumber"].ToString(), resultax["devise"].ToString()));
+                    //}
                 }
                 if (sur.Text == "Facture Auto parts")
                 {
@@ -94,60 +95,7 @@ namespace ncl_auto_parts.screens
             Pen pen = Pens.Black;
 
             
-            if (sur.Text == "Vente")
-            {
-                int startX = 40;
-                int startY = 300;
-                int rowHeight = 25;
 
-                int x = startX;
-                int y = startY + rowHeight;
-                string date_;
-                int[] colWidths = { 180, 80, 90, 150, 80, 100, 50 };
-                date_ = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
-                e.Graphics.DrawString("Date : "+date_, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(80, 220));
-                e.Graphics.DrawString("Rapport de vente", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(325, 250));
-                string[] headers = { "Nom du produit", "Prix", "Quantite" ,"Date", "Utilisateur","Numero recu", "devise" };
-                // Dessiner l'en-tête avec bordures
-                
-                for (int i = 0; i < headers.Length; i++)
-                {
-                    Rectangle rect = new Rectangle(x, startY, colWidths[i], rowHeight);
-                    e.Graphics.DrawRectangle(pen, rect);
-                    e.Graphics.DrawString(headers[i], new Font("Arial", 10, FontStyle.Bold), brush, rect);
-                    x += colWidths[i];
-                }
-
-                // Dessiner les données avec bordures
-                
-                foreach (var (nom_du_produit, prix, quantite, date, signature_autorise, receiptNumber, devise) in donneesVente)
-                {
-                    x = startX;
-
-                    string[] valeurs = {
-            nom_du_produit,
-            prix.ToString(),
-            quantite.ToString(),
-            date.ToString(),
-            signature_autorise.ToString(),
-            receiptNumber,
-            devise.ToString()
-        };
-
-                    for (int i = 0; i < valeurs.Length; i++)
-                    {
-                        Rectangle rect = new Rectangle(x, y, colWidths[i], rowHeight);
-                        e.Graphics.DrawRectangle(pen, rect);
-                        e.Graphics.DrawString(valeurs[i], font, brush, rect);
-                        x += colWidths[i];
-                    }
-
-                    y += rowHeight;
-                }
-                e.Graphics.DrawString("TOTAL", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(40, y + 50));
-
-                e.Graphics.DrawString("$" + realTotal.ToString(), new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(635, y + 50));
-            }
             //----------------------------------------------------
             if (sur.Text == "Facture Auto parts")
             {
