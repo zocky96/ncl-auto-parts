@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ncl_auto_parts.controller;
 using ncl_auto_parts.db;
+using ncl_auto_parts.rapport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,7 +65,7 @@ namespace ncl_auto_parts.screens
                 while (result.Read())
                 {
                     date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
-                    int rep = await dbConfig.execute_command("insert into canceled_facture_auto(clientName,service,devise,montant,no_recu,date,user) values('" + result["clientName"].ToString() + "','" + result["service"].ToString() + "','" +  result["devise"].ToString() + "'," + result["montant"].ToString() + ",'" + id + "','" + date + "','" + main.userName + "')");
+                    int rep = await dbConfig.execute_command("insert into canceled_facture_auto(clientName,service,devise,montant,no_recu,date,user,car_name,plaque,phone,description,quantite,total) values('" + result["clientName"].ToString() + "','" + result["service"].ToString() + "','" +  result["devise"].ToString() + "'," + result["montant"].ToString() + ",'" + id + "','" + date + "','" + main.userName + "','"+ result["car_name"].ToString() + "','"+ result["plaque"].ToString() + "','"+ result["phone"].ToString() + "','"+ result["description"].ToString() + "',"+ result["quantite"].ToString() + ","+ result["total"].ToString() + ")");
                     devise = result["devise"].ToString();
                     sum += float.Parse(result["montant"].ToString());
                 }
@@ -101,23 +102,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             print.Visible = false;
-            donnees = new List<(string, float)>();
-            MySqlDataReader resulta = await dbConfig.getResultCommand("select service,montant,date from facture_auto where no_recu='"+id+"'");
-            while (resulta.Read())
-            {
-                realTotal += float.Parse(resulta["montant"].ToString());
-                realDate = resulta["date"].ToString();
-                //MessageBox.Show(resulta["service"].ToString());
-                donnees.Add((resulta["service"].ToString(), float.Parse(resulta["montant"].ToString())));
-            }
-          
-            PrintDialog printDialog1 = new PrintDialog();
-            printDialog1.Document = printDocument1;
-            DialogResult resultx = printDialog1.ShowDialog();
-            if (resultx == DialogResult.OK)
-            {
-                printDocument1.Print();
-            }
+            main.showLogin(new oneFacture(id,"auto"));
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)

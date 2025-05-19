@@ -22,6 +22,14 @@ namespace ncl_auto_parts.viewer
 
     partial class FactureData
     {
+        partial class ProformaDataTable
+        {
+        }
+
+        partial class oneFactureDataTable
+        {
+        }
+
         partial class oneVenteDataTable
         {
         }

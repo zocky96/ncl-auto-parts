@@ -2,6 +2,7 @@
 using ncl_auto_parts.controller;
 using ncl_auto_parts.db;
 using ncl_auto_parts.model;
+using ncl_auto_parts.rapport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -86,18 +87,25 @@ namespace ncl_auto_parts.screens
                         isAnumber = float.TryParse(price.Text, out j);
                         if(isAnumber)
                         {
-                            sum += float.Parse(price.Text) * int.Parse(qte.Text);
-                            string date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
-                            ProformaM proforma = new ProformaM(clientName.Text, carName.Text, plaque_.Text, phone.Text, date, name.Text, float.Parse(price.Text), float.Parse(price.Text) * int.Parse(qte.Text), int.Parse(qte.Text));
-                            int rep = await ProformaC.saveProforma(proforma, table);
-                            if (rep == 0)
+                            if(devise.Text == "US" || devise.Text == "HTG")
                             {
-                                getSum();
-                                clearField();
+                                sum += float.Parse(price.Text) * int.Parse(qte.Text);
+                                string date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+                                ProformaM proforma = new ProformaM(clientName.Text, carName.Text, plaque_.Text, phone.Text, date, name.Text, float.Parse(price.Text), float.Parse(price.Text) * int.Parse(qte.Text), int.Parse(qte.Text));
+                                int rep = await ProformaC.saveProforma(proforma, table,devise.Text);
+                                if (rep == 0)
+                                {
+                                    getSum();
+                                    clearField();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Une erreur s'est produit lors de l'enregistrement");
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Une erreur s'est produit lors de l'enregistrement");
+                                MessageBox.Show("Choisir une devise");
                             }
                         }
                         else
@@ -159,26 +167,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             delete.Visible = false;
-            proforma_ = await ProformaC.getPersonalInfo();
-            somme = await getSum_();
-            donnees = new List<(string, int, float, float)>();
-            MySqlDataReader result = await dbConfig.getResultCommand("select description,quantite,price,total from proforma");
-            while (result.Read())
-            {
-                donnees.Add((result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["price"].ToString()), float.Parse(result["total"].ToString())));
-            }
-            
-            
-            if (!await ProformaC.ifTableEmpty())
-            { 
-                PrintDialog printDialog1 = new PrintDialog();
-                printDialog1.Document = printDocument1;
-                DialogResult resulta = printDialog1.ShowDialog();
-                if (resulta == DialogResult.OK)
-                {
-                    printDocument1.Print();
-                }
-            }
+            main.showLogin(new ProformaViewer());
             
         }
 

@@ -244,11 +244,35 @@
     <Compile Include="model\VenteM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rapport\factureAutoPartsX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rapport\factureAutoPartsX.Designer.cs">
+      <DependentUpon>factureAutoPartsX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rapport\oneFacture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rapport\oneFacture.Designer.cs">
+      <DependentUpon>oneFacture.cs</DependentUpon>
+    </Compile>
     <Compile Include="rapport\oneVente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="rapport\oneVente.Designer.cs">
       <DependentUpon>oneVente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rapport\ProformaViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rapport\ProformaViewer.Designer.cs">
+      <DependentUpon>ProformaViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rapport\rapportGarage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rapport\rapportGarage.Designer.cs">
+      <DependentUpon>rapportGarage.cs</DependentUpon>
     </Compile>
     <Compile Include="rapport\VenteViewer.cs">
       <SubType>Form</SubType>
@@ -414,9 +438,24 @@
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rapport\Facture.rdlc" />
+    <EmbeddedResource Include="rapport\factureAuto.rdlc" />
+    <EmbeddedResource Include="rapport\factureAutoPartsX.resx">
+      <DependentUpon>factureAutoPartsX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rapport\oneFacture.resx">
+      <DependentUpon>oneFacture.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rapport\OneVente.rdlc" />
     <EmbeddedResource Include="rapport\oneVente.resx">
       <DependentUpon>oneVente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rapport\Proforma.rdlc" />
+    <EmbeddedResource Include="rapport\ProformaViewer.resx">
+      <DependentUpon>ProformaViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rapport\rapportFacture.rdlc" />
+    <EmbeddedResource Include="rapport\rapportGarage.resx">
+      <DependentUpon>rapportGarage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rapport\Vente.rdlc" />
     <EmbeddedResource Include="rapport\VenteViewer.resx">

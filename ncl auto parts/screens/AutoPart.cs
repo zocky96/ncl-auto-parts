@@ -2,6 +2,7 @@
 using ncl_auto_parts.controller;
 using ncl_auto_parts.db;
 using ncl_auto_parts.model;
+using ncl_auto_parts.rapport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,8 +34,9 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             float i=0;
+            int j = 0;
             bool isAnumber = float.TryParse(montant.Text, out i);
-            if (service.Text == "")
+            if (description.Text == "")
             {
                 MessageBox.Show("Le champ service ne dois pas etre vide");
             }
@@ -48,48 +50,60 @@ namespace ncl_auto_parts.screens
                 {
                     if (devise.Text == "US" || devise.Text == "HTG")
                     {
-                        if (devise.Text == "US")
-                        {
+                       
                             if (isAnumber)
                             {
-                                AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, float.Parse(montant.Text));
-                                int rep = await AutoPartC.saveFacture(facture, table);
-                                if (rep == 0)
+                                if (vehicule.Text == "")
                                 {
-                                    clearField();
-                                    //MessageBox.Show("Factué avec succè");
+                                    MessageBox.Show("Le champ 'Nom du véhicule' ne dois pas etre vide");
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Erreur lors de la facturation");
+                                    if(plaque.Text == "")
+                                    {
+                                        MessageBox.Show("Le champ 'Plaque' ne dois pas etre vide");
+                                    }
+                                    else
+                                    {
+                                        isAnumber = int.TryParse(quantite.Text, out j);
+                                        if (isAnumber)
+                                        {
+                                        if (service.Text == "")
+                                        {
+                                            MessageBox.Show("Le champ 'Service' ne dois pas etre vide");
+                                        }
+                                        else
+                                        {
+                                            AutoPartM facture = new AutoPartM(clientName.Text,service.Text,devise.Text,plaque.Text,vehicule.Text,phone.Text,description.Text,int.Parse(quantite.Text),float.Parse(montant.Text),int.Parse(quantite.Text) * float.Parse(montant.Text));
+                                            int rep = await AutoPartC.saveFacture(facture, table);
+                                            if (rep == 0)
+                                            {
+                                                clearField();
+                                                //MessageBox.Show("Factué avec succès");
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Erreur lors de la facturation");
+                                            }
+                                        }
+
+                                    }
+                                        else
+                                        {
+                                            MessageBox.Show("Le champ 'Quantité' dois contenir que des chiffres");
+                                        }
+                                        
+                                    }
+                                   
                                 }
+
                             }
                             else
                             {
                                 MessageBox.Show("le champ montant dois contenir que des chiffres");
                             }
-                        }
-                        else
-                        {
-                            if (isAnumber)
-                            {
-                                AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, float.Parse(montant.Text));
-                                int rep = await AutoPartC.saveFacture(facture, table);
-                                if (rep == 0)
-                                {
-                                    clearField();
-                                    //MessageBox.Show("Facturé avec succès");
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Erreur lors de la facturation");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("le champ montant dois contenir que des chiffres");
-                            }
-                        }
+                        
+                       
                        
                         
                     }
@@ -115,7 +129,8 @@ namespace ncl_auto_parts.screens
         private void clearField()
         {
             montant.Text = "";
-            service.Text = "";
+            description.Text = "";
+            quantite.Text = "";
         }
         private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -144,7 +159,7 @@ namespace ncl_auto_parts.screens
                 while (receiptExist)
                 {
                     int ii = 0;
-                    randomNumber = random.Next(9999);
+                    randomNumber = random.Next(9999999);
                     receiptNumber = "IOE" + randomNumber.ToString() + VenteC.getMaxId().ToString();
                     receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
                     ii += 1;
@@ -167,15 +182,15 @@ namespace ncl_auto_parts.screens
                 
                 if (result["devise"].ToString() == "US")
                 {
-                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
+                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(),int.Parse(result["quantite"].ToString()),float.Parse(result["montant"].ToString()), float.Parse(result["total"].ToString()));
                     rep = await AutoPartC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddUsMoney(float.Parse(result["montant"].ToString()));
+                    VenteC.AddUsMoney(float.Parse(result["montant"].ToString())* int.Parse(result["quantite"].ToString()));
                 }
                 else
                 {
-                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
+                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), float.Parse(result["total"].ToString()));
                     rep = await AutoPartC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddHtgMoney(float.Parse(result["montant"].ToString()));
+                    VenteC.AddHtgMoney(float.Parse(result["montant"].ToString()) * int.Parse(result["quantite"].ToString()));
                 }
                 
             }
@@ -183,23 +198,12 @@ namespace ncl_auto_parts.screens
            
             if (rep == 0)
             {
+              
                 
-                MySqlDataReader resulta = await dbConfig.getResultCommand("select service,montant from fauto_part");
-                while (resulta.Read())
-                {
-                    realTotal += float.Parse(resulta["montant"].ToString());
-                    //MessageBox.Show(resulta["service"].ToString());
-                    donnees.Add((resulta["service"].ToString(), float.Parse(resulta["montant"].ToString())));
-                }
                 AutoPartC.cleanFacture(table);
                 MessageBox.Show("Facture effectuée avec succès");
-                PrintDialog printDialog1 = new PrintDialog();
-                printDialog1.Document = printDocument1;
-                DialogResult resultx = printDialog1.ShowDialog();
-                if (resultx == DialogResult.OK)
-                {
-                    printDocument1.Print();
-                }
+                main.showLogin(new oneFacture(receiptNumber,"auto"));
+                main.closeConn();
 
             }
             else
@@ -287,6 +291,12 @@ namespace ncl_auto_parts.screens
         private void AutoPart_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void table_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            id = table.CurrentRow.Cells["id_"].Value.ToString();
+            delete.Visible = true;
         }
     }
 }

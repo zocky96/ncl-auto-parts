@@ -33,7 +33,7 @@ namespace ncl_auto_parts.controller
         }
         public static async Task<int> saveFacture(AutoPartM facture, BunifuDataGridView table)
         {
-            int rep = await dbConfig.execute_command("insert into fauto_part(clientName,service,devise,montant) values('"+facture.ClientName+"','"+facture.Service+"','"+facture.Devise+"',"+facture.Montant+")");
+            int rep = await dbConfig.execute_command("insert into fauto_part(clientName,service,devise,montant,car_name,plaque,phone,description,quantite,total) values('" + facture.ClientName+"','"+facture.Service+"','"+facture.Devise+"',"+facture.Prix+",'"+facture.CarName+"','"+facture.Plaque+"','"+facture.Phone+"','"+facture.Description+"',"+facture.Quantite+","+facture.Total+")");
             showFacture(table);
             return rep;
         }
@@ -105,7 +105,7 @@ namespace ncl_auto_parts.controller
             string date;
            
             date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
-            int rep = await dbConfig.execute_command("insert into facture_auto(clientName,service,devise,montant,no_recu,date,user) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Montant + ",'"+receiptId+"','"+date+"','"+main.userName+"')");
+            int rep = await dbConfig.execute_command("insert into facture_auto(clientName,service,devise,montant,no_recu,date,user,car_name,plaque,phone,description,quantite,total) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'"+receiptId+"','"+date+"','"+main.userName+"','"+facture.CarName+"','"+facture.Plaque+"','"+facture.Phone+"','"+facture.Description+"',"+facture.Quantite+","+facture.Total+")");
             showFacture(table);
             return rep;
         }
@@ -113,7 +113,7 @@ namespace ncl_auto_parts.controller
         public static async Task<int> modifyFacture(AutoPartM facture, BunifuDataGridView table, String id)
         {
             
-            int rep = await dbConfig.execute_command("update fauto_part set clientName='" + facture.ClientName + "',service='" + facture.Service + "',devise='" + facture.Devise + "',montant=" + facture.Montant + " where id='" + id + "'");
+            int rep = await dbConfig.execute_command("update fauto_part set clientName='" + facture.ClientName + "',service='" + facture.Service + "',devise='" + facture.Devise + "',montant=" + facture.Prix + " where id='" + id + "'");
             showFacture(table);
             return rep;
         }
@@ -149,7 +149,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["devise"]);
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["description"], result["montant"], result["quantite"]);
 
                 }
             }

@@ -71,10 +71,10 @@ namespace ncl_auto_parts.controller
             Label l = new Label();
             showProforma(table);
         }
-        public static async Task<int> saveProforma(ProformaM proforma, BunifuDataGridView table)
+        public static async Task<int> saveProforma(ProformaM proforma, BunifuDataGridView table,string devise)
         {
              
-            int rep = await dbConfig.execute_command("insert into proforma(clientName,carName,plaque,phone,date,description,quantite,price,total) values('" + proforma.ClientName+"','"+proforma.CarName+"','"+proforma.Plaque+"','"+proforma.Phone+"','"+proforma.Date+"','"+proforma.Description+"',"+proforma.Quantite+","+proforma.Price+","+proforma.Total+")");
+            int rep = await dbConfig.execute_command("insert into proforma(clientName,carName,plaque,phone,date,description,quantite,price,total,devise) values('" + proforma.ClientName+"','"+proforma.CarName+"','"+proforma.Plaque+"','"+proforma.Phone+"','"+proforma.Date+"','"+proforma.Description+"',"+proforma.Quantite+","+proforma.Price+","+proforma.Total+",'"+devise+"')");
             Label l=new Label();
             showProforma(table);
             return rep;
@@ -89,7 +89,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientName"], result["description"], result["quantite"], result["price"], result["total"]);
+                    table.Rows.Add(result["id"], result["clientName"], result["description"], result["quantite"], result["price"], result["total"],result["devise"]);
 
                 }
             }

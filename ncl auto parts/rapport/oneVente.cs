@@ -32,10 +32,7 @@ namespace ncl_auto_parts.rapport
             ReportDataSource rds = new ReportDataSource("oneVente", vente.Tables[0]);
             this.reportViewer1.LocalReport.DataSources.Clear();
             this.reportViewer1.LocalReport.DataSources.Add(rds);
-           // dataAdapter = new MySqlDataAdapter("select sum(total) as total from vente where receiptNumber='" + id + "'", connection);
-            //dataAdapter.Fill(vente, vente.Tables[0].TableName);
-           // ReportDataSource tot = new ReportDataSource("total", vente.Tables[0]);
-            //this.reportViewer1.LocalReport.DataSources.Add(tot);
+           
             this.reportViewer1.LocalReport.Refresh();
             this.reportViewer1.RefreshReport();
             connection.Close();

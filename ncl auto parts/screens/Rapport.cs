@@ -33,43 +33,18 @@ namespace ncl_auto_parts.screens
                 if (sur.Text == "Vente")
                 {
                     main.showLogin(new VenteViewer(de.Text,a.Text));
-                    //donneesVente = new List<(string, float, int, string, string, string, string)>();
-                    //MySqlDataReader resultax = await dbConfig.getResultCommand("select * from vente where date>='" + de.Text + "' and date<='" + a.Text + "'");
-                    //while (resultax.Read())
-                    //{
-                    //    realTotal += float.Parse(resultax["prix"].ToString()) * int.Parse(resultax["quantite"].ToString());
-                    //    donneesVente.Add((resultax["nom_du_produit"].ToString(), float.Parse(resultax["prix"].ToString()), int.Parse(resultax["quantite"].ToString()), resultax["date"].ToString(), resultax["signature_autorise"].ToString(), resultax["receiptNumber"].ToString(), resultax["devise"].ToString()));
-                    //}
                 }
                 if (sur.Text == "Facture Auto parts")
                 {
-                    //List<(string clientName, string service, string devise, float montant, string no_recu, string date, string user)> donnees_facture_auto;
-                    donnees_facture_auto = new List<(string, string, string, float, string, string, string)>();
-                    MySqlDataReader resultax = await dbConfig.getResultCommand("select * from facture_auto where date>='" + de.Text + "' and date<='" + a.Text + "'");
-                    while (resultax.Read())
-                    {
-                        realTotal += float.Parse(resultax["montant"].ToString());
-                        donnees_facture_auto.Add((resultax["clientName"].ToString(), resultax["service"].ToString(), resultax["devise"].ToString(), float.Parse(resultax["montant"].ToString()), resultax["no_recu"].ToString(), resultax["date"].ToString(), resultax["user"].ToString()));
-                    }
+                    main.showLogin(new factureAutoPartsX(de.Text,a.Text));
                 }
                 if (sur.Text == "Facture Garage")
                 {
-                    //List<(string clientName, string service, string devise, float montant, string no_recu, string date, string user)> donnees_facture_auto;
-                    donnees_facture_garage = new List<(string, string, string, float, string, string, string)>();
-                    MySqlDataReader resultax = await dbConfig.getResultCommand("select * from facture_garage where date>='" + de.Text + "' and date<='" + a.Text + "'");
-                    while (resultax.Read())
-                    {
-                        realTotal += float.Parse(resultax["montant"].ToString());
-                        donnees_facture_garage.Add((resultax["clientName"].ToString(), resultax["service"].ToString(), resultax["devise"].ToString(), float.Parse(resultax["montant"].ToString()), resultax["no_recu"].ToString(), resultax["date"].ToString(), resultax["user"].ToString()));
-                    }
+                    main.showLogin(new rapportGarage(de.Text, a.Text));
                 }
-                PrintDialog printDialog1 = new PrintDialog();
-                printDialog1.Document = printDocument1;
-                DialogResult resulta = printDialog1.ShowDialog();
-                if (resulta == DialogResult.OK)
-                {
-                    printDocument1.Print();
-                }
+                
+                    
+                
             }
             else
             {

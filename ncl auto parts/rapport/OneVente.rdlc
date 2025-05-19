@@ -165,7 +165,7 @@
         <Top>5.10328cm</Top>
         <Left>1.46197cm</Left>
         <Height>0.6cm</Height>
-        <Width>5.54271cm</Width>
+        <Width>6.70688cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -204,7 +204,7 @@
         <Top>6.69078cm</Top>
         <Left>1.46197cm</Left>
         <Height>0.6cm</Height>
-        <Width>6.52167cm</Width>
+        <Width>8.24146cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -242,7 +242,7 @@
         <Top>7.46717cm</Top>
         <Left>1.46197cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.48438cm</Width>
+        <Width>8.24146cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -258,19 +258,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>6.05092cm</Width>
+              <Width>5.47392cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.20462cm</Width>
+              <Width>2.01104cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.34676cm</Width>
+              <Width>2.27797cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.92333cm</Width>
+              <Width>2.85454cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.92333cm</Width>
+              <Width>2.85454cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -624,7 +624,7 @@
         <Top>8.78099cm</Top>
         <Left>1.46197cm</Left>
         <Height>1.2cm</Height>
-        <Width>17.44896cm</Width>
+        <Width>15.47201cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -639,19 +639,13 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total                                                                                                                   </Value>
+                <Value>Total                                                                                                          </Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
                 <Value>=Fields!real_total.Value</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">       </Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -676,7 +670,7 @@
         <Top>10.499cm</Top>
         <Left>1.46197cm</Left>
         <Height>0.6cm</Height>
-        <Width>17.44897cm</Width>
+        <Width>15.472cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
@@ -704,10 +698,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>17.93558cm</Top>
-        <Left>14.20495cm</Left>
+        <Top>12.96141cm</Top>
+        <Left>8.56022cm</Left>
         <Height>0.6cm</Height>
-        <Width>6.33646cm</Width>
+        <Width>8.37375cm</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>

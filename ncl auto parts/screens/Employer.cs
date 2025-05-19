@@ -86,7 +86,7 @@ namespace ncl_auto_parts.screens
                                 }
                                 else
                                 {
-                                    if(poste.Text == "caissier" || poste.Text == "PDG" || poste.Text == "gestionnaire de stock" || poste.Text == "manager" || poste.Text == "secretaire" || poste.Text == "directeur")
+                                    if(poste.Text == "caissier" || poste.Text == "PDG" || poste.Text == "gestionnaire de stock" || poste.Text == "manager" || poste.Text == "secretaire" || poste.Text == "directeur" || poste.Text == "mecanicien")
                                     {
                                         //ok
                                         isAnumber = float.TryParse(salaire.Text, out j);

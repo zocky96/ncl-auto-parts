@@ -2,6 +2,7 @@
 using ncl_auto_parts.controller;
 using ncl_auto_parts.db;
 using ncl_auto_parts.model;
+using ncl_auto_parts.rapport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,6 +39,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             float i = 0;
+            
             bool isAnumber = float.TryParse(montant.Text, out i);
             if (service.Text == "")
             {
@@ -53,48 +55,62 @@ namespace ncl_auto_parts.screens
                 {
                     if (devise.Text == "US" || devise.Text == "HTG")
                     {
-                        if (devise.Text == "US")
-                        {
                             if (isAnumber)
                             {
-                                AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, float.Parse(montant.Text));
-                                int rep = await GarageC.saveFacture(facture, table);
-                                if (rep == 0)
+                                if (plaque.Text == "")
                                 {
-                                    clearField();
-                                    //MessageBox.Show("Factué avec succè");
+                                    MessageBox.Show("Le champ 'Plaque' ne dois pas etre vide");
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Erreur lors de la facturation");
+                                    if (phone.Text == "")
+                                    {
+                                        MessageBox.Show("Le champ 'Telephone' ne dois pas etre vide");
+                                    }
+                                    else
+                                    {
+                                        if (description.Text == "") 
+                                        {
+                                            MessageBox.Show("Le champ 'Description' ne dois pas etre vide");
+                                        }
+                                        else 
+                                        {
+                                            isAnumber = float.TryParse(quantite.Text, out i);
+                                            if (isAnumber)
+                                            {
+                                                if (vehicule.Text == "")
+                                                {
+                                                    MessageBox.Show("Le champ 'Nom du véhicule' ne dois pas etre vide");
+                                                }
+                                                else
+                                                {
+                                                    AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, int.Parse(quantite.Text), float.Parse(montant.Text), int.Parse(quantite.Text) * float.Parse(montant.Text));
+                                                    int rep = await GarageC.saveFacture(facture, table);
+                                                    if (rep == 0)
+                                                    {
+                                                        clearField();
+                                                        //MessageBox.Show("Factué avec succè");
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Erreur lors de la facturation");
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Le champ 'Quantite' dois avoir que des chiffres");
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             else
                             {
                                 MessageBox.Show("le champ montant dois contenir que des chiffres");
                             }
-                        }
-                        else
-                        {
-                            if (isAnumber)
-                            {
-                                AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, float.Parse(montant.Text));
-                                int rep = await GarageC.saveFacture(facture, table);
-                                if (rep == 0)
-                                {
-                                    clearField();
-                                    //MessageBox.Show("Facturé avec succès");
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Erreur lors de la facturation");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("le champ montant dois contenir que des chiffres");
-                            }
-                        }
+                        
+                        
 
 
                     }
@@ -130,7 +146,7 @@ namespace ncl_auto_parts.screens
             
             Random random = new Random();
             donnees = new List<(string, float)>();
-            int randomNumber = random.Next(9999);
+            int randomNumber = random.Next(9999999);
             try
             {
                 int maxId = await VenteC.getMaxId();
@@ -140,7 +156,7 @@ namespace ncl_auto_parts.screens
                 while (receiptExist)
                 {
                     int ii = 0;
-                    randomNumber = random.Next(9999);
+                    randomNumber = random.Next(9999999);
                     receiptNumber = "IOE" + randomNumber.ToString() + VenteC.getMaxId().ToString();
                     receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
                     ii += 1;
@@ -163,14 +179,14 @@ namespace ncl_auto_parts.screens
 
                 if (result["devise"].ToString() == "US")
                 {
-                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
+                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()),float.Parse(result["montant"].ToString()),float.Parse(result["total"].ToString()));
                     rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
                     VenteC.AddUsMoneyGarage(float.Parse(result["montant"].ToString()));
-                        
+
                 }
                 else
                 {
-                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), float.Parse(result["montant"].ToString()));
+                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), float.Parse(result["total"].ToString()));
                     rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
                     VenteC.AddHTGMoneyGarage(float.Parse(result["montant"].ToString()));
                 }
@@ -178,24 +194,11 @@ namespace ncl_auto_parts.screens
             }
             if (rep == 0)
             {
-
-                MySqlDataReader resulta = await dbConfig.getResultCommand("select service,montant from fgarage");
-                while (resulta.Read())
-                {
-                    realTotal += float.Parse(resulta["montant"].ToString());
-                    //MessageBox.Show(resulta["service"].ToString());
-                    donnees.Add((resulta["service"].ToString(), float.Parse(resulta["montant"].ToString())));
-                }
                 
                 GarageC.cleanFacture(table);
                 MessageBox.Show("Facture effectuée avec succès");
-                PrintDialog printDialog1 = new PrintDialog();
-                printDialog1.Document = printDocument1;
-                DialogResult resultx = printDialog1.ShowDialog();
-                if (resultx == DialogResult.OK)
-                {
-                    printDocument1.Print();
-                }
+                //MessageBox.Show(receiptNumber);
+                main.showLogin(new oneFacture(receiptNumber,"garage"));
 
             }
             else
@@ -287,6 +290,12 @@ namespace ncl_auto_parts.screens
             //-
             //e.Graphics.DrawString("PS:\"Ce proforma est valide pour une durée de 8 jours\" :", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(85, 1020));
             e.Graphics.DrawString("Merci d'avoir choisi NC.L Autoservices!!!", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(485, 1070));
+        }
+
+        private void table_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            id = table.CurrentRow.Cells["id_"].Value.ToString();
+            delete.Visible = true;
         }
     }
 }

@@ -74,12 +74,6 @@
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties36 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             this.label6 = new System.Windows.Forms.Label();
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.k = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -104,6 +98,14 @@
             this.total = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.price = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+            this.devise = new System.Windows.Forms.ComboBox();
+            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -144,7 +146,8 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4});
+            this.Column4,
+            this.Column6});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -183,36 +186,6 @@
             this.table.TabIndex = 113;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
-            // 
-            // id_
-            // 
-            this.id_.HeaderText = "ID";
-            this.id_.Name = "id_";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Nom du client";
-            this.Column5.Name = "Column5";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Description";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Quantité";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Prix unitaire";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Total";
-            this.Column4.Name = "Column4";
             // 
             // label5
             // 
@@ -996,9 +969,9 @@
             // 
             this.logo.BackColor = System.Drawing.Color.White;
             this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.Location = new System.Drawing.Point(427, 76);
+            this.logo.Location = new System.Drawing.Point(667, 100);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(210, 116);
+            this.logo.Size = new System.Drawing.Size(210, 77);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logo.TabIndex = 116;
             this.logo.TabStop = false;
@@ -1109,11 +1082,59 @@
             this.price.UseSystemPasswordChar = false;
             this.price.WordWrap = true;
             // 
+            // devise
+            // 
+            this.devise.FormattingEnabled = true;
+            this.devise.Items.AddRange(new object[] {
+            "US",
+            "HTG"});
+            this.devise.Location = new System.Drawing.Point(334, 122);
+            this.devise.Name = "devise";
+            this.devise.Size = new System.Drawing.Size(234, 21);
+            this.devise.TabIndex = 121;
+            this.devise.Text = "Devise";
+            // 
+            // id_
+            // 
+            this.id_.HeaderText = "ID";
+            this.id_.Name = "id_";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Nom du client";
+            this.Column5.Name = "Column5";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Description";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Quantité";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Prix unitaire";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Total";
+            this.Column4.Name = "Column4";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Devise";
+            this.Column6.Name = "Column6";
+            // 
             // Proforma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 630);
+            this.Controls.Add(this.devise);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.price);
             this.Controls.Add(this.total);
@@ -1172,12 +1193,6 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox qte;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox name;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PictureBox logo;
@@ -1185,5 +1200,13 @@
         private System.Windows.Forms.Label total;
         private System.Windows.Forms.Label label8;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox price;
+        private System.Windows.Forms.ComboBox devise;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }
