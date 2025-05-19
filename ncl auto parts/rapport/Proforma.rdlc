@@ -604,13 +604,19 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total                                                                                          </Value>
+                <Value>Total                                                                                           </Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
                 <Value>=Fields!real_total.Value</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>

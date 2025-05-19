@@ -23,7 +23,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"],result["init_value"]);
 
                 }
             }
@@ -104,7 +104,7 @@ namespace ncl_auto_parts.controller
 
             if (nbr == 0)
             {
-                rep = await dbConfig.execute_command("insert into article(nom_du_produit,prix,quantite,idfournisseur,element,ref,numero,dateAjout) values('" + arti.Nom + "','" + arti.Prix + "','" + arti.Quantite + "','" + arti.IdFournisseur1 + "','"+arti.Element+"','"+arti.Reference+"','"+arti.Numero+"','" + DateAjout + "')");
+                rep = await dbConfig.execute_command("insert into article(nom_du_produit,prix,quantite,idfournisseur,element,ref,numero,dateAjout,init_value) values('" + arti.Nom + "','" + arti.Prix + "','" + arti.Quantite + "','" + arti.IdFournisseur1 + "','"+arti.Element+"','"+arti.Reference+"','"+arti.Numero+"','" + DateAjout + "',"+arti.Quantite+")");
 
             }
             else if (nbr > 0)
@@ -197,7 +197,7 @@ namespace ncl_auto_parts.controller
             month = DateTime.Now.Month.ToString();
             day = DateTime.Now.Day.ToString();
             date_x = year + "/" + month + "/" + day;
-            int rep = await dbConfig.execute_command("update article set nom_du_produit='" + article.Nom + "',prix='" + article.Prix + "',quantite='" + article.Quantite + "',idfournisseur='" + article.IdFournisseur1 + "',dateAjout='" + date_x + "',ref='"+article.Reference+"',element='"+article.Element+"',numero="+article.Numero+" where id=" + id);
+            int rep = await dbConfig.execute_command("update article set nom_du_produit='" + article.Nom + "',prix='" + article.Prix + "',quantite='" + article.Quantite + "',idfournisseur='" + article.IdFournisseur1 + "',dateAjout='" + date_x + "',ref='"+article.Reference+"',element='"+article.Element+"',numero="+article.Numero+ ",init_value="+article.Quantite+" where id=" + id);
             showArticle(table);
             return rep;
         }
@@ -248,7 +248,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"],result["init_value"]);
 
                 }
             }
@@ -270,7 +270,7 @@ namespace ncl_auto_parts.controller
             while (result.Read())
             {
 
-                table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["type"], result["fournisseur"], result["dateAjout"], result["dateExpiration"]);
+                table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["type"], result["fournisseur"], result["dateAjout"], result["dateExpiration"],result["init_value"]);
 
             }
         }
@@ -293,7 +293,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
                     //MessageBox.Show(result["dateAjout"].ToString());
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"],result["init_value"]);
 
                 }
             }

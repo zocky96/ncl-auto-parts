@@ -79,15 +79,6 @@
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qte_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idf_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.element_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ref_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numero_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datea_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.print = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.modify = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -108,6 +99,16 @@
             this.numero = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.filter = new System.Windows.Forms.ComboBox();
+            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qte_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idf_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.element_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ref_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datea_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,7 +145,8 @@
             this.element_,
             this.ref_,
             this.numero_,
-            this.datea_});
+            this.datea_,
+            this.Column1});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -179,55 +181,10 @@
             this.table.RowHeadersVisible = false;
             this.table.RowTemplate.Height = 40;
             this.table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.table.Size = new System.Drawing.Size(1061, 270);
+            this.table.Size = new System.Drawing.Size(1149, 270);
             this.table.TabIndex = 49;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
-            // 
-            // id_
-            // 
-            this.id_.HeaderText = "ID";
-            this.id_.Name = "id_";
-            // 
-            // name_
-            // 
-            this.name_.HeaderText = "Nom de l\'article";
-            this.name_.Name = "name_";
-            // 
-            // price_
-            // 
-            this.price_.HeaderText = "Prix";
-            this.price_.Name = "price_";
-            // 
-            // qte_
-            // 
-            this.qte_.HeaderText = "Quantité";
-            this.qte_.Name = "qte_";
-            // 
-            // idf_
-            // 
-            this.idf_.HeaderText = "ID fournisseur";
-            this.idf_.Name = "idf_";
-            // 
-            // element_
-            // 
-            this.element_.HeaderText = "Element";
-            this.element_.Name = "element_";
-            // 
-            // ref_
-            // 
-            this.ref_.HeaderText = "ref";
-            this.ref_.Name = "ref_";
-            // 
-            // numero_
-            // 
-            this.numero_.HeaderText = "Numero";
-            this.numero_.Name = "numero_";
-            // 
-            // datea_
-            // 
-            this.datea_.HeaderText = "Date d\'ajout";
-            this.datea_.Name = "datea_";
             // 
             // searchBar
             // 
@@ -1151,9 +1108,9 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label7.Location = new System.Drawing.Point(12, 191);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 15);
+            this.label7.Size = new System.Drawing.Size(41, 15);
             this.label7.TabIndex = 48;
-            this.label7.Text = "Numero";
+            this.label7.Text = "Année";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // filter
@@ -1170,11 +1127,61 @@
             this.filter.Text = "Filtre";
             this.filter.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // id_
+            // 
+            this.id_.HeaderText = "ID";
+            this.id_.Name = "id_";
+            // 
+            // name_
+            // 
+            this.name_.HeaderText = "Nom de l\'article";
+            this.name_.Name = "name_";
+            // 
+            // price_
+            // 
+            this.price_.HeaderText = "Prix";
+            this.price_.Name = "price_";
+            // 
+            // qte_
+            // 
+            this.qte_.HeaderText = "Quantité";
+            this.qte_.Name = "qte_";
+            // 
+            // idf_
+            // 
+            this.idf_.HeaderText = "ID fournisseur";
+            this.idf_.Name = "idf_";
+            // 
+            // element_
+            // 
+            this.element_.HeaderText = "Element";
+            this.element_.Name = "element_";
+            // 
+            // ref_
+            // 
+            this.ref_.HeaderText = "ref";
+            this.ref_.Name = "ref_";
+            // 
+            // numero_
+            // 
+            this.numero_.HeaderText = "Année";
+            this.numero_.Name = "numero_";
+            // 
+            // datea_
+            // 
+            this.datea_.HeaderText = "Date d\'ajout";
+            this.datea_.Name = "datea_";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Quantité initiale";
+            this.Column1.Name = "Column1";
+            // 
             // Article
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 673);
+            this.ClientSize = new System.Drawing.Size(1166, 673);
             this.Controls.Add(this.filter);
             this.Controls.Add(this.searchBar);
             this.Controls.Add(this.table);
@@ -1213,15 +1220,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton delete;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton save;
         private Bunifu.UI.WinForms.BunifuDataGridView table;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qte_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idf_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn element_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ref_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numero_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datea_;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox searchBar;
         private System.Windows.Forms.Label label7;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox numero;
@@ -1238,5 +1236,15 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox qte;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox name;
         private System.Windows.Forms.ComboBox filter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qte_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idf_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn element_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ref_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datea_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
