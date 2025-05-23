@@ -93,6 +93,7 @@ namespace ncl_auto_parts.screens
                                 string date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
                                 ProformaM proforma = new ProformaM(clientName.Text, carName.Text, plaque_.Text, phone.Text, date, name.Text, float.Parse(price.Text), float.Parse(price.Text) * int.Parse(qte.Text), int.Parse(qte.Text));
                                 int rep = await ProformaC.saveProforma(proforma, table,devise.Text);
+                                main.closeConn();
                                 if (rep == 0)
                                 {
                                     getSum();
@@ -137,6 +138,7 @@ namespace ncl_auto_parts.screens
             {
                 delete.Visible = false;
                 ProformaC.clearProforma(table);
+                main.closeConn();
                 getSum();
             }
             
@@ -146,6 +148,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             ProformaC.deleteProforma(table, id);
+            main.closeConn();
             getSum();
             delete.Visible = false;
             
@@ -168,7 +171,8 @@ namespace ncl_auto_parts.screens
             main.closeConn();
             delete.Visible = false;
             main.showLogin(new ProformaViewer());
-            
+            main.closeConn();
+
         }
 
         private async void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)

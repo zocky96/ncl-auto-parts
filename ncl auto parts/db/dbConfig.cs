@@ -196,6 +196,7 @@ namespace ncl_auto_parts.db
                 MySqlCommand command = conn.CreateCommand();
                 command.CommandText = (cmd);
                 command.ExecuteNonQuery();
+                main.listConn.Add(conn);
                 conn.Close();
 
             }
@@ -209,6 +210,7 @@ namespace ncl_auto_parts.db
         {
             int retu = 0;
             MySqlConnection conn = await connection();
+            main.listConn.Add(conn);
             if (conn == null)
             {
 
@@ -242,10 +244,10 @@ namespace ncl_auto_parts.db
         public static async Task<int> createTables()
         {
             int rep = await execute_command("create table employer(id int primary key auto_increment,nom varchar(255),prenom varchar(255),nif varchar(70),adresse varchar(255),date_de_naissance date,poste enum('caissier','PDG','gestionnaire de stock','manager','secretaire','directeur','mecanicien'),phone varchar(30),mail varchar(50),salaire double)");
-
+            rep = await execute_command("ALTER TABLE employer ADD emp_id varchar(100)");
             if (rep == 0)
             {
-                await execute_command("insert into employer(nom,prenom,nif,poste,adresse,date_de_naissance,phone,salaire) values('Desir','Renaldo','007-100-199484','manager','56,Fort St Michel','1996/12/25','50934951243',0)");
+                await execute_command("insert into employer(nom,prenom,nif,poste,adresse,date_de_naissance,phone,salaire,emp_id) values('Desir','Renaldo','007-100-199484','manager','56,Fort St Michel','1996/12/25','50934951243',0,'NCL2077')");
             }
             rep = await execute_command("create table employer_suprimer(id int primary key auto_increment,nom varchar(255),prenom varchar(255),nif varchar(70),sexe varchar(70),adresse varchar(255),date_de_naissance date,poste enum('caissier','technicien','docteur','sysadmin','manager'))");
            

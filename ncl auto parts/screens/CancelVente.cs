@@ -33,6 +33,8 @@ namespace ncl_auto_parts.screens
                     table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["total"], result["date"], result["signature_autorise"], result["receiptNumber"], result["clientName"], result["devise"]);
 
                 }
+                main.closeConn();
+
             }
             catch
             {

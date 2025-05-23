@@ -93,6 +93,16 @@ namespace ncl_auto_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bar_chart_50px {
+            get {
+                object obj = ResourceManager.GetObject("bar_chart_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap car_24px {
             get {
                 object obj = ResourceManager.GetObject("car_24px", resourceCulture);
@@ -453,6 +463,16 @@ namespace ncl_auto_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap shopping_bag_50px {
+            get {
+                object obj = ResourceManager.GetObject("shopping_bag_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shopping_cart_30px {
             get {
                 object obj = ResourceManager.GetObject("shopping_cart_30px", resourceCulture);
@@ -513,6 +533,16 @@ namespace ncl_auto_parts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap team_30px {
+            get {
+                object obj = ResourceManager.GetObject("team_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tire_iron {
             get {
                 object obj = ResourceManager.GetObject("tire_iron", resourceCulture);
@@ -536,6 +566,26 @@ namespace ncl_auto_parts.Properties {
         internal static System.Drawing.Bitmap tire_iron_50px2 {
             get {
                 object obj = ResourceManager.GetObject("tire_iron_50px2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap us_dollar_30px {
+            get {
+                object obj = ResourceManager.GetObject("us_dollar_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap us_dollar_50px {
+            get {
+                object obj = ResourceManager.GetObject("us_dollar_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

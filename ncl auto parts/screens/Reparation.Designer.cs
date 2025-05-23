@@ -836,7 +836,7 @@
             this.print.IdleIconLeftImage = null;
             this.print.IdleIconRightImage = null;
             this.print.IndicateFocus = false;
-            this.print.Location = new System.Drawing.Point(497, 279);
+            this.print.Location = new System.Drawing.Point(499, 279);
             this.print.Name = "print";
             stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties9.BorderRadius = 3;
@@ -861,6 +861,7 @@
             this.print.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.print.TextMarginLeft = 0;
             this.print.UseDefaultRadiusAndThickness = true;
+            this.print.Visible = false;
             this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // delete

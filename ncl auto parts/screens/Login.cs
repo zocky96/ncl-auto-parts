@@ -50,6 +50,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             int rep = await UserC.login(userName.Text, password.Text);
+            main.closeConn();
             if (rep == 0)
             {
                 Dashboard.label.Text = userName.Text;

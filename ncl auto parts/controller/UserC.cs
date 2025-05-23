@@ -133,7 +133,9 @@ namespace ncl_auto_parts.controller
         {
             int response = 1;
             int message = await ifUserExiste_(username);
+            main.closeConn();
             int checkUser = await CheckIfUserConnected_(username);
+            main.closeConn();
             String nom_complet = null, nom = null, prenom = null, poste = null;
 
             if (checkUser != 0)
@@ -342,7 +344,7 @@ namespace ncl_auto_parts.controller
         }
         public static async Task<int> deleteUser(BunifuDataGridView table, String id)
         {
-            int rep = await dbConfig.execute_command("delete from utilisateur where id='" + id + "'");
+            int rep = await dbConfig.execute_command("delete from utilisateur where code_employer='" + id + "'");
             showUser(table);
             return rep;
         }

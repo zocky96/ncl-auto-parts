@@ -29,5 +29,30 @@ namespace ncl_auto_parts.screens
         {
             main.showLogin(new RapportVenteViewer());
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel26_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

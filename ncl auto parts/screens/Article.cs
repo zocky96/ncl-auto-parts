@@ -250,6 +250,7 @@ namespace ncl_auto_parts.screens
             try
             {
                 rep = await ArticleC.deleteArticle(id, table);
+                main.closeConn();
             }
             catch
             {

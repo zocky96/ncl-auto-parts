@@ -30,7 +30,7 @@ namespace ncl_auto_parts.viewer {
         
         private oneVenteDataTable tableoneVente;
         
-        private totalDataTable tabletotal;
+        private VoitureDataTable tableVoiture;
         
         private oneFactureDataTable tableoneFacture;
         
@@ -73,8 +73,8 @@ namespace ncl_auto_parts.viewer {
                 if ((ds.Tables["oneVente"] != null)) {
                     base.Tables.Add(new oneVenteDataTable(ds.Tables["oneVente"]));
                 }
-                if ((ds.Tables["total"] != null)) {
-                    base.Tables.Add(new totalDataTable(ds.Tables["total"]));
+                if ((ds.Tables["Voiture"] != null)) {
+                    base.Tables.Add(new VoitureDataTable(ds.Tables["Voiture"]));
                 }
                 if ((ds.Tables["oneFacture"] != null)) {
                     base.Tables.Add(new oneFactureDataTable(ds.Tables["oneFacture"]));
@@ -134,9 +134,9 @@ namespace ncl_auto_parts.viewer {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public totalDataTable total {
+        public VoitureDataTable Voiture {
             get {
-                return this.tabletotal;
+                return this.tableVoiture;
             }
         }
         
@@ -236,8 +236,8 @@ namespace ncl_auto_parts.viewer {
                 if ((ds.Tables["oneVente"] != null)) {
                     base.Tables.Add(new oneVenteDataTable(ds.Tables["oneVente"]));
                 }
-                if ((ds.Tables["total"] != null)) {
-                    base.Tables.Add(new totalDataTable(ds.Tables["total"]));
+                if ((ds.Tables["Voiture"] != null)) {
+                    base.Tables.Add(new VoitureDataTable(ds.Tables["Voiture"]));
                 }
                 if ((ds.Tables["oneFacture"] != null)) {
                     base.Tables.Add(new oneFactureDataTable(ds.Tables["oneFacture"]));
@@ -296,10 +296,10 @@ namespace ncl_auto_parts.viewer {
                     this.tableoneVente.InitVars();
                 }
             }
-            this.tabletotal = ((totalDataTable)(base.Tables["total"]));
+            this.tableVoiture = ((VoitureDataTable)(base.Tables["Voiture"]));
             if ((initTable == true)) {
-                if ((this.tabletotal != null)) {
-                    this.tabletotal.InitVars();
+                if ((this.tableVoiture != null)) {
+                    this.tableVoiture.InitVars();
                 }
             }
             this.tableoneFacture = ((oneFactureDataTable)(base.Tables["oneFacture"]));
@@ -330,8 +330,8 @@ namespace ncl_auto_parts.viewer {
             base.Tables.Add(this.tableVente);
             this.tableoneVente = new oneVenteDataTable();
             base.Tables.Add(this.tableoneVente);
-            this.tabletotal = new totalDataTable();
-            base.Tables.Add(this.tabletotal);
+            this.tableVoiture = new VoitureDataTable();
+            base.Tables.Add(this.tableVoiture);
             this.tableoneFacture = new oneFactureDataTable();
             base.Tables.Add(this.tableoneFacture);
             this.tableProforma = new ProformaDataTable();
@@ -358,7 +358,7 @@ namespace ncl_auto_parts.viewer {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializetotal() {
+        private bool ShouldSerializeVoiture() {
             return false;
         }
         
@@ -439,7 +439,7 @@ namespace ncl_auto_parts.viewer {
         public delegate void oneVenteRowChangeEventHandler(object sender, oneVenteRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void totalRowChangeEventHandler(object sender, totalRowChangeEvent e);
+        public delegate void VoitureRowChangeEventHandler(object sender, VoitureRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void oneFactureRowChangeEventHandler(object sender, oneFactureRowChangeEvent e);
@@ -1487,14 +1487,38 @@ namespace ncl_auto_parts.viewer {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class totalDataTable : global::System.Data.TypedTableBase<totalRow> {
+        public partial class VoitureDataTable : global::System.Data.TypedTableBase<VoitureRow> {
             
-            private global::System.Data.DataColumn columntotal;
+            private global::System.Data.DataColumn columnnom;
+            
+            private global::System.Data.DataColumn columnprenom;
+            
+            private global::System.Data.DataColumn columnadresse;
+            
+            private global::System.Data.DataColumn columnemail;
+            
+            private global::System.Data.DataColumn columnphone;
+            
+            private global::System.Data.DataColumn columnMarque;
+            
+            private global::System.Data.DataColumn columnmodele;
+            
+            private global::System.Data.DataColumn columnannee;
+            
+            private global::System.Data.DataColumn columnplaque;
+            
+            private global::System.Data.DataColumn columncouleur;
+            
+            private global::System.Data.DataColumn columnservice;
+            
+            private global::System.Data.DataColumn columndateEntree;
+            
+            private global::System.Data.DataColumn columndateSortie;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public totalDataTable() {
-                this.TableName = "total";
+            public VoitureDataTable() {
+                this.TableName = "Voiture";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1502,7 +1526,7 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal totalDataTable(global::System.Data.DataTable table) {
+            internal VoitureDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1519,16 +1543,112 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected totalDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected VoitureDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn totalColumn {
+            public global::System.Data.DataColumn nomColumn {
                 get {
-                    return this.columntotal;
+                    return this.columnnom;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn prenomColumn {
+                get {
+                    return this.columnprenom;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn adresseColumn {
+                get {
+                    return this.columnadresse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn emailColumn {
+                get {
+                    return this.columnemail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn phoneColumn {
+                get {
+                    return this.columnphone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MarqueColumn {
+                get {
+                    return this.columnMarque;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn modeleColumn {
+                get {
+                    return this.columnmodele;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn anneeColumn {
+                get {
+                    return this.columnannee;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn plaqueColumn {
+                get {
+                    return this.columnplaque;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn couleurColumn {
+                get {
+                    return this.columncouleur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn serviceColumn {
+                get {
+                    return this.columnservice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn dateEntreeColumn {
+                get {
+                    return this.columndateEntree;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn dateSortieColumn {
+                get {
+                    return this.columndateSortie;
                 }
             }
             
@@ -1543,45 +1663,57 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public totalRow this[int index] {
+            public VoitureRow this[int index] {
                 get {
-                    return ((totalRow)(this.Rows[index]));
+                    return ((VoitureRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event totalRowChangeEventHandler totalRowChanging;
+            public event VoitureRowChangeEventHandler VoitureRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event totalRowChangeEventHandler totalRowChanged;
+            public event VoitureRowChangeEventHandler VoitureRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event totalRowChangeEventHandler totalRowDeleting;
+            public event VoitureRowChangeEventHandler VoitureRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event totalRowChangeEventHandler totalRowDeleted;
+            public event VoitureRowChangeEventHandler VoitureRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddtotalRow(totalRow row) {
+            public void AddVoitureRow(VoitureRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public totalRow AddtotalRow(double total) {
-                totalRow rowtotalRow = ((totalRow)(this.NewRow()));
+            public VoitureRow AddVoitureRow(double nom, string prenom, string adresse, string email, string phone, string Marque, string modele, string annee, string plaque, string couleur, string service, string dateEntree, string dateSortie) {
+                VoitureRow rowVoitureRow = ((VoitureRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        total};
-                rowtotalRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowtotalRow);
-                return rowtotalRow;
+                        nom,
+                        prenom,
+                        adresse,
+                        email,
+                        phone,
+                        Marque,
+                        modele,
+                        annee,
+                        plaque,
+                        couleur,
+                        service,
+                        dateEntree,
+                        dateSortie};
+                rowVoitureRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowVoitureRow);
+                return rowVoitureRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                totalDataTable cln = ((totalDataTable)(base.Clone()));
+                VoitureDataTable cln = ((VoitureDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1589,46 +1721,82 @@ namespace ncl_auto_parts.viewer {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new totalDataTable();
+                return new VoitureDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columntotal = base.Columns["total"];
+                this.columnnom = base.Columns["nom"];
+                this.columnprenom = base.Columns["prenom"];
+                this.columnadresse = base.Columns["adresse"];
+                this.columnemail = base.Columns["email"];
+                this.columnphone = base.Columns["phone"];
+                this.columnMarque = base.Columns["Marque"];
+                this.columnmodele = base.Columns["modele"];
+                this.columnannee = base.Columns["annee"];
+                this.columnplaque = base.Columns["plaque"];
+                this.columncouleur = base.Columns["couleur"];
+                this.columnservice = base.Columns["service"];
+                this.columndateEntree = base.Columns["dateEntree"];
+                this.columndateSortie = base.Columns["dateSortie"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columntotal = new global::System.Data.DataColumn("total", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntotal);
+                this.columnnom = new global::System.Data.DataColumn("nom", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnom);
+                this.columnprenom = new global::System.Data.DataColumn("prenom", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprenom);
+                this.columnadresse = new global::System.Data.DataColumn("adresse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnadresse);
+                this.columnemail = new global::System.Data.DataColumn("email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnemail);
+                this.columnphone = new global::System.Data.DataColumn("phone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnphone);
+                this.columnMarque = new global::System.Data.DataColumn("Marque", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMarque);
+                this.columnmodele = new global::System.Data.DataColumn("modele", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmodele);
+                this.columnannee = new global::System.Data.DataColumn("annee", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnannee);
+                this.columnplaque = new global::System.Data.DataColumn("plaque", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnplaque);
+                this.columncouleur = new global::System.Data.DataColumn("couleur", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncouleur);
+                this.columnservice = new global::System.Data.DataColumn("service", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnservice);
+                this.columndateEntree = new global::System.Data.DataColumn("dateEntree", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndateEntree);
+                this.columndateSortie = new global::System.Data.DataColumn("dateSortie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndateSortie);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public totalRow NewtotalRow() {
-                return ((totalRow)(this.NewRow()));
+            public VoitureRow NewVoitureRow() {
+                return ((VoitureRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new totalRow(builder);
+                return new VoitureRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(totalRow);
+                return typeof(VoitureRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.totalRowChanged != null)) {
-                    this.totalRowChanged(this, new totalRowChangeEvent(((totalRow)(e.Row)), e.Action));
+                if ((this.VoitureRowChanged != null)) {
+                    this.VoitureRowChanged(this, new VoitureRowChangeEvent(((VoitureRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1636,8 +1804,8 @@ namespace ncl_auto_parts.viewer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.totalRowChanging != null)) {
-                    this.totalRowChanging(this, new totalRowChangeEvent(((totalRow)(e.Row)), e.Action));
+                if ((this.VoitureRowChanging != null)) {
+                    this.VoitureRowChanging(this, new VoitureRowChangeEvent(((VoitureRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1645,8 +1813,8 @@ namespace ncl_auto_parts.viewer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.totalRowDeleted != null)) {
-                    this.totalRowDeleted(this, new totalRowChangeEvent(((totalRow)(e.Row)), e.Action));
+                if ((this.VoitureRowDeleted != null)) {
+                    this.VoitureRowDeleted(this, new VoitureRowChangeEvent(((VoitureRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1654,14 +1822,14 @@ namespace ncl_auto_parts.viewer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.totalRowDeleting != null)) {
-                    this.totalRowDeleting(this, new totalRowChangeEvent(((totalRow)(e.Row)), e.Action));
+                if ((this.VoitureRowDeleting != null)) {
+                    this.VoitureRowDeleting(this, new VoitureRowChangeEvent(((VoitureRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemovetotalRow(totalRow row) {
+            public void RemoveVoitureRow(VoitureRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1688,7 +1856,7 @@ namespace ncl_auto_parts.viewer {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "totalDataTable";
+                attribute2.FixedValue = "VoitureDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3281,43 +3449,379 @@ namespace ncl_auto_parts.viewer {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class totalRow : global::System.Data.DataRow {
+        public partial class VoitureRow : global::System.Data.DataRow {
             
-            private totalDataTable tabletotal;
+            private VoitureDataTable tableVoiture;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal totalRow(global::System.Data.DataRowBuilder rb) : 
+            internal VoitureRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tabletotal = ((totalDataTable)(this.Table));
+                this.tableVoiture = ((VoitureDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double total {
+            public double nom {
                 get {
                     try {
-                        return ((double)(this[this.tabletotal.totalColumn]));
+                        return ((double)(this[this.tableVoiture.nomColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'total\' in table \'total\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'nom\' in table \'Voiture\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletotal.totalColumn] = value;
+                    this[this.tableVoiture.nomColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IstotalNull() {
-                return this.IsNull(this.tabletotal.totalColumn);
+            public string prenom {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.prenomColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'prenom\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.prenomColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SettotalNull() {
-                this[this.tabletotal.totalColumn] = global::System.Convert.DBNull;
+            public string adresse {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.adresseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'adresse\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.adresseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string email {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.emailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'email\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.emailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string phone {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.phoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'phone\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.phoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Marque {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.MarqueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Marque\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.MarqueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string modele {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.modeleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'modele\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.modeleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string annee {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.anneeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'annee\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.anneeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string plaque {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.plaqueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'plaque\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.plaqueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string couleur {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.couleurColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'couleur\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.couleurColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string service {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.serviceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'service\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.serviceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string dateEntree {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.dateEntreeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateEntree\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.dateEntreeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string dateSortie {
+                get {
+                    try {
+                        return ((string)(this[this.tableVoiture.dateSortieColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateSortie\' in table \'Voiture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVoiture.dateSortieColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsnomNull() {
+                return this.IsNull(this.tableVoiture.nomColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetnomNull() {
+                this[this.tableVoiture.nomColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsprenomNull() {
+                return this.IsNull(this.tableVoiture.prenomColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetprenomNull() {
+                this[this.tableVoiture.prenomColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsadresseNull() {
+                return this.IsNull(this.tableVoiture.adresseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetadresseNull() {
+                this[this.tableVoiture.adresseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsemailNull() {
+                return this.IsNull(this.tableVoiture.emailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetemailNull() {
+                this[this.tableVoiture.emailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsphoneNull() {
+                return this.IsNull(this.tableVoiture.phoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetphoneNull() {
+                this[this.tableVoiture.phoneColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMarqueNull() {
+                return this.IsNull(this.tableVoiture.MarqueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMarqueNull() {
+                this[this.tableVoiture.MarqueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsmodeleNull() {
+                return this.IsNull(this.tableVoiture.modeleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetmodeleNull() {
+                this[this.tableVoiture.modeleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsanneeNull() {
+                return this.IsNull(this.tableVoiture.anneeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetanneeNull() {
+                this[this.tableVoiture.anneeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsplaqueNull() {
+                return this.IsNull(this.tableVoiture.plaqueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetplaqueNull() {
+                this[this.tableVoiture.plaqueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IscouleurNull() {
+                return this.IsNull(this.tableVoiture.couleurColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetcouleurNull() {
+                this[this.tableVoiture.couleurColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsserviceNull() {
+                return this.IsNull(this.tableVoiture.serviceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetserviceNull() {
+                this[this.tableVoiture.serviceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsdateEntreeNull() {
+                return this.IsNull(this.tableVoiture.dateEntreeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetdateEntreeNull() {
+                this[this.tableVoiture.dateEntreeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsdateSortieNull() {
+                return this.IsNull(this.tableVoiture.dateSortieColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetdateSortieNull() {
+                this[this.tableVoiture.dateSortieColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4157,22 +4661,22 @@ namespace ncl_auto_parts.viewer {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class totalRowChangeEvent : global::System.EventArgs {
+        public class VoitureRowChangeEvent : global::System.EventArgs {
             
-            private totalRow eventRow;
+            private VoitureRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public totalRowChangeEvent(totalRow row, global::System.Data.DataRowAction action) {
+            public VoitureRowChangeEvent(VoitureRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public totalRow Row {
+            public VoitureRow Row {
                 get {
                     return this.eventRow;
                 }

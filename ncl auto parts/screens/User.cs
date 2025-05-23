@@ -66,7 +66,9 @@ namespace ncl_auto_parts.screens
                             if (password.Text.Equals(confPassword.Text))
                             {
                                 int ifCodeEmployerExiste = await UserC.ifCodeEmployerExiste(idEmployer.Text);
+                                main.closeConn();
                                 int ifUserNameExist = await UserC.ifUserEmployerExiste(userName.Text);
+                                main.closeConn();
                                 if (ifCodeEmployerExiste == 0)
                                 {
                                     if (ifUserNameExist == 0)
@@ -85,9 +87,10 @@ namespace ncl_auto_parts.screens
                                             if (passwd.Equals(passwd_conf))
                                             {
                                                 int rep = await UserC.saveUser(nom, prenom, userName.Text, passwd, idEmployer.Text, table);
+                                                main.closeConn();
                                                 if (rep == 0)
                                                 {
-                                                    UserC.showUser(table);
+                                                   // UserC.showUser(table);
                                                     clearFields();
                                                     delete.Visible = false;
                                                     modify.Visible = false;
@@ -179,8 +182,10 @@ namespace ncl_auto_parts.screens
                                 List<string> l1 = new List<string>();
                                 List<string> l2 = new List<string>();
                                 l1 = await EmployerC.getNameAndFirstnameById(idEmployer.Text);
+                                main.closeConn();
                                 nom = l1[0].ToString();
                                 l2 = await EmployerC.getNameAndFirstnameById(idEmployer.Text);
+                                main.closeConn();
                                 prenom = l2[1].ToString();
 
                                 //username = username_u.Text;
@@ -189,6 +194,7 @@ namespace ncl_auto_parts.screens
                                 if (passwd.Equals(passwd_conf))
                                 {
                                     int rep = await UserC.modifyUser(userName.Text, passwd, table, id);
+                                    main.closeConn();
                                     if (rep == 0)
                                     {
                                         MessageBox.Show("Utilisateur modifier avec succes");
@@ -223,6 +229,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             int rep = await UserC.deleteUser(table, id);
+            main.closeConn();
             //MessageBox.Show(id_.ToString());
             if (rep == 0)
             {

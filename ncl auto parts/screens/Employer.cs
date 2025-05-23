@@ -13,7 +13,7 @@ namespace ncl_auto_parts.screens
 {
     public partial class Employer : Form
     {
-        string id = null;
+        string id = null,lot1 = null;
         public Employer()
         {
             InitializeComponent();
@@ -43,9 +43,42 @@ namespace ncl_auto_parts.screens
             poste.Text = "Poste";
             salaire.Text = "";
         }
-        private void save_Click(object sender, EventArgs e)
+        private async void save_Click(object sender, EventArgs e)
         {
             main.closeConn();
+            Random random = new Random();
+            int randomNumber = random.Next(99);
+            string receiptNumber = null;
+            //-------------------
+            try
+            {
+                int maxId = await EmployerC.getMaxId();
+                main.closeConn();
+                receiptNumber = "NCL" + randomNumber.ToString() + maxId.ToString();
+
+                bool receiptExist = await EmployerC.ifIdExistEmploye(receiptNumber);
+                main.closeConn();
+                while (receiptExist)
+                {
+                    int ii = 0;
+                    randomNumber = random.Next(99);
+                    receiptNumber = "NCL" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                    receiptExist = await EmployerC.ifIdExistEmploye(receiptNumber);
+                    main.closeConn();
+                    ii += 1;
+                    if (ii >= 20)
+                    {
+                        receiptNumber = "IOk" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                        receiptExist = await EmployerC.ifIdExistEmploye(receiptNumber);
+                        main.closeConn();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+            //----------------------------
             modify.Visible = false;
             delete.Visible = false;
             bool isAnumber = false;
@@ -92,7 +125,7 @@ namespace ncl_auto_parts.screens
                                         isAnumber = float.TryParse(salaire.Text, out j);
                                         if (isAnumber)
                                         {
-                                            EmployerC.saveEmployer(nom.Text, prenom.Text, nif.Text, mail.Text, adresse.Text, "", poste.Text, table, phone.Text,float.Parse(salaire.Text));
+                                            EmployerC.saveEmployer(nom.Text, prenom.Text, nif.Text, mail.Text, adresse.Text, "", poste.Text, table, phone.Text,float.Parse(salaire.Text),receiptNumber);
                                             clearField();
                                         }
                                         else
@@ -117,6 +150,8 @@ namespace ncl_auto_parts.screens
         private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             id = table.CurrentRow.Cells["id_"].Value.ToString();
+            lot1 = table.CurrentRow.Cells["lot"].Value.ToString();
+            //MessageBox.Show(id);
             nom.Text = table.CurrentRow.Cells["nom_"].Value.ToString();
             prenom.Text = table.CurrentRow.Cells["prenom_"].Value.ToString();
             adresse.Text = table.CurrentRow.Cells["adresse_"].Value.ToString();
@@ -170,7 +205,7 @@ namespace ncl_auto_parts.screens
                                 }
                                 else
                                 {
-                                    if (poste.Text == "caissier" || poste.Text == "PDG" || poste.Text == "gestionnaire de stock" || poste.Text == "manager" || poste.Text == "secretaire" || poste.Text == "directeur")
+                                    if (poste.Text == "caissier" || poste.Text == "PDG" || poste.Text == "gestionnaire de stock" || poste.Text == "manager" || poste.Text == "secretaire" || poste.Text == "directeur" || poste.Text== "mecanicien")
                                     {
                                         //ok
                                         isAnumber = float.TryParse(salaire.Text, out j);
@@ -179,6 +214,7 @@ namespace ncl_auto_parts.screens
                                             modify.Visible = false;
                                             delete.Visible = false;
                                             EmployerC.modifyEmployer(nom.Text, prenom.Text, nif.Text, adresse.Text, "", poste.Text, table, id, phone.Text, mail.Text,salaire.Text);
+                                            main.closeConn();
                                             clearField();
                                         }
                                         else
@@ -205,7 +241,8 @@ namespace ncl_auto_parts.screens
             main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
-            EmployerC.deleteEmployer(id, table);
+            EmployerC.deleteEmployer(id,lot1,table);
+            main.closeConn();
             clearField();
         }
 

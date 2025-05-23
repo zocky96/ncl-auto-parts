@@ -31,18 +31,19 @@ namespace ncl_auto_parts.screens
 
         private void deleteCart_Click(object sender, EventArgs e)
         {
-            main.closeConn();
             deleteCart.Visible = false;
             videCart.Visible = false;
             CartC.deleteToCart(id_Cart, tableCart);
+            main.closeConn();
+
         }
 
         private void videCart_Click(object sender, EventArgs e)
         {
-            main.closeConn();
             deleteCart.Visible = false;
             videCart.Visible = false;
             CartC.CleanCart(tableCart);
+            main.closeConn();
         }
 
         private void tableCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -103,7 +104,7 @@ namespace ncl_auto_parts.screens
                     //prix = result["prix"].ToString();
                     clientName = result["clientName"].ToString();
                     rep = await VenteC.vendre(name, int.Parse(quantite), tableCart, receiptNumber, clientName,devise.Text);
-
+                    main.closeConn();
                 }
 
                 if (rep == 0)
@@ -115,6 +116,7 @@ namespace ncl_auto_parts.screens
                     date = year + "/" + month + "/" + day;
 
                     CartC.CleanCart(tableCart);
+                    main.closeConn();
                     //result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + receiptNumber + "'");
                     //public List<(string name, int quantite, float price, float tax, float total)> donnees;
                     donnees = new List<(string, int, float, float)>();

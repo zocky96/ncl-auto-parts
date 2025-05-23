@@ -197,6 +197,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -262,6 +263,12 @@
     <Compile Include="rapport\oneVente.Designer.cs">
       <DependentUpon>oneVente.cs</DependentUpon>
     </Compile>
+    <Compile Include="rapport\Payroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rapport\Payroll.Designer.cs">
+      <DependentUpon>Payroll.cs</DependentUpon>
+    </Compile>
     <Compile Include="rapport\ProformaViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +286,12 @@
     </Compile>
     <Compile Include="rapport\VenteViewer.Designer.cs">
       <DependentUpon>VenteViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rapport\VoitureViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rapport\VoitureViewer.Designer.cs">
+      <DependentUpon>VoitureViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="screens\Article.cs">
       <SubType>Form</SubType>
@@ -376,11 +389,11 @@
     <Compile Include="screens\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="screens\Payroll.cs">
+    <Compile Include="screens\Cash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="screens\Payroll.Designer.cs">
-      <DependentUpon>Payroll.cs</DependentUpon>
+    <Compile Include="screens\Cash.Designer.cs">
+      <DependentUpon>Cash.cs</DependentUpon>
     </Compile>
     <Compile Include="screens\Proforma.cs">
       <SubType>Form</SubType>
@@ -449,6 +462,9 @@
     <EmbeddedResource Include="rapport\oneVente.resx">
       <DependentUpon>oneVente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="rapport\Payroll.resx">
+      <DependentUpon>Payroll.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rapport\Proforma.rdlc" />
     <EmbeddedResource Include="rapport\ProformaViewer.resx">
       <DependentUpon>ProformaViewer.cs</DependentUpon>
@@ -460,6 +476,10 @@
     <EmbeddedResource Include="rapport\Vente.rdlc" />
     <EmbeddedResource Include="rapport\VenteViewer.resx">
       <DependentUpon>VenteViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rapport\voiture.rdlc" />
+    <EmbeddedResource Include="rapport\VoitureViewer.resx">
+      <DependentUpon>VoitureViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="viewer\RapportVente.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -520,8 +540,8 @@
     <EmbeddedResource Include="screens\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="screens\Payroll.resx">
-      <DependentUpon>Payroll.cs</DependentUpon>
+    <EmbeddedResource Include="screens\Cash.resx">
+      <DependentUpon>Cash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screens\Proforma.resx">
       <DependentUpon>Proforma.cs</DependentUpon>
@@ -667,6 +687,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\ncl.jpg" />
+    <None Include="Resources\us_dollar_30px.png" />
+    <None Include="Resources\us_dollar_50px.png" />
+    <None Include="Resources\bar_chart_50px.png" />
+    <None Include="Resources\team_30px.png" />
+    <None Include="Resources\shopping_bag_50px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

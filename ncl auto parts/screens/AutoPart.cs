@@ -28,6 +28,7 @@ namespace ncl_auto_parts.screens
         {
             InitializeComponent();
             AutoPartC.showFacture(table);
+            main.closeConn();
         }
 
         private async void facture_Click(object sender, EventArgs e)
@@ -76,6 +77,7 @@ namespace ncl_auto_parts.screens
                                         {
                                             AutoPartM facture = new AutoPartM(clientName.Text,service.Text,devise.Text,plaque.Text,vehicule.Text,phone.Text,description.Text,int.Parse(quantite.Text),float.Parse(montant.Text),int.Parse(quantite.Text) * float.Parse(montant.Text));
                                             int rep = await AutoPartC.saveFacture(facture, table);
+                                            main.closeConn();
                                             if (rep == 0)
                                             {
                                                 clearField();
@@ -122,9 +124,10 @@ namespace ncl_auto_parts.screens
 
         private async void delete_Click(object sender, EventArgs e)
         {
-            main.closeConn();
             delete.Visible = false;
             int rep = await AutoPartC.deleteFacture(table, id);
+            main.closeConn();
+
         }
         private void clearField()
         {
@@ -140,8 +143,8 @@ namespace ncl_auto_parts.screens
 
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
-            main.closeConn();
             AutoPartC.cleanFacture(table);
+            main.closeConn();
         }
 
         private async void bunifuButton1_Click(object sender, EventArgs e)

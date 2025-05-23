@@ -92,6 +92,10 @@
             this.delete = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.save = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+            this.lal = new System.Windows.Forms.Label();
+            this.salaire = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+            this.lot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nom_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenom_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,9 +105,6 @@
             this.poste_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
-            this.lal = new System.Windows.Forms.Label();
-            this.salaire = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
             // 
@@ -848,6 +849,7 @@
             this.table.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.table.ColumnHeadersHeight = 40;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lot,
             this.id_,
             this.nom_,
             this.prenom_,
@@ -895,51 +897,6 @@
             this.table.TabIndex = 36;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
-            // 
-            // id_
-            // 
-            this.id_.HeaderText = "ID";
-            this.id_.Name = "id_";
-            // 
-            // nom_
-            // 
-            this.nom_.HeaderText = "Nom";
-            this.nom_.Name = "nom_";
-            // 
-            // prenom_
-            // 
-            this.prenom_.HeaderText = "Prenom";
-            this.prenom_.Name = "prenom_";
-            // 
-            // mail_
-            // 
-            this.mail_.HeaderText = "Mail";
-            this.mail_.Name = "mail_";
-            // 
-            // nif_
-            // 
-            this.nif_.HeaderText = "Nif";
-            this.nif_.Name = "nif_";
-            // 
-            // adresse_
-            // 
-            this.adresse_.HeaderText = "Adresse";
-            this.adresse_.Name = "adresse_";
-            // 
-            // poste_
-            // 
-            this.poste_.HeaderText = "Poste";
-            this.poste_.Name = "poste_";
-            // 
-            // phone_
-            // 
-            this.phone_.HeaderText = "Téléphone";
-            this.phone_.Name = "phone_";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Salaire";
-            this.Column1.Name = "Column1";
             // 
             // searchBar
             // 
@@ -1101,6 +1058,56 @@
             this.salaire.UseSystemPasswordChar = false;
             this.salaire.WordWrap = true;
             // 
+            // lot
+            // 
+            this.lot.HeaderText = "";
+            this.lot.Name = "lot";
+            // 
+            // id_
+            // 
+            this.id_.HeaderText = "ID";
+            this.id_.Name = "id_";
+            // 
+            // nom_
+            // 
+            this.nom_.HeaderText = "Nom";
+            this.nom_.Name = "nom_";
+            // 
+            // prenom_
+            // 
+            this.prenom_.HeaderText = "Prenom";
+            this.prenom_.Name = "prenom_";
+            // 
+            // mail_
+            // 
+            this.mail_.HeaderText = "Mail";
+            this.mail_.Name = "mail_";
+            // 
+            // nif_
+            // 
+            this.nif_.HeaderText = "Nif";
+            this.nif_.Name = "nif_";
+            // 
+            // adresse_
+            // 
+            this.adresse_.HeaderText = "Adresse";
+            this.adresse_.Name = "adresse_";
+            // 
+            // poste_
+            // 
+            this.poste_.HeaderText = "Poste";
+            this.poste_.Name = "poste_";
+            // 
+            // phone_
+            // 
+            this.phone_.HeaderText = "Téléphone";
+            this.phone_.Name = "phone_";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Salaire";
+            this.Column1.Name = "Column1";
+            // 
             // Employer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1159,6 +1166,7 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox searchBar;
         private System.Windows.Forms.Label lal;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox salaire;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lot;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
         private System.Windows.Forms.DataGridViewTextBoxColumn nom_;
         private System.Windows.Forms.DataGridViewTextBoxColumn prenom_;

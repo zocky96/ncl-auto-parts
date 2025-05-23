@@ -14,13 +14,13 @@ using System.Windows.Forms;
 
 namespace ncl_auto_parts.screens
 {
-    public partial class Payroll : Form
+    public partial class Cash : Form
     {
-        public Payroll()
+        public Cash()
         {
             InitializeComponent();
             DepenseC.showDepense(tableDepense);
-            
+            main.closeConn();
             initWin();
             
         }
@@ -36,6 +36,7 @@ namespace ncl_auto_parts.screens
                 quantite = result["amount"].ToString();
 
             }
+            main.closeConn();
             return quantite;
         }
         public static async Task<string> getAutoHtg()
@@ -50,6 +51,7 @@ namespace ncl_auto_parts.screens
                 quantite = result["amount"].ToString();
 
             }
+            main.closeConn();
             return quantite;
         }
         //-
@@ -65,6 +67,8 @@ namespace ncl_auto_parts.screens
                 quantite = result["amount"].ToString();
 
             }
+            main.closeConn();
+
             return quantite;
         }
         //-
@@ -80,6 +84,7 @@ namespace ncl_auto_parts.screens
                 quantite = result["amount"].ToString();
 
             }
+            main.closeConn();
             return quantite;
         }
 
@@ -135,6 +140,7 @@ namespace ncl_auto_parts.screens
                             {
                                 DepenseM depense = new DepenseM(motif.Text, explication.Text, main.userName, date, devise.Text, float.Parse(montant.Text));
                                 rep = await DepenseC.saveDepense(depense, tableDepense);
+                                main.closeConn();
                                 if (rep == 0)
                                 {
                                     main.closeConn();
@@ -155,6 +161,8 @@ namespace ncl_auto_parts.screens
                             {
                                 DepenseM depense = new DepenseM(motif.Text, explication.Text, main.userName, date, devise.Text, float.Parse(montant.Text));
                                 rep = await DepenseC.saveDepense(depense, tableDepense);
+                                main.closeConn();
+
                                 if (rep == 0)
                                 {
                                     clearField();
@@ -221,10 +229,12 @@ namespace ncl_auto_parts.screens
                         if (devise.Text == "US")
                         {
                             int rep = await VenteC.AddUsMoney(float.Parse(montant.Text));
+                            main.closeConn();
                             if (rep == 0)
                             {
                                 DepenseM depense = new DepenseM(motif.Text, explication.Text, main.userName, date, devise.Text, float.Parse(montant.Text));
                                 rep = await DepenseC.saveDepense(depense, tableDepense);
+                                main.closeConn();
                                 if (rep == 0)
                                 {
                                     clearField();
@@ -239,10 +249,12 @@ namespace ncl_auto_parts.screens
                         else
                         {
                             int rep = await VenteC.AddHtgMoney(float.Parse(montant.Text));
+                            main.closeConn();
                             if (rep == 0)
                             {
                                 DepenseM depense = new DepenseM(motif.Text, explication.Text, main.userName, date, devise.Text, float.Parse(montant.Text));
                                 rep = await DepenseC.saveDepense(depense, tableDepense);
+                                main.closeConn();
                                 if (rep == 0)
                                 {
                                     clearField();
@@ -319,10 +331,12 @@ namespace ncl_auto_parts.screens
                         if (devise2.Text == "US")
                         {
                             int rep = await VenteC.RemoveUsMoneyGarage(float.Parse(montant2.Text));
+                            main.closeConn();
                             if (rep == 0)
                             {
                                 DepenseM depense = new DepenseM(motif2.Text, explication2.Text, main.userName, date, devise2.Text, float.Parse(montant2.Text));
                                 rep = await DepenseC.saveDepenseGarage(depense, table2);
+                                main.closeConn();
                                 if (rep == 0)
                                 {
                                     DepenseC.showDepenseGarage(table2);
@@ -340,10 +354,13 @@ namespace ncl_auto_parts.screens
                         else
                         {
                             int rep = await VenteC.RemoveHtgMoneyGarage(float.Parse(montant2.Text));
+                            main.closeConn();
+
                             if (rep == 0)
                             {
                                 DepenseM depense = new DepenseM(motif2.Text, explication2.Text, main.userName, date, devise2.Text, float.Parse(montant2.Text));
                                 rep = await DepenseC.saveDepenseGarage(depense, table2);
+                                main.closeConn();
                                 if (rep == 0)
                                 {
                                     DepenseC.showDepenseGarage(table2);
@@ -403,9 +420,12 @@ namespace ncl_auto_parts.screens
                             {
                                 DepenseM depense = new DepenseM("", explication3.Text, main.userName, date, devise3.Text, float.Parse(montant3.Text));
                                 rep = await DepenseC.saveAjout(depense, tableDepense);
+                                main.closeConn();
+
                                 if (rep == 0)
                                 {
                                     DepenseC.showAjout(table3);
+                                    main.closeConn();
                                     clearField();
                                     MessageBox.Show("Montant ajouter avec succes");
                                 }
@@ -418,13 +438,18 @@ namespace ncl_auto_parts.screens
                         else
                         {
                             int rep = await VenteC.AddHtgMoney(float.Parse(montant3.Text));
+                            main.closeConn();
+
                             if (rep == 0)
                             {
                                 DepenseM depense = new DepenseM("", explication3.Text, main.userName, date, devise3.Text, float.Parse(montant3.Text));
                                 rep = await DepenseC.saveAjout(depense, tableDepense);
+                                main.closeConn();
+
                                 if (rep == 0)
                                 {
                                     DepenseC.showAjout(table3);
+                                    main.closeConn();
                                     clearField();
                                     MessageBox.Show("Montant ajouter avec succes");
                                 }
@@ -471,13 +496,19 @@ namespace ncl_auto_parts.screens
                         if (devise4.Text == "US")
                         {
                             int rep = await VenteC.AddUsMoneyGarage(float.Parse(montant4.Text));
+                            main.closeConn();
+
                             if (rep == 0)
                             {
                                 DepenseM depense = new DepenseM("", explication4.Text, main.userName, date, devise4.Text, float.Parse(montant4.Text));
                                 rep = await DepenseC.saveAjoutGarage(depense, tableDepense);
+                                main.closeConn();
+
                                 if (rep == 0)
                                 {
                                     DepenseC.showAjoutGarage(table4);
+                                    main.closeConn();
+
                                     clearField();
                                     MessageBox.Show("Montant ajouter avec succes");
                                 }
@@ -490,13 +521,19 @@ namespace ncl_auto_parts.screens
                         else
                         {
                             int rep = await VenteC.AddHTGMoneyGarage(float.Parse(montant4.Text));
+                            main.closeConn();
+
                             if (rep == 0)
                             {
                                 DepenseM depense = new DepenseM("", explication4.Text, main.userName, date, devise4.Text, float.Parse(montant4.Text));
                                 rep = await DepenseC.saveAjoutGarage(depense, tableDepense);
+                                main.closeConn();
+
                                 if (rep == 0)
                                 {
                                     DepenseC.showAjoutGarage(table4);
+                                    main.closeConn();
+
                                     clearField();
                                     MessageBox.Show("Montant ajouter avec succes");
                                 }

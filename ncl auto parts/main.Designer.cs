@@ -67,43 +67,45 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.login = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.logout = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.sidebar = new System.Windows.Forms.Panel();
+            this.settings = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.labA = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.labC = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.labE = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.labG = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.auto = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.body = new System.Windows.Forms.Panel();
-            this.settings = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.payroll = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.garage = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.autoPart = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.labC = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.user = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.employe = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.labE = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.reparation = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.client = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.labG = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.fournisseur = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.cart = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.vente = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.article = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.auto = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.body = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.sidebar.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -121,24 +123,34 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.login);
-            this.panel2.Controls.Add(this.logout);
+            this.panel2.Controls.Add(this.panel8);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(716, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(263, 49);
             this.panel2.TabIndex = 0;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(143)))), ((int)(((byte)(235)))));
+            this.panel8.Controls.Add(this.login);
+            this.panel8.Controls.Add(this.logout);
+            this.panel8.Location = new System.Drawing.Point(101, 5);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(135, 36);
+            this.panel8.TabIndex = 0;
             // 
             // login
             // 
             this.login.AutoSize = true;
             this.login.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login.ForeColor = System.Drawing.Color.White;
-            this.login.Location = new System.Drawing.Point(102, 12);
+            this.login.Location = new System.Drawing.Point(-2, 7);
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(149, 22);
+            this.login.Size = new System.Drawing.Size(164, 22);
             this.login.TabIndex = 4;
-            this.login.Text = "Connecté         ";
+            this.login.Text = "   Connecté         ";
             this.login.Click += new System.EventHandler(this.bunifuCustomLabel2_Click);
             // 
             // logout
@@ -146,11 +158,11 @@
             this.logout.AutoSize = true;
             this.logout.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logout.ForeColor = System.Drawing.Color.White;
-            this.logout.Location = new System.Drawing.Point(124, 12);
+            this.logout.Location = new System.Drawing.Point(-2, 7);
             this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(127, 22);
+            this.logout.Size = new System.Drawing.Size(132, 22);
             this.logout.TabIndex = 3;
-            this.logout.Text = "Déconnecté";
+            this.logout.Text = " Déconnecté";
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // bunifuCustomLabel1
@@ -164,6 +176,19 @@
             this.bunifuCustomLabel1.TabIndex = 1;
             this.bunifuCustomLabel1.Text = "NCL Auto Service";
             this.bunifuCustomLabel1.Click += new System.EventHandler(this.bunifuCustomLabel1_Click);
+            // 
+            // bunifuImageButton1
+            // 
+            this.bunifuImageButton1.Image = global::ncl_auto_parts.Properties.Resources.menu_48px;
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.Location = new System.Drawing.Point(18, 12);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Size = new System.Drawing.Size(41, 28);
+            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton1.TabIndex = 0;
+            this.bunifuImageButton1.TabStop = false;
+            this.bunifuImageButton1.Zoom = 10;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
             // sidebar
             // 
@@ -191,118 +216,6 @@
             this.sidebar.Size = new System.Drawing.Size(229, 634);
             this.sidebar.TabIndex = 1;
             this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.labA);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 557);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(229, 27);
-            this.panel7.TabIndex = 7;
-            // 
-            // labA
-            // 
-            this.labA.AutoSize = true;
-            this.labA.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labA.ForeColor = System.Drawing.Color.Gray;
-            this.labA.Location = new System.Drawing.Point(4, 4);
-            this.labA.Name = "labA";
-            this.labA.Size = new System.Drawing.Size(140, 22);
-            this.labA.TabIndex = 6;
-            this.labA.Text = "Administration";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.labC);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 410);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(229, 29);
-            this.panel6.TabIndex = 12;
-            // 
-            // labC
-            // 
-            this.labC.AutoSize = true;
-            this.labC.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labC.ForeColor = System.Drawing.Color.Gray;
-            this.labC.Location = new System.Drawing.Point(6, 3);
-            this.labC.Name = "labC";
-            this.labC.Size = new System.Drawing.Size(128, 22);
-            this.labC.TabIndex = 5;
-            this.labC.Text = "Comptabilité";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.labE);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 299);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(229, 33);
-            this.panel5.TabIndex = 13;
-            // 
-            // labE
-            // 
-            this.labE.AutoSize = true;
-            this.labE.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labE.ForeColor = System.Drawing.Color.Gray;
-            this.labE.Location = new System.Drawing.Point(3, 4);
-            this.labE.Name = "labE";
-            this.labE.Size = new System.Drawing.Size(88, 22);
-            this.labE.TabIndex = 4;
-            this.labE.Text = "Employé";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.labG);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 191);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(229, 30);
-            this.panel4.TabIndex = 13;
-            // 
-            // labG
-            // 
-            this.labG.AutoSize = true;
-            this.labG.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labG.ForeColor = System.Drawing.Color.Gray;
-            this.labG.Location = new System.Drawing.Point(3, 5);
-            this.labG.Name = "labG";
-            this.labG.Size = new System.Drawing.Size(84, 22);
-            this.labG.TabIndex = 5;
-            this.labG.Text = "Garage";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.auto);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(229, 35);
-            this.panel3.TabIndex = 2;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // auto
-            // 
-            this.auto.AutoSize = true;
-            this.auto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.auto.ForeColor = System.Drawing.Color.Gray;
-            this.auto.Location = new System.Drawing.Point(3, 6);
-            this.auto.Name = "auto";
-            this.auto.Size = new System.Drawing.Size(105, 22);
-            this.auto.TabIndex = 2;
-            this.auto.Text = "Auto Parts";
-            // 
-            // body
-            // 
-            this.body.BackColor = System.Drawing.Color.White;
-            this.body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.body.Location = new System.Drawing.Point(229, 49);
-            this.body.Name = "body";
-            this.body.Padding = new System.Windows.Forms.Padding(5);
-            this.body.Size = new System.Drawing.Size(750, 634);
-            this.body.TabIndex = 2;
-            this.body.Paint += new System.Windows.Forms.PaintEventHandler(this.body_Paint);
             // 
             // settings
             // 
@@ -368,6 +281,26 @@
             this.settings.TextMarginLeft = 0;
             this.settings.UseDefaultRadiusAndThickness = true;
             this.settings.Click += new System.EventHandler(this.bunifuButton12_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.labA);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 557);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(229, 27);
+            this.panel7.TabIndex = 7;
+            // 
+            // labA
+            // 
+            this.labA.AutoSize = true;
+            this.labA.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labA.ForeColor = System.Drawing.Color.Gray;
+            this.labA.Location = new System.Drawing.Point(4, 4);
+            this.labA.Name = "labA";
+            this.labA.Size = new System.Drawing.Size(140, 22);
+            this.labA.TabIndex = 6;
+            this.labA.Text = "Administration";
             // 
             // payroll
             // 
@@ -564,6 +497,26 @@
             this.autoPart.UseDefaultRadiusAndThickness = true;
             this.autoPart.Click += new System.EventHandler(this.autoPart_Click);
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.labC);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 410);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(229, 29);
+            this.panel6.TabIndex = 12;
+            // 
+            // labC
+            // 
+            this.labC.AutoSize = true;
+            this.labC.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labC.ForeColor = System.Drawing.Color.Gray;
+            this.labC.Location = new System.Drawing.Point(6, 3);
+            this.labC.Name = "labC";
+            this.labC.Size = new System.Drawing.Size(128, 22);
+            this.labC.TabIndex = 5;
+            this.labC.Text = "Comptabilité";
+            // 
             // user
             // 
             this.user.AllowToggling = false;
@@ -694,6 +647,26 @@
             this.employe.UseDefaultRadiusAndThickness = true;
             this.employe.Click += new System.EventHandler(this.employe_Click);
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.labE);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 299);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(229, 33);
+            this.panel5.TabIndex = 13;
+            // 
+            // labE
+            // 
+            this.labE.AutoSize = true;
+            this.labE.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labE.ForeColor = System.Drawing.Color.Gray;
+            this.labE.Location = new System.Drawing.Point(3, 4);
+            this.labE.Name = "labE";
+            this.labE.Size = new System.Drawing.Size(88, 22);
+            this.labE.TabIndex = 4;
+            this.labE.Text = "Employé";
+            // 
             // reparation
             // 
             this.reparation.AllowToggling = false;
@@ -823,6 +796,26 @@
             this.client.TextMarginLeft = 0;
             this.client.UseDefaultRadiusAndThickness = true;
             this.client.Click += new System.EventHandler(this.client_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.labG);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 191);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(229, 30);
+            this.panel4.TabIndex = 13;
+            // 
+            // labG
+            // 
+            this.labG.AutoSize = true;
+            this.labG.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labG.ForeColor = System.Drawing.Color.Gray;
+            this.labG.Location = new System.Drawing.Point(3, 5);
+            this.labG.Name = "labG";
+            this.labG.Size = new System.Drawing.Size(84, 22);
+            this.labG.TabIndex = 5;
+            this.labG.Text = "Garage";
             // 
             // fournisseur
             // 
@@ -1084,18 +1077,37 @@
             this.article.UseDefaultRadiusAndThickness = true;
             this.article.Click += new System.EventHandler(this.bunifuButton1_Click);
             // 
-            // bunifuImageButton1
+            // panel3
             // 
-            this.bunifuImageButton1.Image = global::ncl_auto_parts.Properties.Resources.menu_48px;
-            this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(18, 12);
-            this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(41, 28);
-            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton1.TabIndex = 0;
-            this.bunifuImageButton1.TabStop = false;
-            this.bunifuImageButton1.Zoom = 10;
-            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
+            this.panel3.Controls.Add(this.auto);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(229, 35);
+            this.panel3.TabIndex = 2;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // auto
+            // 
+            this.auto.AutoSize = true;
+            this.auto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.auto.ForeColor = System.Drawing.Color.Gray;
+            this.auto.Location = new System.Drawing.Point(3, 6);
+            this.auto.Name = "auto";
+            this.auto.Size = new System.Drawing.Size(105, 22);
+            this.auto.TabIndex = 2;
+            this.auto.Text = "Auto Parts";
+            // 
+            // body
+            // 
+            this.body.BackColor = System.Drawing.Color.White;
+            this.body.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.body.Location = new System.Drawing.Point(229, 49);
+            this.body.Name = "body";
+            this.body.Padding = new System.Windows.Forms.Padding(5);
+            this.body.Size = new System.Drawing.Size(750, 634);
+            this.body.TabIndex = 2;
+            this.body.Paint += new System.Windows.Forms.PaintEventHandler(this.body_Paint);
             // 
             // main
             // 
@@ -1107,15 +1119,18 @@
             this.Controls.Add(this.body);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "main";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCL Auto Parts";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.sidebar.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -1127,7 +1142,6 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1164,6 +1178,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel labG;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
     }
 }
 

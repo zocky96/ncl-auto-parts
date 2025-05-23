@@ -86,7 +86,8 @@ namespace ncl_auto_parts.screens
                                                 {
                                                     AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, int.Parse(quantite.Text), float.Parse(montant.Text), int.Parse(quantite.Text) * float.Parse(montant.Text));
                                                     int rep = await GarageC.saveFacture(facture, table);
-                                                    if (rep == 0)
+                                                main.closeConn();
+                                                if (rep == 0)
                                                     {
                                                         clearField();
                                                         //MessageBox.Show("Factué avec succè");
@@ -126,6 +127,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             GarageC.cleanFacture(table);
+            main.closeConn();
         }
 
         private async void delete_Click(object sender, EventArgs e)
@@ -133,6 +135,7 @@ namespace ncl_auto_parts.screens
             main.closeConn();
             delete.Visible = false;
             int rep = await GarageC.deleteFacture(table, id);
+            main.closeConn();
         }
 
         private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -64,6 +64,7 @@ namespace ncl_auto_parts.screens
                             else
                             {
                                 int rep = await ClientC.saveClient(nom.Text, prenom.Text, adresse.Text, phone.Text, mail.Text, table);
+                                main.closeConn();
                                 if (rep == 0)
                                 {
                                     clearField();
@@ -132,6 +133,7 @@ namespace ncl_auto_parts.screens
                             else
                             {
                                 int rep = await ClientC.modifyClient(nom.Text, prenom.Text, adresse.Text, phone.Text, mail.Text, table,id);
+                                main.closeConn();
                                 if (rep == 0)
                                 {
                                     clearField();
@@ -158,6 +160,7 @@ namespace ncl_auto_parts.screens
             modify.Visible = false;
             delete.Visible = false;
             int rep = await ClientC.deleteClient(table, id);
+            main.closeConn();
             if (rep == 0)
             {
                 clearField();

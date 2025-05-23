@@ -33,6 +33,8 @@ namespace ncl_auto_parts.screens
                     table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["devise"], result["no_recu"], result["date"], result["user"]);
 
                 }
+                main.closeConn();
+
             }
             catch
             {

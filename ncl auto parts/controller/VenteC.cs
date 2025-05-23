@@ -168,6 +168,7 @@ namespace ncl_auto_parts.controller
         {
             
             int rep = await IfProductExist(nomProduit);
+            main.closeConn();
             if (rep == 0)
             {
                 MessageBox.Show("Impossible d'annuler la vente!\nCe produit a ete efface");
@@ -177,6 +178,7 @@ namespace ncl_auto_parts.controller
                 float total = 0;
                 VenteM vente = null;
                 MySqlDataReader result = await dbConfig.getResultCommand("select *from vente where receiptNumber='"+receipt+"'");
+                main.closeConn();
                 int response=-1;
                 try
                 {
@@ -186,9 +188,12 @@ namespace ncl_auto_parts.controller
                     while (result.Read())
                     {
                         dbConfig.execute_command("insert into canceledvente(nom_du_produit,prix,quantite,total,signature_autorise,date,receiptNumber,clientName,devise) values('" + result["nom_du_produit"].ToString() +"',"+float.Parse(result["prix"].ToString()) +","+int.Parse(result["quantite"].ToString()) +","+float.Parse(result["total"].ToString()) +",'"+main.userName+"','"+ date + "','"+receipt+"','"+ result["clientName"].ToString() + "','"+ result["devise"].ToString() + "')");
+                        main.closeConn();
                         vente = await getPriceAndQuantite(result["nom_du_produit"].ToString());
+                        main.closeConn();
                         int newQuantite = int.Parse(vente.Quantite.ToString()) + quantite;
                         response = await updateQuantite(vente.NomDuProduit, newQuantite);
+                        main.closeConn();
                     }
                     if (response == 0)
                     {
@@ -198,14 +203,18 @@ namespace ncl_auto_parts.controller
                             float money = vente.Prix * quantite;
                             
                             RemoveHtgMoney(money);
+                            main.closeConn();
                         }
                         else
                         {
                             float money = vente.Prix * quantite;
                             RemoveUsMoney(money);
+                            main.closeConn();
                         }
                         deleteVente(receipt, table);
+                        main.closeConn();
                         getArticleSum();
+                        main.closeConn();
                         MessageBox.Show("Vente annulée avec succes");
                     }
                     else
@@ -246,6 +255,7 @@ namespace ncl_auto_parts.controller
                     }
                 }
             }
+            main.closeConn();
 
 
 

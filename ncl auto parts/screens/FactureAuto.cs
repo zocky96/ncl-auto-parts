@@ -61,6 +61,7 @@ namespace ncl_auto_parts.screens
             else
             {
                 MySqlDataReader result = await AutoPartC.getGoodFacture(id);
+                
                 string date;
                 while (result.Read())
                 {
@@ -69,21 +70,28 @@ namespace ncl_auto_parts.screens
                     devise = result["devise"].ToString();
                     sum += float.Parse(result["montant"].ToString());
                 }
+                main.closeConn();
                 if (devise == "US")
                 {
                     VenteC.RemoveUsMoney(sum);
+                    main.closeConn();
                     AutoPartC.deleteGoodFacture(table, id);
+                    main.closeConn();
                     id = "";
                     AutoPartC.showGoodFacture(table);
+                    main.closeConn();
                     MessageBox.Show("Facture annulée avec succès");
                 }
                 else
                 {
                    
                     VenteC.RemoveHtgMoney(sum);
+                    main.closeConn();
                     AutoPartC.deleteGoodFacture(table, id);
+                    main.closeConn();
                     id = "";
                     AutoPartC.showGoodFacture(table);
+                    main.closeConn();
                     MessageBox.Show("Facture annulée avec succès");
                 }
             }

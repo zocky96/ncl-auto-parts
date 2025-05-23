@@ -48,6 +48,7 @@ namespace ncl_auto_parts.screens
                 else
                 {
                     FournisseurC.searchFournisseur(searchBar.Text, table);
+                    main.closeConn();
                 }
 
             }
@@ -113,7 +114,8 @@ namespace ncl_auto_parts.screens
                             {
                                 //put that fucking fuction here
                                 int rep = await FournisseurC.saveFournisseur(nom.Text, prenom.Text, phone.Text, adresse.Text, productName.Text, table);
-                                if(rep == 0)
+                                main.closeConn();
+                                if (rep == 0)
                                 {
                                     clearField();
                                     MessageBox.Show("Fournisseur enregistrer avec succes");
@@ -145,6 +147,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             int rep = await FournisseurC.deleteFournisseur(table, id);
+            main.closeConn();
             if (rep == 0)
             {
                 modify.Visible = false;
@@ -196,6 +199,7 @@ namespace ncl_auto_parts.screens
                             {
                                 //put that fucking fuction here
                                 int rep = await FournisseurC.modifyFournisseur(nom.Text, prenom.Text, phone.Text, adresse.Text, productName.Text, table,id);
+                                main.closeConn();
                                 if (rep == 0)
                                 {
                                     clearField();

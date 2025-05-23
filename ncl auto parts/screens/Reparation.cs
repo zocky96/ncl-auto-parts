@@ -1,4 +1,5 @@
 ﻿using ncl_auto_parts.controller;
+using ncl_auto_parts.rapport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace ncl_auto_parts.screens
 {
     public partial class Reparation : Form
     {
-        string id=null, ClientName = "", realDate = "";
+        string id=null, ClientName = "", realDate = "",reparationID=null;
         public List<(string service, float montant)> donnees;
         float realTotal = 0;
 
@@ -50,6 +51,7 @@ namespace ncl_auto_parts.screens
         private async void save_Click(object sender, EventArgs e)
         {
             main.closeConn();
+            print.Visible = false;
             bool isAnumber;
             int i ;
             
@@ -58,6 +60,7 @@ namespace ncl_auto_parts.screens
             if (isAnumber)
             {
                 int ifCodeClientExiste = await ClientC.ifCodeClientExiste(idClient.Text);
+                main.closeConn();
                 if (ifCodeClientExiste != 0)
                 {
                     if (marque.Text == "")
@@ -97,6 +100,7 @@ namespace ncl_auto_parts.screens
                                         else
                                         {
                                             int rep = await ReparationC.saveReparation(idClient.Text, marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString()+"/"+dateSortie.Value.Month+"/"+dateSortie.Value.Day, table);
+                                            main.closeConn();
                                             if (rep == 0)
                                             {
                                                 clearField();
@@ -130,6 +134,7 @@ namespace ncl_auto_parts.screens
             modify.Visible = true;
             delete.Visible = true;
             print.Visible = true;
+            reparationID = table.CurrentRow.Cells["id_du_client"].Value.ToString();
             id = table.CurrentRow.Cells["id_"].Value.ToString();
             idClient.Text = table.CurrentRow.Cells["id_du_client"].Value.ToString(); 
             marque.Text = table.CurrentRow.Cells["marque_"].Value.ToString();
@@ -154,6 +159,7 @@ namespace ncl_auto_parts.screens
             if (isAnumber)
             {
                 int ifCodeClientExiste = await ClientC.ifCodeClientExiste(idClient.Text);
+                main.closeConn();
                 if (ifCodeClientExiste != 0)
                 {
                     if (marque.Text == "")
@@ -193,6 +199,7 @@ namespace ncl_auto_parts.screens
                                         else
                                         {
                                             int rep = await ReparationC.modifyreparation( marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString()+"/"+dateSortie.Value.Month+"/"+dateSortie.Value.Day, table,id,idClient.Text);
+                                            main.closeConn();
                                             if (rep == 0)
                                             {
                                                 clearField();
@@ -228,6 +235,7 @@ namespace ncl_auto_parts.screens
             delete.Visible = false;
             print.Visible = false;
             int rep = await ReparationC.deleteReparation(table, id);
+            main.closeConn();
             if (rep == 0)
             {
                 clearField();
@@ -244,14 +252,10 @@ namespace ncl_auto_parts.screens
             main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
+            print.Visible = false;
             //print.Visible = false;
-            PrintDialog printDialog1 = new PrintDialog();
-            printDialog1.Document = printDocument1;
-            DialogResult resultx = printDialog1.ShowDialog();
-            if (resultx == DialogResult.OK)
-            {
-                printDocument1.Print();
-            }
+            main.showLogin(new VoitureViewer(id,reparationID));
+            
         }
 
         private void searchBar_KeyDown(object sender, KeyEventArgs e)

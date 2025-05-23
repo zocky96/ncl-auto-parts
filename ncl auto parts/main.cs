@@ -65,6 +65,7 @@ namespace ncl_auto_parts
                 log_in = login;
                 log_out = logout;
                 disableButton();
+                closeConn();
                 //moveSelectedItem2(payroll);
                 //showScreen(new Payroll());
 
@@ -346,7 +347,7 @@ namespace ncl_auto_parts
 
         private void bunifuFlatButton5_Click(object sender, EventArgs e)
         {
-            showScreen(new Payroll());
+            showScreen(new Cash());
         }
 
         private void bunifuFlatButton10_Click(object sender, EventArgs e)
@@ -384,6 +385,11 @@ namespace ncl_auto_parts
         }
 
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
@@ -462,7 +468,7 @@ namespace ncl_auto_parts
         private void payroll_Click(object sender, EventArgs e)
         {
             moveSelectedItem2(payroll);
-            showScreen(new Payroll());
+            showScreen(new Cash());
         }
     }
 }

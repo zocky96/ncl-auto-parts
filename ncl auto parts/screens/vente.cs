@@ -317,7 +317,7 @@ namespace ncl_auto_parts.screens
             main.closeConn();
             bool isAnumber;
             Random random = new Random();
-            int randomNumber = random.Next(9999);
+            int randomNumber = random.Next(9999999);
 
             String receiptNumber = null;
             int i = 0;
@@ -346,14 +346,15 @@ namespace ncl_auto_parts.screens
                             try
                             {
                                 int maxId = await VenteC.getMaxId();
-                                receiptNumber = "IOE" + randomNumber.ToString() + maxId.ToString();
+                                main.closeConn();
+                                receiptNumber = "NCL" + randomNumber.ToString() + maxId.ToString();
 
                                 bool receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
                                 while (receiptExist)
                                 {
                                     int ii = 0;
                                     randomNumber = random.Next(9999999);
-                                    receiptNumber = "IOE" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                                    receiptNumber = "NCL" + randomNumber.ToString() + VenteC.getMaxId().ToString();
                                     receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
                                     ii += 1;
                                     if (ii >= 20)
@@ -376,6 +377,7 @@ namespace ncl_auto_parts.screens
                             float total = int.Parse(qte.Text);
                             //VenteM vente = new VenteM(name.Text,date,"zock",receiptNumber,clientName.Text,5,566,2,1,5);
                             int rep = await VenteC.vendre(name.Text, int.Parse(qte.Text), table, receiptNumber, clientName.Text, devise.Text);
+                            main.closeConn();
                             if (rep == 0)
                             {
                                 MySqlDataReader result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + receiptNumber + "'");
@@ -389,8 +391,9 @@ namespace ncl_auto_parts.screens
                                     real_total += float.Parse(result["quantite"].ToString()) * float.Parse(result["prix"].ToString());
                                     donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), float.Parse(result["total"].ToString())));
                                 }
-                                
+                                main.closeConn();
                                 VenteC.showVente(table);
+                                main.closeConn();
                                 clearField();
                                 MessageBox.Show("Vente effectué avec succes");
                                 //PrintDialog printDialog1 = new PrintDialog();
@@ -443,6 +446,7 @@ namespace ncl_auto_parts.screens
                     else
                     {
                         CartC.addToCart(name.Text, int.Parse(qte.Text), clientName.Text, table);
+                        main.closeConn();
                         // CartC.showPanier(tableCart);
                         name.Text = "";
                         qte.Text = "";
@@ -508,6 +512,7 @@ namespace ncl_auto_parts.screens
 
             //}
             VenteC.cancelVente(idT, nomProduitT, table, int.Parse(quantiteT), noRecu, deviseT);
+            main.closeConn();
 
         }
 

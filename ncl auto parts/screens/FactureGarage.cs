@@ -63,13 +63,17 @@ namespace ncl_auto_parts.screens
                     devise = result["devise"].ToString();
                     sum += float.Parse(result["total"].ToString());
                 }
+                main.closeConn();
                 if (devise == "US")
                 {
                     
                     VenteC.RemoveUsMoneyGarage(sum);
+                    main.closeConn();
                     GarageC.deleteGoodFacture(table, id);
+                    main.closeConn();
                     id = "";
                     GarageC.showGoodFacture(table);
+                    main.closeConn();
                     MessageBox.Show("Facture annulée avec succès");
                 }
                 else
