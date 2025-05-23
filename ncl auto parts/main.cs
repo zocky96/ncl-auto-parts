@@ -3,6 +3,7 @@ using Bunifu.UI.WinForms.BunifuButton;
 using MySql.Data.MySqlClient;
 using ncl_auto_parts.controller;
 using ncl_auto_parts.db;
+using ncl_auto_parts.rapport;
 using ncl_auto_parts.screens;
 using System;
 using System.Collections.Generic;
@@ -45,8 +46,8 @@ namespace ncl_auto_parts
             else
             {
                 InitializeComponent();
-                showScreen(new Dashboard());
-                //showScreen(new Payroll());
+                //showScreen(new Dashboard());
+                showScreen(new Payroll());
                 //showLogin(new ReparationC());
 
                 article_ = article;
