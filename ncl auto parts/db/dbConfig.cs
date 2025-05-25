@@ -276,7 +276,7 @@ namespace ncl_auto_parts.db
            
             rep = await execute_command("create table log (id int,nom varchar(100),prenom varchar(100),username varchar(50),date date,heure varchar(10))");
            
-            rep = await execute_command("create table payroll (id int,employer varchar(100),salaire varchar(100),short int,surplus int)");
+            rep = await execute_command("create table new_payroll (id int primary key auto_increment,id_emp varchar(100),fullname varchar(100),poste varchar(100),breuvage double,nourriture double,avance double,dette double,sol double,init_amount double,final_amount double,comment varchar(255),date date)");
 
             
             rep = await execute_command("create table services(id int primary key auto_increment,service varchar(255),prix double(12,4))");

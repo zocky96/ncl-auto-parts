@@ -1,6 +1,6 @@
 ﻿namespace ncl_auto_parts.rapport
 {
-    partial class Payroll
+    partial class OkPayroll
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payroll));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OkPayroll));
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
@@ -91,16 +91,18 @@
             this.ID = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_du_client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.drink_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.food_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avance_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dette_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sol_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comment_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xxx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
@@ -140,16 +142,18 @@
             this.table.ColumnHeadersHeight = 40;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_,
+            this.lot,
             this.id_du_client,
             this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
+            this.drink_,
+            this.food_,
+            this.avance_,
+            this.dette_,
+            this.sol_,
             this.Column8,
             this.Column9,
-            this.Column7});
+            this.comment_,
+            this.xxx});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -188,6 +192,7 @@
             this.table.Size = new System.Drawing.Size(1031, 254);
             this.table.TabIndex = 58;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
             // 
             // panel3
             // 
@@ -286,6 +291,8 @@
             this.searchBar.TextPlaceholder = "Enter text";
             this.searchBar.UseSystemPasswordChar = false;
             this.searchBar.WordWrap = true;
+            this.searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBar_KeyDown);
+            this.searchBar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchBar_KeyUp);
             // 
             // print
             // 
@@ -350,6 +357,7 @@
             this.print.TextMarginLeft = 0;
             this.print.UseDefaultRadiusAndThickness = true;
             this.print.Visible = false;
+            this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // save
             // 
@@ -940,60 +948,83 @@
             // 
             // id_
             // 
+            this.id_.FillWeight = 131.9797F;
             this.id_.HeaderText = "ID";
             this.id_.Name = "id_";
             // 
+            // lot
+            // 
+            this.lot.FillWeight = 97.33501F;
+            this.lot.HeaderText = "ID employé";
+            this.lot.Name = "lot";
+            // 
             // id_du_client
             // 
+            this.id_du_client.FillWeight = 97.33501F;
             this.id_du_client.HeaderText = "Nom complet";
             this.id_du_client.Name = "id_du_client";
             // 
             // Column1
             // 
+            this.Column1.FillWeight = 97.33501F;
             this.Column1.HeaderText = "Poste";
             this.Column1.Name = "Column1";
             // 
-            // Column2
+            // drink_
             // 
-            this.Column2.HeaderText = "Breuvage";
-            this.Column2.Name = "Column2";
+            this.drink_.FillWeight = 97.33501F;
+            this.drink_.HeaderText = "Breuvage";
+            this.drink_.Name = "drink_";
             // 
-            // Column3
+            // food_
             // 
-            this.Column3.HeaderText = "Nourriture";
-            this.Column3.Name = "Column3";
+            this.food_.FillWeight = 97.33501F;
+            this.food_.HeaderText = "Nourriture";
+            this.food_.Name = "food_";
             // 
-            // Column4
+            // avance_
             // 
-            this.Column4.HeaderText = "Avance";
-            this.Column4.Name = "Column4";
+            this.avance_.FillWeight = 97.33501F;
+            this.avance_.HeaderText = "Avance";
+            this.avance_.Name = "avance_";
             // 
-            // Column5
+            // dette_
             // 
-            this.Column5.HeaderText = "Dette";
-            this.Column5.Name = "Column5";
+            this.dette_.FillWeight = 97.33501F;
+            this.dette_.HeaderText = "Dette";
+            this.dette_.Name = "dette_";
             // 
-            // Column6
+            // sol_
             // 
-            this.Column6.HeaderText = "Sol";
-            this.Column6.Name = "Column6";
+            this.sol_.FillWeight = 97.33501F;
+            this.sol_.HeaderText = "Sol";
+            this.sol_.Name = "sol_";
             // 
             // Column8
             // 
+            this.Column8.FillWeight = 97.33501F;
             this.Column8.HeaderText = "Montant initial";
             this.Column8.Name = "Column8";
             // 
             // Column9
             // 
+            this.Column9.FillWeight = 97.33501F;
             this.Column9.HeaderText = "Montant final";
             this.Column9.Name = "Column9";
             // 
-            // Column7
+            // comment_
             // 
-            this.Column7.HeaderText = "Commentaire";
-            this.Column7.Name = "Column7";
+            this.comment_.FillWeight = 97.33501F;
+            this.comment_.HeaderText = "Commentaire";
+            this.comment_.Name = "comment_";
             // 
-            // Payroll
+            // xxx
+            // 
+            this.xxx.FillWeight = 97.33501F;
+            this.xxx.HeaderText = "Date";
+            this.xxx.Name = "xxx";
+            // 
+            // OkPayroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1020,7 +1051,7 @@
             this.Controls.Add(this.ID);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Payroll";
+            this.Name = "OkPayroll";
             this.Text = "Payroll";
             this.Load += new System.EventHandler(this.Payroll_Load);
             this.panel4.ResumeLayout(false);
@@ -1056,15 +1087,17 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox ID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lot;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_du_client;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn drink_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn food_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn avance_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dette_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sol_;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comment_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xxx;
     }
 }

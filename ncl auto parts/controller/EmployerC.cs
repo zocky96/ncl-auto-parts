@@ -43,7 +43,7 @@ namespace ncl_auto_parts.controller
         }
         public static async Task<int> deleteEmployer(String id,string lot, BunifuDataGridView table)
         {
-           int rep = await dbConfig.execute_command("delete from employer where emp_id='" + id + "' or id='"+lot+"'");
+           int rep = await dbConfig.execute_command("delete from employer where emp_id='" + id + "' or emp_id='" + lot+"'");
             showEmployer(table);
             return rep;
         }
@@ -74,6 +74,22 @@ namespace ncl_auto_parts.controller
                 String prenom = result["prenom"].ToString();
                 liste.Add(nom);
                 liste.Add(prenom);
+            }
+            return liste;
+        }
+        public static async Task<List<String>> getInfoById_(String id)
+        {
+            List<String> liste = new List<string>();
+            liste.Clear();
+            MySqlDataReader result = await dbConfig.getResultCommand("select concat(nom,' ',prenom) as fullname,poste,salaire from employer where emp_id='"+id+"'");
+            while (result.Read())
+            {
+                String fullName = result["fullname"].ToString();
+                String poste = result["poste"].ToString();
+                string salaire = result["salaire"].ToString();
+                liste.Add(fullName);
+                liste.Add(poste);
+                liste.Add(salaire);
             }
             return liste;
         }
@@ -133,10 +149,9 @@ namespace ncl_auto_parts.controller
             }
 
         }
-        public static async Task<int> modifyEmployer(String nom, String prenom, String nif, String adresse, String date_de_naissance, String poste, BunifuDataGridView table, String id, string phone,string mail,string salaire)
+        public static async Task<int> modifyEmployer(EmployerM emplo, BunifuDataGridView table, String id,string salaire)
         {
-            EmployerM emplo = new EmployerM(nom, prenom, nif, mail, adresse, date_de_naissance, poste, phone);
-            int rep = await dbConfig.execute_command("update employer set nom='" + emplo.Nom + "',prenom='" + emplo.Prenom + "',nif='" + emplo.Nif + "'," + "adresse='" + emplo.Adresse + "',poste='" + emplo.Poste + "'" + ",phone='" + emplo.Phone + "',salaire="+salaire+" where id =" + id);
+            int rep = await dbConfig.execute_command("update employer set nom='" + emplo.Nom + "',prenom='" + emplo.Prenom + "',nif='"+emplo.Nif+ "',adresse='"+emplo.Adresse+ "',poste='"+emplo.Poste+ "',phone='"+emplo.Phone+ "',mail='"+emplo.Mail+ "',salaire="+salaire+" where id =" + id);
             showEmployer(table);
             return rep;
         }

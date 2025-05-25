@@ -30,7 +30,7 @@ namespace ncl_auto_parts
         private BunifuFlatButton boutonActif = null;
         private BunifuButton boutonActif2 = null;
         public static BunifuCustomLabel log_in,log_out;
-        public static BunifuButton article_,vente_,fournisseur_,cart_,employe_,user_,payroll_,autoPart_,facturation_,client_,reparation_,garage_,settings_;
+        public static BunifuButton article_,vente_,fournisseur_,cart_,employe_,user_,payroll_,autoPart_,facturation_,client_,reparation_,garage_,settings_,truePayroll_;
         public  main()
         {
             int rep = 000;
@@ -46,8 +46,8 @@ namespace ncl_auto_parts
             else
             {
                 InitializeComponent();
-                //showScreen(new Dashboard());
-                showScreen(new Payroll());
+                showScreen(new Dashboard());
+                //showScreen(new Payroll());
                 //showLogin(new ReparationC());
 
                 article_ = article;
@@ -58,6 +58,7 @@ namespace ncl_auto_parts
                 user_ = user;
                 payroll_ = payroll;
                 autoPart_ = autoPart;
+                truePayroll_ = truePayroll;
                 //facturation_ = facturation;
                 client_ = client;
                 reparation_ = reparation;
@@ -82,6 +83,7 @@ namespace ncl_auto_parts
             user.Enabled = false;
             payroll.Enabled = false;
             autoPart.Enabled = false;
+            truePayroll.Enabled= false;
             //facturation.Enabled = false;
             client.Enabled = false;
             reparation.Enabled = false;
@@ -200,9 +202,9 @@ namespace ncl_auto_parts
                 autoPart.Text = "";
                 garage.Text = "";
                 payroll.Text = "";
-                labA.Text = "Admins...";
-                labA.Font = new Font("Century Gothic", 10);
-                labA.Font = new Font("Century Gothic", 10);
+                //labA.Text = "Admins...";
+                //labA.Font = new Font("Century Gothic", 10);
+                //labA.Font = new Font("Century Gothic", 10);
                 settings.Text = "";
             }
             else
@@ -224,8 +226,8 @@ namespace ncl_auto_parts
                 autoPart.Text = "Auto Parts";
                 garage.Text = "Garage";
                 payroll.Text = "Comptes";
-                labA.Text = "Adminstration";
-                labA.Font = new Font("Century Gothic", 12);
+                //labA.Text = "Adminstration";
+                //labA.Font = new Font("Century Gothic", 12);
                 settings.Text = "Parametre";
 
 
@@ -393,6 +395,12 @@ namespace ncl_auto_parts
         private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void bunifuButton1_Click_1(object sender, EventArgs e)
+        {
+            moveSelectedItem2(truePayroll);
+            showScreen(new OkPayroll());
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)

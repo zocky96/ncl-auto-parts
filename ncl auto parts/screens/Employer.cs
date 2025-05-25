@@ -1,4 +1,5 @@
 ﻿using ncl_auto_parts.controller;
+using ncl_auto_parts.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,13 +63,13 @@ namespace ncl_auto_parts.screens
                 {
                     int ii = 0;
                     randomNumber = random.Next(99);
-                    receiptNumber = "NCL" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                    receiptNumber = "NCL" + randomNumber.ToString() + EmployerC.getMaxId().ToString();
                     receiptExist = await EmployerC.ifIdExistEmploye(receiptNumber);
                     main.closeConn();
                     ii += 1;
                     if (ii >= 20)
                     {
-                        receiptNumber = "IOk" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                        receiptNumber = "IOk" + randomNumber.ToString() + EmployerC.getMaxId().ToString();
                         receiptExist = await EmployerC.ifIdExistEmploye(receiptNumber);
                         main.closeConn();
                     }
@@ -159,16 +160,17 @@ namespace ncl_auto_parts.screens
             mail.Text = table.CurrentRow.Cells["mail_"].Value.ToString();
             nif.Text = table.CurrentRow.Cells["nif_"].Value.ToString();
             poste.Text = table.CurrentRow.Cells["poste_"].Value.ToString();
+            salaire.Text = table.CurrentRow.Cells["sal"].Value.ToString();
             modify.Visible = true;
             delete.Visible = true;
         }
 
-        private void modify_Click(object sender, EventArgs e)
+        private async void modify_Click(object sender, EventArgs e)
         {
             main.closeConn();
             bool isAnumber = false;
             float j = 0;
-
+            //MessageBox.Show(id);
             if (nom.Text == "")
             {
                 MessageBox.Show("Le champ 'Nom' ne doit pas etre vide");
@@ -213,9 +215,18 @@ namespace ncl_auto_parts.screens
                                         {
                                             modify.Visible = false;
                                             delete.Visible = false;
-                                            EmployerC.modifyEmployer(nom.Text, prenom.Text, nif.Text, adresse.Text, "", poste.Text, table, id, phone.Text, mail.Text,salaire.Text);
+                                            EmployerM emplo = new EmployerM(nom.Text, prenom.Text, nif.Text, mail.Text, adresse.Text, "", poste.Text, phone.Text);
+                                            int rep = await EmployerC.modifyEmployer(emplo, table, id,salaire.Text);
                                             main.closeConn();
                                             clearField();
+                                            if (rep == 0)
+                                            {
+                                                MessageBox.Show("Employé modifier avec succes");
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Erreur lors de la modification");
+                                            }
                                         }
                                         else
                                         {
@@ -263,7 +274,7 @@ namespace ncl_auto_parts.screens
                 {
 
                     EmployerC.searchEmployer(searchBar.Text, table);
-
+                    main.closeConn();
                 }
 
             }

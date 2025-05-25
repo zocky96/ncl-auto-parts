@@ -95,8 +95,8 @@
             this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.lal = new System.Windows.Forms.Label();
             this.salaire = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
-            this.lot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nom_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenom_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mail_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,7 +104,7 @@
             this.adresse_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.poste_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
             // 
@@ -849,8 +849,8 @@
             this.table.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.table.ColumnHeadersHeight = 40;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.lot,
             this.id_,
+            this.lot,
             this.nom_,
             this.prenom_,
             this.mail_,
@@ -858,7 +858,7 @@
             this.adresse_,
             this.poste_,
             this.phone_,
-            this.Column1});
+            this.sal});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -1058,15 +1058,15 @@
             this.salaire.UseSystemPasswordChar = false;
             this.salaire.WordWrap = true;
             // 
-            // lot
-            // 
-            this.lot.HeaderText = "";
-            this.lot.Name = "lot";
-            // 
             // id_
             // 
-            this.id_.HeaderText = "ID";
+            this.id_.HeaderText = "";
             this.id_.Name = "id_";
+            // 
+            // lot
+            // 
+            this.lot.HeaderText = "ID";
+            this.lot.Name = "lot";
             // 
             // nom_
             // 
@@ -1103,10 +1103,10 @@
             this.phone_.HeaderText = "Téléphone";
             this.phone_.Name = "phone_";
             // 
-            // Column1
+            // sal
             // 
-            this.Column1.HeaderText = "Salaire";
-            this.Column1.Name = "Column1";
+            this.sal.HeaderText = "Salaire";
+            this.sal.Name = "sal";
             // 
             // Employer
             // 
@@ -1166,8 +1166,8 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox searchBar;
         private System.Windows.Forms.Label lal;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox salaire;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lot;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lot;
         private System.Windows.Forms.DataGridViewTextBoxColumn nom_;
         private System.Windows.Forms.DataGridViewTextBoxColumn prenom_;
         private System.Windows.Forms.DataGridViewTextBoxColumn mail_;
@@ -1175,6 +1175,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn adresse_;
         private System.Windows.Forms.DataGridViewTextBoxColumn poste_;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sal;
     }
 }

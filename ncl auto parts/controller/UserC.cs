@@ -220,6 +220,8 @@ namespace ncl_auto_parts.controller
                                 main.user_.Enabled = true;
                                 main.payroll_.Enabled = true;
                                 main.autoPart_.Enabled = true;
+                                main.payroll_.Enabled = true;
+                                main.truePayroll_.Enabled = true;
                                 //main.facturation_.Enabled = true;
                                 main.client_.Enabled = true;
                                 main.reparation_.Enabled = true;
@@ -246,17 +248,21 @@ namespace ncl_auto_parts.controller
                                 main.garage_.Enabled = true;
                                 main.settings_.Enabled = true;
                                 main.log_in.Visible = false;
+                                main.payroll_.Enabled = true;
+                                main.truePayroll_.Enabled = true;
                                 main.userName = username;
                                 main.poste = "manager";
                             }
                             if (poste == "PDG")
                             {
                                 main.article_.Enabled = true;
+                                main.truePayroll_.Enabled = true;
                                 main.vente_.Enabled = true;
                                 main.fournisseur_.Enabled = true;
                                 main.cart_.Enabled = true;
                                 main.employe_.Enabled = true;
                                 main.user_.Enabled = true;
+                                main.payroll_.Enabled = true;
                                 main.payroll_.Enabled = true;
                                 main.autoPart_.Enabled = true;
                                 //main.facturation_.Enabled = true;
@@ -314,6 +320,16 @@ namespace ncl_auto_parts.controller
         {
             int rep = -110;
             MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as reponse from utilisateur where code_employer='" + code + "'");
+            while (result.Read())
+            {
+                rep = int.Parse(result["reponse"].ToString());
+            }
+            return rep;
+        }
+        public static async Task<int> ifCodeEmployerExisteTrue(String code)
+        {
+            int rep = -110;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as reponse from employer where emp_id='" + code + "'");
             while (result.Read())
             {
                 rep = int.Parse(result["reponse"].ToString());

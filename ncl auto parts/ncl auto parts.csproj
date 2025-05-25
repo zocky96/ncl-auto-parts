@@ -220,6 +220,7 @@
     <Compile Include="controller\EmployerC.cs" />
     <Compile Include="controller\FournisseurC.cs" />
     <Compile Include="controller\GarageC.cs" />
+    <Compile Include="controller\PayrollC.cs" />
     <Compile Include="controller\ProformaC.cs" />
     <Compile Include="controller\ReparationC.cs" />
     <Compile Include="controller\UserC.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="model\EmployerM.cs" />
     <Compile Include="model\factureM.cs" />
     <Compile Include="model\FournisseurM.cs" />
+    <Compile Include="model\PayrollM.cs" />
     <Compile Include="model\ProformaM.cs" />
     <Compile Include="model\ReparationM.cs" />
     <Compile Include="model\UserM.cs" />
@@ -263,11 +265,17 @@
     <Compile Include="rapport\oneVente.Designer.cs">
       <DependentUpon>oneVente.cs</DependentUpon>
     </Compile>
-    <Compile Include="rapport\Payroll.cs">
+    <Compile Include="rapport\OkPayroll.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="rapport\Payroll.Designer.cs">
-      <DependentUpon>Payroll.cs</DependentUpon>
+    <Compile Include="rapport\OkPayroll.Designer.cs">
+      <DependentUpon>OkPayroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rapport\PayrollViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rapport\PayrollViewer.Designer.cs">
+      <DependentUpon>PayrollViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="rapport\ProformaViewer.cs">
       <SubType>Form</SubType>
@@ -462,8 +470,12 @@
     <EmbeddedResource Include="rapport\oneVente.resx">
       <DependentUpon>oneVente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="rapport\Payroll.resx">
-      <DependentUpon>Payroll.cs</DependentUpon>
+    <EmbeddedResource Include="rapport\OkPayroll.resx">
+      <DependentUpon>OkPayroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rapport\PayrollTrue.rdlc" />
+    <EmbeddedResource Include="rapport\PayrollViewer.resx">
+      <DependentUpon>PayrollViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rapport\Proforma.rdlc" />
     <EmbeddedResource Include="rapport\ProformaViewer.resx">
@@ -692,6 +704,7 @@
     <None Include="Resources\bar_chart_50px.png" />
     <None Include="Resources\team_30px.png" />
     <None Include="Resources\shopping_bag_50px.png" />
+    <None Include="Resources\bank_24px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

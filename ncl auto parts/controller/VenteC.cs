@@ -182,9 +182,7 @@ namespace ncl_auto_parts.controller
                 int response=-1;
                 try
                 {
-                    string date;
-                   
-                    date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+                    string date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
                     while (result.Read())
                     {
                         dbConfig.execute_command("insert into canceledvente(nom_du_produit,prix,quantite,total,signature_autorise,date,receiptNumber,clientName,devise) values('" + result["nom_du_produit"].ToString() +"',"+float.Parse(result["prix"].ToString()) +","+int.Parse(result["quantite"].ToString()) +","+float.Parse(result["total"].ToString()) +",'"+main.userName+"','"+ date + "','"+receipt+"','"+ result["clientName"].ToString() + "','"+ result["devise"].ToString() + "')");
