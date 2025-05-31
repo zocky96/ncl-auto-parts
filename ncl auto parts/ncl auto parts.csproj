@@ -705,6 +705,7 @@
     <None Include="Resources\team_30px.png" />
     <None Include="Resources\shopping_bag_50px.png" />
     <None Include="Resources\bank_24px.png" />
+    <None Include="Resources\home_24px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -29,7 +29,7 @@ namespace ncl_auto_parts.screens
         public async static void showGoodFacture(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from cancel_facture_garage");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from cancel_facture_garage order by id desc");
             try
             {
                 while (result.Read())
@@ -46,7 +46,7 @@ namespace ncl_auto_parts.screens
 
             }
         }
-        private void CancelFactureGarage_Load(object sender, EventArgs e)
+        private void CancelFactureGarage_Load(object sender, EventArgs e) 
         {
 
         }

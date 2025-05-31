@@ -75,7 +75,9 @@ namespace ncl_auto_parts.screens
                                         }
                                         else
                                         {
-                                            AutoPartM facture = new AutoPartM(clientName.Text,service.Text,devise.Text,plaque.Text,vehicule.Text,phone.Text,description.Text,int.Parse(quantite.Text),float.Parse(montant.Text),int.Parse(quantite.Text) * float.Parse(montant.Text));
+                                            float total = int.Parse(quantite.Text) * float.Parse(montant.Text);
+                                            
+                                            AutoPartM facture = new AutoPartM(clientName.Text,service.Text,devise.Text,plaque.Text,vehicule.Text,phone.Text,description.Text,int.Parse(quantite.Text),float.Parse(montant.Text),total);
                                             int rep = await AutoPartC.saveFacture(facture, table);
                                             main.closeConn();
                                             if (rep == 0)
@@ -152,24 +154,24 @@ namespace ncl_auto_parts.screens
             realTotal = 0;
             Random random = new Random();
             donnees = new List<(string, float)>();
-            int randomNumber = random.Next(9999);
+            int randomNumber = random.Next(9999999);
             try
             {
-                int maxId = await VenteC.getMaxId();
-                receiptNumber = "IOE" + randomNumber.ToString() + maxId.ToString();
+                int maxId = await AutoPartC.getMaxId();
+                receiptNumber = "NCL" + randomNumber.ToString() + maxId.ToString();
 
-                bool receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
+                bool receiptExist = await AutoPartC.ifReceiptIdExist(receiptNumber);
                 while (receiptExist)
                 {
                     int ii = 0;
                     randomNumber = random.Next(9999999);
-                    receiptNumber = "IOE" + randomNumber.ToString() + VenteC.getMaxId().ToString();
-                    receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
+                    receiptNumber = "NCL" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                    receiptExist = await AutoPartC.ifReceiptIdExist(receiptNumber);
                     ii += 1;
                     if (ii >= 20)
                     {
                         receiptNumber = "IOk" + randomNumber.ToString() + VenteC.getMaxId().ToString();
-                        receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
+                        receiptExist = await AutoPartC.ifReceiptIdExist(receiptNumber);
                     }
                 }
             }
@@ -187,13 +189,13 @@ namespace ncl_auto_parts.screens
                 {
                     autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(),int.Parse(result["quantite"].ToString()),float.Parse(result["montant"].ToString()), float.Parse(result["total"].ToString()));
                     rep = await AutoPartC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddUsMoney(float.Parse(result["montant"].ToString())* int.Parse(result["quantite"].ToString()));
+                    VenteC.AddUsMoney(float.Parse(result["total"].ToString()));
                 }
                 else
                 {
                     autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), float.Parse(result["total"].ToString()));
                     rep = await AutoPartC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddHtgMoney(float.Parse(result["montant"].ToString()) * int.Parse(result["quantite"].ToString()));
+                    VenteC.AddHtgMoney(float.Parse(result["total"].ToString()));
                 }
                 
             }

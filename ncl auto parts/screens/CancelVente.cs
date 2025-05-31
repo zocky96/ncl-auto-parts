@@ -24,7 +24,7 @@ namespace ncl_auto_parts.screens
         public async static void showVente(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from canceledvente");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from canceledvente order by id desc");
             try
             {
                 while (result.Read())

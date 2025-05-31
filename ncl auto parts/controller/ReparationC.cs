@@ -35,7 +35,7 @@ namespace ncl_auto_parts.controller
         public async static void searchReparation(string word,BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from reparation where dateSortie='"+word+ "' or dateEntree='"+word+ "' or service='"+word+ "' or plaque='"+word+ "' or annee='"+word+ "' or modele='"+word+ "' or Marque='"+word+ "' or clientId='"+word+"'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from reparation order by id desc where dateSortie='" + word+ "' or dateEntree='"+word+ "' or service='"+word+ "' or plaque='"+word+ "' or annee='"+word+ "' or modele='"+word+ "' or Marque='"+word+ "' or clientId='"+word+"'");
             try
             {
                 while (result.Read())
@@ -53,7 +53,7 @@ namespace ncl_auto_parts.controller
         public async static void showReparation(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from reparation");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from reparation order by id desc");
             try
             {
                 while (result.Read())

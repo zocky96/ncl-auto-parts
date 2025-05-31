@@ -19,6 +19,37 @@ namespace ncl_auto_parts.controller
             showClient(table);
             return rep;
         }
+        public async static void showLast10Client(BunifuDataGridView table)
+        {
+            table.Rows.Clear();
+
+            MySqlDataReader result = await dbConfig.getResultCommand("select concat(nom,' ',prenom) as fullname from client order by id desc limit 10");
+            try
+            {
+                while (result.Read())
+                {
+
+                    table.Rows.Add(result["fullname"]);
+
+                }
+                main.closeConn();
+            }
+            catch
+            {
+
+            }
+        }
+        public static async Task<string> getNbrClient()
+        {
+            string rep = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as reponse from client");
+            while (result.Read())
+            {
+                rep = result["reponse"].ToString();
+            }
+            main.closeConn();
+            return rep;
+        }
         public static async Task<int> ifCodeClientExiste(String code)
         {
             int rep = -110;
@@ -45,7 +76,7 @@ namespace ncl_auto_parts.controller
         public async static void searchClient(string word,BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from client where nom='"+word+"' or prenom='"+word+"' or phone='"+word+"' or mail='"+word+"'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from client order by id desc where nom='" + word+"' or prenom='"+word+"' or phone='"+word+"' or mail='"+word+"'");
             try
             {
                 while (result.Read())
@@ -63,7 +94,7 @@ namespace ncl_auto_parts.controller
         public async static void showClient(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from client");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from client order by id desc");
             try
             {
                 while (result.Read())

@@ -152,21 +152,21 @@ namespace ncl_auto_parts.screens
             int randomNumber = random.Next(9999999);
             try
             {
-                int maxId = await VenteC.getMaxId();
-                receiptNumber = "IOE" + randomNumber.ToString() + maxId.ToString();
+                int maxId = await GarageC.getMaxId();
+                receiptNumber = "NCL" + randomNumber.ToString() + maxId.ToString();
 
-                bool receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
+                bool receiptExist = await GarageC.ifReceiptIdExist(receiptNumber);
                 while (receiptExist)
                 {
                     int ii = 0;
                     randomNumber = random.Next(9999999);
-                    receiptNumber = "IOE" + randomNumber.ToString() + VenteC.getMaxId().ToString();
-                    receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
+                    receiptNumber = "NCL" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                    receiptExist = await GarageC.ifReceiptIdExist(receiptNumber);
                     ii += 1;
                     if (ii >= 20)
                     {
                         receiptNumber = "IOk" + randomNumber.ToString() + VenteC.getMaxId().ToString();
-                        receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
+                        receiptExist = await GarageC.ifReceiptIdExist(receiptNumber);
                     }
                 }
             }
@@ -184,17 +184,18 @@ namespace ncl_auto_parts.screens
                 {
                     autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()),float.Parse(result["montant"].ToString()),float.Parse(result["total"].ToString()));
                     rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddUsMoneyGarage(float.Parse(result["montant"].ToString()));
+                    VenteC.AddUsMoneyGarage(float.Parse(result["total"].ToString()));
 
                 }
                 else
                 {
                     autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), float.Parse(result["total"].ToString()));
                     rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddHTGMoneyGarage(float.Parse(result["montant"].ToString()));
+                    VenteC.AddHTGMoneyGarage(float.Parse(result["total"].ToString()));
                 }
 
             }
+            main.closeConn();
             if (rep == 0)
             {
                 

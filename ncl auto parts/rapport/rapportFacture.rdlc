@@ -56,7 +56,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>QUATIER MORIN NORD, Haiti</Value>
+                <Value>QUARTIER MORIN NORD, Haiti</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -676,7 +676,7 @@
         <Top>5.98937cm</Top>
         <Left>0.33833cm</Left>
         <Height>1.21438cm</Height>
-        <Width>15.05126cm</Width>
+        <Width>15.05127cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>

@@ -33,6 +33,48 @@ namespace ncl_auto_parts.controller
 
             }
         }
+        public async static void showLast10Vente(BunifuDataGridView table)
+        {
+            table.Rows.Clear();
+
+            MySqlDataReader result = await dbConfig.getResultCommand("select nom_du_produit,date,total from vente order by id desc limit 10");
+            try
+            {
+                while (result.Read())
+                {
+
+                    table.Rows.Add(result["nom_du_produit"], result["date"], result["total"]);
+
+                }
+                main.closeConn();
+            }
+            catch
+            {
+
+            }
+        }
+        public static async Task<string> getTotalVente()
+        {
+            string rep = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) as reponse from vente");
+            while (result.Read())
+            {
+                rep = result["reponse"].ToString();
+            }
+            main.closeConn();
+            return rep;
+        }
+        public static async Task<string> getTotalVenteBymonth()
+        {
+            string rep = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) as reponse from vente where month(date)="+DateTime.Now.Month);
+            while (result.Read())
+            {
+                rep = result["reponse"].ToString();
+            }
+            main.closeConn();
+            return rep;
+        }
         public static async Task<float> getAllVenteOnReportViewer(string de, string a, BunifuDataGridView table)
         {
             float total = 0;
@@ -68,7 +110,7 @@ namespace ncl_auto_parts.controller
         public async static void showVente(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from vente");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from vente order by id desc");
             try
             {
                 while (result.Read())
@@ -166,9 +208,10 @@ namespace ncl_auto_parts.controller
         }
         public static async void cancelVente(String id, String nomProduit, BunifuDataGridView table, int quantite, string receipt,string devise)
         {
-            
+           
             int rep = await IfProductExist(nomProduit);
             main.closeConn();
+           
             if (rep == 0)
             {
                 MessageBox.Show("Impossible d'annuler la vente!\nCe produit a ete efface");
@@ -178,7 +221,6 @@ namespace ncl_auto_parts.controller
                 float total = 0;
                 VenteM vente = null;
                 MySqlDataReader result = await dbConfig.getResultCommand("select *from vente where receiptNumber='"+receipt+"'");
-                main.closeConn();
                 int response=-1;
                 try
                 {
@@ -186,13 +228,15 @@ namespace ncl_auto_parts.controller
                     while (result.Read())
                     {
                         dbConfig.execute_command("insert into canceledvente(nom_du_produit,prix,quantite,total,signature_autorise,date,receiptNumber,clientName,devise) values('" + result["nom_du_produit"].ToString() +"',"+float.Parse(result["prix"].ToString()) +","+int.Parse(result["quantite"].ToString()) +","+float.Parse(result["total"].ToString()) +",'"+main.userName+"','"+ date + "','"+receipt+"','"+ result["clientName"].ToString() + "','"+ result["devise"].ToString() + "')");
-                        main.closeConn();
                         vente = await getPriceAndQuantite(result["nom_du_produit"].ToString());
-                        main.closeConn();
+                        
                         int newQuantite = int.Parse(vente.Quantite.ToString()) + quantite;
-                        response = await updateQuantite(vente.NomDuProduit, newQuantite);
-                        main.closeConn();
+                        response = await updateQuantite(vente.NomDuProduit, newQuantite,quantite,"cancel");
+                        
                     }
+                    main.closeConn();
+                    
+                   
                     if (response == 0)
                     {
                       
@@ -201,12 +245,14 @@ namespace ncl_auto_parts.controller
                             float money = vente.Prix * quantite;
                             
                             RemoveHtgMoney(money);
+                           
                             main.closeConn();
                         }
                         else
                         {
                             float money = vente.Prix * quantite;
                             RemoveUsMoney(money);
+                           
                             main.closeConn();
                         }
                         deleteVente(receipt, table);
@@ -277,9 +323,49 @@ namespace ncl_auto_parts.controller
             //main.theSum_.Text = somme.ToString() + " $";
 
         }
-        public static async Task<int> updateQuantite(string productName, int quantite)
+        public static async Task<int> updateQuantite(string productName, int quantite,int quantite_vendu,string action)
         {
-            return await dbConfig.execute_command("update article set quantite=" + quantite.ToString() + " where nom_du_produit='" + productName + "'");
+            int vendu = 0;
+            if (action == "cancel")
+            {
+                MySqlDataReader result = await dbConfig.getResultCommand("select quantite_vendu from article");
+                while (result.Read())
+                {
+                    try
+                    {
+                        vendu = int.Parse(result["quantite_vendu"].ToString());
+                    }
+                    catch
+                    {
+
+                    }
+                }
+
+                vendu -= quantite_vendu;
+                if (vendu < 0)
+                {
+                    return 1;
+                }
+            }
+            else
+            {
+                MySqlDataReader result = await dbConfig.getResultCommand("select quantite_vendu from article");
+                while (result.Read())
+                {
+                    try
+                    {
+                        vendu = int.Parse(result["quantite_vendu"].ToString());
+                    }
+                    catch
+                    {
+
+                    }
+                }
+
+                vendu += quantite_vendu;
+            }
+            
+            return await dbConfig.execute_command("update article set quantite=" + quantite.ToString() + ",quantite_vendu="+vendu+" where nom_du_produit='" + productName + "'");
         }
         public static async Task<int> AddUsMoney(float money)
         {
@@ -399,7 +485,7 @@ namespace ncl_auto_parts.controller
                 {
                     int quantiteRestante = vente.Quantite - quantite;
                     
-                    int response = await updateQuantite(nom_du_produit, quantiteRestante);
+                    int response = await updateQuantite(nom_du_produit, quantiteRestante,quantite,"add");
 
                    
                     if (response == 0)

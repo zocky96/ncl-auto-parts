@@ -259,6 +259,11 @@ namespace ncl_auto_parts.db
            
             rep = await execute_command("create table article (id int primary key auto_increment,nom_du_produit varchar(100),prix float,quantite int,fournisseur varchar(80),dateAjout date,dateExpiration date,element varchar(255),ref varchar(255),numero varchar(255),idfournisseur int)");
             rep = await execute_command("ALTER TABLE article ADD init_value INT");
+            rep = await execute_command("ALTER TABLE article ADD quantite_vendu INT");
+            if (rep == 0)
+            {
+                await execute_command("update article set quantite_vendu=0");
+            }
             rep = await execute_command("create table fournisseur (id int primary key auto_increment,nom varchar(255),prenom varchar(100),adresse varchar(100),nom_du_produit varchar(100),telephone varchar(100))");
            
             rep = await execute_command("create table vente (id int primary key auto_increment,nom_du_produit varchar(100),prix float,quantite int,total float,date date,signature_autorise varchar(150),receiptNumber varchar(255),type varchar(255),clientName varchar(255),devise enum('HTG','US'))");

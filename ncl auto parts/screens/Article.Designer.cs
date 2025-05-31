@@ -102,13 +102,14 @@
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ccc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qte_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idf_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.element_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ref_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numero_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datea_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,13 +141,14 @@
             this.id_,
             this.name_,
             this.price_,
+            this.ccc,
             this.qte_,
+            this.Column2,
             this.idf_,
             this.element_,
             this.ref_,
             this.numero_,
-            this.datea_,
-            this.Column1});
+            this.datea_});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -1142,10 +1144,20 @@
             this.price_.HeaderText = "Prix";
             this.price_.Name = "price_";
             // 
+            // ccc
+            // 
+            this.ccc.HeaderText = "Quantité";
+            this.ccc.Name = "ccc";
+            // 
             // qte_
             // 
-            this.qte_.HeaderText = "Quantité";
+            this.qte_.HeaderText = "Quantité initiale";
             this.qte_.Name = "qte_";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Quantité vendu";
+            this.Column2.Name = "Column2";
             // 
             // idf_
             // 
@@ -1171,11 +1183,6 @@
             // 
             this.datea_.HeaderText = "Date d\'ajout";
             this.datea_.Name = "datea_";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Quantité initiale";
-            this.Column1.Name = "Column1";
             // 
             // Article
             // 
@@ -1239,12 +1246,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_;
         private System.Windows.Forms.DataGridViewTextBoxColumn price_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ccc;
         private System.Windows.Forms.DataGridViewTextBoxColumn qte_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idf_;
         private System.Windows.Forms.DataGridViewTextBoxColumn element_;
         private System.Windows.Forms.DataGridViewTextBoxColumn ref_;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero_;
         private System.Windows.Forms.DataGridViewTextBoxColumn datea_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

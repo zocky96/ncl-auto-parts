@@ -29,7 +29,7 @@ namespace ncl_auto_parts.rapport
 
             FactureData vente = new FactureData();
             MySqlConnection connection = await dbConfig.connection();
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(" select *,(select sum(total) from vente where date>='"+de+"' and date<='"+a+ "' and devise='US') as total_us,(select sum(total) from vente where date>='" + de + "' and date<='" + a + "' and devise='HTG') as total_htg from vente where date >='" + de+"' and date<='"+a+"';", connection);
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(" select *,(select sum(total) from vente where date>='"+de+"' and date<='"+a+ "' and devise='US') as total_us,(select sum(total) from vente where date>='" + de + "' and date<='" + a + "' and devise='HTG') as total_htg,(select quantite_vendu from article where nom_du_produit=vente.nom_du_produit) as quantite_vendu,(select init_value from article where nom_du_produit=vente.nom_du_produit) as init_value from vente where date >='" + de+"' and date<='"+a+ "' group by nom_du_produit", connection);
             dataAdapter.Fill(vente, vente.Tables[0].TableName);
             ReportDataSource rds = new ReportDataSource("Vente", vente.Tables[0]);
             this.reportViewer1.LocalReport.DataSources.Clear();

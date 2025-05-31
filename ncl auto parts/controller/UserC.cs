@@ -19,7 +19,7 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from utilisateur where id='" + word + "' or username= '" + word + "'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from utilisateur order by id desc where id='" + word + "' or username= '" + word + "'");
             try
             {
                 while (result.Read())
@@ -367,7 +367,7 @@ namespace ncl_auto_parts.controller
         public async static void showUser(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            if (main.poste.Equals("manager"))
+            if (main.poste.Equals("manager") || main.poste.Equals("PDG"))
             {
                 MySqlDataReader result = await dbConfig.getResultCommand("select *from utilisateur");
                 try
@@ -375,7 +375,7 @@ namespace ncl_auto_parts.controller
                     while (result.Read())
                     {
 
-                        table.Rows.Add(result["code_employer"], result["nom"], result["prenom"], result["username"], result["password"]);
+                        table.Rows.Add(result["code_employer"], result["nom"]+" "+result["prenom"], result["username"], result["password"]);
 
                     }
                 }
@@ -383,6 +383,7 @@ namespace ncl_auto_parts.controller
                 {
 
                 }
+                main.closeConn();
             }
             else
             {
@@ -393,7 +394,7 @@ namespace ncl_auto_parts.controller
                     while (result.Read())
                     {
 
-                        table.Rows.Add(result["id"], result["nom"]+" "+result["prenom"], result["username"], result["password"]);
+                        table.Rows.Add(result["code_employer"], result["nom"]+" "+result["prenom"], result["username"], result["password"]);
 
                     }
                 }

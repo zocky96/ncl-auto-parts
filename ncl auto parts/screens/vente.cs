@@ -369,40 +369,22 @@ namespace ncl_auto_parts.screens
 
                             }
 
-                            string year, month, day, date;
-                            year = DateTime.Now.Year.ToString();
-                            month = DateTime.Now.Month.ToString();
-                            day = DateTime.Now.Day.ToString();
-                            date = year + "/" + month + "/" + day;
+                            string  date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
                             float total = int.Parse(qte.Text);
                             //VenteM vente = new VenteM(name.Text,date,"zock",receiptNumber,clientName.Text,5,566,2,1,5);
                             int rep = await VenteC.vendre(name.Text, int.Parse(qte.Text), table, receiptNumber, clientName.Text, devise.Text);
                             main.closeConn();
                             if (rep == 0)
                             {
-                                MySqlDataReader result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + receiptNumber + "'");
-                                //public List<(string name, int quantite, float price, float tax, float total)> donnees;
-                                donnees = new List<(string, int, float, float)>();
-                                p_clientName = clientName.Text;
                                 p_receiptNumber = receiptNumber;
                                 p_date = date;
-                                while (result.Read())
-                                {
-                                    real_total += float.Parse(result["quantite"].ToString()) * float.Parse(result["prix"].ToString());
-                                    donnees.Add((result["nom_du_produit"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["prix"].ToString()), float.Parse(result["total"].ToString())));
-                                }
+                                
                                 main.closeConn();
                                 VenteC.showVente(table);
                                 main.closeConn();
                                 clearField();
                                 MessageBox.Show("Vente effectué avec succes");
-                                //PrintDialog printDialog1 = new PrintDialog();
-                                //printDialog1.Document = printDocument1;
-                                //DialogResult resulta = printDialog1.ShowDialog();
-                                //if (resulta == DialogResult.OK)
-                                //{
-                                //    printDocument1.Print();
-                                //}
+                              
                                 main.showLogin(new oneVente(receiptNumber));
                             }
                             else
@@ -524,7 +506,7 @@ namespace ncl_auto_parts.screens
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
+                   
         }
 
         private void bunifuButton1_Click_2(object sender, EventArgs e)

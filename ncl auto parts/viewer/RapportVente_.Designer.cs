@@ -800,6 +800,10 @@ namespace ncl_auto_parts.viewer {
             
             private global::System.Data.DataColumn columntotal_htg;
             
+            private global::System.Data.DataColumn columninit_value;
+            
+            private global::System.Data.DataColumn columnquantite_vendu;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public VenteDataTable() {
@@ -923,6 +927,22 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn init_valueColumn {
+                get {
+                    return this.columninit_value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn quantite_venduColumn {
+                get {
+                    return this.columnquantite_vendu;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -958,7 +978,7 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VenteRow AddVenteRow(string nom_du_produit, double prix, int quantite, double total, System.DateTime date, string signature_autorise, string receiptNumber, string devise, double real_total, double total_us, string total_htg) {
+            public VenteRow AddVenteRow(string nom_du_produit, double prix, int quantite, double total, System.DateTime date, string signature_autorise, string receiptNumber, string devise, double real_total, double total_us, string total_htg, string init_value, string quantite_vendu) {
                 VenteRow rowVenteRow = ((VenteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nom_du_produit,
@@ -971,7 +991,9 @@ namespace ncl_auto_parts.viewer {
                         devise,
                         real_total,
                         total_us,
-                        total_htg};
+                        total_htg,
+                        init_value,
+                        quantite_vendu};
                 rowVenteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVenteRow);
                 return rowVenteRow;
@@ -1005,6 +1027,8 @@ namespace ncl_auto_parts.viewer {
                 this.columnreal_total = base.Columns["real_total"];
                 this.columntotal_us = base.Columns["total_us"];
                 this.columntotal_htg = base.Columns["total_htg"];
+                this.columninit_value = base.Columns["init_value"];
+                this.columnquantite_vendu = base.Columns["quantite_vendu"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1032,6 +1056,10 @@ namespace ncl_auto_parts.viewer {
                 base.Columns.Add(this.columntotal_us);
                 this.columntotal_htg = new global::System.Data.DataColumn("total_htg", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotal_htg);
+                this.columninit_value = new global::System.Data.DataColumn("init_value", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninit_value);
+                this.columnquantite_vendu = new global::System.Data.DataColumn("quantite_vendu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnquantite_vendu);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3484,6 +3512,38 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string init_value {
+                get {
+                    try {
+                        return ((string)(this[this.tableVente.init_valueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'init_value\' in table \'Vente\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVente.init_valueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string quantite_vendu {
+                get {
+                    try {
+                        return ((string)(this[this.tableVente.quantite_venduColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'quantite_vendu\' in table \'Vente\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVente.quantite_venduColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Isnom_du_produitNull() {
                 return this.IsNull(this.tableVente.nom_du_produitColumn);
             }
@@ -3612,6 +3672,30 @@ namespace ncl_auto_parts.viewer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Settotal_htgNull() {
                 this[this.tableVente.total_htgColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isinit_valueNull() {
+                return this.IsNull(this.tableVente.init_valueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setinit_valueNull() {
+                this[this.tableVente.init_valueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isquantite_venduNull() {
+                return this.IsNull(this.tableVente.quantite_venduColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setquantite_venduNull() {
+                this[this.tableVente.quantite_venduColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -16,7 +16,7 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from fournisseur where id='" + word + "' or nom='" + word + "' or  prenom='" + word + "' or telephone='" + word + "' or nom_du_produit='" + word + "'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from fournisseur order by id desc where id='" + word + "' or nom='" + word + "' or  prenom='" + word + "' or telephone='" + word + "' or nom_du_produit='" + word + "'");
             try
             {
                 while (result.Read())
@@ -71,7 +71,7 @@ namespace ncl_auto_parts.controller
         public async static void showDepense(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from depenses");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from depenses order by id desc");
             try
             {
                 while (result.Read())
@@ -89,7 +89,7 @@ namespace ncl_auto_parts.controller
         public async static void showAjout(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from ajout");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from ajout order by id desc");
             try
             {
                 while (result.Read())
@@ -107,7 +107,7 @@ namespace ncl_auto_parts.controller
         public async static void showAjoutGarage(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from ajout_garage");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from ajout_garage order by id desc");
             try
             {
                 while (result.Read())
@@ -125,7 +125,7 @@ namespace ncl_auto_parts.controller
         public async static void showDepenseGarage(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from depenses_garage");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from depenses_garage order by id desc");
             try
             {
                 while (result.Read())

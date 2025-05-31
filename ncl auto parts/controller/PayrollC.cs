@@ -16,7 +16,7 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from new_payroll where id_emp='" + word + "' or poste='" + word + "' or  date='" + word + "'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from new_payroll order by id desc where id_emp='" + word + "' or poste='" + word + "' or  date='" + word + "'");
             try
             {
                 while (result.Read())
@@ -54,7 +54,7 @@ namespace ncl_auto_parts.controller
         public async static void showPayroll(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from new_payroll");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from new_payroll order by id desc");
             try
             {
                 while (result.Read())

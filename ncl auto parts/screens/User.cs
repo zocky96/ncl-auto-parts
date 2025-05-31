@@ -145,6 +145,8 @@ namespace ncl_auto_parts.screens
 
         private async void modify_Click(object sender, EventArgs e)
         {
+            modify.Visible = false;
+            delete.Visible = false;
             main.closeConn();
             string nom, prenom, username, passwd, passwd_conf, code_employer;
             
@@ -250,6 +252,7 @@ namespace ncl_auto_parts.screens
         private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             delete.Visible = true;
+            modify.Visible = true;
             id = table.CurrentRow.Cells["id_"].Value.ToString();
             idEmployer.Text = table.CurrentRow.Cells["id_"].Value.ToString();
             userName.Text = table.CurrentRow.Cells["user_"].Value.ToString();

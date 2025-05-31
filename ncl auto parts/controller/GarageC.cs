@@ -16,7 +16,7 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from fgarage where id='" + word + "' or clientName='" + word + "'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from fgarage order by id desc  where id='" + word + "' or clientName='" + word + "'");
             try
             {
                 while (result.Read())
@@ -40,7 +40,7 @@ namespace ncl_auto_parts.controller
         public async static void showGoodFacture(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_garage");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_garage order by id desc");
             try
             {
                 while (result.Read())
@@ -60,7 +60,7 @@ namespace ncl_auto_parts.controller
             table.Rows.Clear();
             if (id == "")
             {
-                MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_garage");
+                MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_garage order by id desc");
                 try
                 {
                     while (result.Read())
@@ -77,7 +77,7 @@ namespace ncl_auto_parts.controller
             }
             else
             {
-                MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_garage where no_recu='" + id + "'");
+                MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_garage order by id desc where no_recu='" + id + "'");
                 try
                 {
                     while (result.Read())
@@ -99,6 +99,53 @@ namespace ncl_auto_parts.controller
             int rep = await dbConfig.execute_command("delete from facture_garage where no_recu='" + id + "'");
             //showFacture(table);
             return rep;
+        }
+        public static async Task<bool> ifReceiptIdExist(string id)
+        {
+            bool rep = false;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as nbr from facture_garage where no_recu='" + id + "'");
+            while (result.Read())
+            {
+                int nbr = int.Parse(result["nbr"].ToString());
+                if (nbr == 0)
+                {
+                    rep = false;
+                }
+                else
+                {
+                    rep = true;
+                }
+            }
+            return rep;
+        }
+        public static async Task<int> getMaxId()
+        {
+            int id = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select max(id) as maxid from facture_garage");
+            if (result == null)
+            {
+                id = 0;
+            }
+            else
+            {
+                while (result.Read())
+                {
+                    try
+                    {
+                        id = int.Parse(result["maxid"].ToString());
+                        // MessageBox.Show("ok zizi" + id.ToString());
+                    }
+                    catch
+                    {
+                        id = 0;
+                    }
+                }
+            }
+            main.closeConn();
+
+
+
+            return id;
         }
         public static async Task<int> saveGoodFacture(AutoPartM facture, string receiptId, BunifuDataGridView table)
         {
@@ -143,7 +190,7 @@ namespace ncl_auto_parts.controller
         public async static void showFacture(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from fgarage");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from fgarage order by id desc");
             try
             {
                 while (result.Read())

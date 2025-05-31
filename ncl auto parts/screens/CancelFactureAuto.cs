@@ -24,7 +24,7 @@ namespace ncl_auto_parts.screens
         public async static void showGoodFacture(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from canceled_facture_auto");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from canceled_facture_auto order by id desc");
             try
             {
                 while (result.Read())

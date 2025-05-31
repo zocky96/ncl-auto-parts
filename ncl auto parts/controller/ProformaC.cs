@@ -83,7 +83,7 @@ namespace ncl_auto_parts.controller
         {
             
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from proforma");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from proforma order by id desc");
             try
             {
                 while (result.Read())

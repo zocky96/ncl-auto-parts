@@ -30,7 +30,7 @@ namespace ncl_auto_parts
         private BunifuFlatButton boutonActif = null;
         private BunifuButton boutonActif2 = null;
         public static BunifuCustomLabel log_in,log_out;
-        public static BunifuButton article_,vente_,fournisseur_,cart_,employe_,user_,payroll_,autoPart_,facturation_,client_,reparation_,garage_,settings_,truePayroll_;
+        public static BunifuButton article_,vente_,fournisseur_,cart_,employe_,user_,payroll_,autoPart_,facturation_,client_,reparation_,garage_,settings_,truePayroll_,dashboard_;
         public  main()
         {
             int rep = 000;
@@ -55,6 +55,7 @@ namespace ncl_auto_parts
                 fournisseur_ = fournisseur;
                 cart_ = cart;
                 employe_ = employe;
+                dashboard_ = dashboard;
                 user_ = user;
                 payroll_ = payroll;
                 autoPart_ = autoPart;
@@ -92,23 +93,27 @@ namespace ncl_auto_parts
 
         }
        
-        private void moveSelectedItem2(BunifuButton nouveauBouton)
+        public void moveSelectedItem2(BunifuButton nouveauBouton)
         {
             if (boutonActif2 != null && boutonActif2 != nouveauBouton)
             {
                 boutonActif2.Enabled = true;
+               nouveauBouton.IdleFillColor = Color.White;
+                nouveauBouton.DisabledForecolor = Color.White;
                 //boutonActif2.selected = false;
                 //boutonActif.BackColor = Color.FromArgb(30, 30, 30); // Couleur normale
             }
 
             // Désactiver le bouton actuel et le marquer actif
             boutonActif2 = nouveauBouton;
+          
             boutonActif2.Enabled = false;
+           
             //boutonActif2.selected = true;
         }
        
 
-        private void showScreen(object Form)
+        public  void showScreen(object Form)
         {
 
 
@@ -210,18 +215,18 @@ namespace ncl_auto_parts
             else
             {
                 sidebar.Width = 229;
-                auto.Font = new Font("Century Gothic", 14);
+                auto.Font = new Font("Century Gothic", 12);
                 article.Text = "Articles";
                 vente.Text = "Vente";
                 cart.Text = "Panier";
                 fournisseur.Text = "Fournisseur";
-                labG.Font = new Font("Century Gothic", 14);
+                labG.Font = new Font("Century Gothic", 12);
                 client.Text = "Client";
                 reparation.Text = "Réparation";
-                labE.Font = new Font("Century Gothic", 14);
+                labE.Font = new Font("Century Gothic", 12);
                 employe.Text = "Employé";
                 user.Text = "Utilisateur";
-                labC.Font = new Font("Century Gothic", 14);
+                labC.Font = new Font("Century Gothic", 12);
                 labC.Text = "Comptabilité";
                 autoPart.Text = "Auto Parts";
                 garage.Text = "Garage";
@@ -336,6 +341,11 @@ namespace ncl_auto_parts
         private void bunifuCustomLabel2_Click(object sender, EventArgs e)
         {
             showLogin(new Login());
+            if(main.userName != null)
+            {
+                moveSelectedItem2(dashboard);
+                showScreen(new Dashboard());
+            }
         }
 
         private void garage_Click(object sender, EventArgs e)
@@ -361,6 +371,8 @@ namespace ncl_auto_parts
         private void logout_Click(object sender, EventArgs e)
         {
             UserC.Disconnected(userName);
+            userName = null;
+            poste = "";
             Dashboard.label.Text = "";
             logout.Visible = false;
             login.Visible = true;
@@ -390,6 +402,12 @@ namespace ncl_auto_parts
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dashboard_Click(object sender, EventArgs e)
+        {
+            moveSelectedItem2(dashboard);
+            showScreen(new Dashboard());
         }
 
         private void panel2_Paint_1(object sender, PaintEventArgs e)

@@ -133,7 +133,7 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
             
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from employer where id='" + word + "' or nom='" + word + "' or  prenom='" + word + "' or nif='" + word + "' or phone='"+word+"' or mail='"+word+"'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from employer order by id desc where id='" + word + "' or nom='" + word + "' or  prenom='" + word + "' or nif='" + word + "' or phone='"+word+"' or mail='"+word+"'");
             try
             {
                 while (result.Read())
@@ -204,7 +204,7 @@ namespace ncl_auto_parts.controller
         public async static void showEmployer(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from employer");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from employer order by id desc");
             try
             {
                 while (result.Read())
@@ -223,7 +223,7 @@ namespace ncl_auto_parts.controller
         {
 
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from employer_suprimer");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from employer_suprimer order by id desc");
             try
             {
                 while (result.Read())

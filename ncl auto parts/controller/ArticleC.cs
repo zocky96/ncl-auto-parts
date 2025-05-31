@@ -23,7 +23,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"],result["init_value"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["init_value"], result["quantite_vendu"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
 
                 }
             }
@@ -32,6 +32,38 @@ namespace ncl_auto_parts.controller
 
             }
 
+        }
+        public static async void filtredByFinnishStock10Last(BunifuDataGridView table)
+        {
+            MySqlDataReader result;
+            table.Rows.Clear();
+            result = await dbConfig.getResultCommand("select nom_du_produit,quantite from article where quantite <= 3");
+            try
+            {
+                while (result.Read())
+                {
+
+                    table.Rows.Add(result["nom_du_produit"],result["quantite"]);
+
+                }
+                main.closeConn();
+            }
+            catch
+            {
+
+            }
+
+        }
+        public static async Task<string> getNbrArticle()
+        {
+            string rep = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as reponse from article");
+            while (result.Read())
+            {
+                rep = result["reponse"].ToString();
+            }
+            main.closeConn();
+            return rep;
         }
         public static async void filtreArticleByType(BunifuDataGridView table, String typeX)
         {
@@ -104,7 +136,7 @@ namespace ncl_auto_parts.controller
 
             if (nbr == 0)
             {
-                rep = await dbConfig.execute_command("insert into article(nom_du_produit,prix,quantite,idfournisseur,element,ref,numero,dateAjout,init_value) values('" + arti.Nom + "','" + arti.Prix + "','" + arti.Quantite + "','" + arti.IdFournisseur1 + "','"+arti.Element+"','"+arti.Reference+"','"+arti.Numero+"','" + DateAjout + "',"+arti.Quantite+")");
+                rep = await dbConfig.execute_command("insert into article(nom_du_produit,prix,quantite,idfournisseur,element,ref,numero,dateAjout,init_value,quantite_vendu) values('" + arti.Nom + "','" + arti.Prix + "','" + arti.Quantite + "','" + arti.IdFournisseur1 + "','"+arti.Element+"','"+arti.Reference+"','"+arti.Numero+"','" + DateAjout + "',"+arti.Quantite+",0)");
 
             }
             else if (nbr > 0)
@@ -197,7 +229,7 @@ namespace ncl_auto_parts.controller
             month = DateTime.Now.Month.ToString();
             day = DateTime.Now.Day.ToString();
             date_x = year + "/" + month + "/" + day;
-            int rep = await dbConfig.execute_command("update article set nom_du_produit='" + article.Nom + "',prix='" + article.Prix + "',quantite='" + article.Quantite + "',idfournisseur='" + article.IdFournisseur1 + "',dateAjout='" + date_x + "',ref='"+article.Reference+"',element='"+article.Element+"',numero="+article.Numero+ ",init_value="+article.Quantite+" where id=" + id);
+            int rep = await dbConfig.execute_command("update article set nom_du_produit='" + article.Nom + "',prix='" + article.Prix + "',quantite='" + article.Quantite + "',idfournisseur='" + article.IdFournisseur1 + "',dateAjout='" + date_x + "',ref='"+article.Reference+"',element='"+article.Element+"',numero="+article.Numero+ ",init_value="+article.Quantite+ ",quantite_vendu=0 where id=" + id);
             showArticle(table);
             return rep;
         }
@@ -242,13 +274,13 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from article where id='" + word + "' or nom_du_produit= '" + word + "' or numero='"+word+ "' or ref='"+word+"'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from article order by id desc where id='" + word + "' or nom_du_produit= '" + word + "' or numero='"+word+ "' or ref='"+word+"'");
             try
             {
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"],result["init_value"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["init_value"], result["quantite_vendu"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
 
                 }
             }
@@ -266,11 +298,11 @@ namespace ncl_auto_parts.controller
             month = DateTime.Now.Month.ToString();
             day = DateTime.Now.Day.ToString();
             date_x = year + "/" + month + "/" + day;
-            result = await dbConfig.getResultCommand("select * from article where dateExpiration <'" + date_x + "'");
+            result = await dbConfig.getResultCommand("select * from article order by id desc where dateExpiration <'" + date_x + "'");
             while (result.Read())
             {
 
-                table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["type"], result["fournisseur"], result["dateAjout"], result["dateExpiration"],result["init_value"]);
+                table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["init_value"], result["quantite_vendu"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
 
             }
         }
@@ -286,14 +318,14 @@ namespace ncl_auto_parts.controller
             MySqlDataReader result;
             table.Rows.Clear();
 
-            result = await dbConfig.getResultCommand("select *from article");
+            result = await dbConfig.getResultCommand("select *from article order by id desc");
 
             try
             {
                 while (result.Read())
                 {
                     //MessageBox.Show(result["dateAjout"].ToString());
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"],result["init_value"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["init_value"], result["quantite_vendu"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
 
                 }
             }

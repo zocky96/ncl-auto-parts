@@ -75,14 +75,14 @@ namespace ncl_auto_parts.screens
                 Random random = new Random();
                 int randomNumber = random.Next(9999999);
                 int ID = await VenteC.getMaxId() + 1;
-                String receiptNumber = "IOE" + randomNumber.ToString() + ID.ToString();
+                String receiptNumber = "NCL" + randomNumber.ToString() + ID.ToString();
                 //-----------------
 
                 bool receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
                 while (receiptExist)
                 {
                     int i = 0;
-                    receiptNumber = "IOE" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                    receiptNumber = "NCL" + randomNumber.ToString() + VenteC.getMaxId().ToString();
                     receiptExist = await VenteC.ifReceiptIdExist(receiptNumber);
                     i += 1;
                     if (i >= 20)
@@ -104,7 +104,7 @@ namespace ncl_auto_parts.screens
                     //prix = result["prix"].ToString();
                     clientName = result["clientName"].ToString();
                     rep = await VenteC.vendre(name, int.Parse(quantite), tableCart, receiptNumber, clientName,devise.Text);
-                    main.closeConn();
+                    
                 }
 
                 if (rep == 0)

@@ -26,9 +26,10 @@ namespace ncl_auto_parts.rapport
 
         private async void VoitureViewer_Load(object sender, EventArgs e)
         {
+            
             FactureData vente = new FactureData();
             MySqlConnection connection = await dbConfig.connection();
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("select *from reparation,client where client.id ="+id+" and reparation.id="+idReparation+ " and reparation.clientId="+id, connection);
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("select *from reparation,client where client.id ="+idReparation+" and reparation.id="+id+ " and reparation.clientId="+idReparation, connection);
             dataAdapter.Fill(vente, vente.Tables[0].TableName);
             ReportDataSource rds = new ReportDataSource("Voiture", vente.Tables[0]);
             this.reportViewer1.LocalReport.DataSources.Clear();

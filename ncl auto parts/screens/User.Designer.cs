@@ -487,6 +487,7 @@
             this.modify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.modify.TextMarginLeft = 0;
             this.modify.UseDefaultRadiusAndThickness = true;
+            this.modify.Visible = false;
             this.modify.Click += new System.EventHandler(this.modify_Click);
             // 
             // delete

@@ -39,7 +39,7 @@
         <Value>ncl</Value>
         <Sizing>FitProportional</Sizing>
         <Top>1.26007cm</Top>
-        <Left>0.58885cm</Left>
+        <Left>0.17717cm</Left>
         <Height>3.70417cm</Height>
         <Width>3.95111cm</Width>
         <ZIndex>1</ZIndex>
@@ -56,7 +56,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>QUATIER MORIN NORD, Haiti</Value>
+                <Value>QUARTIER MORIN NORD, Haiti</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -176,25 +176,25 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.82221cm</Width>
+              <Width>3.45179cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.812cm</Width>
+              <Width>3.00271cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.71908cm</Width>
+              <Width>2.97665cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.98367cm</Width>
+              <Width>2.77741cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.26305cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.98367cm</Width>
+              <Width>1.7868cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.98367cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.37513cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -236,14 +236,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox9">
+                    <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Prix</Value>
+                              <Value>Quantite initiale</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -252,7 +252,40 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>PaleTurquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox8">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Quantite vendu</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -276,7 +309,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Quantite</Value>
+                              <Value>Quantite dispo</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -286,39 +319,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>PaleTurquoise</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox15">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Total</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -469,21 +469,51 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="prix">
+                    <Textbox Name="init_value">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!prix.Value</Value>
+                              <Value>=Fields!init_value.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>prix</rd:DefaultName>
+                      <rd:DefaultName>init_value</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="quantite_vendu">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!quantite_vendu.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>quantite_vendu</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -514,36 +544,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>quantite</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="total">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!total.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>total</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -674,9 +674,9 @@
         </TablixRowHierarchy>
         <DataSetName>Vente</DataSetName>
         <Top>7.3787cm</Top>
-        <Left>1.25031cm</Left>
+        <Left>0.81217cm</Left>
         <Height>1.2cm</Height>
-        <Width>15.56735cm</Width>
+        <Width>17.35416cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -691,7 +691,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total                                                                                                             </Value>
+                <Value>Total                                                                                                                             </Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -714,9 +714,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
         <Top>9.12495cm</Top>
-        <Left>1.25031cm</Left>
+        <Left>0.81217cm</Left>
         <Height>0.6cm</Height>
-        <Width>15.56735cm</Width>
+        <Width>17.35416cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -736,7 +736,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total                                                                                                             </Value>
+                <Value>Total                                                                                                                             </Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -759,9 +759,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
         <Top>10.04921cm</Top>
-        <Left>1.25031cm</Left>
+        <Left>0.81217cm</Left>
         <Height>0.6cm</Height>
-        <Width>15.56735cm</Width>
+        <Width>17.35416cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -782,7 +782,7 @@
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
+    <LeftMargin>0.5cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>
     <BottomMargin>2cm</BottomMargin>
@@ -848,6 +848,14 @@
         </Field>
         <Field Name="total_htg">
           <DataField>total_htg</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="init_value">
+          <DataField>init_value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="quantite_vendu">
+          <DataField>quantite_vendu</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
