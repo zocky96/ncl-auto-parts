@@ -444,6 +444,7 @@ namespace ncl_auto_parts.screens
             print.Visible = true;
             noRecu = table.CurrentRow.Cells["receipt"].Value.ToString();
             idT = table.CurrentRow.Cells["id"].Value.ToString();
+           
             nomProduitT = table.CurrentRow.Cells["productName"].Value.ToString();
             quantiteT = table.CurrentRow.Cells["quantite_"].Value.ToString();
             deviseT = table.CurrentRow.Cells["devise_"].Value.ToString();
@@ -451,6 +452,7 @@ namespace ncl_auto_parts.screens
             p_clientName = table.CurrentRow.Cells["_nomClien"].Value.ToString();
             p_receiptNumber = table.CurrentRow.Cells["receipt"].Value.ToString();
             p_date = table.CurrentRow.Cells["dd"].Value.ToString();
+            
         }
 
         private async void print_Click(object sender, EventArgs e)

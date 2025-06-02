@@ -105,6 +105,7 @@
             this.poste_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
             // 
@@ -858,7 +859,8 @@
             this.adresse_,
             this.poste_,
             this.phone_,
-            this.sal});
+            this.sal,
+            this.Column1});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -1108,6 +1110,11 @@
             this.sal.HeaderText = "Salaire";
             this.sal.Name = "sal";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Devise";
+            this.Column1.Name = "Column1";
+            // 
             // Employer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1176,5 +1183,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn poste_;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone_;
         private System.Windows.Forms.DataGridViewTextBoxColumn sal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

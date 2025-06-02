@@ -1157,7 +1157,7 @@
             this.settings.BackColor1 = System.Drawing.Color.DodgerBlue;
             this.settings.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("settings.BackgroundImage")));
             this.settings.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.settings.ButtonText = "Parametre";
+            this.settings.ButtonText = "Administration";
             this.settings.ButtonTextMarginLeft = 0;
             this.settings.ColorContrastOnClick = 45;
             this.settings.ColorContrastOnHover = 45;

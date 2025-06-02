@@ -156,6 +156,11 @@ namespace ncl_auto_parts.screens
             element.Text = table.CurrentRow.Cells["element_"].Value.ToString();
             refArticle.Text = table.CurrentRow.Cells["ref_"].Value.ToString();
             numero.Text = table.CurrentRow.Cells["numero_"].Value.ToString();
+            if(main.poste != "gestionnaire de stock")
+            {
+               // main.showLogin(new OtherVente(id));
+            }
+            
         }
 
         private async void modify_Click(object sender, EventArgs e)

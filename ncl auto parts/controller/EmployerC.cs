@@ -139,7 +139,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom"], result["prenom"], result["mail"], result["nif"], result["adresse"], result["poste"], result["phone"],result["salaire"]);
+                    table.Rows.Add(result["id"], result["nom"], result["prenom"], result["mail"], result["nif"], result["adresse"], result["poste"], result["phone"],result["salaire"],"HTG");
 
                 }
             }
@@ -210,7 +210,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["emp_id"], result["nom"], result["prenom"], result["mail"], result["nif"], result["adresse"], result["poste"], result["phone"],result["salaire"]);
+                    table.Rows.Add(result["id"], result["emp_id"], result["nom"], result["prenom"], result["mail"], result["nif"], result["adresse"], result["poste"], result["phone"],result["salaire"],"HTG");
 
                 }
             }

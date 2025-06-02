@@ -24,7 +24,11 @@ namespace ncl_auto_parts.screens
             label = hello;
             if (main.userName != null)
             {
-                init_screen();
+                if (main.poste != "gestionnaire de stock")
+                {
+                    init_screen();
+                }
+                
             }
             //init_screen();
             main.closeConn();

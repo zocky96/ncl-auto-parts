@@ -403,6 +403,12 @@
     <Compile Include="screens\Cash.Designer.cs">
       <DependentUpon>Cash.cs</DependentUpon>
     </Compile>
+    <Compile Include="screens\OtherVente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\OtherVente.Designer.cs">
+      <DependentUpon>OtherVente.cs</DependentUpon>
+    </Compile>
     <Compile Include="screens\Proforma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,6 +498,9 @@
     <EmbeddedResource Include="rapport\voiture.rdlc" />
     <EmbeddedResource Include="rapport\VoitureViewer.resx">
       <DependentUpon>VoitureViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\OtherVente.resx">
+      <DependentUpon>OtherVente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="viewer\RapportVente.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">

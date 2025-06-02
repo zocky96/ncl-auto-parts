@@ -1,4 +1,5 @@
 ﻿using ncl_auto_parts.controller;
+using ncl_auto_parts.db;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace ncl_auto_parts.screens
         {
             InitializeComponent();
             //userName.Focus();
+            repaireTable();
             
         }
 
@@ -88,7 +90,46 @@ namespace ncl_auto_parts.screens
             }
            
         }
-
+        private async void repaireTable()
+        {
+            List<string> list = new List<string>
+            {
+                "account_htg",
+                "account_htg_garage",
+                "account_us",
+                "account_us_garage",
+                "ajout",
+                "ajout_garage",
+                "article" ,
+                "cancel_facture_garage" ,
+                "canceled_facture_auto" ,
+                "canceledvente" ,
+                "client" ,
+                "depenses" ,
+                "depenses_garage" ,
+                "employer" ,
+                "employer_suprimer", 
+                "facture_auto" ,
+                "facture_garage" ,
+                "fauto_part" ,
+                "fgarage" ,
+                "fournisseur",
+                "log" ,
+                "new_payroll" ,
+                "paiement",
+                "panier",
+                "proforma",
+                "reparation",
+                "services",
+                "utilisateur",
+                "vente",
+            };
+            for(int i = 0;i < list.Count; i++)
+            {
+                int rep = await dbConfig.execute_command("repair table "+list[i]);
+                main.closeConn();
+            }
+        }
         private void Login_Load(object sender, EventArgs e)
         {
             userName.Select();
