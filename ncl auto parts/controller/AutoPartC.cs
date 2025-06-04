@@ -60,7 +60,7 @@ namespace ncl_auto_parts.controller
             table.Rows.Clear();
             if (id == "")
             {
-                MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_auto order by id desc");
+                MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_auto");
                 try
                 {
                     while (result.Read())
@@ -77,7 +77,7 @@ namespace ncl_auto_parts.controller
             }
             else
             {
-                MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_auto order by id desc where no_recu='" + id + "'");
+                MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_auto where no_recu='" + id + "'");
                 try
                 {
                     while (result.Read())

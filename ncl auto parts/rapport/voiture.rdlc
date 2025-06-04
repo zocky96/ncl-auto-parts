@@ -416,6 +416,7 @@
                 <Value>=Fields!dateEntree.Value</Value>
                 <Style>
                   <FontWeight>Normal</FontWeight>
+                  <Format>yyyy-MM-dd</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -454,6 +455,7 @@
                 <Value>=Fields!dateSortie.Value</Value>
                 <Style>
                   <FontWeight>Normal</FontWeight>
+                  <Format>yyyy-MM-dd</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -670,7 +672,6 @@
     </PageHeader>
     <PageHeight>11.69in</PageHeight>
     <PageWidth>8.27in</PageWidth>
-    <RightMargin>0.7874in</RightMargin>
     <TopMargin>0.7874in</TopMargin>
     <BottomMargin>0.7874in</BottomMargin>
     <ColumnSpacing>0.05118in</ColumnSpacing>

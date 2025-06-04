@@ -138,6 +138,7 @@
                 <Value>=Fields!date.Value</Value>
                 <Style>
                   <FontWeight>Normal</FontWeight>
+                  <Format>yyyy-MM-dd</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -973,7 +974,8 @@
     </PageFooter>
     <PageHeight>11.69in</PageHeight>
     <PageWidth>8.27in</PageWidth>
-    <RightMargin>0.7874in</RightMargin>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
     <TopMargin>0.7874in</TopMargin>
     <BottomMargin>0.7874in</BottomMargin>
     <ColumnSpacing>0.05118in</ColumnSpacing>

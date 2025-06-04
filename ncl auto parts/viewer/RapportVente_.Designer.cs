@@ -1999,6 +1999,18 @@ namespace ncl_auto_parts.viewer {
             
             private global::System.Data.DataColumn columntotal_us;
             
+            private global::System.Data.DataColumn columndiscount;
+            
+            private global::System.Data.DataColumn columnavance;
+            
+            private global::System.Data.DataColumn columncomment;
+            
+            private global::System.Data.DataColumn columnstatut;
+            
+            private global::System.Data.DataColumn columnpayment;
+            
+            private global::System.Data.DataColumn columnpay;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public oneFactureDataTable() {
@@ -2162,6 +2174,54 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn discountColumn {
+                get {
+                    return this.columndiscount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn avanceColumn {
+                get {
+                    return this.columnavance;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn commentColumn {
+                get {
+                    return this.columncomment;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn statutColumn {
+                get {
+                    return this.columnstatut;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn paymentColumn {
+                get {
+                    return this.columnpayment;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn payColumn {
+                get {
+                    return this.columnpay;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2213,7 +2273,13 @@ namespace ncl_auto_parts.viewer {
                         double total, 
                         double real_total, 
                         double total_htg, 
-                        string total_us) {
+                        string total_us, 
+                        string discount, 
+                        string avance, 
+                        string comment, 
+                        string statut, 
+                        string payment, 
+                        string pay) {
                 oneFactureRow rowoneFactureRow = ((oneFactureRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         clientName,
@@ -2231,7 +2297,13 @@ namespace ncl_auto_parts.viewer {
                         total,
                         real_total,
                         total_htg,
-                        total_us};
+                        total_us,
+                        discount,
+                        avance,
+                        comment,
+                        statut,
+                        payment,
+                        pay};
                 rowoneFactureRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowoneFactureRow);
                 return rowoneFactureRow;
@@ -2270,6 +2342,12 @@ namespace ncl_auto_parts.viewer {
                 this.columnreal_total = base.Columns["real_total"];
                 this.columntotal_htg = base.Columns["total_htg"];
                 this.columntotal_us = base.Columns["total_us"];
+                this.columndiscount = base.Columns["discount"];
+                this.columnavance = base.Columns["avance"];
+                this.columncomment = base.Columns["comment"];
+                this.columnstatut = base.Columns["statut"];
+                this.columnpayment = base.Columns["payment"];
+                this.columnpay = base.Columns["pay"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2307,6 +2385,19 @@ namespace ncl_auto_parts.viewer {
                 base.Columns.Add(this.columntotal_htg);
                 this.columntotal_us = new global::System.Data.DataColumn("total_us", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotal_us);
+                this.columndiscount = new global::System.Data.DataColumn("discount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiscount);
+                this.columnavance = new global::System.Data.DataColumn("avance", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnavance);
+                this.columncomment = new global::System.Data.DataColumn("comment", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncomment);
+                this.columnstatut = new global::System.Data.DataColumn("statut", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatut);
+                this.columnpayment = new global::System.Data.DataColumn("payment", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpayment);
+                this.columnpay = new global::System.Data.DataColumn("pay", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpay);
+                this.columndate.DateTimeMode = global::System.Data.DataSetDateTime.Utc;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4617,6 +4708,102 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string discount {
+                get {
+                    try {
+                        return ((string)(this[this.tableoneFacture.discountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'discount\' in table \'oneFacture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableoneFacture.discountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string avance {
+                get {
+                    try {
+                        return ((string)(this[this.tableoneFacture.avanceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'avance\' in table \'oneFacture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableoneFacture.avanceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string comment {
+                get {
+                    try {
+                        return ((string)(this[this.tableoneFacture.commentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'comment\' in table \'oneFacture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableoneFacture.commentColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string statut {
+                get {
+                    try {
+                        return ((string)(this[this.tableoneFacture.statutColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'statut\' in table \'oneFacture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableoneFacture.statutColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string payment {
+                get {
+                    try {
+                        return ((string)(this[this.tableoneFacture.paymentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'payment\' in table \'oneFacture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableoneFacture.paymentColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string pay {
+                get {
+                    try {
+                        return ((string)(this[this.tableoneFacture.payColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'pay\' in table \'oneFacture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableoneFacture.payColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsclientNameNull() {
                 return this.IsNull(this.tableoneFacture.clientNameColumn);
             }
@@ -4805,6 +4992,78 @@ namespace ncl_auto_parts.viewer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Settotal_usNull() {
                 this[this.tableoneFacture.total_usColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsdiscountNull() {
+                return this.IsNull(this.tableoneFacture.discountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetdiscountNull() {
+                this[this.tableoneFacture.discountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsavanceNull() {
+                return this.IsNull(this.tableoneFacture.avanceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetavanceNull() {
+                this[this.tableoneFacture.avanceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IscommentNull() {
+                return this.IsNull(this.tableoneFacture.commentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetcommentNull() {
+                this[this.tableoneFacture.commentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsstatutNull() {
+                return this.IsNull(this.tableoneFacture.statutColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetstatutNull() {
+                this[this.tableoneFacture.statutColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IspaymentNull() {
+                return this.IsNull(this.tableoneFacture.paymentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetpaymentNull() {
+                this[this.tableoneFacture.paymentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IspayNull() {
+                return this.IsNull(this.tableoneFacture.payColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetpayNull() {
+                this[this.tableoneFacture.payColumn] = global::System.Convert.DBNull;
             }
         }
         

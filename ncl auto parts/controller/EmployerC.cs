@@ -133,7 +133,7 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
             
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from employer order by id desc where id='" + word + "' or nom='" + word + "' or  prenom='" + word + "' or nif='" + word + "' or phone='"+word+"' or mail='"+word+"'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from employer where id='" + word + "' or nom='" + word + "' or  prenom='" + word + "' or nif='" + word + "' or phone='"+word+"' or mail='"+word+"'");
             try
             {
                 while (result.Read())

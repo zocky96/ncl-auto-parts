@@ -46,6 +46,8 @@ namespace ncl_auto_parts.screens
             service.Text = "";
             dateEntre.Refresh();
             dateSortie.Refresh();
+            payment.Text = "Methode de paiement";
+            statut.Text = "Statut de paiement";
         }
 
         private async void save_Click(object sender, EventArgs e)
@@ -99,18 +101,33 @@ namespace ncl_auto_parts.screens
                                         }
                                         else
                                         {
-                                            int rep = await ReparationC.saveReparation(idClient.Text, marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString()+"/"+dateSortie.Value.Month+"/"+dateSortie.Value.Day, table);
-                                            main.closeConn();
-                                            if (rep == 0)
+                                            if (payment.Text == "Cash" || payment.Text == "Virement" || payment.Text == "Cheque" || payment.Text == "Mon Cash" || payment.Text == "Nat Cash")
                                             {
-                                                clearField();
-                                                main.closeConn();
-                                                MessageBox.Show("Enregistrer avec succes");
+                                                if (statut.Text == "paye" || statut.Text == "non paye" || statut.Text == "avance")
+                                                {
+                                                    int rep = await ReparationC.saveReparation(idClient.Text, marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString() + "/" + dateSortie.Value.Month + "/" + dateSortie.Value.Day, table,payment.Text,statut.Text);
+                                                    main.closeConn();
+                                                    if (rep == 0)
+                                                    {
+                                                        clearField();
+                                                        main.closeConn();
+                                                        MessageBox.Show("Enregistrer avec succes");
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Erreur lors de lénregistrement");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Veuillez Choisir le statut du paiement");
+                                                }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Erreur lors de lénregistrement");
+                                                MessageBox.Show("Veuillez Choisir une methode de paiement");
                                             }
+                                            
                                         }
                                     }
                                 }
@@ -145,14 +162,22 @@ namespace ncl_auto_parts.screens
             service.Text = table.CurrentRow.Cells["service_"].Value.ToString();
             dateEntre.Text = table.CurrentRow.Cells["dateE"].Value.ToString(); 
             dateSortie.Text = table.CurrentRow.Cells["dateS"].Value.ToString();
+            try
+            {
+                statut.Text = table.CurrentRow.Cells["statut_"].Value.ToString();
+                payment.Text = table.CurrentRow.Cells["payment_"].Value.ToString();
+            }
+            catch
+            {
+
+            }
+            
         }
 
         private async void bunifuButton4_Click(object sender, EventArgs e)
         {
             main.closeConn();
-            modify.Visible = false;
-            delete.Visible = false;
-            print.Visible = false;
+            
             bool isAnumber;
             int i;
             isAnumber = int.TryParse(idClient.Text, out i);
@@ -198,18 +223,36 @@ namespace ncl_auto_parts.screens
                                         }
                                         else
                                         {
-                                            int rep = await ReparationC.modifyreparation( marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString()+"/"+dateSortie.Value.Month+"/"+dateSortie.Value.Day, table,id,idClient.Text);
-                                            main.closeConn();
-                                            if (rep == 0)
+                                            if (payment.Text == "Cash" || payment.Text == "Virement" || payment.Text == "Cheque" || payment.Text == "Mon Cash" || payment.Text == "Nat Cash")
                                             {
-                                                clearField();
-                                                main.closeConn();
-                                                MessageBox.Show("Enregistrer avec succes");
+                                                if (statut.Text == "paye" || statut.Text == "non paye" || statut.Text == "avance")
+                                                {
+                                                    int rep = await ReparationC.modifyreparation(marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString() + "/" + dateSortie.Value.Month + "/" + dateSortie.Value.Day, table, id, idClient.Text,payment.Text,statut.Text);
+                                                    main.closeConn();
+                                                    if (rep == 0)
+                                                    {
+                                                        modify.Visible = false;
+                                                        delete.Visible = false;
+                                                        print.Visible = false;
+                                                        clearField();
+                                                        main.closeConn();
+                                                        MessageBox.Show("Enregistrer avec succes");
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Erreur lors de lénregistrement");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Veuillez Choisir le statut du paiement");
+                                                }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Erreur lors de lénregistrement");
+                                                MessageBox.Show("Veuillez Choisir une methode de paiement");
                                             }
+                                            
                                         }
                                     }
                                 }
@@ -256,6 +299,19 @@ namespace ncl_auto_parts.screens
             //print.Visible = false;
             main.showLogin(new VoitureViewer(id,reparationID));
             
+        }
+
+        private void filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filter.Text != "Filtre")
+            {
+                ReparationC.filtreReparation( filter.Text,table);
+            }
+            else if (filter.Text == "Filtre")
+            {
+                ReparationC.showReparation(table);
+            }
+            main.closeConn();
         }
 
         private void searchBar_KeyDown(object sender, KeyEventArgs e)

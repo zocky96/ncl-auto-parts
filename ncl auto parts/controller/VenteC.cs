@@ -18,7 +18,7 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from vente where id='" + word + "' or nom_du_produit= '" + word + "' or date='" + word + "' or signature_autorise='" + word + "'or receiptNumber='" + word + "' or clientName='"+word+"'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from vente where id='" + word + "' or nom_du_produit= '" + word + "' or date='" + word + "' or receiptNumber='" + word + "' or clientName='"+word+"'");
             try
             {
                 while (result.Read())
@@ -549,7 +549,7 @@ namespace ncl_auto_parts.controller
 
                 }
             }
-            if (amount > money)
+            if (amount >= money)
             {
                 amount -= money;
                 rep = await dbConfig.execute_command("update account_htg_garage set amount =" + amount + " where id=1");

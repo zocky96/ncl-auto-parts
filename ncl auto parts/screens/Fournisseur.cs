@@ -67,6 +67,18 @@ namespace ncl_auto_parts.screens
 
         }
 
+        private void table_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            id = table.CurrentRow.Cells["id_"].Value.ToString();
+            modify.Visible = true;
+            delete.Visible = true;
+            nom.Text = table.CurrentRow.Cells["nomT"].Value.ToString();
+            prenom.Text = table.CurrentRow.Cells["prenomT"].Value.ToString();
+            phone.Text = table.CurrentRow.Cells["phoneT"].Value.ToString();
+            adresse.Text = table.CurrentRow.Cells["adresseT"].Value.ToString();
+            productName.Text = table.CurrentRow.Cells["produit"].Value.ToString();
+        }
+
         private void clearField()
         {
             nom.Text = "";
@@ -133,14 +145,7 @@ namespace ncl_auto_parts.screens
 
         private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = table.CurrentRow.Cells["id_"].Value.ToString();
-            modify.Visible = true;
-            delete.Visible = true;
-            nom.Text = table.CurrentRow.Cells["nomT"].Value.ToString();
-            prenom.Text = table.CurrentRow.Cells["prenomT"].Value.ToString();
-            phone.Text = table.CurrentRow.Cells["phoneT"].Value.ToString();
-            adresse.Text = table.CurrentRow.Cells["adresseT"].Value.ToString();
-            productName.Text = table.CurrentRow.Cells["produit"].Value.ToString();
+            
         }
 
         private async void delete_Click(object sender, EventArgs e)

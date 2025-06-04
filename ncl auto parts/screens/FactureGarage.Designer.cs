@@ -44,22 +44,36 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.filter = new System.Windows.Forms.ComboBox();
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sevice_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.facture = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.print = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.logo = new System.Windows.Forms.PictureBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sevice_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // filter
@@ -99,6 +113,14 @@
             this.client,
             this.Sevice_,
             this.Column2,
+            this.Column4,
+            this.Column6,
+            this.Column7,
+            this.Column12,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
             this.Column3,
             this.no,
             this.Column5,
@@ -127,60 +149,21 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.table.DefaultCellStyle = dataGridViewCellStyle3;
+            this.table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table.EnableHeadersVisualStyles = false;
             this.table.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.table.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.table.HeaderBgColor = System.Drawing.Color.Empty;
             this.table.HeaderForeColor = System.Drawing.Color.White;
-            this.table.Location = new System.Drawing.Point(11, 93);
+            this.table.Location = new System.Drawing.Point(0, 0);
             this.table.Name = "table";
             this.table.RowHeadersVisible = false;
             this.table.RowTemplate.Height = 40;
             this.table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.table.Size = new System.Drawing.Size(944, 291);
+            this.table.Size = new System.Drawing.Size(1228, 317);
             this.table.TabIndex = 79;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
-            // 
-            // id_
-            // 
-            this.id_.HeaderText = "ID";
-            this.id_.Name = "id_";
-            // 
-            // client
-            // 
-            this.client.HeaderText = "Nom du client";
-            this.client.Name = "client";
-            // 
-            // Sevice_
-            // 
-            this.Sevice_.HeaderText = "Sevices";
-            this.Sevice_.Name = "Sevice_";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Montant";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Devise";
-            this.Column3.Name = "Column3";
-            // 
-            // no
-            // 
-            this.no.HeaderText = "No recu";
-            this.no.Name = "no";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Date";
-            this.Column5.Name = "Column5";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Utilisateur";
-            this.Column1.Name = "Column1";
             // 
             // searchBar
             // 
@@ -209,7 +192,7 @@
             this.searchBar.IconRight = null;
             this.searchBar.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.searchBar.Lines = new string[0];
-            this.searchBar.Location = new System.Drawing.Point(12, 35);
+            this.searchBar.Location = new System.Drawing.Point(11, 35);
             this.searchBar.MaxLength = 32767;
             this.searchBar.MinimumSize = new System.Drawing.Size(100, 35);
             this.searchBar.Modified = false;
@@ -294,7 +277,7 @@
             this.facture.IdleIconLeftImage = null;
             this.facture.IdleIconRightImage = null;
             this.facture.IndicateFocus = false;
-            this.facture.Location = new System.Drawing.Point(12, 390);
+            this.facture.Location = new System.Drawing.Point(11, 5);
             this.facture.Name = "facture";
             stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties5.BorderRadius = 3;
@@ -358,7 +341,7 @@
             this.print.IdleIconLeftImage = null;
             this.print.IdleIconRightImage = null;
             this.print.IndicateFocus = false;
-            this.print.Location = new System.Drawing.Point(177, 390);
+            this.print.Location = new System.Drawing.Point(161, 5);
             this.print.Name = "print";
             stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties7.BorderRadius = 3;
@@ -406,25 +389,145 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.print);
+            this.panel1.Controls.Add(this.facture);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 393);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1228, 57);
+            this.panel1.TabIndex = 122;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.table);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 76);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1228, 317);
+            this.panel2.TabIndex = 123;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 317);
+            this.panel3.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(1218, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(10, 317);
+            this.panel4.TabIndex = 1;
+            // 
+            // id_
+            // 
+            this.id_.HeaderText = "   ID";
+            this.id_.Name = "id_";
+            // 
+            // client
+            // 
+            this.client.HeaderText = "Nom du client";
+            this.client.Name = "client";
+            // 
+            // Sevice_
+            // 
+            this.Sevice_.HeaderText = "Sevices";
+            this.Sevice_.Name = "Sevice_";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Montant";
+            this.Column2.Name = "Column2";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Discount";
+            this.Column4.Name = "Column4";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Avance";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Comment";
+            this.Column7.Name = "Column7";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Total";
+            this.Column12.Name = "Column12";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Statut paiement";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Methode de paiement";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "ID Auto parts";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Main d\'oeuvre";
+            this.Column11.Name = "Column11";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Devise";
+            this.Column3.Name = "Column3";
+            // 
+            // no
+            // 
+            this.no.HeaderText = "No recu";
+            this.no.Name = "no";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Date";
+            this.Column5.Name = "Column5";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Utilisateur";
+            this.Column1.Name = "Column1";
+            // 
             // FactureGarage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 450);
+            this.ClientSize = new System.Drawing.Size(1228, 450);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.logo);
-            this.Controls.Add(this.print);
             this.Controls.Add(this.filter);
             this.Controls.Add(this.searchBar);
-            this.Controls.Add(this.facture);
-            this.Controls.Add(this.table);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FactureGarage";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.FactureGarage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -439,10 +542,22 @@
         private System.Windows.Forms.PictureBox logo;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
         private System.Windows.Forms.DataGridViewTextBoxColumn client;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sevice_;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;

@@ -289,7 +289,7 @@ namespace ncl_auto_parts.screens
             {
                 ArticleC.showArticle(table);
             }
-            
+            main.closeConn();
         }
 
         private void searchBar_Enter(object sender, EventArgs e)

@@ -274,7 +274,7 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from article order by id desc where id='" + word + "' or nom_du_produit= '" + word + "' or numero='"+word+ "' or ref='"+word+"'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from article where id='" + word + "' or nom_du_produit= '" + word + "' or numero='"+word+ "' or ref='"+word+ "' or element='"+word+ "' or dateAjout='"+word+"'");
             try
             {
                 while (result.Read())

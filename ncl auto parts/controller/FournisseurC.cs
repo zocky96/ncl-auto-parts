@@ -16,7 +16,7 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from fournisseur order by id desc where id='" + word + "' or nom='" + word + "' or  prenom='" + word + "' or telephone='" + word + "' or nom_du_produit='" + word + "'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from fournisseur where id='" + word + "' or nom='" + word + "' or  prenom='" + word + "' or telephone='" + word + "' or nom_du_produit='" + word + "'");
             try
             {
                 while (result.Read())

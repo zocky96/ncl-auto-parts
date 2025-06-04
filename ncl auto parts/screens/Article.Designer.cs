@@ -79,6 +79,17 @@
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ccc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qte_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idf_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.element_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ref_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datea_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBar = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.print = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.modify = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -99,17 +110,6 @@
             this.numero = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.filter = new System.Windows.Forms.ComboBox();
-            this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ccc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qte_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idf_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.element_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ref_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numero_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datea_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
             // 
@@ -188,10 +188,66 @@
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
             // 
+            // id_
+            // 
+            this.id_.HeaderText = "ID";
+            this.id_.Name = "id_";
+            // 
+            // name_
+            // 
+            this.name_.HeaderText = "Nom de l\'article";
+            this.name_.Name = "name_";
+            // 
+            // price_
+            // 
+            this.price_.HeaderText = "Prix";
+            this.price_.Name = "price_";
+            // 
+            // ccc
+            // 
+            this.ccc.HeaderText = "Quantité";
+            this.ccc.Name = "ccc";
+            // 
+            // qte_
+            // 
+            this.qte_.HeaderText = "Quantité initiale";
+            this.qte_.Name = "qte_";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Quantité vendu";
+            this.Column2.Name = "Column2";
+            // 
+            // idf_
+            // 
+            this.idf_.HeaderText = "ID fournisseur";
+            this.idf_.Name = "idf_";
+            // 
+            // element_
+            // 
+            this.element_.HeaderText = "Element";
+            this.element_.Name = "element_";
+            // 
+            // ref_
+            // 
+            this.ref_.HeaderText = "ref";
+            this.ref_.Name = "ref_";
+            // 
+            // numero_
+            // 
+            this.numero_.HeaderText = "Année";
+            this.numero_.Name = "numero_";
+            // 
+            // datea_
+            // 
+            this.datea_.HeaderText = "Date d\'ajout";
+            this.datea_.Name = "datea_";
+            // 
             // searchBar
             // 
             this.searchBar.AcceptsReturn = false;
             this.searchBar.AcceptsTab = false;
+            this.searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.searchBar.AnimationSpeed = 200;
             this.searchBar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.searchBar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -215,7 +271,7 @@
             this.searchBar.IconRight = null;
             this.searchBar.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.searchBar.Lines = new string[0];
-            this.searchBar.Location = new System.Drawing.Point(805, 279);
+            this.searchBar.Location = new System.Drawing.Point(893, 293);
             this.searchBar.MaxLength = 32767;
             this.searchBar.MinimumSize = new System.Drawing.Size(100, 35);
             this.searchBar.Modified = false;
@@ -1117,72 +1173,18 @@
             // 
             // filter
             // 
+            this.filter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.filter.FormattingEnabled = true;
             this.filter.Items.AddRange(new object[] {
             "Filtre",
             "Article en rupture de stock",
             "Date d\'ajout"});
-            this.filter.Location = new System.Drawing.Point(655, 293);
+            this.filter.Location = new System.Drawing.Point(743, 293);
             this.filter.Name = "filter";
             this.filter.Size = new System.Drawing.Size(144, 21);
             this.filter.TabIndex = 53;
             this.filter.Text = "Filtre";
             this.filter.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // id_
-            // 
-            this.id_.HeaderText = "ID";
-            this.id_.Name = "id_";
-            // 
-            // name_
-            // 
-            this.name_.HeaderText = "Nom de l\'article";
-            this.name_.Name = "name_";
-            // 
-            // price_
-            // 
-            this.price_.HeaderText = "Prix";
-            this.price_.Name = "price_";
-            // 
-            // ccc
-            // 
-            this.ccc.HeaderText = "Quantité";
-            this.ccc.Name = "ccc";
-            // 
-            // qte_
-            // 
-            this.qte_.HeaderText = "Quantité initiale";
-            this.qte_.Name = "qte_";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Quantité vendu";
-            this.Column2.Name = "Column2";
-            // 
-            // idf_
-            // 
-            this.idf_.HeaderText = "ID fournisseur";
-            this.idf_.Name = "idf_";
-            // 
-            // element_
-            // 
-            this.element_.HeaderText = "Element";
-            this.element_.Name = "element_";
-            // 
-            // ref_
-            // 
-            this.ref_.HeaderText = "ref";
-            this.ref_.Name = "ref_";
-            // 
-            // numero_
-            // 
-            this.numero_.HeaderText = "Année";
-            this.numero_.Name = "numero_";
-            // 
-            // datea_
-            // 
-            this.datea_.HeaderText = "Date d\'ajout";
-            this.datea_.Name = "datea_";
             // 
             // Article
             // 

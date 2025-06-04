@@ -76,7 +76,7 @@ namespace ncl_auto_parts.controller
         public async static void searchClient(string word,BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from client order by id desc where nom='" + word+"' or prenom='"+word+"' or phone='"+word+"' or mail='"+word+"'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from client where id='"+word+"' or nom='" + word+"' or prenom='"+word+"' or phone='"+word+"' or mail='"+word+"'");
             try
             {
                 while (result.Read())

@@ -44,7 +44,7 @@ namespace ncl_auto_parts.rapport
             {
                 FactureData vente = new FactureData();
                 MySqlConnection connection = await dbConfig.connection();
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter("select *,(select sum(total) from facture_garage where no_recu='" + id + "') as real_total from facture_garage where no_recu='" + id + "';", connection);
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter("select *,(select total from facture_garage where no_recu='" + id + "') as real_total from facture_garage where no_recu='" + id + "';", connection);
                 dataAdapter.Fill(vente, vente.Tables[0].TableName);
                 ReportDataSource rds = new ReportDataSource("oneFacture", vente.Tables[0]);
                 this.reportViewer1.LocalReport.DataSources.Clear();

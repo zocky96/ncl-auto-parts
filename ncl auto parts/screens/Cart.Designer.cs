@@ -56,8 +56,15 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.logo = new System.Windows.Forms.PictureBox();
+            this.theSum = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.tableCart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -114,17 +121,18 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tableCart.DefaultCellStyle = dataGridViewCellStyle3;
+            this.tableCart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableCart.EnableHeadersVisualStyles = false;
             this.tableCart.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.tableCart.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.tableCart.HeaderBgColor = System.Drawing.Color.Empty;
             this.tableCart.HeaderForeColor = System.Drawing.Color.White;
-            this.tableCart.Location = new System.Drawing.Point(12, 58);
+            this.tableCart.Location = new System.Drawing.Point(10, 0);
             this.tableCart.Name = "tableCart";
             this.tableCart.RowHeadersVisible = false;
             this.tableCart.RowTemplate.Height = 40;
             this.tableCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableCart.Size = new System.Drawing.Size(885, 324);
+            this.tableCart.Size = new System.Drawing.Size(908, 334);
             this.tableCart.TabIndex = 59;
             this.tableCart.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.tableCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableCart_CellContentClick);
@@ -372,7 +380,7 @@
             // 
             this.logo.BackColor = System.Drawing.Color.Transparent;
             this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.Location = new System.Drawing.Point(579, -4);
+            this.logo.Location = new System.Drawing.Point(65, -44);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(225, 138);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -380,24 +388,86 @@
             this.logo.TabStop = false;
             this.logo.Visible = false;
             // 
+            // theSum
+            // 
+            this.theSum.AutoSize = true;
+            this.theSum.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.theSum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.theSum.Location = new System.Drawing.Point(85, 357);
+            this.theSum.Name = "theSum";
+            this.theSum.Size = new System.Drawing.Size(34, 25);
+            this.theSum.TabIndex = 135;
+            this.theSum.Text = "$0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(7, 357);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 25);
+            this.label13.TabIndex = 134;
+            this.label13.Text = "TOTAL : ";
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(918, 10);
+            this.panel1.TabIndex = 136;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.tableCart);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.logo);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 10);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(918, 334);
+            this.panel2.TabIndex = 137;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 334);
+            this.panel3.TabIndex = 138;
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(908, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(10, 334);
+            this.panel4.TabIndex = 139;
+            // 
             // Cart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 471);
-            this.Controls.Add(this.logo);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.theSum);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.devise);
             this.Controls.Add(this.vendre);
             this.Controls.Add(this.videCart);
             this.Controls.Add(this.deleteCart);
-            this.Controls.Add(this.tableCart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Cart";
             this.Text = "Cart";
             this.Load += new System.EventHandler(this.Cart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tableCart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -417,5 +487,11 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PictureBox logo;
+        private System.Windows.Forms.Label theSum;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

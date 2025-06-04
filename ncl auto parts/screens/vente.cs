@@ -516,6 +516,36 @@ namespace ncl_auto_parts.screens
             main.showLogin(new Rapport());
         }
 
+        private void bunifuTextBox1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void searchie_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (searchie.Text == "")
+            {
+               VenteC.showVente(table);
+            }
+        }
+
+        private void searchie_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (searchie.Text == "")
+                {
+
+                }
+                else
+                {
+                   
+                    VenteC.searchVente(searchie.Text, table);
+                }
+
+            }
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

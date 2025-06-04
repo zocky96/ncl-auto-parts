@@ -61,7 +61,7 @@ namespace ncl_auto_parts.screens
                     date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
                     dbConfig.execute_command("insert into cancel_facture_garage(clientName,service,devise,montant,no_recu,date,user,car_name,plaque,phone,description,quantite,total) values('" + result["clientName"].ToString() + "','" + result["service"].ToString() + "','" + result["devise"].ToString() + "'," + result["montant"].ToString() + ",'" + id + "','" + date + "','" + main.userName + "','"+result["car_name"].ToString() +"','"+result["plaque"].ToString() +"','"+result["phone"].ToString() +"','"+result["description"].ToString() +"',"+int.Parse(result["quantite"].ToString())+","+float.Parse(result["total"].ToString())+")");
                     devise = result["devise"].ToString();
-                    sum += float.Parse(result["total"].ToString());
+                    sum = float.Parse(result["total"].ToString());
                 }
                 main.closeConn();
                 if (devise == "US")
@@ -103,6 +103,11 @@ namespace ncl_auto_parts.screens
         }
 
         private void FactureGarage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

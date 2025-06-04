@@ -26,13 +26,36 @@ namespace ncl_auto_parts.screens
             InitializeComponent();
             main.currentPage = "cart";
             CartC.showPanier(tableCart);
+            init_value();
             main.closeConn();
         }
+        private async void init_value()
+        {
+            MySqlDataReader result = await CartC.getVenteInCart();
+            
+            float sum = 0;
+           
 
+            try
+            {
+                while (result.Read())
+                {
+                    sum += float.Parse(result["prix"].ToString()) * int.Parse(result["quantite"].ToString());
+                }
+                theSum.Text = "$" + sum.ToString();
+            }
+            catch
+            {
+                theSum.Text = "$0";
+            }
+            main.closeConn();
+        }
         private void deleteCart_Click(object sender, EventArgs e)
         {
+            init_value();
             deleteCart.Visible = false;
             videCart.Visible = false;
+            
             CartC.deleteToCart(id_Cart, tableCart);
             main.closeConn();
 
@@ -40,7 +63,9 @@ namespace ncl_auto_parts.screens
 
         private void videCart_Click(object sender, EventArgs e)
         {
+            init_value();
             deleteCart.Visible = false;
+            
             videCart.Visible = false;
             CartC.CleanCart(tableCart);
             main.closeConn();
@@ -114,7 +139,7 @@ namespace ncl_auto_parts.screens
                     month = DateTime.Now.Month.ToString();
                     day = DateTime.Now.Day.ToString();
                     date = year + "/" + month + "/" + day;
-
+                    init_value();
                     CartC.CleanCart(tableCart);
                     main.closeConn();
                     //result = await dbConfig.getResultCommand("select * from vente where receiptNumber='" + receiptNumber + "'");

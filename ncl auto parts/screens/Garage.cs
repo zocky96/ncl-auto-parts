@@ -28,7 +28,21 @@ namespace ncl_auto_parts.screens
         {
             InitializeComponent();
             GarageC.showFacture(table);
+            init_values();
             main.closeConn();
+        }
+        private async void init_values()
+        {
+            try
+            {
+                float total = await GarageC.getSumPrice() + await GarageC.getPay() - (await GarageC.getAvance() + await GarageC.getDiscount());
+                theSum.Text = "$" + total.ToString();
+            }
+            catch
+            {
+
+            }
+            
         }
         private void clearField()
         {
@@ -75,33 +89,73 @@ namespace ncl_auto_parts.screens
                                         }
                                         else 
                                         {
-                                            isAnumber = float.TryParse(quantite.Text, out i);
-                                            if (isAnumber)
-                                            {
+                                            
                                                 if (vehicule.Text == "")
                                                 {
                                                     MessageBox.Show("Le champ 'Nom du véhicule' ne dois pas etre vide");
                                                 }
                                                 else
                                                 {
-                                                    AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, int.Parse(quantite.Text), float.Parse(montant.Text), int.Parse(quantite.Text) * float.Parse(montant.Text));
-                                                    int rep = await GarageC.saveFacture(facture, table);
-                                                main.closeConn();
-                                                if (rep == 0)
+
+                                                    isAnumber = float.TryParse(discount.Text, out i);
+                                                    if (isAnumber)
                                                     {
-                                                        clearField();
-                                                        //MessageBox.Show("Factué avec succè");
+                                                        isAnumber = float.TryParse(avance.Text, out i);
+                                                        if (isAnumber)
+                                                        {
+                                                            if(payment.Text == "Cash" || payment.Text == "Virement" || payment.Text == "Cheque" || payment.Text == "Mon Cash" || payment.Text == "Nat Cash")
+                                                            {
+                                                                if(statut.Text == "paye" || statut.Text == "non paye" || statut.Text == "avance")
+                                                                {
+                                                                    isAnumber = float.TryParse(mainPay.Text, out i);
+                                                                    if (isAnumber)
+                                                                    {
+                                                                       
+                                                                        AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, 1, float.Parse(montant.Text), 1);
+                                                                        int rep = await GarageC.saveFacture(facture, table, float.Parse(discount.Text), float.Parse(avance.Text), statut.Text, payment.Text, comment.Text, idAuto.Text,float.Parse(mainPay.Text));
+                                                                        main.closeConn();
+                                                                        float total = await GarageC.getSumPrice() + await GarageC.getPay() - (await GarageC.getAvance() + await GarageC.getDiscount());
+                                                                theSum.Text = "$" + total.ToString();
+                                                                if (rep == 0)
+                                                                        {
+                                                                            clearField();
+                                                                            //MessageBox.Show("Factué avec succè");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            MessageBox.Show("Erreur lors de la facturation");
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        MessageBox.Show("Le champ Main d'oeuvre doit contenir que des chiffres");
+                                                                    }
+                                                                    
+                                                                }
+                                                                else
+                                                                {
+                                                                    MessageBox.Show("Veuillez Choisir le statut du paiement");
+                                                                }
+                                                            
+                                                            }
+                                                            else
+                                                            {
+                                                                MessageBox.Show("Veuillez choisir une methode de paiement");
+                                                            }
+                                                           
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show("Le champ Avence doit contenir que des chiffres");
+                                                        }
                                                     }
                                                     else
                                                     {
-                                                        MessageBox.Show("Erreur lors de la facturation");
+                                                        MessageBox.Show("Le champ Discount doit contenir que des chiffres");
                                                     }
+                                                    
                                                 }
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show("Le champ 'Quantite' dois avoir que des chiffres");
-                                            }
+                                            
                                         }
                                     }
                                 }
@@ -177,29 +231,32 @@ namespace ncl_auto_parts.screens
 
             MySqlDataReader result = await GarageC.getFacture();
             int rep = -1;
+            string myDevise = null;
+            float total = await GarageC.getSumPrice() + await GarageC.getPay() - (await GarageC.getAvance() + await GarageC.getDiscount());
             while (result.Read())
             {
+                myDevise = result["devise"].ToString();
+                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()),float.Parse(result["montant"].ToString()),total);
+                    rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table,float.Parse(result["discount"].ToString()),float.Parse(result["avance"].ToString()),result["comment"].ToString(),result["statut"].ToString(),result["payment"].ToString(),result["id_auto"].ToString(),float.Parse(result["pay"].ToString()));
 
-                if (result["devise"].ToString() == "US")
-                {
-                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()),float.Parse(result["montant"].ToString()),float.Parse(result["total"].ToString()));
-                    rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddUsMoneyGarage(float.Parse(result["total"].ToString()));
-
-                }
-                else
-                {
-                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), float.Parse(result["total"].ToString()));
-                    rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddHTGMoneyGarage(float.Parse(result["total"].ToString()));
-                }
-
+            }
+        
+            rep = await dbConfig.execute_command("update facture_garage set total="+total+" where no_recu='" + result + "'");
+            main.closeConn();
+            if (myDevise == "US")
+            {
+                VenteC.AddUsMoneyGarage(total);
+            }
+            else
+            {
+                VenteC.AddHTGMoneyGarage(total);
             }
             main.closeConn();
             if (rep == 0)
             {
-                
+
                 GarageC.cleanFacture(table);
+                theSum.Text = "$0";
                 MessageBox.Show("Facture effectuée avec succès");
                 //MessageBox.Show(receiptNumber);
                 main.showLogin(new oneFacture(receiptNumber,"garage"));

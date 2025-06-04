@@ -76,7 +76,12 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.user_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -669,17 +674,18 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.table.DefaultCellStyle = dataGridViewCellStyle3;
+            this.table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table.EnableHeadersVisualStyles = false;
             this.table.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.table.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.table.HeaderBgColor = System.Drawing.Color.Empty;
             this.table.HeaderForeColor = System.Drawing.Color.White;
-            this.table.Location = new System.Drawing.Point(15, 282);
+            this.table.Location = new System.Drawing.Point(10, 0);
             this.table.Name = "table";
             this.table.RowHeadersVisible = false;
             this.table.RowTemplate.Height = 40;
             this.table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.table.Size = new System.Drawing.Size(801, 300);
+            this.table.Size = new System.Drawing.Size(897, 352);
             this.table.TabIndex = 27;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
@@ -704,12 +710,48 @@
             this.pass.HeaderText = "Password";
             this.pass.Name = "pass";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.table);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 276);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(917, 352);
+            this.panel1.TabIndex = 28;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(10, 352);
+            this.panel2.TabIndex = 29;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(907, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 352);
+            this.panel3.TabIndex = 30;
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(10, 342);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(897, 10);
+            this.panel4.TabIndex = 31;
+            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 628);
-            this.Controls.Add(this.table);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.modify);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.save);
@@ -726,6 +768,7 @@
             this.Text = "User";
             this.Load += new System.EventHandler(this.User_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -751,5 +794,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn user_;
         private System.Windows.Forms.DataGridViewTextBoxColumn pass;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }
