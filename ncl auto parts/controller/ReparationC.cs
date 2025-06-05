@@ -12,17 +12,17 @@ namespace ncl_auto_parts.controller
 {
     internal class ReparationC
     {
-        public static async Task<int> saveReparation(String clientId, String Marque, String modele, String annee, String plaque,string couleur,string service,string dateEntree,string dateSortie, BunifuDataGridView table,string payment,string statut)
+        public static async Task<int> saveReparation(String clientId, String Marque, String modele, String annee, String plaque,string couleur,string service,string dateEntree,string dateSortie, BunifuDataGridView table,string payment,string statut,string comment)
         {
             ReparationM reparation = new ReparationM(clientId, Marque, modele, annee, plaque, couleur, service, dateEntree, dateSortie);
-            int rep = await dbConfig.execute_command("insert into reparation(clientId, Marque, modele, annee, plaque, couleur, service, dateEntree, dateSortie,statut,payment) values('" + clientId + "','"+ Marque + "','"+ modele + "','"+ annee + "','"+ plaque + "','"+ couleur + "','"+ service + "','"+ dateEntree + "','"+ dateSortie + "','"+statut+"','"+payment+"')");
+            int rep = await dbConfig.execute_command("insert into reparation(clientId, Marque, modele, annee, plaque, couleur, service, dateEntree, dateSortie,statut,payment,comment) values('" + clientId + "','"+ Marque + "','"+ modele + "','"+ annee + "','"+ plaque + "','"+ couleur + "','"+ service + "','"+ dateEntree + "','"+ dateSortie + "','"+statut+"','"+payment+"','"+comment+"')");
             showReparation(table);
             return rep;
         }
-        public static async Task<int> modifyreparation( String Marque, String modele, String annee, String plaque, string couleur, string service, string dateEntree, string dateSortie, BunifuDataGridView table, String id,string ClientID, string payment, string statut)
+        public static async Task<int> modifyreparation( String Marque, String modele, String annee, String plaque, string couleur, string service, string dateEntree, string dateSortie, BunifuDataGridView table, String id,string ClientID, string payment, string statut,string comment)
         {
             //FournisseurM fournisseur = new FournisseurM(nom, prenom, telephone, adresse, nom_du_produit);
-            int rep = await dbConfig.execute_command("update reparation set Marque='"+Marque+"', modele='"+modele+"', annee='"+annee+"', plaque='"+plaque+"', couleur='"+couleur+"', service='"+service+"', dateEntree='"+dateEntree+"', dateSortie='"+dateSortie+ "',statut='"+statut+ "',payment='"+payment+"' where id='" + id + "' and clientId='"+ClientID+"'");
+            int rep = await dbConfig.execute_command("update reparation set Marque='"+Marque+"', modele='"+modele+"', annee='"+annee+"', plaque='"+plaque+"', couleur='"+couleur+"', service='"+service+"', dateEntree='"+dateEntree+"', dateSortie='"+dateSortie+ "',statut='"+statut+ "',payment='"+payment+"',comment='"+comment+"' where id='" + id + "' and clientId='"+ClientID+"'");
             showReparation(table);
             return rep;
         }
@@ -41,7 +41,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"], result["dateEntree"], result["dateSortie"], result["statut"], result["payment"]);
+                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"], result["dateEntree"], result["dateSortie"], result["statut"], result["payment"],result["comment"]);
 
                 }
             }
@@ -59,7 +59,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"], result["dateEntree"], result["dateSortie"], result["statut"], result["payment"]);
+                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"], result["dateEntree"], result["dateSortie"], result["statut"], result["payment"],result["comment"]);
 
                 }
             }
@@ -77,7 +77,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"], result["dateEntree"], result["dateSortie"],result["statut"],result["payment"]);
+                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"], result["dateEntree"], result["dateSortie"],result["statut"],result["payment"],result["comment"]);
 
                 }
             }

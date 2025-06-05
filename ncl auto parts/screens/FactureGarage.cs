@@ -112,6 +112,19 @@ namespace ncl_auto_parts.screens
 
         }
 
+        private void filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filter.Text != "Filtre")
+            {
+                GarageC.filterGoodFacture(table,filter.Text);
+            }
+            else if (filter.Text == "Filtre")
+            {
+                GarageC.showGoodFacture(table);
+            }
+            main.closeConn();
+        }
+
         private void searchBar_TextChanged(object sender, EventArgs e)
         {
 

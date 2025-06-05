@@ -37,8 +37,10 @@ namespace ncl_auto_parts.screens
         {
             nbrClient.Text = await ClientC.getNbrClient();
             nbrArticle.Text = await ArticleC.getNbrArticle();
-            totalVente.Text = "$"+ await VenteC.getTotalVente();
-            totalByMonth.Text = "$"+ await VenteC.getTotalVenteBymonth();
+            totalVente.Text = "$"+ await VenteC.getTotalVente()+" US";
+            totalVenteHtg.Text = await VenteC.getTotalVenteHtg() + " HTG";
+            totalByMonth.Text = "$"+ await VenteC.getTotalVenteBymonth()+" US";
+            totalByMonthHtg.Text = await VenteC.getTotalVenteBymonthHtg()+" HTG";
             VenteC.showLast10Vente(tableTransaction);
             ClientC.showLast10Client(tableClient);
             ArticleC.filtredByFinnishStock10Last(tableStock);
@@ -144,7 +146,14 @@ namespace ncl_auto_parts.screens
 
         private void label14_Click(object sender, EventArgs e)
         {
-            main.showLogin(new Rapport());
+            if (main.userName != null)
+            {
+                if (main.poste != "gestionnaire de stock")
+                {
+                    main.showLogin(new Rapport());
+                }
+            }
+                   
         }
 
         private void panel22_Paint(object sender, PaintEventArgs e)

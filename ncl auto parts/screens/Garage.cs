@@ -47,7 +47,8 @@ namespace ncl_auto_parts.screens
         private void clearField()
         {
             montant.Text = "";
-            service.Text = "";
+            description.Text = "";
+            quantite.Text = "";
         }
         private async void facture_Click(object sender, EventArgs e)
         {
@@ -111,7 +112,7 @@ namespace ncl_auto_parts.screens
                                                                     if (isAnumber)
                                                                     {
                                                                        
-                                                                        AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, 1, float.Parse(montant.Text), 1);
+                                                                        AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, int.Parse(quantite.Text), float.Parse(montant.Text), 1);
                                                                         int rep = await GarageC.saveFacture(facture, table, float.Parse(discount.Text), float.Parse(avance.Text), statut.Text, payment.Text, comment.Text, idAuto.Text,float.Parse(mainPay.Text));
                                                                         main.closeConn();
                                                                         float total = await GarageC.getSumPrice() + await GarageC.getPay() - (await GarageC.getAvance() + await GarageC.getDiscount());
@@ -241,7 +242,7 @@ namespace ncl_auto_parts.screens
 
             }
         
-            rep = await dbConfig.execute_command("update facture_garage set total="+total+" where no_recu='" + result + "'");
+            rep = await dbConfig.execute_command("update facture_garage set total="+total+" where no_recu='" + receiptNumber + "'");
             main.closeConn();
             if (myDevise == "US")
             {
@@ -357,6 +358,41 @@ namespace ncl_auto_parts.screens
         {
             id = table.CurrentRow.Cells["id_"].Value.ToString();
             delete.Visible = true;
+        }
+
+        private void payment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void statut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void idAuto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comment_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mainPay_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void avance_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void discount_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

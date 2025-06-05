@@ -56,7 +56,18 @@ namespace ncl_auto_parts.controller
         public static async Task<string> getTotalVente()
         {
             string rep = null;
-            MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) as reponse from vente");
+            MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) as reponse from vente where devise='US'");
+            while (result.Read())
+            {
+                rep = result["reponse"].ToString();
+            }
+            main.closeConn();
+            return rep;
+        }
+        public static async Task<string> getTotalVenteHtg()
+        {
+            string rep = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) as reponse from vente where devise='HTG'");
             while (result.Read())
             {
                 rep = result["reponse"].ToString();
@@ -67,7 +78,18 @@ namespace ncl_auto_parts.controller
         public static async Task<string> getTotalVenteBymonth()
         {
             string rep = null;
-            MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) as reponse from vente where month(date)="+DateTime.Now.Month);
+            MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) as reponse from vente where month(date)="+DateTime.Now.Month+" and devise='US'");
+            while (result.Read())
+            {
+                rep = result["reponse"].ToString();
+            }
+            main.closeConn();
+            return rep;
+        }
+        public static async Task<string> getTotalVenteBymonthHtg()
+        {
+            string rep = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) as reponse from vente where month(date)=" + DateTime.Now.Month+" and devise='HTG'");
             while (result.Read())
             {
                 rep = result["reponse"].ToString();
@@ -576,7 +598,7 @@ namespace ncl_auto_parts.controller
 
                 }
             }
-            if (amount > money)
+            if (amount >= money)
             {
                 amount -= money;
                 rep = await dbConfig.execute_command("update account_us_garage set amount =" + amount + " where id=1");

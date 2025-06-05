@@ -105,7 +105,7 @@ namespace ncl_auto_parts.screens
                                             {
                                                 if (statut.Text == "paye" || statut.Text == "non paye" || statut.Text == "avance")
                                                 {
-                                                    int rep = await ReparationC.saveReparation(idClient.Text, marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString() + "/" + dateSortie.Value.Month + "/" + dateSortie.Value.Day, table,payment.Text,statut.Text);
+                                                    int rep = await ReparationC.saveReparation(idClient.Text, marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString() + "/" + dateSortie.Value.Month + "/" + dateSortie.Value.Day, table,payment.Text,statut.Text,comment.Text);
                                                     main.closeConn();
                                                     if (rep == 0)
                                                     {
@@ -166,6 +166,7 @@ namespace ncl_auto_parts.screens
             {
                 statut.Text = table.CurrentRow.Cells["statut_"].Value.ToString();
                 payment.Text = table.CurrentRow.Cells["payment_"].Value.ToString();
+                comment.Text = table.CurrentRow.Cells["comment_"].Value.ToString();
             }
             catch
             {
@@ -227,7 +228,7 @@ namespace ncl_auto_parts.screens
                                             {
                                                 if (statut.Text == "paye" || statut.Text == "non paye" || statut.Text == "avance")
                                                 {
-                                                    int rep = await ReparationC.modifyreparation(marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString() + "/" + dateSortie.Value.Month + "/" + dateSortie.Value.Day, table, id, idClient.Text,payment.Text,statut.Text);
+                                                    int rep = await ReparationC.modifyreparation(marque.Text, modeleb.Text, annee.Text, plaque.Text, couleur.Text, service.Text, dateEntre.Value.Year.ToString() + "/" + dateEntre.Value.Month + "/" + dateEntre.Value.Day, dateSortie.Value.Year.ToString() + "/" + dateSortie.Value.Month + "/" + dateSortie.Value.Day, table, id, idClient.Text,payment.Text,statut.Text,comment.Text);
                                                     main.closeConn();
                                                     if (rep == 0)
                                                     {

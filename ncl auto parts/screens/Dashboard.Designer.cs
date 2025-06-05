@@ -47,6 +47,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.totalVenteHtg = new System.Windows.Forms.Label();
             this.totalVente = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -57,6 +58,7 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.totalByMonthHtg = new System.Windows.Forms.Label();
             this.totalByMonth = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -164,6 +166,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.totalVenteHtg);
             this.panel1.Controls.Add(this.totalVente);
             this.panel1.Controls.Add(this.panel11);
             this.panel1.Controls.Add(this.label2);
@@ -173,12 +176,23 @@
             this.panel1.Size = new System.Drawing.Size(270, 94);
             this.panel1.TabIndex = 0;
             // 
+            // totalVenteHtg
+            // 
+            this.totalVenteHtg.AutoSize = true;
+            this.totalVenteHtg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalVenteHtg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.totalVenteHtg.Location = new System.Drawing.Point(74, 52);
+            this.totalVenteHtg.Name = "totalVenteHtg";
+            this.totalVenteHtg.Size = new System.Drawing.Size(28, 21);
+            this.totalVenteHtg.TabIndex = 33;
+            this.totalVenteHtg.Text = "$0";
+            // 
             // totalVente
             // 
             this.totalVente.AutoSize = true;
             this.totalVente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalVente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.totalVente.Location = new System.Drawing.Point(77, 30);
+            this.totalVente.Location = new System.Drawing.Point(74, 28);
             this.totalVente.Name = "totalVente";
             this.totalVente.Size = new System.Drawing.Size(28, 21);
             this.totalVente.TabIndex = 32;
@@ -231,11 +245,11 @@
             this.nbrClient.AutoSize = true;
             this.nbrClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nbrClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.nbrClient.Location = new System.Drawing.Point(83, 34);
+            this.nbrClient.Location = new System.Drawing.Point(76, 34);
             this.nbrClient.Name = "nbrClient";
-            this.nbrClient.Size = new System.Drawing.Size(28, 21);
+            this.nbrClient.Size = new System.Drawing.Size(19, 21);
             this.nbrClient.TabIndex = 34;
-            this.nbrClient.Text = "$0";
+            this.nbrClient.Text = "0";
             // 
             // label7
             // 
@@ -244,9 +258,9 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label7.Location = new System.Drawing.Point(75, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(108, 25);
+            this.label7.Size = new System.Drawing.Size(166, 25);
             this.label7.TabIndex = 33;
-            this.label7.Text = "Total client";
+            this.label7.Text = "Nombre de client";
             // 
             // panel13
             // 
@@ -270,6 +284,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.totalByMonthHtg);
             this.panel3.Controls.Add(this.totalByMonth);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.panel12);
@@ -279,12 +294,23 @@
             this.panel3.Size = new System.Drawing.Size(270, 94);
             this.panel3.TabIndex = 1;
             // 
+            // totalByMonthHtg
+            // 
+            this.totalByMonthHtg.AutoSize = true;
+            this.totalByMonthHtg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalByMonthHtg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.totalByMonthHtg.Location = new System.Drawing.Point(77, 46);
+            this.totalByMonthHtg.Name = "totalByMonthHtg";
+            this.totalByMonthHtg.Size = new System.Drawing.Size(28, 21);
+            this.totalByMonthHtg.TabIndex = 35;
+            this.totalByMonthHtg.Text = "$0";
+            // 
             // totalByMonth
             // 
             this.totalByMonth.AutoSize = true;
             this.totalByMonth.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalByMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.totalByMonth.Location = new System.Drawing.Point(85, 30);
+            this.totalByMonth.Location = new System.Drawing.Point(77, 24);
             this.totalByMonth.Name = "totalByMonth";
             this.totalByMonth.Size = new System.Drawing.Size(28, 21);
             this.totalByMonth.TabIndex = 34;
@@ -336,7 +362,7 @@
             this.nbrArticle.AutoSize = true;
             this.nbrArticle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nbrArticle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.nbrArticle.Location = new System.Drawing.Point(75, 45);
+            this.nbrArticle.Location = new System.Drawing.Point(77, 32);
             this.nbrArticle.Name = "nbrArticle";
             this.nbrArticle.Size = new System.Drawing.Size(19, 21);
             this.nbrArticle.TabIndex = 34;
@@ -349,9 +375,9 @@
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label9.Location = new System.Drawing.Point(75, 10);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(152, 21);
+            this.label9.Size = new System.Drawing.Size(148, 21);
             this.label9.TabIndex = 33;
-            this.label9.Text = "Produit disponible";
+            this.label9.Text = "Produit enregistré";
             // 
             // panel14
             // 
@@ -1172,5 +1198,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart byMonth;
         private System.Windows.Forms.Panel panel32;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label totalVenteHtg;
+        private System.Windows.Forms.Label totalByMonthHtg;
     }
 }

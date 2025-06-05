@@ -28,9 +28,22 @@ namespace ncl_auto_parts.screens
         {
             InitializeComponent();
             AutoPartC.showFacture(table);
+            init_values();
             main.closeConn();
         }
+        private async void init_values()
+        {
+            try
+            {
+                float total = await AutoPartC.getSumPrice() + await AutoPartC.getPay() - (await AutoPartC.getAvance() + await AutoPartC.getDiscount());
+                theSum.Text = "$" + total.ToString();
+            }
+            catch
+            {
 
+            }
+
+        }
         private async void facture_Click(object sender, EventArgs e)
         {
             main.closeConn();
@@ -39,7 +52,7 @@ namespace ncl_auto_parts.screens
             bool isAnumber = float.TryParse(montant.Text, out i);
             if (description.Text == "")
             {
-                MessageBox.Show("Le champ service ne dois pas etre vide");
+                MessageBox.Show("Le champ Description ne dois pas etre vide");
             }
             else
             {
@@ -66,36 +79,84 @@ namespace ncl_auto_parts.screens
                                     }
                                     else
                                     {
-                                        isAnumber = int.TryParse(quantite.Text, out j);
-                                        if (isAnumber)
-                                        {
-                                        if (service.Text == "")
-                                        {
-                                            MessageBox.Show("Le champ 'Service' ne dois pas etre vide");
-                                        }
-                                        else
-                                        {
-                                            float total = int.Parse(quantite.Text) * float.Parse(montant.Text);
-                                            
-                                            AutoPartM facture = new AutoPartM(clientName.Text,service.Text,devise.Text,plaque.Text,vehicule.Text,phone.Text,description.Text,int.Parse(quantite.Text),float.Parse(montant.Text),total);
-                                            int rep = await AutoPartC.saveFacture(facture, table);
-                                            main.closeConn();
-                                            if (rep == 0)
+                                        
+                                            if (service.Text == "")
                                             {
-                                                clearField();
-                                                //MessageBox.Show("Factué avec succès");
+                                                MessageBox.Show("Le champ 'Service' ne dois pas etre vide");
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Erreur lors de la facturation");
-                                            }
-                                        }
 
-                                    }
-                                        else
-                                        {
-                                            MessageBox.Show("Le champ 'Quantité' dois contenir que des chiffres");
+                                            isAnumber = float.TryParse(discount.Text, out i);
+                                            if (isAnumber)
+                                            {
+                                                isAnumber = float.TryParse(Avance.Text, out i);
+                                                if (isAnumber)
+                                                {
+                                                    if (payment.Text == "Cash" || payment.Text == "Virement" || payment.Text == "Cheque" || payment.Text == "Mon Cash" || payment.Text == "Nat Cash")
+                                                    {
+                                                        if (statut.Text == "paye" || statut.Text == "non paye" || statut.Text == "avance")
+                                                        {
+                                                                isAnumber = float.TryParse(mainPay.Text, out i);
+                                                                if (isAnumber)
+                                                                {
+                                                            int k = 0;
+                                                                isAnumber = int.TryParse(quantite.Text, out k);
+                                                                if (isAnumber)
+                                                                {
+                                                                    AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, int.Parse(quantite.Text), float.Parse(montant.Text), 1);
+                                                                    int rep = await AutoPartC.saveFacture(facture, table, float.Parse(discount.Text), float.Parse(Avance.Text), statut.Text, payment.Text, comment.Text, idAuto.Text, float.Parse(mainPay.Text));
+                                                                    main.closeConn();
+                                                                    float total = await AutoPartC.getSumPrice() + await AutoPartC.getPay() - (await AutoPartC.getAvance() + await AutoPartC.getDiscount());
+                                                                    theSum.Text = "$" + total.ToString();
+                                                                    if (rep == 0)
+                                                                    {
+                                                                        clearField();
+                                                                        //MessageBox.Show("Factué avec succè");
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        MessageBox.Show("Erreur lors de la facturation");
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                MessageBox.Show("Le champ quantité doit contenir que des chiffres");
+                                                                }
+                                                               
+
+                                                        }
+                                                            else
+                                                            {
+                                                                MessageBox.Show("Le champ Main d'oeuvre doit contenir que des chiffres");
+                                                            }
+
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show("Veuillez Choisir le statut du paiement");
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Veuillez choisir une methode de paiement");
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Le champ Avance doit contenir que des chiffres");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Le champ Discount doit contenir que des chiffres");
+                                            }
+                                        
+
                                         }
+                                        
                                         
                                     }
                                    
@@ -126,6 +187,7 @@ namespace ncl_auto_parts.screens
 
         private async void delete_Click(object sender, EventArgs e)
         {
+            init_values();
             delete.Visible = false;
             int rep = await AutoPartC.deleteFacture(table, id);
             main.closeConn();
@@ -135,6 +197,7 @@ namespace ncl_auto_parts.screens
         {
             montant.Text = "";
             description.Text = "";
+            
             quantite.Text = "";
         }
         private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -145,6 +208,7 @@ namespace ncl_auto_parts.screens
 
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
+            init_values();
             AutoPartC.cleanFacture(table);
             main.closeConn();
         }
@@ -181,31 +245,36 @@ namespace ncl_auto_parts.screens
             }
 
             MySqlDataReader result = await AutoPartC.getFacture();
+            string myDevise = null;
+            float total = await AutoPartC.getSumPrice() + await AutoPartC.getPay() - (await AutoPartC.getAvance() + await AutoPartC.getDiscount());
             int rep = -1;
             while (result.Read())
             {
-                
-                if (result["devise"].ToString() == "US")
-                {
-                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(),int.Parse(result["quantite"].ToString()),float.Parse(result["montant"].ToString()), float.Parse(result["total"].ToString()));
-                    rep = await AutoPartC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddUsMoney(float.Parse(result["total"].ToString()));
-                }
-                else
-                {
-                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), float.Parse(result["total"].ToString()));
-                    rep = await AutoPartC.saveGoodFacture(autoPart, receiptNumber, table);
-                    VenteC.AddHtgMoney(float.Parse(result["total"].ToString()));
-                }
-                
+                myDevise = result["devise"].ToString();
+                autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), total);
+                rep = await AutoPartC.saveGoodFacture(autoPart, receiptNumber, table, float.Parse(result["discount"].ToString()), float.Parse(result["avance"].ToString()), result["comment"].ToString(), result["statut"].ToString(), result["payment"].ToString(), result["id_auto"].ToString(), float.Parse(result["pay"].ToString()));
+
+
             }
             //-----------------------------
-           
+            rep = await dbConfig.execute_command("update facture_auto set total=" + total + " where no_recu='" + receiptNumber + "'");
+            main.closeConn();
+            if (myDevise == "US")
+            {
+                VenteC.AddUsMoney(total);
+            }
+            else
+            {
+                VenteC.AddHtgMoney(total);
+            }
+            main.closeConn();
+
             if (rep == 0)
             {
               
                 
                 AutoPartC.cleanFacture(table);
+                theSum.Text = "$0";
                 MessageBox.Show("Facture effectuée avec succès");
                 main.showLogin(new oneFacture(receiptNumber,"auto"));
                 main.closeConn();
@@ -299,6 +368,12 @@ namespace ncl_auto_parts.screens
         }
 
         private void table_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            id = table.CurrentRow.Cells["id_"].Value.ToString();
+            delete.Visible = true;
+        }
+
+        private void table_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
         {
             id = table.CurrentRow.Cells["id_"].Value.ToString();
             delete.Visible = true;

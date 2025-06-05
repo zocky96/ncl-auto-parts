@@ -12,11 +12,54 @@ namespace ncl_auto_parts.controller
 {
     internal class AutoPartC
     {
+        public async static Task<float> getSumPrice()
+        {
+            float sumPrice = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select montant,quantite  from fauto_part");
+            while (result.Read())
+            {
+                sumPrice += float.Parse(result["montant"].ToString()) * int.Parse(result["quantite"].ToString());
+            }
+            return sumPrice;
+        }
+        public async static Task<float> getPay()
+        {
+            float sumPrice = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select pay as amount from fauto_part");
+            while (result.Read())
+            {
+                sumPrice = float.Parse(result["amount"].ToString());
+                break;
+            }
+            return sumPrice;
+        }
+        public async static Task<float> getDiscount()
+        {
+            float sumPrice = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select discount as amount from fauto_part");
+            while (result.Read())
+            {
+                sumPrice = float.Parse(result["amount"].ToString());
+                break;
+            }
+            return sumPrice;
+        }
+        public async static Task<float> getAvance()
+        {
+            float sumPrice = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select avance as amount from fauto_part");
+            while (result.Read())
+            {
+                sumPrice = float.Parse(result["amount"].ToString());
+                break;
+            }
+            return sumPrice;
+        }
         public async static void searchFacture(String word, BunifuDataGridView table)
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from fauto_part order by id desc where id='" + word + "' or clientName='" + word + "'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from fauto_part where id='" + word + "' or clientName='" + word + "'");
             try
             {
                 while (result.Read())
@@ -31,11 +74,28 @@ namespace ncl_auto_parts.controller
 
             }
         }
-        public static async Task<int> saveFacture(AutoPartM facture, BunifuDataGridView table)
+        public static async Task<int> saveFacture(AutoPartM facture, BunifuDataGridView table, float discount, float avance, string statut, string payment, string comment, string id_auto, float pay)
         {
-            int rep = await dbConfig.execute_command("insert into fauto_part(clientName,service,devise,montant,car_name,plaque,phone,description,quantite,total) values('" + facture.ClientName+"','"+facture.Service+"','"+facture.Devise+"',"+facture.Prix+",'"+facture.CarName+"','"+facture.Plaque+"','"+facture.Phone+"','"+facture.Description+"',"+facture.Quantite+","+facture.Total+")");
+            int rep = await dbConfig.execute_command("insert into fauto_part(clientName,service,devise,montant,car_name,plaque,description,quantite,total,discount,avance,statut,payment,comment,id_auto,pay) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'" + facture.CarName + "','" + facture.Plaque + "','" + facture.Description + "'," + facture.Quantite + "," + facture.Total + "," + discount + "," + avance + ",'" + statut + "','" + payment + "','" + comment + "','" + id_auto + "'," + pay + ")");
             showFacture(table);
             return rep;
+        }
+        public async static void filterGoodFacture(BunifuDataGridView table,string word)
+        {
+            table.Rows.Clear();
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_auto where statut='"+word+"'");
+            try
+            {
+                while (result.Read())
+                {
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"], result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
+
+                }
+            }
+            catch
+            {
+
+            }
         }
         public async static void showGoodFacture(BunifuDataGridView table)
         {
@@ -45,8 +105,7 @@ namespace ncl_auto_parts.controller
             {
                 while (result.Read())
                 {
-
-                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["devise"], result["no_recu"], result["date"], result["user"]);
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"],result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
 
                 }
             }
@@ -65,8 +124,7 @@ namespace ncl_auto_parts.controller
                 {
                     while (result.Read())
                     {
-
-                        table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["devise"], result["no_recu"], result["date"]);
+                        table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"],result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
 
                     }
                 }
@@ -100,12 +158,12 @@ namespace ncl_auto_parts.controller
             showFacture(table);
             return rep;
         }
-        public static async Task<int> saveGoodFacture(AutoPartM facture,string receiptId, BunifuDataGridView table)
+        public static async Task<int> saveGoodFacture(AutoPartM facture, string receiptId, BunifuDataGridView table, float discount, float avance, string comment, string statut, string payment, string id_auto, float pay)
         {
             string date;
-           
+
             date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
-            int rep = await dbConfig.execute_command("insert into facture_auto(clientName,service,devise,montant,no_recu,date,user,car_name,plaque,phone,description,quantite,total) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'"+receiptId+"','"+date+"','"+main.userName+"','"+facture.CarName+"','"+facture.Plaque+"','"+facture.Phone+"','"+facture.Description+"',"+facture.Quantite+","+facture.Total+")");
+            int rep = await dbConfig.execute_command("insert into facture_auto(clientName,service,devise,montant,no_recu,date,user,car_name,plaque,phone,description,quantite,total,discount,avance,comment,statut,payment,id_auto,pay) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'" + receiptId + "','" + date + "','" + main.userName + "','" + facture.CarName + "','" + facture.Plaque + "','" + facture.Phone + "','" + facture.Description + "'," + facture.Quantite + "," + facture.Total + "," + discount + "," + avance + ",'" + comment + "','" + statut + "','" + payment + "','" + id_auto + "'," + pay + ")");
             showFacture(table);
             return rep;
         }
@@ -195,7 +253,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["description"], result["montant"], result["quantite"]);
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["description"], result["montant"], result["quantite"],result["discount"], result["avance"], result["pay"], result["statut"], result["payment"], result["devise"]);
 
                 }
             }

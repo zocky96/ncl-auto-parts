@@ -12,6 +12,7 @@ namespace ncl_auto_parts.controller
 {
     internal class GarageC
     {
+
         public async static void searchFacture(String word, BunifuDataGridView table)
         {
             table.Rows.Clear();
@@ -34,10 +35,10 @@ namespace ncl_auto_parts.controller
         public async static Task<float> getSumPrice()
         {
             float sumPrice = 0;
-            MySqlDataReader result = await dbConfig.getResultCommand("select sum(montant) as amount from fgarage");
+            MySqlDataReader result = await dbConfig.getResultCommand("select montant,quantite from fgarage");
             while (result.Read())
             {
-                sumPrice = float.Parse(result["amount"].ToString());
+                sumPrice += float.Parse(result["montant"].ToString()) * int.Parse(result["quantite"].ToString());
             }
             return sumPrice;
         }
@@ -89,7 +90,25 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["discount"], result["avance"], result["comment"], result["total"],result["statut"], result["payment"], result["id_auto"], result["pay"],result["devise"], result["no_recu"], result["date"], result["user"]);
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"], result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        public async static void filterGoodFacture(BunifuDataGridView table,string word)         
+        {
+            table.Rows.Clear();
+            MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_garage where statut='"+word+"'");
+            try
+            {
+                while (result.Read())
+                {
+
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"],result["discount"], result["avance"], result["comment"], result["total"],result["statut"], result["payment"], result["id_auto"], result["pay"],result["devise"], result["no_recu"], result["date"], result["user"]);
 
                 }
             }
@@ -109,7 +128,7 @@ namespace ncl_auto_parts.controller
                     while (result.Read())
                     {
 
-                        table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
+                        table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"],result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
 
                     }
                 }
@@ -239,7 +258,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["description"], result["montant"], result["discount"], result["avance"], result["pay"], result["statut"], result["payment"], result["devise"]);
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["description"], result["montant"], result["quantite"],result["discount"], result["avance"], result["pay"], result["statut"], result["payment"], result["devise"]);
 
                 }
             }

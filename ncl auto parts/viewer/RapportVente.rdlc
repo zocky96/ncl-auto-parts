@@ -508,7 +508,7 @@
           </Border>
         </Style>
       </Tablix>
-      <Textbox Name="date_rapport">
+      <Textbox Name="Textbox6">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
@@ -516,19 +516,17 @@
             <TextRuns>
               <TextRun>
                 <Value />
-                <Style>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
+                <Style />
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>6.61169cm</Top>
-        <Left>8.83708cm</Left>
-        <Height>0.75875cm</Height>
-        <Width>5.64854cm</Width>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>7.07856cm</Top>
+        <Left>10.31558cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
