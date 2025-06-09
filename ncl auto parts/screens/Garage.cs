@@ -234,24 +234,50 @@ namespace ncl_auto_parts.screens
             int rep = -1;
             string myDevise = null;
             float total = await GarageC.getSumPrice() + await GarageC.getPay() - (await GarageC.getAvance() + await GarageC.getDiscount());
+            string realStatut = null;
             while (result.Read())
             {
+                realStatut = result["statut"].ToString();
                 myDevise = result["devise"].ToString();
                     autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()),float.Parse(result["montant"].ToString()),total);
                     rep = await GarageC.saveGoodFacture(autoPart, receiptNumber, table,float.Parse(result["discount"].ToString()),float.Parse(result["avance"].ToString()),result["comment"].ToString(),result["statut"].ToString(),result["payment"].ToString(),result["id_auto"].ToString(),float.Parse(result["pay"].ToString()));
 
             }
-        
-            rep = await dbConfig.execute_command("update facture_garage set total="+total+" where no_recu='" + receiptNumber + "'");
+
+           
             main.closeConn();
-            if (myDevise == "US")
+            if (realStatut == "paye")
             {
-                VenteC.AddUsMoneyGarage(total);
+                await dbConfig.execute_command("update facture_garage set total=" + total + ",dette=0 where no_recu='" + receiptNumber + "'");
+                if (myDevise == "US")
+                {
+                    VenteC.AddUsMoneyGarage(total);
+                }
+                else
+                {
+                    VenteC.AddHTGMoneyGarage(total);
+                }
             }
-            else
+            else if(realStatut == "avance")
             {
-                VenteC.AddHTGMoneyGarage(total);
+                float aux = total - float.Parse(avance.Text);
+                //MessageBox.Show(aux.ToString());
+                int ok = await dbConfig.execute_command("update facture_garage set total=" + total + ",dette ="+ aux +" where no_recu='" + receiptNumber + "'");
+                if (myDevise == "US")
+                {
+                    VenteC.AddUsMoneyGarage(float.Parse(avance.Text));
+                }
+                else
+                {
+                    VenteC.AddHTGMoneyGarage(float.Parse(avance.Text));
+                }
             }
+            if(realStatut== "non paye")
+            {
+                float aux = total - float.Parse(avance.Text);
+                await dbConfig.execute_command("update facture_garage set total=" + total + " ,dette=" + total + " where no_recu='" + receiptNumber + "'");
+            }
+           
             main.closeConn();
             if (rep == 0)
             {

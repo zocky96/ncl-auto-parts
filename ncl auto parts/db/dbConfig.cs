@@ -154,10 +154,10 @@ namespace ncl_auto_parts.db
             {
                 //MessageBox.Show(e.Message.ToString());
                 MessageBox.Show("\nServeur injoiniable, verfifier l'adresse du serveur ou\n autoriser l'access au serveur mysql");
-                conn.Close();
-                conn = new MySqlConnection(link);
-                await conn.OpenAsync();
-                return conn;
+                //conn.Close();
+                //conn = new MySqlConnection(link);
+               // await conn.OpenAsync();
+               // return conn;
             }
 
             return conn;
@@ -310,6 +310,7 @@ namespace ncl_auto_parts.db
             //--
             rep = await execute_command("create table proforma(id int primary key auto_increment,clientName varchar(255),carName varchar(255),plaque varchar(100),phone varchar(50),date date,description varchar(200),quantite int,price double,total double)");
             rep = await execute_command("ALTER TABLE proforma ADD devise enum('HTG','US')");
+            //rep = await execute_command("ALTER TABLE proforma ADD date date");
             //--
             rep = await execute_command("create table fauto_part(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double)");
             rep = await execute_command("ALTER TABLE fauto_part ADD car_name VARCHAR(100)");
@@ -359,6 +360,7 @@ namespace ncl_auto_parts.db
             rep = await execute_command("ALTER TABLE facture_auto ADD payment enum('Cash','Virement','Cheque','Mon Cash','Nat Cash')");
             rep = await execute_command("ALTER TABLE facture_auto ADD id_auto varchar(255)");
             rep = await execute_command("ALTER TABLE facture_auto ADD pay DOUBLE");
+            rep = await execute_command("ALTER TABLE facture_auto ADD dette DOUBLE");
             //--
             rep = await execute_command("create table canceled_facture_auto(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date ,user varchar(150))");
             rep = await execute_command("ALTER TABLE canceled_facture_auto ADD car_name VARCHAR(100)");
@@ -383,6 +385,7 @@ namespace ncl_auto_parts.db
             rep = await execute_command("ALTER TABLE facture_garage ADD payment enum('Cash','Virement','Cheque','Mon Cash','Nat Cash')");
             rep = await execute_command("ALTER TABLE facture_garage ADD id_auto varchar(255)");
             rep = await execute_command("ALTER TABLE facture_garage ADD pay DOUBLE");
+            rep = await execute_command("ALTER TABLE facture_garage ADD dette DOUBLE");
             //-----
             rep = await execute_command("create table cancel_facture_garage(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double,no_recu varchar(255),date date,user varchar(150) )");
             rep = await execute_command("ALTER TABLE cancel_facture_garage ADD car_name VARCHAR(100)");

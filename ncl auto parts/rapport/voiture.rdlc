@@ -807,17 +807,17 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>9.875in</Height>
+    <Height>25.0825cm</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
     </Style>
   </Body>
-  <Width>7.44981in</Width>
+  <Width>18.92252cm</Width>
   <Page>
     <PageHeader>
-      <Height>1.88542in</Height>
+      <Height>4.78897cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -965,13 +965,13 @@
         </Border>
       </Style>
     </PageHeader>
-    <PageHeight>11.69in</PageHeight>
-    <PageWidth>8.27in</PageWidth>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
     <LeftMargin>0cm</LeftMargin>
     <RightMargin>0cm</RightMargin>
-    <TopMargin>0.7874in</TopMargin>
-    <BottomMargin>0.7874in</BottomMargin>
-    <ColumnSpacing>0.05118in</ColumnSpacing>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -1098,6 +1098,6 @@ fyRRPN0vrJyVFOYedI586ksl1FT5ashm4SHk6cqMZ+n11hE/e1YL8HKnI0k6MgmyAQ5Uhn8vOlyScl5l
 IEhtkfxhpTtUKxLyo+IO+QB7cQ/tvwBK+VT+2wuBbHYg7cWl038RGJ6od/BCOwLoyAD38hp0n3pa23UaJxurfFJxes/mmvqxVTTpr4PpQXwXSjRvp9NEpm2L4rKdsPish2wfFC/izShsL+96xhf3vV3h/wAE19vNfe/Rhd1/FZQ9PrrLP9bUgSwfvSpf3elYLvH7lYfuw96wPcH3awHdP3oNK45L7VGoS8g60MkPX7aTnrqFZHr/AOaUAOcfcoXKer+qRkKCshWhJO50oMbv9Kl0reA+KirGmvQtNFug0+N5UcDI33s0mboS9BCc5nl/FRgn1xD8beCzEeJxmvIjwLc3yJ7ryPBD7eCLEm4my1hO+3vTC94X3awfdD70Yneb4qWPaD4qbcY3+ivqD+KQQjIwSjH7Y+abLtvtpImW6i58q+4b2Kcft0p5K2oHCTpQMpyB92kNemHD9RqPN6p+aBmdS+Km35zBR0j3pU9ck+CnTXVKWXTk+JS+B6Uyo5mfJTBdN8lYLoPmotrOlJegOqOdgexS+eyipc56fzWUHX760mdx81kx1VN7rP8AJP6i3FIARGAPelYPVKXhdV/NaJ9XoaTVMXMrdWW3keAcW50xzXWlphyC+K0Q6UiYFG89gU5naKsp2D9msguv2UQhjmX81kH1oyA6qlXKv/4BX//+AAMA/9k=</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>32fb7275-6229-44f3-8fa5-000bdcc569aa</rd:ReportID>
 </Report>

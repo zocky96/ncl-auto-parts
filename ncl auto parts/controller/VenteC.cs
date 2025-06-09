@@ -278,8 +278,8 @@ namespace ncl_auto_parts.controller
                             main.closeConn();
                         }
                         deleteVente(receipt, table);
-                        main.closeConn();
-                        getArticleSum();
+                        
+                        
                         main.closeConn();
                         MessageBox.Show("Vente annulée avec succes");
                     }
@@ -447,7 +447,7 @@ namespace ncl_auto_parts.controller
 
                 }
             }
-            if (amount > money)
+            if (amount >= money)
             {
              
                 amount -= money;
@@ -477,7 +477,7 @@ namespace ncl_auto_parts.controller
 
                 }
             }
-            if (amount > money)
+            if (amount >= money)
             {
                 amount -= money;
                 rep = await dbConfig.execute_command("update account_htg set amount =" + amount + " where id=1");

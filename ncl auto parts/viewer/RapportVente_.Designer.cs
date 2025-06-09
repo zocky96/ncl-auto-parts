@@ -2592,6 +2592,8 @@ namespace ncl_auto_parts.viewer {
             
             private global::System.Data.DataColumn columndevise;
             
+            private global::System.Data.DataColumn columndate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ProformaDataTable() {
@@ -2699,6 +2701,14 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn dateColumn {
+                get {
+                    return this.columndate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2734,7 +2744,7 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ProformaRow AddProformaRow(string clientName, string carName, string plaque, string description, int quantite, double price, double total, double real_total, string devise) {
+            public ProformaRow AddProformaRow(string clientName, string carName, string plaque, string description, int quantite, double price, double total, double real_total, string devise, System.DateTime date) {
                 ProformaRow rowProformaRow = ((ProformaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         clientName,
@@ -2745,7 +2755,8 @@ namespace ncl_auto_parts.viewer {
                         price,
                         total,
                         real_total,
-                        devise};
+                        devise,
+                        date};
                 rowProformaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProformaRow);
                 return rowProformaRow;
@@ -2777,6 +2788,7 @@ namespace ncl_auto_parts.viewer {
                 this.columntotal = base.Columns["total"];
                 this.columnreal_total = base.Columns["real_total"];
                 this.columndevise = base.Columns["devise"];
+                this.columndate = base.Columns["date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2800,6 +2812,8 @@ namespace ncl_auto_parts.viewer {
                 base.Columns.Add(this.columnreal_total);
                 this.columndevise = new global::System.Data.DataColumn("devise", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndevise);
+                this.columndate = new global::System.Data.DataColumn("date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndate);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5354,6 +5368,22 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableProforma.dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'date\' in table \'Proforma\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProforma.dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsclientNameNull() {
                 return this.IsNull(this.tableProforma.clientNameColumn);
             }
@@ -5458,6 +5488,18 @@ namespace ncl_auto_parts.viewer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetdeviseNull() {
                 this[this.tableProforma.deviseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsdateNull() {
+                return this.IsNull(this.tableProforma.dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetdateNull() {
+                this[this.tableProforma.dateColumn] = global::System.Convert.DBNull;
             }
         }
         

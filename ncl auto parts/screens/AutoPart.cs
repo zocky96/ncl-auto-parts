@@ -245,28 +245,50 @@ namespace ncl_auto_parts.screens
             }
 
             MySqlDataReader result = await AutoPartC.getFacture();
-            string myDevise = null;
+            string myDevise = null,realStatut = null;
             float total = await AutoPartC.getSumPrice() + await AutoPartC.getPay() - (await AutoPartC.getAvance() + await AutoPartC.getDiscount());
             int rep = -1;
             while (result.Read())
             {
                 myDevise = result["devise"].ToString();
+                realStatut = result["statut"].ToString();
                 autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), total);
                 rep = await AutoPartC.saveGoodFacture(autoPart, receiptNumber, table, float.Parse(result["discount"].ToString()), float.Parse(result["avance"].ToString()), result["comment"].ToString(), result["statut"].ToString(), result["payment"].ToString(), result["id_auto"].ToString(), float.Parse(result["pay"].ToString()));
-
-
+            }
+            //---------------
+            if (realStatut == "paye")
+            {
+                await dbConfig.execute_command("update facture_auto set total=" + total + ",dette=0 where no_recu='" + receiptNumber + "'");
+                if (myDevise == "US")
+                {
+                    VenteC.AddUsMoney(total);
+                }
+                else
+                {
+                    VenteC.AddHtgMoney(total);
+                }
+            }
+            else if (realStatut == "avance")
+            {
+                float aux = total - float.Parse(Avance.Text);
+                //MessageBox.Show(aux.ToString());
+                int ok = await dbConfig.execute_command("update facture_auto set total=" + total + ",dette =" + aux + " where no_recu='" + receiptNumber + "'");
+                if (myDevise == "US")
+                {
+                    VenteC.AddUsMoney(float.Parse(Avance.Text));
+                }
+                else
+                {
+                    VenteC.AddHtgMoney(float.Parse(Avance.Text));
+                }
+            }
+            if (realStatut == "non paye")
+            {
+                float aux = total - float.Parse(Avance.Text);
+                await dbConfig.execute_command("update facture_auto set total=" + total + " ,dette=" + total + " where no_recu='" + receiptNumber + "'");
             }
             //-----------------------------
-            rep = await dbConfig.execute_command("update facture_auto set total=" + total + " where no_recu='" + receiptNumber + "'");
-            main.closeConn();
-            if (myDevise == "US")
-            {
-                VenteC.AddUsMoney(total);
-            }
-            else
-            {
-                VenteC.AddHtgMoney(total);
-            }
+           
             main.closeConn();
 
             if (rep == 0)

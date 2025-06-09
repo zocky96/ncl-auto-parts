@@ -49,6 +49,7 @@ namespace ncl_auto_parts.screens
 
         private async void facture_Click(object sender, EventArgs e)
         {
+            pay.Visible = false;
             realTotal = 0;
             print.Visible = false;
             main.closeConn();
@@ -106,11 +107,33 @@ namespace ncl_auto_parts.screens
             print.Visible = true;
         }
 
-        private void table_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private async void table_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             id = table.CurrentRow.Cells["no"].Value.ToString();
             ClientName = table.CurrentRow.Cells["client"].Value.ToString();
+            string statut = null;
+            try
+            {
+                MySqlDataReader result = await dbConfig.getResultCommand("select statut from facture_auto where no_recu='" + id + "'");
+                while (result.Read())
+                {
+                    statut = result["statut"].ToString();
+                }
+                if (statut == "avance" || statut == "non paye")
+                {
+                    pay.Visible = true;
+                }
+                else
+                {
+                    pay.Visible = false;
+                }
+            }
+            catch
+            {
+
+            }
             print.Visible = true;
+            
         }
 
         private void filter_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,10 +149,25 @@ namespace ncl_auto_parts.screens
             main.closeConn();
         }
 
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            pay.Visible=false;
+            print.Visible=false;
+           
+            main.showLogin(new PayDette(id, "auto"));
+            AutoPartC.showGoodFacture(table);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private async void print_Click(object sender, EventArgs e)
         {
             main.closeConn();
             print.Visible = false;
+            pay.Visible=false;
             main.showLogin(new oneFacture(id,"auto"));
         }
 

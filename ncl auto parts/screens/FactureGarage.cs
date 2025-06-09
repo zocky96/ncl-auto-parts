@@ -45,6 +45,7 @@ namespace ncl_auto_parts.screens
         private async void facture_Click(object sender, EventArgs e)
         {
             realTotal = 0;
+            pay.Visible = false;
             main.closeConn();
             float sum = 0;
             String devise = null;
@@ -88,17 +89,41 @@ namespace ncl_auto_parts.screens
             }
         }
 
-        private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             id = table.CurrentRow.Cells["no"].Value.ToString();
             ClientName = table.CurrentRow.Cells["client"].Value.ToString();
+            string statut = null;
+            try
+            {
+                MySqlDataReader result = await dbConfig.getResultCommand("select statut from facture_garage where no_recu='"+id+"'");
+                while (result.Read())
+                {
+                    statut = result["statut"].ToString();
+                }
+                if(statut == "avance" || statut == "non paye")
+                {
+                    pay.Visible = true;
+                }
+                else
+                {
+                    pay.Visible = false;
+                }
+            }
+            catch
+            {
+
+            }
             print.Visible = true;
+           
         }
 
         private async void print_Click(object sender, EventArgs e)
         {
             main.closeConn();
             print.Visible = false;
+            pay.Visible = false;
+            
             main.showLogin(new oneFacture(id, "garage"));
         }
 
@@ -123,6 +148,15 @@ namespace ncl_auto_parts.screens
                 GarageC.showGoodFacture(table);
             }
             main.closeConn();
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            print.Visible = false;
+            pay.Visible = false;
+
+            main.showLogin(new PayDette(id,"garage"));
+            GarageC.showGoodFacture(table);
         }
 
         private void searchBar_TextChanged(object sender, EventArgs e)

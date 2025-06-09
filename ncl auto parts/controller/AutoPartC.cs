@@ -88,7 +88,7 @@ namespace ncl_auto_parts.controller
             {
                 while (result.Read())
                 {
-                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"], result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"], result["dette"], result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
 
                 }
             }
@@ -105,7 +105,7 @@ namespace ncl_auto_parts.controller
             {
                 while (result.Read())
                 {
-                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"],result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
+                    table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"],result["dette"],result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
 
                 }
             }
@@ -124,7 +124,7 @@ namespace ncl_auto_parts.controller
                 {
                     while (result.Read())
                     {
-                        table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"],result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
+                        table.Rows.Add(result["id"], result["clientName"], result["service"], result["montant"], result["quantite"],result["dette"],result["discount"], result["avance"], result["comment"], result["total"], result["statut"], result["payment"], result["id_auto"], result["pay"], result["devise"], result["no_recu"], result["date"], result["user"]);
 
                     }
                 }

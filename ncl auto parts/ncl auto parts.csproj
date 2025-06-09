@@ -412,6 +412,12 @@
     <Compile Include="screens\OtherVente.Designer.cs">
       <DependentUpon>OtherVente.cs</DependentUpon>
     </Compile>
+    <Compile Include="screens\PayDette.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="screens\PayDette.Designer.cs">
+      <DependentUpon>PayDette.cs</DependentUpon>
+    </Compile>
     <Compile Include="screens\Proforma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -504,6 +510,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="screens\OtherVente.resx">
       <DependentUpon>OtherVente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screens\PayDette.resx">
+      <DependentUpon>PayDette.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="viewer\RapportVente.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">

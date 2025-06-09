@@ -92,6 +92,7 @@ namespace ncl_auto_parts.screens
                                 sum += float.Parse(price.Text) * int.Parse(qte.Text);
                                 string date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
                                 ProformaM proforma = new ProformaM(clientName.Text, carName.Text, plaque_.Text, phone.Text, date, name.Text, float.Parse(price.Text), float.Parse(price.Text) * int.Parse(qte.Text), int.Parse(qte.Text));
+                                //string date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
                                 int rep = await ProformaC.saveProforma(proforma, table,devise.Text);
                                 main.closeConn();
                                 if (rep == 0)
