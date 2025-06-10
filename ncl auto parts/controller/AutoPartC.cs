@@ -100,7 +100,7 @@ namespace ncl_auto_parts.controller
         public async static void showGoodFacture(BunifuDataGridView table)
         {
             table.Rows.Clear();
-            MySqlDataReader result = await dbConfig.getResultCommand("select *from facture_auto order by id desc");
+            MySqlDataReader result = await dbConfig.getResultCommand(" select *,(select sum(total) from facture_auto) as ok from facture_auto group by no_recu order by id desc");
             try
             {
                 while (result.Read())

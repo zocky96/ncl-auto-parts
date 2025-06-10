@@ -45,6 +45,7 @@
             this.facture = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.label1 = new System.Windows.Forms.Label();
             this.montant = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+            this.payment = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label12
@@ -168,7 +169,7 @@
             this.facture.IdleIconLeftImage = null;
             this.facture.IdleIconRightImage = null;
             this.facture.IndicateFocus = false;
-            this.facture.Location = new System.Drawing.Point(12, 97);
+            this.facture.Location = new System.Drawing.Point(12, 131);
             this.facture.Name = "facture";
             stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties5.BorderRadius = 3;
@@ -279,11 +280,27 @@
             this.montant.UseSystemPasswordChar = false;
             this.montant.WordWrap = true;
             // 
+            // payment
+            // 
+            this.payment.FormattingEnabled = true;
+            this.payment.Items.AddRange(new object[] {
+            "Cash",
+            "Virement",
+            "Cheque",
+            "Mon Cash",
+            "Nat Cash"});
+            this.payment.Location = new System.Drawing.Point(297, 89);
+            this.payment.Name = "payment";
+            this.payment.Size = new System.Drawing.Size(243, 21);
+            this.payment.TabIndex = 146;
+            this.payment.Text = "Methode de paiement";
+            // 
             // PayDette
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 158);
+            this.ClientSize = new System.Drawing.Size(550, 188);
+            this.Controls.Add(this.payment);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.montant);
             this.Controls.Add(this.facture);
@@ -306,5 +323,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton facture;
         private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox montant;
+        private System.Windows.Forms.ComboBox payment;
     }
 }

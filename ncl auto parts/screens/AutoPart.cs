@@ -93,8 +93,7 @@ namespace ncl_auto_parts.screens
                                                 isAnumber = float.TryParse(Avance.Text, out i);
                                                 if (isAnumber)
                                                 {
-                                                    if (payment.Text == "Cash" || payment.Text == "Virement" || payment.Text == "Cheque" || payment.Text == "Mon Cash" || payment.Text == "Nat Cash")
-                                                    {
+                                                    
                                                         if (statut.Text == "paye" || statut.Text == "non paye" || statut.Text == "avance")
                                                         {
                                                                 isAnumber = float.TryParse(mainPay.Text, out i);
@@ -137,11 +136,7 @@ namespace ncl_auto_parts.screens
                                                             MessageBox.Show("Veuillez Choisir le statut du paiement");
                                                         }
 
-                                                    }
-                                                    else
-                                                    {
-                                                        MessageBox.Show("Veuillez choisir une methode de paiement");
-                                                    }
+                                                    
 
                                                 }
                                                 else

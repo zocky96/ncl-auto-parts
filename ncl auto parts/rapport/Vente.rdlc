@@ -693,12 +693,6 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total                                                                                                                                       </Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
                 <Value>=Fields!total_us.Value</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
@@ -711,14 +705,16 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
         <Top>9.12495cm</Top>
-        <Left>0.81217cm</Left>
+        <Left>3.64321cm</Left>
         <Height>0.6cm</Height>
-        <Width>18.2802cm</Width>
+        <Width>15.44916cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -738,12 +734,6 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total                                                                                                                                       </Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
                 <Value>=Fields!total_htg.Value</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
@@ -756,15 +746,83 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
         <Top>10.04921cm</Top>
+        <Left>3.64321cm</Left>
+        <Height>0.6cm</Height>
+        <Width>15.44916cm</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>9.12495cm</Top>
         <Left>0.81217cm</Left>
         <Height>0.6cm</Height>
-        <Width>18.2802cm</Width>
-        <ZIndex>8</ZIndex>
+        <Width>2.83104cm</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>10.04921cm</Top>
+        <Left>0.81217cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.83104cm</Width>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>

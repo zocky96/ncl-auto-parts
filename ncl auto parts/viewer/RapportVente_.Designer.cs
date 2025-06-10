@@ -2041,6 +2041,8 @@ namespace ncl_auto_parts.viewer {
             
             private global::System.Data.DataColumn columngoodDate;
             
+            private global::System.Data.DataColumn columndette;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public oneFactureDataTable() {
@@ -2260,6 +2262,14 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn detteColumn {
+                get {
+                    return this.columndette;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2318,7 +2328,8 @@ namespace ncl_auto_parts.viewer {
                         string statut, 
                         string payment, 
                         string pay, 
-                        System.DateTime goodDate) {
+                        System.DateTime goodDate, 
+                        string dette) {
                 oneFactureRow rowoneFactureRow = ((oneFactureRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         clientName,
@@ -2343,7 +2354,8 @@ namespace ncl_auto_parts.viewer {
                         statut,
                         payment,
                         pay,
-                        goodDate};
+                        goodDate,
+                        dette};
                 rowoneFactureRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowoneFactureRow);
                 return rowoneFactureRow;
@@ -2389,6 +2401,7 @@ namespace ncl_auto_parts.viewer {
                 this.columnpayment = base.Columns["payment"];
                 this.columnpay = base.Columns["pay"];
                 this.columngoodDate = base.Columns["goodDate"];
+                this.columndette = base.Columns["dette"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2440,6 +2453,8 @@ namespace ncl_auto_parts.viewer {
                 base.Columns.Add(this.columnpay);
                 this.columngoodDate = new global::System.Data.DataColumn("goodDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columngoodDate);
+                this.columndette = new global::System.Data.DataColumn("dette", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndette);
                 this.columndate.DateTimeMode = global::System.Data.DataSetDateTime.Utc;
             }
             
@@ -4933,6 +4948,22 @@ namespace ncl_auto_parts.viewer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string dette {
+                get {
+                    try {
+                        return ((string)(this[this.tableoneFacture.detteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dette\' in table \'oneFacture\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableoneFacture.detteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsclientNameNull() {
                 return this.IsNull(this.tableoneFacture.clientNameColumn);
             }
@@ -5205,6 +5236,18 @@ namespace ncl_auto_parts.viewer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetgoodDateNull() {
                 this[this.tableoneFacture.goodDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsdetteNull() {
+                return this.IsNull(this.tableoneFacture.detteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetdetteNull() {
+                this[this.tableoneFacture.detteColumn] = global::System.Convert.DBNull;
             }
         }
         

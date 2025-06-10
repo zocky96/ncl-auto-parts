@@ -179,7 +179,7 @@
               <Width>2.52243cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.40218cm</Width>
+              <Width>3.95302cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.70287cm</Width>
@@ -608,10 +608,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>oneFacture</DataSetName>
-        <Top>7.57687cm</Top>
+        <Top>6.30687cm</Top>
         <Left>2.24333cm</Left>
         <Height>1.21438cm</Height>
-        <Width>13.53387cm</Width>
+        <Width>15.08471cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -626,12 +626,6 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total                                                                                              </Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
                 <Value>=Fields!total_htg.Value</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
@@ -644,14 +638,16 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>9.49069cm</Top>
-        <Left>2.24332cm</Left>
+        <Top>8.22069cm</Top>
+        <Left>3.49978cm</Left>
         <Height>0.6cm</Height>
-        <Width>13.53388cm</Width>
+        <Width>13.82826cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -671,12 +667,6 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total                                                                                              </Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
                 <Value>=Fields!total_us.Value</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
@@ -689,14 +679,16 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>10.46854cm</Top>
-        <Left>2.24333cm</Left>
+        <Top>9.19854cm</Top>
+        <Left>3.49978cm</Left>
         <Height>0.6cm</Height>
-        <Width>13.53387cm</Width>
+        <Width>13.82826cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -716,9 +708,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>Total</Value>
                 <Style>
-                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -726,15 +718,49 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>6.16162cm</Top>
-        <Left>8.56933cm</Left>
-        <Height>0.9175cm</Height>
-        <Width>3.85472cm</Width>
+        <Top>8.19891cm</Top>
+        <Left>2.24332cm</Left>
+        <Height>0.6cm</Height>
+        <Width>1.25646cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox6">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>9.19854cm</Top>
+        <Left>2.20267cm</Left>
+        <Height>0.6cm</Height>
+        <Width>1.29711cm</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -742,7 +768,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.35769in</Height>
+    <Height>7.17019in</Height>
     <Style />
   </Body>
   <Width>8.67708in</Width>

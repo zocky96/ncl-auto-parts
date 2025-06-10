@@ -159,6 +159,11 @@ namespace ncl_auto_parts.screens
             GarageC.showGoodFacture(table);
         }
 
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void searchBar_TextChanged(object sender, EventArgs e)
         {
 

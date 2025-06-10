@@ -163,6 +163,11 @@ namespace ncl_auto_parts.screens
 
         }
 
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private async void print_Click(object sender, EventArgs e)
         {
             main.closeConn();
