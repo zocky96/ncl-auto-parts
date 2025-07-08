@@ -185,7 +185,7 @@
               <Width>2.97665cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.77741cm</Width>
+              <Width>3.18909cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.71284cm</Width>
@@ -302,7 +302,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox11">
+                    <Textbox Name="Textbox14">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -318,7 +318,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <rd:DefaultName>Textbox14</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -529,21 +529,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="quantite">
+                    <Textbox Name="dispo">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!quantite.Value</Value>
+                              <Value>=Fields!dispo.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>quantite</rd:DefaultName>
+                      <rd:DefaultName>dispo</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -675,10 +675,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Vente</DataSetName>
-        <Top>7.3787cm</Top>
+        <Top>7.6962cm</Top>
         <Left>0.81217cm</Left>
         <Height>1.2cm</Height>
-        <Width>18.2802cm</Width>
+        <Width>18.69188cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -693,7 +693,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!total_us.Value</Value>
+                <Value>=Sum(Fields!total_us.Value, "Vente")</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -711,10 +711,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>9.12495cm</Top>
+        <Top>9.44245cm</Top>
         <Left>3.64321cm</Left>
         <Height>0.6cm</Height>
-        <Width>15.44916cm</Width>
+        <Width>15.86084cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -734,7 +734,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!total_htg.Value</Value>
+                <Value>=First(Fields!total_htg.Value, "Vente")</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -752,10 +752,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>10.04921cm</Top>
+        <Top>10.36671cm</Top>
         <Left>3.64321cm</Left>
         <Height>0.6cm</Height>
-        <Width>15.44916cm</Width>
+        <Width>15.86084cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -785,7 +785,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>9.12495cm</Top>
+        <Top>9.44245cm</Top>
         <Left>0.81217cm</Left>
         <Height>0.6cm</Height>
         <Width>2.83104cm</Width>
@@ -818,7 +818,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>10.04921cm</Top>
+        <Top>10.36671cm</Top>
         <Left>0.81217cm</Left>
         <Height>0.6cm</Height>
         <Width>2.83104cm</Width>
@@ -828,6 +828,40 @@
             <Style>None</Style>
           </Border>
           <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox12">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!theDate.Value, "Date")</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox12</rd:DefaultName>
+        <Top>6.77016cm</Top>
+        <Left>9.01912cm</Left>
+        <Height>0.74965cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -857,6 +891,13 @@
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
       <rd:DataSourceID>8b03ce02-c068-44de-966e-8cc8f4ed4d3c</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="FactureData">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>a6508237-d1a3-45aa-8bb0-2b72e8537e57</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -918,11 +959,35 @@
           <DataField>quantite_vendu</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="dispo">
+          <DataField>dispo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>FactureData</rd:DataSetName>
         <rd:SchemaPath>C:\Users\zocky\Desktop\ncl auto parts\ncl auto parts\viewer\RapportVente_.xsd</rd:SchemaPath>
         <rd:TableName>Vente</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="Date">
+      <Query>
+        <DataSourceName>FactureData</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="theDate">
+          <DataField>theDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>FactureData</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\zocky\Desktop\ncl auto parts\ncl auto parts\viewer\RapportVente_.xsd</rd:SchemaPath>
+        <rd:TableName>Date</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

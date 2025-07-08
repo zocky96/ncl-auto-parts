@@ -22,7 +22,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["id_emp"], result["fullname"], result["poste"], result["breuvage"], result["nourriture"], result["avance"], result["dette"], result["sol"], result["init_amount"], result["final_amount"], result["comment"],result["date"]);
+                    table.Rows.Add(result["id"], result["id_emp"], result["fullname"], result["poste"], result["breuvage"], result["nourriture"], result["avance"], result["dette"], result["sol"], result["init_amount"], result["final_amount"], result["comment"],DateTime.Parse(result["date"].ToString()).ToShortDateString());
 
                 }
             }
@@ -60,7 +60,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["id_emp"], result["fullname"], result["poste"], result["breuvage"], result["nourriture"], result["avance"], result["dette"], result["sol"], result["init_amount"], result["final_amount"], result["comment"],result["date"]);
+                    table.Rows.Add(result["id"], result["id_emp"], result["fullname"], result["poste"], result["breuvage"], result["nourriture"], result["avance"], result["dette"], result["sol"], result["init_amount"], result["final_amount"], result["comment"],DateTime.Parse(result["date"].ToString()).ToShortDateString());
 
                 }
             }

@@ -803,6 +803,7 @@
             this.top.Legends.Add(legend2);
             this.top.Location = new System.Drawing.Point(0, 0);
             this.top.Name = "top";
+            this.top.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Legend = "Legend1";

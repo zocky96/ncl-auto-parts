@@ -153,7 +153,9 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
@@ -186,6 +188,9 @@
             </TablixColumn>
             <TablixColumn>
               <Width>1.64824cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>3.29959cm</Width>
@@ -316,6 +321,39 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox21</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>PaleTurquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox22">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Dette</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox22</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -523,6 +561,36 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="dette">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!dette.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>dette</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="date">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -595,6 +663,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -608,10 +677,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>oneFacture</DataSetName>
-        <Top>6.30687cm</Top>
+        <Top>7.25937cm</Top>
         <Left>2.24333cm</Left>
         <Height>1.21438cm</Height>
-        <Width>15.08471cm</Width>
+        <Width>17.58471cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -626,7 +695,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!total_htg.Value</Value>
+                <Value>=First(Fields!All_gds.Value, "total")</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -644,10 +713,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>8.22069cm</Top>
+        <Top>9.17319cm</Top>
         <Left>3.49978cm</Left>
         <Height>0.6cm</Height>
-        <Width>13.82826cm</Width>
+        <Width>16.32826cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -667,7 +736,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!total_us.Value</Value>
+                <Value>=First(Fields!All_dollar.Value, "total")</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -685,10 +754,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>9.19854cm</Top>
+        <Top>10.78604cm</Top>
         <Left>3.49978cm</Left>
         <Height>0.6cm</Height>
-        <Width>13.82826cm</Width>
+        <Width>16.32826cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -718,7 +787,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>8.19891cm</Top>
+        <Top>9.15141cm</Top>
         <Left>2.24332cm</Left>
         <Height>0.6cm</Height>
         <Width>1.25646cm</Width>
@@ -751,7 +820,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>9.19854cm</Top>
+        <Top>10.78604cm</Top>
         <Left>2.20267cm</Left>
         <Height>0.6cm</Height>
         <Width>1.29711cm</Width>
@@ -767,11 +836,193 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox8">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total dette</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>11.56243cm</Top>
+        <Left>2.20267cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.11732cm</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!D_dollar.Value, "total")</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> US</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox14</rd:DefaultName>
+        <Top>11.56243cm</Top>
+        <Left>4.31999cm</Left>
+        <Height>0.6cm</Height>
+        <Width>15.46739cm</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total dette</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>9.99677cm</Top>
+        <Left>2.20267cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.11732cm</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox15">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!D_gds.Value, "total")</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> HTG</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox14</rd:DefaultName>
+        <Top>9.99677cm</Top>
+        <Left>4.31999cm</Left>
+        <Height>0.6cm</Height>
+        <Width>15.46739cm</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>PaleTurquoise</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox26">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!theDate.Value, "Date")</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox26</rd:DefaultName>
+        <Top>6.05578cm</Top>
+        <Left>8.71878cm</Left>
+        <Height>0.75875cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>7.17019in</Height>
     <Style />
   </Body>
-  <Width>8.67708in</Width>
+  <Width>8.79057in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -891,11 +1142,83 @@
           <DataField>goodDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="dette">
+          <DataField>dette</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>FactureData</rd:DataSetName>
         <rd:SchemaPath>C:\Users\zocky\Desktop\ncl auto parts\ncl auto parts\viewer\RapportVente_.xsd</rd:SchemaPath>
         <rd:TableName>oneFacture</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="total">
+      <Query>
+        <DataSourceName>FactureData</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Somme_gds">
+          <DataField>Somme_gds</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Somme_dollar">
+          <DataField>Somme_dollar</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Somme_dette_gds">
+          <DataField>Somme_dette_gds</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Somme_dette_dollar">
+          <DataField>Somme_dette_dollar</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="All_gds">
+          <DataField>All_gds</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="All_dollar">
+          <DataField>All_dollar</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="D_gds">
+          <DataField>D_gds</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="D_dollar">
+          <DataField>D_dollar</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>FactureData</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\zocky\Desktop\ncl auto parts\ncl auto parts\viewer\RapportVente_.xsd</rd:SchemaPath>
+        <rd:TableName>total</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="Date">
+      <Query>
+        <DataSourceName>FactureData</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="theDate">
+          <DataField>theDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>FactureData</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\zocky\Desktop\ncl auto parts\ncl auto parts\viewer\RapportVente_.xsd</rd:SchemaPath>
+        <rd:TableName>Date</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

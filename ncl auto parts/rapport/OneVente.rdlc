@@ -40,7 +40,7 @@
         <Sizing>FitProportional</Sizing>
         <Top>0.62507cm</Top>
         <Left>1.46197cm</Left>
-        <Height>3.70417cm</Height>
+        <Height>3.0791cm</Height>
         <Width>3.95111cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -162,7 +162,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>5.10328cm</Top>
+        <Top>4.46828cm</Top>
         <Left>1.46197cm</Left>
         <Height>0.6cm</Height>
         <Width>6.70688cm</Width>
@@ -201,7 +201,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>6.69078cm</Top>
+        <Top>5.42078cm</Top>
         <Left>1.46197cm</Left>
         <Height>0.6cm</Height>
         <Width>8.24146cm</Width>
@@ -240,7 +240,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>7.46717cm</Top>
+        <Top>6.19717cm</Top>
         <Left>1.46197cm</Left>
         <Height>0.6cm</Height>
         <Width>8.24146cm</Width>
@@ -622,7 +622,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>oneVente</DataSetName>
-        <Top>8.78099cm</Top>
+        <Top>7.24641cm</Top>
         <Left>1.46197cm</Left>
         <Height>1.2cm</Height>
         <Width>15.47201cm</Width>
@@ -633,36 +633,6 @@
           </Border>
         </Style>
       </Tablix>
-      <Textbox Name="Textbox17">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Merci d'avoir choisi NC.L Autoservices!!!</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>12.96141cm</Top>
-        <Left>8.56022cm</Left>
-        <Height>0.6cm</Height>
-        <Width>8.37375cm</Width>
-        <ZIndex>9</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox15">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -680,11 +650,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>10.499cm</Top>
+        <Top>8.96442cm</Top>
         <Left>1.46197cm</Left>
         <Height>0.6cm</Height>
         <Width>3.95111cm</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -727,11 +697,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>10.499cm</Top>
+        <Top>8.96442cm</Top>
         <Left>5.41308cm</Left>
         <Height>0.6cm</Height>
         <Width>11.5209cm</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -749,6 +719,47 @@
   </Body>
   <Width>9.19084in</Width>
   <Page>
+    <PageFooter>
+      <Height>1.64717cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox17">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Merci d'avoir choisi NC.L Autoservices!!!</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox17</rd:DefaultName>
+          <Top>0.41217cm</Top>
+          <Left>14.46043cm</Left>
+          <Height>0.6cm</Height>
+          <Width>8.37375cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
     <LeftMargin>0cm</LeftMargin>

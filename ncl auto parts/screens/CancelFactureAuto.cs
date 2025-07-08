@@ -45,5 +45,10 @@ namespace ncl_auto_parts.screens
         {
 
         }
+
+        private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

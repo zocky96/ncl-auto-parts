@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ncl_auto_parts.controller;
 using ncl_auto_parts.db;
+using ncl_auto_parts.model;
 using ncl_auto_parts.rapport;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,7 @@ namespace ncl_auto_parts.screens
         {
             realTotal = 0;
             pay.Visible = false;
+            modify.Visible = false;
             main.closeConn();
             float sum = 0;
             String devise = null;
@@ -91,17 +93,32 @@ namespace ncl_auto_parts.screens
 
         private async void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            modify.Visible = true;
             id = table.CurrentRow.Cells["no"].Value.ToString();
             ClientName = table.CurrentRow.Cells["client"].Value.ToString();
-            string statut = null;
+            string statut = null, dette = null;
             try
             {
-                MySqlDataReader result = await dbConfig.getResultCommand("select statut from facture_garage where no_recu='"+id+"'");
+                MySqlDataReader result = await dbConfig.getResultCommand("select statut,dette from facture_garage where no_recu='"+id+"'");
                 while (result.Read())
                 {
                     statut = result["statut"].ToString();
+                    if (result.IsDBNull(1))
+                    {
+                        dette = "nullos123";
+                    }
                 }
-                if(statut == "avance" || statut == "non paye")
+                if (dette == "nullos123")
+                {
+                    statut_.Visible = true;
+                    change.Visible = true;
+                }
+                if (dette != "nullos123")
+                {
+                    statut_.Visible = false;
+                    change.Visible = false;
+                }
+                if (statut == "avance" || statut == "non paye")
                 {
                     pay.Visible = true;
                 }
@@ -122,6 +139,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             print.Visible = false;
+            modify.Visible = false;
             pay.Visible = false;
             
             main.showLogin(new oneFacture(id, "garage"));
@@ -153,6 +171,7 @@ namespace ncl_auto_parts.screens
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
             print.Visible = false;
+            modify.Visible = false;
             pay.Visible = false;
 
             main.showLogin(new PayDette(id,"garage"));
@@ -162,6 +181,39 @@ namespace ncl_auto_parts.screens
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private async void change_Click(object sender, EventArgs e)
+        {
+            if (statut_.Text == "paye" || statut_.Text == "non paye" || statut_.Text == "avance")
+            {
+                int rep = await dbConfig.execute_command("update facture_garage set statut='" + statut_.Text + "',dette=0 where no_recu='" + id + "'");
+                GarageC.showGoodFacture(table);
+                main.closeConn();
+                modify.Visible = false;
+                change.Visible = false;
+                statut_.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Veuillez Choisir le statut du paiement");
+            }
+        }
+
+        private async void modify_Click(object sender, EventArgs e)
+        {
+            modify.Visible = false;
+            MySqlDataReader result = await GarageC.getGoodFacture(id);
+            GarageC.cleanFactureSimple();
+            while (result.Read())
+            {
+
+                AutoPartM facture = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), 1);
+               
+                int rep = await GarageC.saveFactureSimple(facture, float.Parse(result["discount"].ToString()), float.Parse(result["avance"].ToString()), result["statut"].ToString(), result["payment"].ToString(), result["comment"].ToString(), result["id_auto"].ToString(), float.Parse(result["pay"].ToString()), result["no_recu"].ToString(), float.Parse(result["total"].ToString()), float.Parse(result["avance"].ToString()), float.Parse(result["dette"].ToString()));
+            }
+            main.closeConn();
+            Dispose();
         }
 
         private void searchBar_TextChanged(object sender, EventArgs e)

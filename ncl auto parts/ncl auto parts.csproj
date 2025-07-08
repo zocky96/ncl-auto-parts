@@ -239,10 +239,12 @@
     <Compile Include="model\AutoPartM.cs" />
     <Compile Include="model\CartM.cs" />
     <Compile Include="model\ClientM.cs" />
+    <Compile Include="model\Date.cs" />
     <Compile Include="model\DepenseM.cs" />
     <Compile Include="model\EmployerM.cs" />
     <Compile Include="model\factureM.cs" />
     <Compile Include="model\FournisseurM.cs" />
+    <Compile Include="model\Money.cs" />
     <Compile Include="model\PayrollM.cs" />
     <Compile Include="model\ProformaM.cs" />
     <Compile Include="model\ReparationM.cs" />
@@ -728,6 +730,7 @@
     <None Include="Resources\bank_24px.png" />
     <None Include="Resources\home_24px.png" />
     <Content Include="ncl.ico" />
+    <None Include="Resources\trash_24px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

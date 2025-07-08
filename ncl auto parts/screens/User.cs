@@ -22,7 +22,7 @@ namespace ncl_auto_parts.screens
             main.currentPage = "user";
             UserC.showUser(table);
             main.closeConn();
-            if(main.poste== "PDG" || main.poste== "manager")
+            if(main.poste == "PDG" || main.poste == "manager" || main.poste == "secretaire")
             {
                 save.Enabled = true;
                 delete.Enabled = true;

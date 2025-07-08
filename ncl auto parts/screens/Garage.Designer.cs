@@ -38,9 +38,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties57 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties58 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties59 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties60 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties21 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
@@ -96,6 +96,9 @@
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties57 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties58 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuButton3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -149,18 +152,19 @@
             this.mainPay = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.quantite = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+            this.modify = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sevice_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montant_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discount_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avance_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pay_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statut_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.methode_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.devise_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.panel2.SuspendLayout();
@@ -355,17 +359,17 @@
             this.table.ColumnHeadersHeight = 40;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_,
-            this.Column1,
+            this.name_,
             this.Sevice_,
-            this.Column5,
-            this.Column2,
+            this.description_,
+            this.montant_,
             this.Column10,
-            this.Column3,
-            this.Column4,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9});
+            this.discount_,
+            this.avance_,
+            this.pay_,
+            this.statut_,
+            this.methode_,
+            this.devise_});
             this.table.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.table.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.table.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -408,6 +412,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.modify);
             this.panel2.Controls.Add(this.theSum);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.bunifuButton1);
@@ -422,7 +427,7 @@
             this.theSum.AutoSize = true;
             this.theSum.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.theSum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.theSum.Location = new System.Drawing.Point(217, 12);
+            this.theSum.Location = new System.Drawing.Point(382, 12);
             this.theSum.Name = "theSum";
             this.theSum.Size = new System.Drawing.Size(34, 25);
             this.theSum.TabIndex = 133;
@@ -433,7 +438,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(139, 12);
+            this.label13.Location = new System.Drawing.Point(304, 12);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(80, 25);
             this.label13.TabIndex = 132;
@@ -453,11 +458,11 @@
             this.bunifuButton1.ColorContrastOnClick = 45;
             this.bunifuButton1.ColorContrastOnHover = 45;
             this.bunifuButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges5.BottomLeft = true;
-            borderEdges5.BottomRight = true;
-            borderEdges5.TopLeft = true;
-            borderEdges5.TopRight = true;
-            this.bunifuButton1.CustomizableEdges = borderEdges5;
+            borderEdges6.BottomLeft = true;
+            borderEdges6.BottomRight = true;
+            borderEdges6.TopLeft = true;
+            borderEdges6.TopRight = true;
+            this.bunifuButton1.CustomizableEdges = borderEdges6;
             this.bunifuButton1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.bunifuButton1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.bunifuButton1.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -478,24 +483,24 @@
             this.bunifuButton1.IndicateFocus = false;
             this.bunifuButton1.Location = new System.Drawing.Point(11, 3);
             this.bunifuButton1.Name = "bunifuButton1";
-            stateProperties57.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties57.BorderRadius = 3;
-            stateProperties57.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties57.BorderThickness = 1;
-            stateProperties57.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties57.ForeColor = System.Drawing.Color.White;
-            stateProperties57.IconLeftImage = null;
-            stateProperties57.IconRightImage = null;
-            this.bunifuButton1.onHoverState = stateProperties57;
-            stateProperties58.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties58.BorderRadius = 3;
-            stateProperties58.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties58.BorderThickness = 1;
-            stateProperties58.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties58.ForeColor = System.Drawing.Color.White;
-            stateProperties58.IconLeftImage = null;
-            stateProperties58.IconRightImage = null;
-            this.bunifuButton1.OnPressedState = stateProperties58;
+            stateProperties59.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties59.BorderRadius = 3;
+            stateProperties59.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties59.BorderThickness = 1;
+            stateProperties59.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties59.ForeColor = System.Drawing.Color.White;
+            stateProperties59.IconLeftImage = null;
+            stateProperties59.IconRightImage = null;
+            this.bunifuButton1.onHoverState = stateProperties59;
+            stateProperties60.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties60.BorderRadius = 3;
+            stateProperties60.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties60.BorderThickness = 1;
+            stateProperties60.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties60.ForeColor = System.Drawing.Color.White;
+            stateProperties60.IconLeftImage = null;
+            stateProperties60.IconRightImage = null;
+            this.bunifuButton1.OnPressedState = stateProperties60;
             this.bunifuButton1.Size = new System.Drawing.Size(122, 40);
             this.bunifuButton1.TabIndex = 77;
             this.bunifuButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1786,65 +1791,129 @@
             this.quantite.UseSystemPasswordChar = false;
             this.quantite.WordWrap = true;
             // 
+            // modify
+            // 
+            this.modify.AllowToggling = false;
+            this.modify.AnimationSpeed = 200;
+            this.modify.AutoGenerateColors = false;
+            this.modify.BackColor = System.Drawing.Color.Transparent;
+            this.modify.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.modify.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("modify.BackgroundImage")));
+            this.modify.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.modify.ButtonText = "Modifier";
+            this.modify.ButtonTextMarginLeft = 0;
+            this.modify.ColorContrastOnClick = 45;
+            this.modify.ColorContrastOnHover = 45;
+            this.modify.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges5.BottomLeft = true;
+            borderEdges5.BottomRight = true;
+            borderEdges5.TopLeft = true;
+            borderEdges5.TopRight = true;
+            this.modify.CustomizableEdges = borderEdges5;
+            this.modify.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.modify.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.modify.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.modify.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.modify.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.modify.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.modify.ForeColor = System.Drawing.Color.White;
+            this.modify.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
+            this.modify.IconMarginLeft = 11;
+            this.modify.IconPadding = 10;
+            this.modify.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.modify.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.modify.IdleBorderRadius = 3;
+            this.modify.IdleBorderThickness = 1;
+            this.modify.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.modify.IdleIconLeftImage = null;
+            this.modify.IdleIconRightImage = null;
+            this.modify.IndicateFocus = false;
+            this.modify.Location = new System.Drawing.Point(151, 3);
+            this.modify.Name = "modify";
+            stateProperties57.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties57.BorderRadius = 3;
+            stateProperties57.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties57.BorderThickness = 1;
+            stateProperties57.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties57.ForeColor = System.Drawing.Color.White;
+            stateProperties57.IconLeftImage = null;
+            stateProperties57.IconRightImage = null;
+            this.modify.onHoverState = stateProperties57;
+            stateProperties58.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties58.BorderRadius = 3;
+            stateProperties58.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties58.BorderThickness = 1;
+            stateProperties58.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties58.ForeColor = System.Drawing.Color.White;
+            stateProperties58.IconLeftImage = null;
+            stateProperties58.IconRightImage = null;
+            this.modify.OnPressedState = stateProperties58;
+            this.modify.Size = new System.Drawing.Size(122, 40);
+            this.modify.TabIndex = 134;
+            this.modify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.modify.TextMarginLeft = 0;
+            this.modify.UseDefaultRadiusAndThickness = true;
+            this.modify.Click += new System.EventHandler(this.modify_Click);
+            // 
             // id_
             // 
             this.id_.HeaderText = "    ID";
             this.id_.Name = "id_";
             // 
-            // Column1
+            // name_
             // 
-            this.Column1.HeaderText = "Nom du client";
-            this.Column1.Name = "Column1";
+            this.name_.HeaderText = "Nom du client";
+            this.name_.Name = "name_";
             // 
             // Sevice_
             // 
             this.Sevice_.HeaderText = "Sevices";
             this.Sevice_.Name = "Sevice_";
             // 
-            // Column5
+            // description_
             // 
-            this.Column5.HeaderText = "Description";
-            this.Column5.Name = "Column5";
+            this.description_.HeaderText = "Description";
+            this.description_.Name = "description_";
             // 
-            // Column2
+            // montant_
             // 
-            this.Column2.HeaderText = "Prix";
-            this.Column2.Name = "Column2";
+            this.montant_.HeaderText = "Prix";
+            this.montant_.Name = "montant_";
             // 
             // Column10
             // 
             this.Column10.HeaderText = "Quantité";
             this.Column10.Name = "Column10";
             // 
-            // Column3
+            // discount_
             // 
-            this.Column3.HeaderText = "Discount";
-            this.Column3.Name = "Column3";
+            this.discount_.HeaderText = "Discount";
+            this.discount_.Name = "discount_";
             // 
-            // Column4
+            // avance_
             // 
-            this.Column4.HeaderText = "Avance";
-            this.Column4.Name = "Column4";
+            this.avance_.HeaderText = "Avance";
+            this.avance_.Name = "avance_";
             // 
-            // Column6
+            // pay_
             // 
-            this.Column6.HeaderText = "Main d\'oeuvre";
-            this.Column6.Name = "Column6";
+            this.pay_.HeaderText = "Main d\'oeuvre";
+            this.pay_.Name = "pay_";
             // 
-            // Column7
+            // statut_
             // 
-            this.Column7.HeaderText = "Statut";
-            this.Column7.Name = "Column7";
+            this.statut_.HeaderText = "Statut";
+            this.statut_.Name = "statut_";
             // 
-            // Column8
+            // methode_
             // 
-            this.Column8.HeaderText = "Methode";
-            this.Column8.Name = "Column8";
+            this.methode_.HeaderText = "Methode";
+            this.methode_.Name = "methode_";
             // 
-            // Column9
+            // devise_
             // 
-            this.Column9.HeaderText = "Devise";
-            this.Column9.Name = "Column9";
+            this.devise_.HeaderText = "Devise";
+            this.devise_.Name = "devise_";
             // 
             // Garage
             // 
@@ -1959,17 +2028,18 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox quantite;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton modify;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name_;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sevice_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montant_;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discount_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn avance_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pay_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statut_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn methode_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn devise_;
     }
 }

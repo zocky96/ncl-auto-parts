@@ -13,6 +13,53 @@ namespace ncl_auto_parts.controller
 {
     internal class ArticleC
     {
+        public static async Task<bool> ifReceiptIdExist(string id)
+        {
+            bool rep = false;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as nbr from article where product_id='" + id + "'");
+            while (result.Read())
+            {
+                int nbr = int.Parse(result["nbr"].ToString());
+                if (nbr == 0)
+                {
+                    rep = false;
+                }
+                else
+                {
+                    rep = true;
+                }
+            }
+            return rep;
+        }
+        public static async Task<int> getMaxId()
+        {
+            int id = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select max(id) as maxid from article");
+            if (result == null)
+            {
+                id = 0;
+            }
+            else
+            {
+                while (result.Read())
+                {
+                    try
+                    {
+                        id = int.Parse(result["maxid"].ToString());
+                        // MessageBox.Show("ok zizi" + id.ToString());
+                    }
+                    catch
+                    {
+                        id = 0;
+                    }
+                }
+            }
+            main.closeConn();
+
+
+
+            return id;
+        }
         public static async void filtredByFinnishStock(BunifuDataGridView table)
         {
             MySqlDataReader result;
@@ -121,7 +168,7 @@ namespace ncl_auto_parts.controller
             }
 
         }
-        public static async Task<int> saveArticle(ArticleM arti, BunifuDataGridView table, String DateAjout)
+        public static async Task<int> saveArticle(ArticleM arti, BunifuDataGridView table, String DateAjout,string product_id)
         {
             int rep = -1, nbr = -1;
             float Exquantite = 0;
@@ -136,7 +183,7 @@ namespace ncl_auto_parts.controller
 
             if (nbr == 0)
             {
-                rep = await dbConfig.execute_command("insert into article(nom_du_produit,prix,quantite,idfournisseur,element,ref,numero,dateAjout,init_value,quantite_vendu) values('" + arti.Nom + "','" + arti.Prix + "','" + arti.Quantite + "','" + arti.IdFournisseur1 + "','"+arti.Element+"','"+arti.Reference+"','"+arti.Numero+"','" + DateAjout + "',"+arti.Quantite+",0)");
+                rep = await dbConfig.execute_command("insert into article(nom_du_produit,prix,quantite,idfournisseur,element,ref,numero,dateAjout,init_value,quantite_vendu,product_id) values('" + arti.Nom + "','" + arti.Prix + "','" + arti.Quantite + "','" + arti.IdFournisseur1 + "','"+arti.Element+"','"+arti.Reference+"','"+arti.Numero+"','" + DateAjout + "',"+arti.Quantite+",0,'"+product_id+"')");
 
             }
             else if (nbr > 0)
@@ -150,7 +197,7 @@ namespace ncl_auto_parts.controller
                     }
 
                     Exquantite += arti.Quantite;
-                    rep = await dbConfig.execute_command("update article set quantite=" + Exquantite.ToString() + "  where nom_du_produit='" + arti.Nom + "'");
+                    rep = await dbConfig.execute_command("update article set quantite=" + Exquantite.ToString() + ",quantite_vendu=0  where nom_du_produit='" + arti.Nom + "'");
 
                 }
             }
@@ -200,25 +247,25 @@ namespace ncl_auto_parts.controller
                 ProductsName.Add(result["nom_du_produit"].ToString());
 
             }
-            result = await dbConfig.getResultCommand("select receiptNumber from vente");
-            while (result.Read())
-            {
-                ProductsName.Add(result["receiptNumber"].ToString());
+            //result = await dbConfig.getResultCommand("select receiptNumber from vente");
+            //while (result.Read())
+            //{
+            //    ProductsName.Add(result["receiptNumber"].ToString());
 
-            }
-            result = await dbConfig.getResultCommand("select clientName from vente");
-            while (result.Read())
-            {
-                ProductsName.Add(result["clientName"].ToString());
+            //}
+            //result = await dbConfig.getResultCommand("select clientName from vente");
+            //while (result.Read())
+            //{
+            //    ProductsName.Add(result["clientName"].ToString());
 
-            }
+            //}
             //
-            result = await dbConfig.getResultCommand("select service from services");
-            while (result.Read())
-            {
-                ProductsName.Add(result["service"].ToString());
+            //result = await dbConfig.getResultCommand("select service from services");
+            //while (result.Read())
+            //{
+            //    ProductsName.Add(result["service"].ToString());
 
-            }
+            //}
             return ProductsName;
         }
 
@@ -274,13 +321,13 @@ namespace ncl_auto_parts.controller
         {
             table.Rows.Clear();
 
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from article where id='" + word + "' or nom_du_produit= '" + word + "' or numero='"+word+ "' or ref='"+word+ "' or element='"+word+ "' or dateAjout='"+word+"'");
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from article where id='" + word + "' or nom_du_produit= '" + word + "' or numero='"+word+ "' or ref='"+word+ "' or element='"+word+ "' or dateAjout='"+word+ "' or product_id='"+word+"'");
             try
             {
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["init_value"], result["quantite_vendu"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
+                    table.Rows.Add(result["id"], result["product_id"],result["nom_du_produit"], result["prix"], result["quantite"], result["init_value"], result["quantite_vendu"], result["idfournisseur"], result["element"], result["ref"], result["numero"], DateTime.Parse(result["dateAjout"].ToString()).ToShortDateString());
 
                 }
             }
@@ -325,7 +372,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
                     //MessageBox.Show(result["dateAjout"].ToString());
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["init_value"], result["quantite_vendu"], result["idfournisseur"], result["element"], result["ref"], result["numero"], result["dateAjout"]);
+                    table.Rows.Add(result["id"], result["product_id"], result["nom_du_produit"], result["prix"], result["quantite"], result["init_value"], result["quantite_vendu"], result["idfournisseur"], result["element"], result["ref"], result["numero"],DateTime.Parse(result["dateAjout"].ToString()).ToShortDateString());
 
                 }
             }

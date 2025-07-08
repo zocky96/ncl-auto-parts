@@ -22,6 +22,10 @@ namespace ncl_auto_parts.viewer
 
     partial class FactureData
     {
+        partial class totalDataTable
+        {
+        }
+
         partial class VoitureDataTable
         {
         }

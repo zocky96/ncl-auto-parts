@@ -40,7 +40,7 @@
         <Sizing>FitProportional</Sizing>
         <Top>0.45932cm</Top>
         <Left>2.08179cm</Left>
-        <Height>3.70417cm</Height>
+        <Height>3.0791cm</Height>
         <Width>3.95111cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -162,7 +162,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>5.01546cm</Top>
+        <Top>4.38046cm</Top>
         <Left>2.08179cm</Left>
         <Height>0.6cm</Height>
         <Width>8.58542cm</Width>
@@ -200,7 +200,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>6.32129cm</Top>
+        <Top>5.68629cm</Top>
         <Left>2.08179cm</Left>
         <Height>0.6cm</Height>
         <Width>8.58542cm</Width>
@@ -238,7 +238,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>5.65074cm</Top>
+        <Top>5.01574cm</Top>
         <Left>2.08179cm</Left>
         <Height>0.6cm</Height>
         <Width>8.58542cm</Width>
@@ -262,7 +262,7 @@
               <TextRun>
                 <Value>Proforma</Value>
                 <Style>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -271,10 +271,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>9.99928cm</Top>
-        <Left>7.08179cm</Left>
-        <Height>0.86458cm</Height>
-        <Width>5.54271cm</Width>
+        <Top>7.45928cm</Top>
+        <Left>7.71679cm</Left>
+        <Height>0.54708cm</Height>
+        <Width>2.28864cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -586,7 +586,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Proforma</DataSetName>
-        <Top>11.57455cm</Top>
+        <Top>8.39955cm</Top>
         <Left>2.08179cm</Left>
         <Height>1.2cm</Height>
         <Width>13.91582cm</Width>
@@ -621,7 +621,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>7.02712cm</Top>
+        <Top>6.39212cm</Top>
         <Left>2.08179cm</Left>
         <Height>0.6cm</Height>
         <Width>8.58542cm</Width>
@@ -661,7 +661,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>13.39219cm</Top>
+        <Top>10.21719cm</Top>
         <Left>3.15965cm</Left>
         <Height>0.6cm</Height>
         <Width>12.83796cm</Width>
@@ -694,7 +694,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>13.39219cm</Top>
+        <Top>10.21719cm</Top>
         <Left>2.08179cm</Left>
         <Height>0.6cm</Height>
         <Width>1.07786cm</Width>

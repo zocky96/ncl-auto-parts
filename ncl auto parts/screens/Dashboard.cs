@@ -24,7 +24,11 @@ namespace ncl_auto_parts.screens
             label = hello;
             if (main.userName != null)
             {
-                if (main.poste != "gestionnaire de stock")
+                if (main.poste == "gestionnaire de stock" || main.poste == "manager")
+                {
+
+                }
+                else
                 {
                     init_screen();
                 }
@@ -35,12 +39,13 @@ namespace ncl_auto_parts.screens
         }
         public  async void init_screen()
         {
+
             nbrClient.Text = await ClientC.getNbrClient();
             nbrArticle.Text = await ArticleC.getNbrArticle();
             totalVente.Text = "$"+ await VenteC.getTotalVente()+" US";
             totalVenteHtg.Text = await VenteC.getTotalVenteHtg() + " HTG";
             totalByMonth.Text = "$"+ await VenteC.getTotalVenteBymonth()+" US";
-            totalByMonthHtg.Text = await VenteC.getTotalVenteBymonthHtg()+" HTG";
+            totalByMonthHtg.Text = await VenteC.getTotalVenteBymonthHtg() + " HTG";
             VenteC.showLast10Vente(tableTransaction);
             ClientC.showLast10Client(tableClient);
             ArticleC.filtredByFinnishStock10Last(tableStock);
@@ -49,7 +54,7 @@ namespace ncl_auto_parts.screens
             {
                 ChartType = SeriesChartType.Spline
             };
-            MySqlDataReader result = await dbConfig.getResultCommand("select * from article");
+            MySqlDataReader result = await dbConfig.getResultCommand("select *,(select init_value - quantite from article where nom_du_produit=vente.nom_du_produit) as quantite_vendu from vente where month(date)="+DateTime.Now.Month.ToString()+ "  group by nom_du_produit");
             try
             {
                 while (result.Read())
@@ -73,14 +78,14 @@ namespace ncl_auto_parts.screens
             {
                 ChartType = SeriesChartType.Column
             };
-            result = await dbConfig.getResultCommand("select * from vente");
+            result = await dbConfig.getResultCommand("select *,(select init_value - quantite from article where nom_du_produit=vente.nom_du_produit) as quantite_vendu from vente group by nom_du_produit");
             try
             {
                 while (result.Read())
                 {
                     string nom = result.GetString("nom_du_produit");
 
-                    int total_vendu = result.GetInt32("quantite");
+                    int total_vendu = result.GetInt32("quantite_vendu");
                     series.Points.AddXY(nom, total_vendu);
                     //table.Rows.Add(result["id"], result["nom"], result["prenom"], result["telephone"], result["adresse"], result["nom_du_produit"]);
 
@@ -91,6 +96,7 @@ namespace ncl_auto_parts.screens
             {
 
             }
+            main.closeConn();
         }
         private async void Dashboard_Load(object sender, EventArgs e)
         {

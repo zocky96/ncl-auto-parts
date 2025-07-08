@@ -24,7 +24,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["total"], result["date"], result["signature_autorise"], result["receiptNumber"], result["clientName"], result["devise"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["total"], DateTime.Parse(result["date"].ToString()).ToShortDateString(), result["signature_autorise"], result["receiptNumber"], result["clientName"], result["devise"]);
 
                 }
             }
@@ -77,14 +77,14 @@ namespace ncl_auto_parts.controller
         }
         public static async Task<string> getTotalVenteBymonth()
         {
-            string rep = null;
+            float rep = 0;
             MySqlDataReader result = await dbConfig.getResultCommand("select sum(total) as reponse from vente where month(date)="+DateTime.Now.Month+" and devise='US'");
             while (result.Read())
             {
-                rep = result["reponse"].ToString();
+                rep = float.Parse(result["reponse"].ToString());
             }
             main.closeConn();
-            return rep;
+            return rep.ToString();
         }
         public static async Task<string> getTotalVenteBymonthHtg()
         {
@@ -138,7 +138,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["total"], result["date"], result["signature_autorise"], result["receiptNumber"], result["clientName"], result["devise"]);
+                    table.Rows.Add(result["id"], result["nom_du_produit"], result["prix"], result["quantite"], result["total"], DateTime.Parse(result["date"].ToString()).ToShortDateString(), result["signature_autorise"], result["receiptNumber"], result["clientName"], result["devise"]);
 
                 }
             }

@@ -80,6 +80,7 @@
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ccc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,7 +111,11 @@
             this.numero = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.filter = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -139,6 +144,7 @@
             this.table.ColumnHeadersHeight = 40;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_,
+            this.Column1,
             this.name_,
             this.price_,
             this.ccc,
@@ -173,17 +179,18 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.table.DefaultCellStyle = dataGridViewCellStyle3;
+            this.table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table.EnableHeadersVisualStyles = false;
             this.table.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.table.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.table.HeaderBgColor = System.Drawing.Color.Empty;
             this.table.HeaderForeColor = System.Drawing.Color.White;
-            this.table.Location = new System.Drawing.Point(15, 338);
+            this.table.Location = new System.Drawing.Point(0, 0);
             this.table.Name = "table";
             this.table.RowHeadersVisible = false;
             this.table.RowTemplate.Height = 40;
             this.table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.table.Size = new System.Drawing.Size(1149, 270);
+            this.table.Size = new System.Drawing.Size(1247, 326);
             this.table.TabIndex = 49;
             this.table.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
@@ -192,6 +199,11 @@
             // 
             this.id_.HeaderText = "ID";
             this.id_.Name = "id_";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID Produit";
+            this.Column1.Name = "Column1";
             // 
             // name_
             // 
@@ -241,6 +253,7 @@
             // datea_
             // 
             this.datea_.HeaderText = "Date d\'ajout";
+            this.datea_.MinimumWidth = 35;
             this.datea_.Name = "datea_";
             // 
             // searchBar
@@ -271,7 +284,7 @@
             this.searchBar.IconRight = null;
             this.searchBar.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.searchBar.Lines = new string[0];
-            this.searchBar.Location = new System.Drawing.Point(893, 293);
+            this.searchBar.Location = new System.Drawing.Point(974, 293);
             this.searchBar.MaxLength = 32767;
             this.searchBar.MinimumSize = new System.Drawing.Size(100, 35);
             this.searchBar.Modified = false;
@@ -358,7 +371,7 @@
             this.print.IdleIconLeftImage = null;
             this.print.IdleIconRightImage = null;
             this.print.IndicateFocus = false;
-            this.print.Location = new System.Drawing.Point(515, 269);
+            this.print.Location = new System.Drawing.Point(452, 269);
             this.print.Name = "print";
             stateProperties21.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties21.BorderRadius = 3;
@@ -423,7 +436,7 @@
             this.modify.IdleIconLeftImage = null;
             this.modify.IdleIconRightImage = null;
             this.modify.IndicateFocus = false;
-            this.modify.Location = new System.Drawing.Point(181, 269);
+            this.modify.Location = new System.Drawing.Point(161, 269);
             this.modify.Name = "modify";
             stateProperties23.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties23.BorderRadius = 3;
@@ -488,7 +501,7 @@
             this.delete.IdleIconLeftImage = null;
             this.delete.IdleIconRightImage = null;
             this.delete.IndicateFocus = false;
-            this.delete.Location = new System.Drawing.Point(347, 269);
+            this.delete.Location = new System.Drawing.Point(306, 269);
             this.delete.Name = "delete";
             stateProperties25.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties25.BorderRadius = 3;
@@ -1179,21 +1192,48 @@
             "Filtre",
             "Article en rupture de stock",
             "Date d\'ajout"});
-            this.filter.Location = new System.Drawing.Point(743, 293);
+            this.filter.Location = new System.Drawing.Point(824, 293);
             this.filter.Name = "filter";
             this.filter.Size = new System.Drawing.Size(144, 21);
             this.filter.TabIndex = 53;
             this.filter.Text = "Filtre";
             this.filter.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.table);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 347);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1247, 326);
+            this.panel1.TabIndex = 54;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(1237, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 326);
+            this.panel3.TabIndex = 51;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(10, 326);
+            this.panel2.TabIndex = 50;
+            // 
             // Article
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1166, 673);
+            this.ClientSize = new System.Drawing.Size(1247, 673);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.filter);
             this.Controls.Add(this.searchBar);
-            this.Controls.Add(this.table);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.numero);
             this.Controls.Add(this.label6);
@@ -1217,6 +1257,7 @@
             this.Text = "Article";
             this.Load += new System.EventHandler(this.Article_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1245,7 +1286,11 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox qte;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox name;
         private System.Windows.Forms.ComboBox filter;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_;
         private System.Windows.Forms.DataGridViewTextBoxColumn price_;
         private System.Windows.Forms.DataGridViewTextBoxColumn ccc;

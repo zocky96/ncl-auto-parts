@@ -77,7 +77,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["motifDepense"], result["montantDepense"], result["explication"], result["signature"], result["date"], result["devise"]);
+                    table.Rows.Add(result["id"], result["motifDepense"], result["montantDepense"], result["explication"], result["signature"],DateTime.Parse(result["date"].ToString()).ToShortDateString(), result["devise"]);
 
                 }
             }
@@ -95,7 +95,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["montantDepense"], result["explication"], result["signature"], result["date"], result["devise"]);
+                    table.Rows.Add(result["id"], result["montantDepense"], result["explication"], result["signature"],DateTime.Parse(result["date"].ToString()).ToShortDateString(), result["devise"]);
 
                 }
             }
@@ -113,7 +113,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["montantDepense"], result["explication"], result["signature"], result["date"], result["devise"]);
+                    table.Rows.Add(result["id"], result["montantDepense"], result["explication"], result["signature"],DateTime.Parse(result["date"].ToString()).ToShortDateString(), result["devise"]);
 
                 }
             }
@@ -131,7 +131,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["motifDepense"], result["montantDepense"], result["explication"], result["signature"], result["date"], result["devise"]);
+                    table.Rows.Add(result["id"], result["motifDepense"], result["montantDepense"], result["explication"], result["signature"],DateTime.Parse(result["date"].ToString()).ToShortDateString(), result["devise"]);
 
                 }
             }

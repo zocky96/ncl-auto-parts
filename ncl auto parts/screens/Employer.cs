@@ -152,7 +152,8 @@ namespace ncl_auto_parts.screens
         {
             id = table.CurrentRow.Cells["id_"].Value.ToString();
             lot1 = table.CurrentRow.Cells["lot"].Value.ToString();
-            //MessageBox.Show(id);
+
+            //MessageBox.Show("id: "+id+" lot"+lot1);
             nom.Text = table.CurrentRow.Cells["nom_"].Value.ToString();
             prenom.Text = table.CurrentRow.Cells["prenom_"].Value.ToString();
             adresse.Text = table.CurrentRow.Cells["adresse_"].Value.ToString();

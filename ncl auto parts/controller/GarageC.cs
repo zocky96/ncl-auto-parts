@@ -12,7 +12,90 @@ namespace ncl_auto_parts.controller
 {
     internal class GarageC
     {
+        public static async Task<bool> isFactureEmptyMain()
+        {
+            bool rep = true;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as nbr from fgarage");
+            while (result.Read())
+            {
+                int nbr = int.Parse(result["nbr"].ToString());
+                if (nbr == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return rep;
+        }
+        public async static Task<string> getDevise()
+        {
+            string sumPrice = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select devise as amount from fgarage");
+            while (result.Read())
+            {
+                sumPrice = result["amount"].ToString();
+            }
+            return sumPrice;
+        }
+        public static async Task<MySqlDataReader> getFactureSimple()
+        {
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from fgarage where no_recu IS NULL");
+            return result;
+        }
+        public static async Task<float> getOLdTotal()
+        {
+            float total = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select old_total as nbr from fgarage where no_recu IS NOT NULL");
+            while (result.Read())
+            {
+                total = float.Parse(result["nbr"].ToString());
 
+            }
+            return total;
+        }
+        public static async Task<string> getNo_recu()
+        {
+            bool rep = true;
+            string no_recu = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select no_recu as nbr from fgarage where no_recu IS NOT NULL");
+            while (result.Read())
+            {
+                no_recu = result["nbr"].ToString();
+
+            }
+            return no_recu;
+        }
+        public static async Task<bool> isFactureEmpty()
+        {
+            bool rep = true;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as nbr from fgarage where no_recu IS NOT NULL");
+            while (result.Read())
+            {
+                int nbr = int.Parse(result["nbr"].ToString());
+                if (nbr == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return rep;
+        }
+        public static async Task<int> cleanFactureSimple()
+        {
+            return await dbConfig.execute_command("delete from fgarage "); ;
+        }
+        public static async Task<int> saveFactureSimple(AutoPartM facture, float discount, float avance, string statut, string payment, string comment, string id_auto, float pay, string no_recu, float old_total, float old_avance, float old_dette)
+        {
+            int rep = await dbConfig.execute_command("insert into fgarage(clientName,service,devise,montant,car_name,plaque,description,quantite,total,discount,avance,statut,payment,comment,id_auto,pay,no_recu,old_total,old_avance,old_dette,phone) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'" + facture.CarName + "','" + facture.Plaque + "','" + facture.Description + "'," + facture.Quantite + "," + facture.Total + "," + discount + "," + avance + ",'" + statut + "','" + payment + "','" + comment + "','" + id_auto + "'," + pay + ",'" + no_recu + "'," + old_total + "," + old_avance + "," + old_dette + ",'"+facture.Phone+"')");
+
+            return rep;
+        }
         public async static void searchFacture(String word, BunifuDataGridView table)
         {
             table.Rows.Clear();
@@ -49,7 +132,7 @@ namespace ncl_auto_parts.controller
             while (result.Read())
             {
                 sumPrice = float.Parse(result["amount"].ToString());
-                break;
+           
             }
             return sumPrice;
         }
@@ -60,7 +143,7 @@ namespace ncl_auto_parts.controller
             while (result.Read())
             {
                 sumPrice = float.Parse(result["amount"].ToString());
-                break;
+                
             }
             return sumPrice;
         }
@@ -77,7 +160,7 @@ namespace ncl_auto_parts.controller
         }
         public static async Task<int> saveFacture(AutoPartM facture, BunifuDataGridView table,float discount,float avance,string statut,string payment,string comment,string id_auto,float pay)
         {
-            int rep = await dbConfig.execute_command("insert into fgarage(clientName,service,devise,montant,car_name,plaque,description,quantite,total,discount,avance,statut,payment,comment,id_auto,pay) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'"+facture.CarName+"','"+facture.Plaque+"','"+facture.Description+"',"+facture.Quantite+","+facture.Total+","+discount+","+avance+",'"+statut+"','"+payment+"','"+comment+"','"+id_auto+"',"+pay+")");
+            int rep = await dbConfig.execute_command("insert into fgarage(clientName,service,devise,montant,car_name,plaque,description,quantite,total,discount,avance,statut,payment,comment,id_auto,pay,phone) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'"+facture.CarName+"','"+facture.Plaque+"','"+facture.Description+"',"+facture.Quantite+","+facture.Total+","+discount+","+avance+",'"+statut+"','"+payment+"','"+comment+"','"+id_auto+"',"+pay+",'"+facture.Phone+"')");
             showFacture(table);
             return rep;
         }

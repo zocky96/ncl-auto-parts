@@ -29,18 +29,16 @@ namespace ncl_auto_parts.controller
             while (result.Read())
             {
                 sumPrice = float.Parse(result["amount"].ToString());
-                break;
             }
             return sumPrice;
         }
-        public async static Task<float> getDiscount()
+        public async static Task<string> getDevise()
         {
-            float sumPrice = 0;
-            MySqlDataReader result = await dbConfig.getResultCommand("select discount as amount from fauto_part");
+            string sumPrice = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select devise as amount from fauto_part");
             while (result.Read())
             {
-                sumPrice = float.Parse(result["amount"].ToString());
-                break;
+                sumPrice = result["amount"].ToString();
             }
             return sumPrice;
         }
@@ -51,10 +49,20 @@ namespace ncl_auto_parts.controller
             while (result.Read())
             {
                 sumPrice = float.Parse(result["amount"].ToString());
-                break;
             }
             return sumPrice;
         }
+        public async static Task<float> getDiscount()
+        {
+            float sumPrice = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select discount as amount from fauto_part");
+            while (result.Read())
+            {
+                sumPrice = float.Parse(result["amount"].ToString());
+            }
+            return sumPrice;
+        }
+  
         public async static void searchFacture(String word, BunifuDataGridView table)
         {
             table.Rows.Clear();
@@ -76,8 +84,14 @@ namespace ncl_auto_parts.controller
         }
         public static async Task<int> saveFacture(AutoPartM facture, BunifuDataGridView table, float discount, float avance, string statut, string payment, string comment, string id_auto, float pay)
         {
-            int rep = await dbConfig.execute_command("insert into fauto_part(clientName,service,devise,montant,car_name,plaque,description,quantite,total,discount,avance,statut,payment,comment,id_auto,pay) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'" + facture.CarName + "','" + facture.Plaque + "','" + facture.Description + "'," + facture.Quantite + "," + facture.Total + "," + discount + "," + avance + ",'" + statut + "','" + payment + "','" + comment + "','" + id_auto + "'," + pay + ")");
+            int rep = await dbConfig.execute_command("insert into fauto_part(clientName,service,devise,montant,car_name,plaque,description,quantite,total,discount,avance,statut,payment,comment,id_auto,pay,phone) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'" + facture.CarName + "','" + facture.Plaque + "','" + facture.Description + "'," + facture.Quantite + "," + facture.Total + "," + discount + "," + avance + ",'" + statut + "','" + payment + "','" + comment + "','" + id_auto + "'," + pay + ",'"+facture.Phone+"')");
             showFacture(table);
+            return rep;
+        }
+        public static async Task<int> saveFactureSimple(AutoPartM facture, float discount, float avance, string statut, string payment, string comment, string id_auto, float pay,string no_recu,float old_total,float old_avance,float old_dette)
+        {
+            int rep = await dbConfig.execute_command("insert into fauto_part(clientName,service,devise,montant,car_name,plaque,description,quantite,total,discount,avance,statut,payment,comment,id_auto,pay,no_recu,old_total,old_avance,old_dette,phone) values('" + facture.ClientName + "','" + facture.Service + "','" + facture.Devise + "'," + facture.Prix + ",'" + facture.CarName + "','" + facture.Plaque + "','" + facture.Description + "'," + facture.Quantite + "," + facture.Total + "," + discount + "," + avance + ",'" + statut + "','" + payment + "','" + comment + "','" + id_auto + "'," + pay + ",'"+no_recu+"',"+old_total+","+old_avance+","+old_dette+",'"+facture.Phone+"')");
+           
             return rep;
         }
         public async static void filterGoodFacture(BunifuDataGridView table,string word)
@@ -185,6 +199,87 @@ namespace ncl_auto_parts.controller
             }
             return rep;
         }
+        public static async Task<bool> isFactureEmpty()
+        {
+            bool rep = true;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as nbr from fauto_part where no_recu IS NOT NULL");
+            while (result.Read())
+            {
+                int nbr = int.Parse(result["nbr"].ToString());
+                if (nbr == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return rep;
+        }
+        public static async Task<bool> isFactureEmptyMain()
+        {
+            bool rep = true;
+            MySqlDataReader result = await dbConfig.getResultCommand("select count(*) as nbr from fauto_part");
+            while (result.Read())
+            {
+                int nbr = int.Parse(result["nbr"].ToString());
+                if (nbr == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return rep;
+        }
+        public static async Task<string> getNo_recu()
+        {
+            bool rep = true;
+            string no_recu = null;
+            MySqlDataReader result = await dbConfig.getResultCommand("select no_recu as nbr from fauto_part where no_recu IS NOT NULL");
+            while (result.Read())
+            {
+                no_recu = result["nbr"].ToString();
+               
+            }
+            return no_recu;
+        }
+        public static async Task<float> getOLdTotal()
+        {
+            float total = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select old_total as nbr from fauto_part where no_recu IS NOT NULL");
+            while (result.Read())
+            {
+                total = float.Parse(result["nbr"].ToString());
+
+            }
+            return total;
+        }
+        public static async Task<float> getOLdAvance()
+        {
+            float total = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select old_avance as nbr from fauto_part where no_recu IS NOT NULL");
+            while (result.Read())
+            {
+                total = float.Parse(result["nbr"].ToString());
+
+            }
+            return total;
+        }
+        public static async Task<float> getOLdDette()
+        {
+            float total = 0;
+            MySqlDataReader result = await dbConfig.getResultCommand("select old_dette as nbr from fauto_part where no_recu IS NOT NULL");
+            while (result.Read())
+            {
+                total = float.Parse(result["nbr"].ToString());
+
+            }
+            return total;
+        }
         public static async Task<int> getMaxId()
         {
             int id = 0;
@@ -228,6 +323,10 @@ namespace ncl_auto_parts.controller
             showFacture(table);
             return rep;
         }
+        public static async Task<int> cleanFactureSimple()
+        {
+            return await dbConfig.execute_command("delete from fauto_part "); ;
+        }
         public static async Task<int> cleanFacture(BunifuDataGridView table)
         {
             int rep = await dbConfig.execute_command("delete from fauto_part ");
@@ -237,6 +336,11 @@ namespace ncl_auto_parts.controller
         public static async Task<MySqlDataReader> getFacture()
         {
             MySqlDataReader result = await dbConfig.getResultCommand("select * from fauto_part");
+            return result;
+        }
+        public static async Task<MySqlDataReader> getFactureSimple()
+        {
+            MySqlDataReader result = await dbConfig.getResultCommand("select * from fauto_part where no_recu IS NULL");
             return result;
         }
         public static async Task<MySqlDataReader> getGoodFacture(string id)

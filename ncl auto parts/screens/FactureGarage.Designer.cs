@@ -45,6 +45,12 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.table = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.id_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +77,9 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.modify = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.change = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.statut_ = new System.Windows.Forms.ComboBox();
             this.pay = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -479,6 +488,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.modify);
+            this.panel1.Controls.Add(this.change);
+            this.panel1.Controls.Add(this.statut_);
             this.panel1.Controls.Add(this.pay);
             this.panel1.Controls.Add(this.print);
             this.panel1.Controls.Add(this.facture);
@@ -488,6 +500,150 @@
             this.panel1.Size = new System.Drawing.Size(1228, 57);
             this.panel1.TabIndex = 122;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // modify
+            // 
+            this.modify.AllowToggling = false;
+            this.modify.AnimationSpeed = 200;
+            this.modify.AutoGenerateColors = false;
+            this.modify.BackColor = System.Drawing.Color.Transparent;
+            this.modify.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.modify.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("modify.BackgroundImage")));
+            this.modify.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.modify.ButtonText = "Modifier";
+            this.modify.ButtonTextMarginLeft = 0;
+            this.modify.ColorContrastOnClick = 45;
+            this.modify.ColorContrastOnHover = 45;
+            this.modify.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.modify.CustomizableEdges = borderEdges3;
+            this.modify.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.modify.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.modify.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.modify.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.modify.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.modify.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.modify.ForeColor = System.Drawing.Color.White;
+            this.modify.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
+            this.modify.IconMarginLeft = 11;
+            this.modify.IconPadding = 10;
+            this.modify.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.modify.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.modify.IdleBorderRadius = 3;
+            this.modify.IdleBorderThickness = 1;
+            this.modify.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.modify.IdleIconLeftImage = null;
+            this.modify.IdleIconRightImage = null;
+            this.modify.IndicateFocus = false;
+            this.modify.Location = new System.Drawing.Point(313, 5);
+            this.modify.Name = "modify";
+            stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties9.BorderRadius = 3;
+            stateProperties9.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties9.BorderThickness = 1;
+            stateProperties9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties9.ForeColor = System.Drawing.Color.White;
+            stateProperties9.IconLeftImage = null;
+            stateProperties9.IconRightImage = null;
+            this.modify.onHoverState = stateProperties9;
+            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties10.BorderRadius = 3;
+            stateProperties10.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties10.BorderThickness = 1;
+            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties10.ForeColor = System.Drawing.Color.White;
+            stateProperties10.IconLeftImage = null;
+            stateProperties10.IconRightImage = null;
+            this.modify.OnPressedState = stateProperties10;
+            this.modify.Size = new System.Drawing.Size(134, 45);
+            this.modify.TabIndex = 132;
+            this.modify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.modify.TextMarginLeft = 0;
+            this.modify.UseDefaultRadiusAndThickness = true;
+            this.modify.Visible = false;
+            this.modify.Click += new System.EventHandler(this.modify_Click);
+            // 
+            // change
+            // 
+            this.change.AllowToggling = false;
+            this.change.AnimationSpeed = 200;
+            this.change.AutoGenerateColors = false;
+            this.change.BackColor = System.Drawing.Color.Transparent;
+            this.change.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.change.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("change.BackgroundImage")));
+            this.change.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.change.ButtonText = "Changer de statut";
+            this.change.ButtonTextMarginLeft = 0;
+            this.change.ColorContrastOnClick = 45;
+            this.change.ColorContrastOnHover = 45;
+            this.change.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.change.CustomizableEdges = borderEdges4;
+            this.change.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.change.DisabledBorderColor = System.Drawing.Color.Empty;
+            this.change.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.change.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.change.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.change.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.change.ForeColor = System.Drawing.Color.White;
+            this.change.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
+            this.change.IconMarginLeft = 11;
+            this.change.IconPadding = 10;
+            this.change.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.change.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.change.IdleBorderRadius = 3;
+            this.change.IdleBorderThickness = 1;
+            this.change.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.change.IdleIconLeftImage = null;
+            this.change.IdleIconRightImage = null;
+            this.change.IndicateFocus = false;
+            this.change.Location = new System.Drawing.Point(804, 5);
+            this.change.Name = "change";
+            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties11.BorderRadius = 3;
+            stateProperties11.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties11.BorderThickness = 1;
+            stateProperties11.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties11.ForeColor = System.Drawing.Color.White;
+            stateProperties11.IconLeftImage = null;
+            stateProperties11.IconRightImage = null;
+            this.change.onHoverState = stateProperties11;
+            stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties12.BorderRadius = 3;
+            stateProperties12.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties12.BorderThickness = 1;
+            stateProperties12.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties12.ForeColor = System.Drawing.Color.White;
+            stateProperties12.IconLeftImage = null;
+            stateProperties12.IconRightImage = null;
+            this.change.OnPressedState = stateProperties12;
+            this.change.Size = new System.Drawing.Size(138, 45);
+            this.change.TabIndex = 130;
+            this.change.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.change.TextMarginLeft = 0;
+            this.change.UseDefaultRadiusAndThickness = true;
+            this.change.Visible = false;
+            this.change.Click += new System.EventHandler(this.change_Click);
+            // 
+            // statut_
+            // 
+            this.statut_.FormattingEnabled = true;
+            this.statut_.Items.AddRange(new object[] {
+            "paye",
+            "non paye",
+            "avance"});
+            this.statut_.Location = new System.Drawing.Point(616, 24);
+            this.statut_.Name = "statut_";
+            this.statut_.Size = new System.Drawing.Size(148, 21);
+            this.statut_.TabIndex = 129;
+            this.statut_.Text = "Statut de paiement";
+            this.statut_.Visible = false;
             // 
             // pay
             // 
@@ -503,11 +659,11 @@
             this.pay.ColorContrastOnClick = 45;
             this.pay.ColorContrastOnHover = 45;
             this.pay.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.pay.CustomizableEdges = borderEdges3;
+            borderEdges5.BottomLeft = true;
+            borderEdges5.BottomRight = true;
+            borderEdges5.TopLeft = true;
+            borderEdges5.TopRight = true;
+            this.pay.CustomizableEdges = borderEdges5;
             this.pay.DialogResult = System.Windows.Forms.DialogResult.None;
             this.pay.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.pay.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -526,26 +682,26 @@
             this.pay.IdleIconLeftImage = null;
             this.pay.IdleIconRightImage = null;
             this.pay.IndicateFocus = false;
-            this.pay.Location = new System.Drawing.Point(316, 5);
+            this.pay.Location = new System.Drawing.Point(463, 6);
             this.pay.Name = "pay";
-            stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties9.BorderRadius = 3;
-            stateProperties9.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties9.BorderThickness = 1;
-            stateProperties9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties9.ForeColor = System.Drawing.Color.White;
-            stateProperties9.IconLeftImage = null;
-            stateProperties9.IconRightImage = null;
-            this.pay.onHoverState = stateProperties9;
-            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties10.BorderRadius = 3;
-            stateProperties10.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties10.BorderThickness = 1;
-            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties10.ForeColor = System.Drawing.Color.White;
-            stateProperties10.IconLeftImage = null;
-            stateProperties10.IconRightImage = null;
-            this.pay.OnPressedState = stateProperties10;
+            stateProperties13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties13.BorderRadius = 3;
+            stateProperties13.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties13.BorderThickness = 1;
+            stateProperties13.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties13.ForeColor = System.Drawing.Color.White;
+            stateProperties13.IconLeftImage = null;
+            stateProperties13.IconRightImage = null;
+            this.pay.onHoverState = stateProperties13;
+            stateProperties14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties14.BorderRadius = 3;
+            stateProperties14.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties14.BorderThickness = 1;
+            stateProperties14.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties14.ForeColor = System.Drawing.Color.White;
+            stateProperties14.IconLeftImage = null;
+            stateProperties14.IconRightImage = null;
+            this.pay.OnPressedState = stateProperties14;
             this.pay.Size = new System.Drawing.Size(134, 45);
             this.pay.TabIndex = 121;
             this.pay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -676,5 +832,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ComboBox statut_;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton change;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton modify;
     }
 }

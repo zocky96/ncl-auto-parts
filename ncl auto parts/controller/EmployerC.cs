@@ -43,7 +43,7 @@ namespace ncl_auto_parts.controller
         }
         public static async Task<int> deleteEmployer(String id,string lot, BunifuDataGridView table)
         {
-           int rep = await dbConfig.execute_command("delete from employer where emp_id='" + id + "' or emp_id='" + lot+"'");
+           int rep = await dbConfig.execute_command("delete from employer where id='" + id + "' or emp_id='" + lot+"'");
             showEmployer(table);
             return rep;
         }

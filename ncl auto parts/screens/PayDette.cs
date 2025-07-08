@@ -41,8 +41,9 @@ namespace ncl_auto_parts.screens
                 {
                     if (table == "auto")
                     {
-                        float dette = 0, real_montant = 0;
+                        float dette = 0, real_montant = 0, avance_ = 0;
                         string myDevise = null;
+
                         MySqlDataReader result = await dbConfig.getResultCommand("select * from facture_auto where no_recu='" + ID.Text + "'");
                         while (result.Read())
                         {
@@ -57,9 +58,11 @@ namespace ncl_auto_parts.screens
 
                             //real_montant = float.Parse(result["total"].ToString());
                             myDevise = result["devise"].ToString();
+                            avance_ = float.Parse(result["avance"].ToString());
                         }
 
                         real_montant = dette - float.Parse(montant.Text);
+                        avance_ += float.Parse(montant.Text);
                         if (float.Parse(montant.Text) > dette)
                         {
                             MessageBox.Show("La valeur entrer est superieur a la dette");
@@ -72,7 +75,7 @@ namespace ncl_auto_parts.screens
                         {
                             if (real_montant == 0)
                             {
-                                int rep = await dbConfig.execute_command("update facture_auto set dette=" + real_montant + ",statut='paye',payment='"+payment.Text+"' where no_recu='" + ID.Text + "'");
+                                int rep = await dbConfig.execute_command("update facture_auto set dette=" + real_montant + ",statut='paye',payment='"+payment.Text+"',avance=0 where no_recu='" + ID.Text + "'");
                                 if (myDevise == "US")
                                 {
                                     VenteC.AddUsMoney(float.Parse(montant.Text));
@@ -85,7 +88,7 @@ namespace ncl_auto_parts.screens
                             }
                             if (real_montant > 0)
                             {
-                                int rep = await dbConfig.execute_command("update facture_auto set dette=" + real_montant + ",statut='avance',payment='"+payment.Text+"' where no_recu='" + ID.Text + "'");
+                                int rep = await dbConfig.execute_command("update facture_auto set dette=" + real_montant + ",statut='avance',payment='"+payment.Text+"',avance="+avance_+" where no_recu='" + ID.Text + "'");
                                 if (myDevise == "US")
                                 {
                                     VenteC.AddUsMoney(float.Parse(montant.Text));
@@ -102,7 +105,7 @@ namespace ncl_auto_parts.screens
                     else
                     {
                         //garage
-                        float dette = 0, real_montant = 0;
+                        float dette = 0, real_montant = 0, avance_ = 0;
                         string myDevise = null;
                         MySqlDataReader result = await dbConfig.getResultCommand("select * from facture_garage where no_recu='" + ID.Text + "'");
                         while (result.Read())
@@ -120,6 +123,7 @@ namespace ncl_auto_parts.screens
                         }
 
                         real_montant = dette - float.Parse(montant.Text);
+                        avance_ += float.Parse(montant.Text);
                         if (float.Parse(montant.Text) > dette)
                         {
                             MessageBox.Show("La valeur entrer est superieur a la dette");
@@ -132,7 +136,7 @@ namespace ncl_auto_parts.screens
                         {
                             if (real_montant == 0)
                             {
-                                int rep = await dbConfig.execute_command("update facture_garage set dette=" + real_montant + ",statut='paye',payment='"+payment.Text+"' where no_recu='" + ID.Text + "'");
+                                int rep = await dbConfig.execute_command("update facture_garage set dette=" + real_montant + ",statut='paye',payment='"+payment.Text+"',avance=0 where no_recu='" + ID.Text + "'");
                                 if (myDevise == "US")
                                 {
                                     VenteC.AddUsMoneyGarage(float.Parse(montant.Text));
@@ -145,7 +149,7 @@ namespace ncl_auto_parts.screens
                             }
                             if (real_montant > 0)
                             {
-                                int rep = await dbConfig.execute_command("update facture_garage set dette=" + real_montant + ",statut='avance',payment='"+payment.Text+"' where no_recu='" + ID.Text + "'");
+                                int rep = await dbConfig.execute_command("update facture_garage set dette=" + real_montant + ",statut='avance',payment='"+payment.Text+"',avance="+avance_+" where no_recu='" + ID.Text + "'");
                                 if (myDevise == "US")
                                 {
                                     VenteC.AddUsMoneyGarage(float.Parse(montant.Text));

@@ -1,4 +1,6 @@
-﻿using ncl_auto_parts.controller;
+﻿using MySql.Data.MySqlClient;
+using ncl_auto_parts.controller;
+using ncl_auto_parts.db;
 using ncl_auto_parts.model;
 using System;
 using System.Collections.Generic;
@@ -20,10 +22,65 @@ namespace ncl_auto_parts.screens
         {
             InitializeComponent();
             main.currentPage = "article";
+            //put my fucking fuction here
+            setProductId();
             ArticleC.showArticle(table);
             main.closeConn();
         }
+        private async void setProductId()
+        {
+            string product_id = null;
+            Random random = new Random();
+            int randomNumber = random.Next(9999999);
 
+            String receiptNumber = null;
+            try
+            {
+                MySqlDataReader result = await dbConfig.getResultCommand("select id,product_id from article");
+                while (result.Read())
+                {
+                    string idxx = result["id"].ToString();
+                    if (result.IsDBNull(1))
+                    {
+                        //ok
+                        try
+                        {
+                            int maxId = await ArticleC.getMaxId();
+                            main.closeConn();
+                            receiptNumber = "NCL-P" + randomNumber.ToString() + maxId.ToString();
+
+                            bool receiptExist = await ArticleC.ifReceiptIdExist(receiptNumber);
+                            while (receiptExist)
+                            {
+                                int ii = 0;
+                                randomNumber = random.Next(9999999);
+                                receiptNumber = "NCL-P" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                                receiptExist = await ArticleC.ifReceiptIdExist(receiptNumber);
+                                ii += 1;
+                                if (ii >= 20)
+                                {
+                                    receiptNumber = "NCL-PO" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                                    receiptExist = await ArticleC.ifReceiptIdExist(receiptNumber);
+                                }
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+                        int rep = await dbConfig.execute_command("update article set product_id='"+receiptNumber+"' where id=" + idxx);
+                       
+                        //ok
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+            
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -59,10 +116,39 @@ namespace ncl_auto_parts.screens
             main.closeConn();
             modify.Visible = false;
             delete.Visible = false;
+            Random random = new Random();
+            int randomNumber = random.Next(9999999);
+
+            String receiptNumber = null;
             int i = 0;
             double j = 0;
             bool isAnumber ;
             //MessageBox.Show();
+            try
+            {
+                int maxId = await ArticleC.getMaxId();
+                main.closeConn();
+                receiptNumber = "NCL-P" + randomNumber.ToString() + maxId.ToString();
+
+                bool receiptExist = await ArticleC.ifReceiptIdExist(receiptNumber);
+                while (receiptExist)
+                {
+                    int ii = 0;
+                    randomNumber = random.Next(9999999);
+                    receiptNumber = "NCL-P" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                    receiptExist = await ArticleC.ifReceiptIdExist(receiptNumber);
+                    ii += 1;
+                    if (ii >= 20)
+                    {
+                        receiptNumber = "NCL-PO" + randomNumber.ToString() + VenteC.getMaxId().ToString();
+                        receiptExist = await ArticleC.ifReceiptIdExist(receiptNumber);
+                    }
+                }
+            }
+            catch
+            {
+
+            }
             if (name.Text == "")
             {
                 MessageBox.Show("Le champ 'Nom de l'article' ne doit pas etre vide");
@@ -110,16 +196,13 @@ namespace ncl_auto_parts.screens
                                     else
                                     {
                                         //put that fucking function here
-                                        string year, month, day, date;
-                                        year = DateTime.Now.Year.ToString();
-                                        month = DateTime.Now.Month.ToString();
-                                        day = DateTime.Now.Day.ToString();
-                                        date = year + "/" + month + "/" + day;
-                                        //dateSortie.Value.Date.ToShortDateString();
-                                        //date = DateTime.Now.ToString("yyyy-MM-dd");
+                                        string date;
+
+                                        date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+                                        
                                         
                                         ArticleM article = new ArticleM(name.Text, refArticle.Text, element.Text, float.Parse(price.Text), int.Parse(qte.Text), int.Parse(idFournisseur.Text), int.Parse(numero.Text));
-                                        int rep = await ArticleC.saveArticle(article, table, date);
+                                        int rep = await ArticleC.saveArticle(article, table, date,receiptNumber);
                                         main.closeConn();
                                         if (rep == 0)
                                         {

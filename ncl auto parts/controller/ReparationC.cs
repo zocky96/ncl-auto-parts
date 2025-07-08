@@ -41,7 +41,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"], result["dateEntree"], result["dateSortie"], result["statut"], result["payment"],result["comment"]);
+                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"],DateTime.Parse(result["dateEntree"].ToString()).ToShortDateString(),DateTime.Parse(result["dateSortie"].ToString()).ToShortDateString(), result["statut"], result["payment"],result["comment"]);
 
                 }
             }
@@ -59,7 +59,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"], result["dateEntree"], result["dateSortie"], result["statut"], result["payment"],result["comment"]);
+                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"],DateTime.Parse(result["dateEntree"].ToString()).ToShortDateString(),DateTime.Parse(result["dateSortie"].ToString()).ToShortDateString(), result["statut"], result["payment"],result["comment"]);
 
                 }
             }
@@ -77,7 +77,7 @@ namespace ncl_auto_parts.controller
                 while (result.Read())
                 {
 
-                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"], result["dateEntree"], result["dateSortie"],result["statut"],result["payment"],result["comment"]);
+                    table.Rows.Add(result["id"], result["clientId"], result["Marque"], result["modele"], result["annee"], result["plaque"], result["couleur"], result["service"],DateTime.Parse(result["dateEntree"].ToString()).ToShortDateString(),DateTime.Parse(result["dateSortie"].ToString()).ToShortDateString(),result["statut"],result["payment"],result["comment"]);
 
                 }
             }

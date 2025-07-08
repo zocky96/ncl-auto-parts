@@ -558,5 +558,10 @@ namespace ncl_auto_parts.screens
                 MessageBox.Show("Le champ 'Montant' dois contenir que des chiffres");
             }
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

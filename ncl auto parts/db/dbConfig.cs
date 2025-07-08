@@ -229,6 +229,7 @@ namespace ncl_auto_parts.db
                 }
                 catch
                 {
+                    conn.Close();
                     return 1;
                 }
             }
@@ -260,6 +261,7 @@ namespace ncl_auto_parts.db
             rep = await execute_command("create table article (id int primary key auto_increment,nom_du_produit varchar(100),prix float,quantite int,fournisseur varchar(80),dateAjout date,dateExpiration date,element varchar(255),ref varchar(255),numero varchar(255),idfournisseur int)");
             rep = await execute_command("ALTER TABLE article ADD init_value INT");
             rep = await execute_command("ALTER TABLE article ADD quantite_vendu INT");
+            rep = await execute_command("ALTER TABLE article ADD product_id varchar(255)");
             if (rep == 0)
             {
                 await execute_command("update article set quantite_vendu=0");
@@ -327,6 +329,10 @@ namespace ncl_auto_parts.db
             rep = await execute_command("ALTER TABLE fauto_part ADD payment enum('Cash','Virement','Cheque','Mon Cash','Nat Cash')");
             rep = await execute_command("ALTER TABLE fauto_part ADD id_auto varchar(255)");
             rep = await execute_command("ALTER TABLE fauto_part ADD pay DOUBLE");
+            rep = await execute_command("ALTER TABLE fauto_part ADD no_recu varchar(255)");
+            rep = await execute_command("ALTER TABLE fauto_part ADD old_total DOUBLE");
+            rep = await execute_command("ALTER TABLE fauto_part ADD old_avance DOUBLE");
+            rep = await execute_command("ALTER TABLE fauto_part ADD old_dette DOUBLE");
             //--
             rep = await execute_command("create table fgarage(id int primary key auto_increment,clientName varchar(255),service varchar(255),devise enum('HTG','US'),montant double)");
             rep = await execute_command("ALTER TABLE fgarage ADD car_name VARCHAR(100)");
@@ -335,6 +341,10 @@ namespace ncl_auto_parts.db
             rep = await execute_command("ALTER TABLE fgarage ADD description VARCHAR(150)");
             rep = await execute_command("ALTER TABLE fgarage ADD quantite INT");
             rep = await execute_command("ALTER TABLE fgarage ADD total DOUBLE");
+            rep = await execute_command("ALTER TABLE fgarage ADD no_recu varchar(255)");
+            rep = await execute_command("ALTER TABLE fgarage ADD old_total DOUBLE");
+            rep = await execute_command("ALTER TABLE fgarage ADD old_avance DOUBLE");
+            rep = await execute_command("ALTER TABLE fgarage ADD old_dette DOUBLE");
             //--------------------------
             rep = await execute_command("ALTER TABLE fgarage ADD discount DOUBLE");
             rep = await execute_command("ALTER TABLE fgarage ADD avance DOUBLE");
