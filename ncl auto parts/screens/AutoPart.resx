@@ -166,6 +166,17 @@
         e/MFmsb4ACXyttcmYWQkAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="modifyOne.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAIYAAAAtCAYAAABrohO8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAERSURBVHhe7dyxTcRAGITRbeTuKIUKaM1GlEFMSik0cBEN
+        rDmjSQaZCvxGesnqD794h9m/uy3b022d79d12zix1/mxt5Asxrgu8/PwkNO5LPMrWTzCODjgvJKFMGjJ
+        Qhi0ZCEMWrIQBi1ZCIOWLIRBSxbCoCULYdCShTBoyUIYtGQhDFqyEAYtWQiDliyEQUsWwqAlC2HQkoUw
+        aMlCGLRkIQxashAGLVkIg5YshEFLFsKgJQth0JKFMGjJQhi0ZCEMWrIQBi1ZCIOWLIRBSxbCoCULYdCS
+        hTBoyUIYtGQhDFqyEAYtWQiDliyEQUsWY+x/Ox4dcD6XdX4ni9+fgZ8fD/ejQ85jj+LyNl+ShdnfjfED
+        tdI8ejmvzLwAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="facture.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIYAAAAtCAYAAABrohO8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

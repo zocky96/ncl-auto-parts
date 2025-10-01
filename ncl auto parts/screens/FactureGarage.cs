@@ -49,8 +49,9 @@ namespace ncl_auto_parts.screens
             pay.Visible = false;
             modify.Visible = false;
             main.closeConn();
-            float sum = 0;
-            String devise = null;
+            float my_sum = 0, avance = 0;
+            String devise = null, status = null;
+            
             if (id == "")
             {
                 MessageBox.Show("Selectionne la facture a annulée");
@@ -58,35 +59,65 @@ namespace ncl_auto_parts.screens
             else
             {
                 MySqlDataReader result = await GarageC.getGoodFacture(id);
+
                 string date;
                 while (result.Read())
                 {
                     date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
-                    dbConfig.execute_command("insert into cancel_facture_garage(clientName,service,devise,montant,no_recu,date,user,car_name,plaque,phone,description,quantite,total) values('" + result["clientName"].ToString() + "','" + result["service"].ToString() + "','" + result["devise"].ToString() + "'," + result["montant"].ToString() + ",'" + id + "','" + date + "','" + main.userName + "','"+result["car_name"].ToString() +"','"+result["plaque"].ToString() +"','"+result["phone"].ToString() +"','"+result["description"].ToString() +"',"+int.Parse(result["quantite"].ToString())+","+float.Parse(result["total"].ToString())+")");
+                    int rep = await dbConfig.execute_command("insert into cancel_facture_garage(clientName,service,devise,montant,no_recu,date,user,car_name,plaque,phone,description,quantite,total) values('" + result["clientName"].ToString() + "','" + result["service"].ToString() + "','" + result["devise"].ToString() + "'," + result["montant"].ToString() + ",'" + id + "','" + date + "','" + main.userName + "','" + result["car_name"].ToString() + "','" + result["plaque"].ToString() + "','" + result["phone"].ToString() + "','" + result["description"].ToString() + "'," + result["quantite"].ToString() + "," + result["total"].ToString() + ")");
                     devise = result["devise"].ToString();
-                    sum = float.Parse(result["total"].ToString());
+                    //sum = float.Parse(result["total"].ToString());
+                    my_sum = float.Parse(result["total"].ToString());
+                    status = result["statut"].ToString();
+                    avance = float.Parse(result["avance"].ToString());
                 }
-                main.closeConn();
-                if (devise == "US")
+                if (status == "paye")
                 {
-                    
-                    VenteC.RemoveUsMoneyGarage(sum);
-                    main.closeConn();
-                    GarageC.deleteGoodFacture(table, id);
-                    main.closeConn();
-                    id = "";
-                    GarageC.showGoodFacture(table);
-                    main.closeConn();
-                    MessageBox.Show("Facture annulée avec succès");
+                    if (devise == "US")
+                    {
+                        VenteC.RemoveUsMoneyGarage(my_sum);
+                        main.closeConn();
+                        GarageC.deleteGoodFacture(table, id);
+                        main.closeConn();
+                        GarageC.showGoodFacture(table);
+                        main.closeConn();
+                    }
+                    else
+                    {
+                        VenteC.RemoveHtgMoneyGarage(my_sum);
+                        main.closeConn();
+                        GarageC.deleteGoodFacture(table, id);
+                        main.closeConn();
+                        GarageC.showGoodFacture(table);
+                        main.closeConn();
+
+                    }
+                }
+                else if (status == "avance")
+                {
+                    if (devise == "US")
+                    {
+                        VenteC.RemoveUsMoneyGarage(avance);
+                        main.closeConn();
+                        GarageC.deleteGoodFacture(table, id);
+                        main.closeConn();
+                        GarageC.showGoodFacture(table);
+                        main.closeConn();
+                    }
+                    else
+                    {
+                        VenteC.RemoveHtgMoneyGarage(avance);
+                        main.closeConn();
+                        GarageC.deleteGoodFacture(table, id);
+                        main.closeConn();
+                        GarageC.showGoodFacture(table);
+                        main.closeConn();
+
+                    }
                 }
                 else
                 {
-                    
-                    VenteC.RemoveHtgMoneyGarage(sum);
-                    GarageC.deleteGoodFacture(table, id);
-                    id = "";
-                    GarageC.showGoodFacture(table);
-                    MessageBox.Show("Facture annulée avec succès");
+
                 }
             }
         }

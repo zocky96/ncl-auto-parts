@@ -19,7 +19,8 @@ namespace ncl_auto_parts.screens
     {
         string id = "";
         float sum = 0;
-        float realTotal = 0;
+        string trueNoRecu = null;
+        float realTotal = 0, trueOldTotal = 0, trueOldDette = 0;
         string somme = null;
         AutoPartM autoPart = null;
         string receiptNumber = null;
@@ -113,8 +114,9 @@ namespace ncl_auto_parts.screens
                                                                         bool isFactureEmpty = await GarageC.isFactureEmptyMain();
                                                                         if (isFactureEmpty)
                                                                         {
+                                                                            trueNoRecu = "";
                                                                             AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, int.Parse(quantite.Text), float.Parse(montant.Text), 1);
-                                                                            int rep = await GarageC.saveFacture(facture, table, float.Parse(discount.Text), float.Parse(avance.Text), statut.Text, payment.Text, comment.Text, idAuto.Text, float.Parse(mainPay.Text));
+                                                                            int rep = await GarageC.saveFacture(facture, table, float.Parse(discount.Text), float.Parse(avance.Text), statut.Text, payment.Text, comment.Text, idAuto.Text, float.Parse(mainPay.Text),trueNoRecu,trueOldTotal,trueOldDette);
                                                                             main.closeConn();
                                                                             float total = (await GarageC.getSumPrice() + await GarageC.getPay()) - (await GarageC.getDiscount());
                                                                             theSum.Text = "$" + total.ToString();
@@ -138,7 +140,7 @@ namespace ncl_auto_parts.screens
                                                                             else 
                                                                             {
                                                                                 AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, int.Parse(quantite.Text), float.Parse(montant.Text), 1);
-                                                                                int rep = await GarageC.saveFacture(facture, table, float.Parse(discount.Text), float.Parse(avance.Text), statut.Text, payment.Text, comment.Text, idAuto.Text, float.Parse(mainPay.Text));
+                                                                                int rep = await GarageC.saveFacture(facture, table, float.Parse(discount.Text), float.Parse(avance.Text), statut.Text, payment.Text, comment.Text, idAuto.Text, float.Parse(mainPay.Text),trueNoRecu,trueOldTotal,trueOldDette);
                                                                                 main.closeConn();
                                                                                 float total = (await GarageC.getSumPrice() + await GarageC.getPay()) - (await GarageC.getDiscount());
                                                                                 theSum.Text = "$" + total.ToString();
@@ -214,6 +216,7 @@ namespace ncl_auto_parts.screens
         {
             main.closeConn();
             delete.Visible = false;
+            modifyOne.Visible = false;
             int rep = await GarageC.deleteFacture(table, id);
             init_values();
             main.closeConn();
@@ -336,9 +339,12 @@ namespace ncl_auto_parts.screens
             bunifuButton1.Enabled = true;
         }
 
-        private void bunifuButton2_Click(object sender, EventArgs e)
+        private async void bunifuButton2_Click(object sender, EventArgs e)
         {
             main.showLogin(new FactureGarage());
+            trueNoRecu = await GarageC.getNo_recu();
+            trueOldTotal = await GarageC.getOLdTotal();
+            trueOldDette = await GarageC.getDette();
             init_values();
             GarageC.showFacture(table);
         }
@@ -434,6 +440,10 @@ namespace ncl_auto_parts.screens
             discount.Text = table.CurrentRow.Cells["discount_"].Value.ToString();
             avance.Text = table.CurrentRow.Cells["avance_"].Value.ToString();
             mainPay.Text = table.CurrentRow.Cells["pay_"].Value.ToString();
+            description.Text = table.CurrentRow.Cells["description_"].Value.ToString();
+            
+            montant.Text = table.CurrentRow.Cells["montant_"].Value.ToString();
+            quantite.Text = table.CurrentRow.Cells["Column10"].Value.ToString();
             MySqlDataReader result = await GarageC.getFacture();
             while (result.Read())
             {
@@ -445,6 +455,7 @@ namespace ncl_auto_parts.screens
                 idAuto.Text = result["id_auto"].ToString();
             }
             delete.Visible = true;
+            modifyOne.Visible = true;
         }
 
             private void payment_SelectedIndexChanged(object sender, EventArgs e)
@@ -481,9 +492,77 @@ namespace ncl_auto_parts.screens
         {
 
         }
+        private async void deleteGoodFacture(string id)
+        {
+            MySqlDataReader result = await GarageC.getGoodFacture(id);
+            string devise = null;
+            float my_sum = 0, avance = 0;
+            string date, status = null;
 
+            while (result.Read())
+            {
+                date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
+                int rep = await dbConfig.execute_command("insert into cancel_facture_garage(clientName,service,devise,montant,no_recu,date,user,car_name,plaque,phone,description,quantite,total) values('" + result["clientName"].ToString() + "','" + result["service"].ToString() + "','" + result["devise"].ToString() + "'," + result["montant"].ToString() + ",'" + id + "','" + date + "','" + main.userName + "','" + result["car_name"].ToString() + "','" + result["plaque"].ToString() + "','" + result["phone"].ToString() + "','" + result["description"].ToString() + "'," + result["quantite"].ToString() + "," + result["total"].ToString() + ")");
+                devise = result["devise"].ToString();
+                my_sum = float.Parse(result["total"].ToString());
+                status = result["statut"].ToString();
+                avance = float.Parse(result["avance"].ToString());
+            }
+            if (status == "paye")
+            {
+                if (devise == "US")
+                {
+                    VenteC.RemoveUsMoneyGarage(my_sum);
+                    main.closeConn();
+                    GarageC.deleteGoodFacture(table, id);
+                    main.closeConn();
+                    GarageC.showGoodFacture(table);
+                    main.closeConn();
+                }
+                else
+                {
+                    VenteC.RemoveHtgMoneyGarage(my_sum);
+                    main.closeConn();
+                    GarageC.deleteGoodFacture(table, id);
+                    main.closeConn();
+                    GarageC.showGoodFacture(table);
+                    main.closeConn();
+
+                }
+            }
+            else if (status == "avance")
+            {
+                if (devise == "US")
+                {
+                    VenteC.RemoveUsMoneyGarage(avance);
+                    main.closeConn();
+                    GarageC.deleteGoodFacture(table, id);
+                    main.closeConn();
+                    GarageC.showGoodFacture(table);
+                    main.closeConn();
+                }
+                else
+                {
+                    VenteC.RemoveHtgMoneyGarage(avance);
+                    main.closeConn();
+                    GarageC.deleteGoodFacture(table, id);
+                    main.closeConn();
+                    GarageC.showGoodFacture(table);
+                    main.closeConn();
+
+                }
+            }
+            else
+            {
+
+            }
+            main.closeConn();
+
+        }
         private async void modify_Click(object sender, EventArgs e)
         {
+            delete.Visible = false;
+            modifyOne.Visible = false;
             modify.Enabled = false;
             bool isCartEmpty = await GarageC.isFactureEmpty();
             if (isCartEmpty)
@@ -493,64 +572,257 @@ namespace ncl_auto_parts.screens
             }
             else
             {
-                String no_recu = await GarageC.getNo_recu();
-                float old_total = await GarageC.getOLdTotal();
-                //--------------------------------------------------------------------------
-                MySqlDataReader result = await GarageC.getFactureSimple();
-                string myDevise = null, realStatut = null;
-                float total = (await GarageC.getSumPrice() + await GarageC.getPay()) - (await GarageC.getDiscount());
-                float newTotal = total - old_total;
-                int rep = -1;
-                while (result.Read())
+                Boolean ifReceptExist = await GarageC.ifReceiptExist();
+                if (ifReceptExist)
                 {
-                    myDevise = result["devise"].ToString();
-                    realStatut = result["statut"].ToString();
-                    autoPart = new AutoPartM(result["clientName"].ToString(), result["service"].ToString(), result["devise"].ToString(), result["plaque"].ToString(), result["car_name"].ToString(), result["phone"].ToString(), result["description"].ToString(), int.Parse(result["quantite"].ToString()), float.Parse(result["montant"].ToString()), total);
-                    rep = await GarageC.saveGoodFacture(autoPart, no_recu, table, float.Parse(result["discount"].ToString()), float.Parse(result["avance"].ToString()), result["comment"].ToString(), result["statut"].ToString(), result["payment"].ToString(), result["id_auto"].ToString(), float.Parse(result["pay"].ToString()));
-                }
-                //---------------
-                if (realStatut == "paye")
-                {
-                    await dbConfig.execute_command("update facture_garage set total=" + total + ",dette=0,statut='paye' where no_recu='" + no_recu + "'");
-                    if (myDevise == "US")
+                    String no_recu = await GarageC.getNo_recu();
+                    float old_total = await GarageC.getOLdTotal();
+                    deleteGoodFacture(no_recu);
+                    //MessageBox.Show(old_total.ToString());
+                    //--------------------------------------------------------------------------
+
+                    string myDevise = null, realStatut = null;
+                    float total = (await GarageC.getSumPrice() + await GarageC.getPay()) - (await GarageC.getDiscount());
+                    float newTotal = total - old_total;
+                    // MessageBox.Show(newTotal.ToString());
+                    int rep = -1;
+                    MySqlDataReader resultx = await GarageC.getFacture();
+                    while (resultx.Read())
                     {
-                        VenteC.AddUsMoneyGarage(newTotal);
+                        myDevise = resultx["devise"].ToString();
+                        realStatut = resultx["statut"].ToString();
+                        autoPart = new AutoPartM(resultx["clientName"].ToString(), resultx["service"].ToString(), resultx["devise"].ToString(), resultx["plaque"].ToString(), resultx["car_name"].ToString(), resultx["phone"].ToString(), resultx["description"].ToString(), int.Parse(resultx["quantite"].ToString()), float.Parse(resultx["montant"].ToString()), total);
+                        rep = await AutoPartC.saveGoodFacture(autoPart, no_recu, table, float.Parse(resultx["discount"].ToString()), float.Parse(resultx["avance"].ToString()), resultx["comment"].ToString(), resultx["statut"].ToString(), resultx["payment"].ToString(), resultx["id_auto"].ToString(), float.Parse(resultx["pay"].ToString()));
+                        MessageBox.Show(resultx["avance"].ToString());
+                    }
+
+                    //---------------
+                    if (realStatut == "paye")
+                    {
+                        float dette = await GarageC.getDette();
+                        if (dette > 0)
+                        {
+                            newTotal = total - dette;
+                        }
+                        await dbConfig.execute_command("update facture_garage set total=" + total + ",dette=0,statut='paye' where no_recu='" + no_recu + "'");
+                        if (myDevise == "US")
+                        {
+                            VenteC.AddUsMoneyGarage(total);
+                        }
+                        else
+                        {
+                            VenteC.AddHTGMoneyGarage(total);
+                        }
+                    }
+                    else if (realStatut == "avance")
+                    {
+                        await dbConfig.execute_command("update facture_garage set total=" + total + ",dette =" + total + "-avance ,statut='avance' where no_recu='" + no_recu + "'");
+                        float trueAvance = await AutoPartC.getAvance();
+                        if (myDevise == "US")
+                        {
+                            VenteC.AddUsMoneyGarage(trueAvance);
+                        }
+                        else
+                        {
+                            VenteC.AddHTGMoneyGarage(trueAvance);
+                        }
+                    }
+                    if (realStatut == "non paye")
+                    {
+                        await dbConfig.execute_command("update facture_garage set total=" + total + " ,dette=" + total + " where no_recu='" + no_recu + "'");
+                    }
+                    //-----------------------------
+
+                    main.closeConn();
+
+                    if (rep == 0)
+                    {
+
+
+                        GarageC.cleanFacture(table);
+                        theSum.Text = "$0";
+                        MessageBox.Show("Facture effectuée avec succès");
+                        modify.Enabled = true;
+                        main.showLogin(new oneFacture(no_recu, ""));
+                        main.closeConn();
+
                     }
                     else
                     {
-                        VenteC.AddHTGMoneyGarage(newTotal);
+                        MessageBox.Show("Erreur lors de la facturation");
+                        modify.Enabled = true;
                     }
-                }
-                else if (realStatut == "avance")
-                {
-                    await dbConfig.execute_command("update facture_garage set total=" + total + ",dette =" + total + "-avance ,statut='avance' where no_recu='" + no_recu + "'");
-                }
-                if (realStatut == "non paye")
-                {
-                    await dbConfig.execute_command("update facture_garage set total=" + total + " ,dette=" + total + " where no_recu='" + no_recu + "'");
-                }
-                //-----------------------------
-
-                main.closeConn();
-
-                if (rep == 0)
-                {
-
-
-                    GarageC.cleanFacture(table);
-                    theSum.Text = "$0";
-                    MessageBox.Show("Facture effectuée avec succès");
-                    modify.Enabled = true;
-                    main.showLogin(new oneFacture(no_recu, "auto"));
-                    main.closeConn();
-
                 }
                 else
                 {
-                    MessageBox.Show("Erreur lors de la facturation");
+                    MessageBox.Show("Selectionne une facture");
+                    modify.Enabled = true;
                 }
+
                 //-------------------------------------------------------------==
             }
+            trueOldTotal = 0;
+            trueOldDette = 0;
+            trueNoRecu = "";
+        }
+
+        private async void modifyOne_Click(object sender, EventArgs e)
+        {
+            delete.Visible = false;
+            modifyOne.Visible = false;
+            main.closeConn();
+            float i = 0;
+
+            bool isAnumber = float.TryParse(montant.Text, out i);
+            if (service.Text == "")
+            {
+                MessageBox.Show("Le champ service ne dois pas etre vide");
+            }
+            else
+            {
+                if (clientName.Text == "")
+                {
+                    MessageBox.Show("Le champ 'Nom du client' ne dois pas etre vide");
+                }
+                else
+                {
+                    if (devise.Text == "US" || devise.Text == "HTG")
+                    {
+                        if (isAnumber)
+                        {
+                            if (plaque.Text == "")
+                            {
+                                MessageBox.Show("Le champ 'Plaque' ne dois pas etre vide");
+                            }
+                            else
+                            {
+                                if (phone.Text == "")
+                                {
+                                    MessageBox.Show("Le champ 'Telephone' ne dois pas etre vide");
+                                }
+                                else
+                                {
+                                    if (description.Text == "")
+                                    {
+                                        MessageBox.Show("Le champ 'Description' ne dois pas etre vide");
+                                    }
+                                    else
+                                    {
+
+                                        if (vehicule.Text == "")
+                                        {
+                                            MessageBox.Show("Le champ 'Nom du véhicule' ne dois pas etre vide");
+                                        }
+                                        else
+                                        {
+
+                                            isAnumber = float.TryParse(discount.Text, out i);
+                                            if (isAnumber)
+                                            {
+                                                isAnumber = float.TryParse(avance.Text, out i);
+                                                if (isAnumber)
+                                                {
+
+                                                    if (statut.Text == "paye" || statut.Text == "non paye" || statut.Text == "avance")
+                                                    {
+                                                        isAnumber = float.TryParse(mainPay.Text, out i);
+                                                        if (isAnumber)
+                                                        {
+                                                            bool isFactureEmpty = await GarageC.isFactureEmptyMain();
+                                                            if (isFactureEmpty)
+                                                            {
+                                                                //AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, int.Parse(quantite.Text), float.Parse(montant.Text), 1);
+                                                                //int rep = await GarageC.modifyFacture(facture, table, float.Parse(discount.Text), float.Parse(avance.Text), statut.Text, payment.Text, comment.Text, idAuto.Text, float.Parse(mainPay.Text),int.Parse(id));
+                                                                //main.closeConn();
+                                                                //float total = (await GarageC.getSumPrice() + await GarageC.getPay()) - (await GarageC.getDiscount());
+                                                                //theSum.Text = "$" + total.ToString();
+                                                                //if (rep == 0)
+                                                                //{
+                                                                //    clearField();
+                                                                //    //MessageBox.Show("Factué avec succè");
+                                                                //}
+                                                                //else
+                                                                //{
+                                                                //    MessageBox.Show("Erreur lors de la modification");
+                                                                //}
+                                                            }
+                                                            else
+                                                            {
+                                                                string good_devise = await GarageC.getDevise();
+                                                                if (good_devise != devise.Text)
+                                                                {
+                                                                    MessageBox.Show("La devise selectionnée est differente");
+                                                                }
+                                                                else
+                                                                {
+                                                                    AutoPartM facture = new AutoPartM(clientName.Text, service.Text, devise.Text, plaque.Text, vehicule.Text, phone.Text, description.Text, int.Parse(quantite.Text), float.Parse(montant.Text), 1);
+                                                                    int rep = await GarageC.modifyFacture(facture, table, float.Parse(discount.Text), float.Parse(avance.Text), statut.Text, payment.Text, comment.Text, idAuto.Text, float.Parse(mainPay.Text),int.Parse(id));
+                                                                    main.closeConn();
+                                                                    float total = (await GarageC.getSumPrice() + await GarageC.getPay()) - (await GarageC.getDiscount());
+                                                                    theSum.Text = "$" + total.ToString();
+                                                                    if (rep == 0)
+                                                                    {
+                                                                        clearField();
+                                                                        //MessageBox.Show("Factué avec succè");
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        MessageBox.Show("Erreur lors de la modification");
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show("Le champ Main d'oeuvre doit contenir que des chiffres");
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Veuillez Choisir le statut du paiement");
+                                                    }
+
+
+
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Le champ Avence doit contenir que des chiffres");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Le champ Discount doit contenir que des chiffres");
+                                            }
+
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("le champ montant dois contenir que des chiffres");
+                        }
+
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Choisi une devise");
+                    }
+                }
+            }
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -44,8 +44,16 @@ namespace ncl_auto_parts.screens
             nbrArticle.Text = await ArticleC.getNbrArticle();
             totalVente.Text = "$"+ await VenteC.getTotalVente()+" US";
             totalVenteHtg.Text = await VenteC.getTotalVenteHtg() + " HTG";
-            totalByMonth.Text = "$"+ await VenteC.getTotalVenteBymonth()+" US";
-            totalByMonthHtg.Text = await VenteC.getTotalVenteBymonthHtg() + " HTG";
+            try
+            {
+                totalByMonth.Text = "$" + await VenteC.getTotalVenteBymonth() + " US";
+                totalByMonthHtg.Text = await VenteC.getTotalVenteBymonthHtg() + " HTG";
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
             VenteC.showLast10Vente(tableTransaction);
             ClientC.showLast10Client(tableClient);
             ArticleC.filtredByFinnishStock10Last(tableStock);

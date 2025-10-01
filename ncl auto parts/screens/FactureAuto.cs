@@ -55,8 +55,8 @@ namespace ncl_auto_parts.screens
             realTotal = 0;
             print.Visible = false;
             main.closeConn();
-            float sum = 0;
-            String devise = null;
+            float my_sum = 0,avance = 0;
+            String devise = null,status = null;
             if (id == "")
             {
                 MessageBox.Show("Selectionne la facture a annulée");
@@ -71,31 +71,58 @@ namespace ncl_auto_parts.screens
                     date = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
                     int rep = await dbConfig.execute_command("insert into canceled_facture_auto(clientName,service,devise,montant,no_recu,date,user,car_name,plaque,phone,description,quantite,total) values('" + result["clientName"].ToString() + "','" + result["service"].ToString() + "','" +  result["devise"].ToString() + "'," + result["montant"].ToString() + ",'" + id + "','" + date + "','" + main.userName + "','"+ result["car_name"].ToString() + "','"+ result["plaque"].ToString() + "','"+ result["phone"].ToString() + "','"+ result["description"].ToString() + "',"+ result["quantite"].ToString() + ","+ result["total"].ToString() + ")");
                     devise = result["devise"].ToString();
-                    sum = float.Parse(result["total"].ToString());
+                    //sum = float.Parse(result["total"].ToString());
+                    my_sum = float.Parse(result["total"].ToString());
+                    status = result["statut"].ToString();
+                    avance = float.Parse(result["avance"].ToString());
                 }
-                main.closeConn();
-                if (devise == "US")
+                if (status == "paye")
                 {
-                    VenteC.RemoveUsMoney(sum);
-                    main.closeConn();
-                    AutoPartC.deleteGoodFacture(table, id);
-                    main.closeConn();
-                    id = "";
-                    AutoPartC.showGoodFacture(table);
-                    main.closeConn();
-                    MessageBox.Show("Facture annulée avec succès");
+                    if (devise == "US")
+                    {
+                        VenteC.RemoveUsMoney(my_sum);
+                        main.closeConn();
+                        AutoPartC.deleteGoodFacture(table, id);
+                        main.closeConn();
+                        AutoPartC.showGoodFacture(table);
+                        main.closeConn();
+                    }
+                    else
+                    {
+                        VenteC.RemoveHtgMoney(my_sum);
+                        main.closeConn();
+                        AutoPartC.deleteGoodFacture(table, id);
+                        main.closeConn();
+                        AutoPartC.showGoodFacture(table);
+                        main.closeConn();
+
+                    }
+                }
+                else if (status == "avance")
+                {
+                    if (devise == "US")
+                    {
+                        VenteC.RemoveUsMoney(avance);
+                        main.closeConn();
+                        AutoPartC.deleteGoodFacture(table, id);
+                        main.closeConn();
+                        AutoPartC.showGoodFacture(table);
+                        main.closeConn();
+                    }
+                    else
+                    {
+                        VenteC.RemoveHtgMoney(avance);
+                        main.closeConn();
+                        AutoPartC.deleteGoodFacture(table, id);
+                        main.closeConn();
+                        AutoPartC.showGoodFacture(table);
+                        main.closeConn();
+
+                    }
                 }
                 else
                 {
-                   
-                    VenteC.RemoveHtgMoney(sum);
-                    main.closeConn();
-                    AutoPartC.deleteGoodFacture(table, id);
-                    main.closeConn();
-                    id = "";
-                    AutoPartC.showGoodFacture(table);
-                    main.closeConn();
-                    MessageBox.Show("Facture annulée avec succès");
+
                 }
             }
 
@@ -215,7 +242,6 @@ namespace ncl_auto_parts.screens
             AutoPartC.cleanFactureSimple();
             while (result.Read())
             {
-
                 AutoPartM facture = new AutoPartM(result["clientName"].ToString(),result["service"].ToString(),result["devise"].ToString(),result["plaque"].ToString(),result["car_name"].ToString(),result["phone"].ToString(),result["description"].ToString(),int.Parse(result["quantite"].ToString()),float.Parse(result["montant"].ToString()),1);
                 int rep = await AutoPartC.saveFactureSimple(facture, float.Parse(result["discount"].ToString()), float.Parse(result["avance"].ToString()), result["statut"].ToString(), result["payment"].ToString(), result["comment"].ToString(), result["id_auto"].ToString(), float.Parse(result["pay"].ToString()),result["no_recu"].ToString(),float.Parse(result["total"].ToString()),float.Parse(result["avance"].ToString()),float.Parse(result["dette"].ToString()));
             }

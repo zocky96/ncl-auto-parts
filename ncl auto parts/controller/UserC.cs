@@ -238,8 +238,8 @@ namespace ncl_auto_parts.controller
                                 main.vente_.Enabled = true;
                                 main.fournisseur_.Enabled = true;
                                 main.cart_.Enabled = true;
-                                main.employe_.Enabled = true;
-                                main.user_.Enabled = true;
+                                //main.employe_.Enabled = true;
+                                //main.user_.Enabled = true;
                                 //main.payroll_.Enabled = true;
                                 main.autoPart_.Enabled = true;
                                 //main.facturation_.Enabled = true;
@@ -249,7 +249,7 @@ namespace ncl_auto_parts.controller
                                 //main.settings_.Enabled = true;
                                 main.log_in.Visible = false;
                                 //main.payroll_.Enabled = true;
-                                main.truePayroll_.Enabled = true;
+                                //main.truePayroll_.Enabled = true;
                                 main.userName = username;
                                 main.poste = "manager";
                             }
